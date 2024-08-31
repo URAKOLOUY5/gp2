@@ -1,4 +1,4 @@
-![splash](https://github.com/user-attachments/assets/b3d32283-e025-4cc6-975c-cd24be00fb38)
+![splash](https://github.com/user-attachments/assets/d80028f1-b359-47b4-a7bf-17910a9c8656)
 
 # About
 
