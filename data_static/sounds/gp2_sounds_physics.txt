@@ -1,0 +1,213 @@
+"Flesh.LaserBurn"
+{
+	"channel"		"CHAN_AUTO"
+	"soundlevel"		"SNDLVL_75db"
+	"volume"		"1.0"
+	"rndwave"
+	{
+		"wave"		"player/pl_burnpain1_no_vo.wav"
+		"wave"		"player/pl_burnpain2_no_vo.wav"
+		"wave"		"player/pl_burnpain3_no_vo.wav"
+	}
+
+	"soundentry_version" "2"
+
+	"operator_stacks"
+	{
+		"start_stack"
+		{
+			"import_stack" 	"P2_exclusion_time_blocker_start"
+			
+			"get_random"
+			{
+				"operator" "math_random"
+				"input_execute" "1.0"
+				"input_min" "0.5"
+				"input_max" "0.75"		
+			}
+
+			"block_entries"
+			{
+				"match_entry" "Flesh.LaserBurn"
+				"input_duration" "@get_random.output" //in seconds
+				"match_entity" "true"
+			}
+		}
+	}
+}
+
+"Lightbridge.StepLeft"
+{
+	"channel"		"CHAN_AUTO"
+	"soundlevel"		"SNDLVL_NORM"
+	"volume"		"0.25"
+	"pitch"			"85,95"
+	"rndwave"
+	{	
+		"wave"		"player/footsteps/fs_fm_lightbridge_01.wav"
+		"wave"		"player/footsteps/fs_fm_lightbridge_03.wav"
+		"wave"		"player/footsteps/fs_fm_lightbridge_05.wav"
+		"wave"		"player/footsteps/fs_fm_lightbridge_07.wav"
+		// "wave"		"player/footsteps/fs_fm_lightbridge_09.wav"
+		// "wave"		"player/footsteps/fs_fm_lightbridge_11.wav"
+		// "wave"		"player/footsteps/fs_fm_lightbridge_13.wav"
+	}
+			
+	"soundentry_version" "2"
+
+	"operator_stacks"
+	{
+		"start_stack"
+		{
+			"import_stack"	"P2_poly_limiting_start"
+
+			"limit_sound"
+			{
+				"match_entry" "Lightbridge.StepLeft"
+				"input_max_entries" "0.000000"
+			}
+		}
+		"update_stack"
+		{
+			"import_stack"	"p2_offset_start_update"
+		
+			"time_elapsed_trigger"
+			{
+				"input2" "0.05" //Elapsed time in seconds goes here.
+			}
+		
+			"play_entry"
+			{
+				"entry_name" "Lightbridge.ElectricStep"	
+			}
+			
+ 			"speakers_multi_origin"
+ 			{
+ 				"input_max_iterations" "0"
+			}
+			
+			"source_info"
+			{
+				// "source"   "entity"
+				"source"   "emitter"
+			}
+			
+			"volume_mult"
+			{
+				"input1" "1.0"
+			}
+		}
+	}
+}
+
+"Lightbridge.StepRight"
+{
+	"channel"		"CHAN_AUTO"
+	"soundlevel"		"SNDLVL_NORM"
+	"volume"		"0.25"
+	"pitch"			"85,95"
+	"rndwave"
+	{	
+		"wave"		"player/footsteps/fs_fm_lightbridge_02.wav"
+		"wave"		"player/footsteps/fs_fm_lightbridge_04.wav"
+		"wave"		"player/footsteps/fs_fm_lightbridge_06.wav"
+		"wave"		"player/footsteps/fs_fm_lightbridge_08.wav"
+		// "wave"		"player/footsteps/fs_fm_lightbridge_10.wav"
+		// "wave"		"player/footsteps/fs_fm_lightbridge_12.wav"
+	}
+			
+	"soundentry_version" "2"
+
+	"operator_stacks"
+	{
+		"start_stack"
+		{
+			"import_stack"	"P2_poly_limiting_start"
+
+			"limit_sound"
+			{
+				"match_entry" "Lightbridge.Stepright"
+				"input_max_entries" "0.000000"
+			}
+		}
+		"update_stack"
+		{
+			"import_stack"	"p2_offset_start_update"
+		
+			"time_elapsed_trigger"
+			{
+				"input2" "0.05" //Elapsed time in seconds goes here.
+			}
+		
+			"play_entry"
+			{
+				"entry_name" "Lightbridge.ElectricStep"	
+			}
+			
+ 			"speakers_multi_origin"
+ 			{
+ 				"input_max_iterations" "0"
+ 			}
+
+			"source_info"
+			{
+				// "source"   "entity"
+				"source"   "emitter"
+			}
+			
+			"volume_mult"
+			{
+				"input1" "1.0"
+			}
+		}
+	}
+}
+
+"Lightbridge.ElectricStep"
+{
+	"channel"		"CHAN_AUTO"
+	"soundlevel"		"SNDLVL_NORM"
+	"volume"		"0.08, 0.15"
+	"pitch"			"95,105"
+	"rndwave"
+	{	
+		"wave"		"player/footsteps/fs_fm_lightbridge_elec_01.wav"
+		"wave"		"player/footsteps/fs_fm_lightbridge_elec_02.wav"
+		"wave"		"player/footsteps/fs_fm_lightbridge_elec_03.wav"
+		"wave"		"player/footsteps/fs_fm_lightbridge_elec_04.wav"
+		"wave"		"player/footsteps/fs_fm_lightbridge_elec_05.wav"
+		// "wave"		"player/footsteps/fs_fm_lightbridge_elec_06.wav"
+		// "wave"		"player/footsteps/fs_fm_lightbridge_elec_07.wav"
+		// "wave"		"player/footsteps/fs_fm_lightbridge_elec_08.wav"
+		// "wave"		"player/footsteps/fs_fm_lightbridge_elec_09.wav"
+		// "wave"		"player/footsteps/fs_fm_lightbridge_elec_10.wav"
+		// "wave"		"player/footsteps/fs_fm_lightbridge_elec_11.wav"
+		// "wave"		"player/footsteps/fs_fm_lightbridge_elec_12.wav"
+		// "wave"		"player/footsteps/fs_fm_lightbridge_elec_13.wav"
+	}
+			
+	"soundentry_version" "2"
+
+	"operator_stacks"
+	{
+		"start_stack"
+		{
+			"import_stack"	"P2_poly_limiting_start"
+
+			"limit_sound"
+			{
+				"match_entry" "Lightbridge.ElectricStep"
+				"input_max_entries" "1.000000"
+			}
+		}
+		"update_stack"
+		{
+			"import_stack" "p2_update_default"
+			
+ 			"speakers_multi_origin"
+ 			{
+ 				"input_max_iterations" "0"
+ 			}
+		}
+	}
+}

@@ -1,0 +1,13 @@
+"UnlitGeneric"
+{
+    "$baseTexture" "media/bluescreen"
+	"Proxies"
+	{
+	    "AnimatedTexture"
+		{
+			"animatedtexturevar" "$baseTexture"
+			"animatedtextureframenumvar" "$frame"
+			"animatedtextureframerate" "24"
+		}
+	}
+}

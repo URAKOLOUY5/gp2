@@ -1,0 +1,9 @@
+// Created by Crowbar 0.74
+version 1
+nodes
+  0 "NewBackDoorEXP" -1
+end
+skeleton
+  time 0
+    0 66.104164 251.069611 25.708618 -0.000432 0.000691 -1.570796
+end

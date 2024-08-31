@@ -1,0 +1,13 @@
+"UnlitGeneric"
+{
+    "$baseTexture" "media/exercises_vert"
+	"Proxies"
+	{
+	    "AnimatedTexture"
+		{
+			"animatedtexturevar" "$baseTexture"
+			"animatedtextureframenumvar" "$frame"
+			"animatedtextureframerate" "24"
+		}
+	}
+}

@@ -1,0 +1,15 @@
+VertexLitGeneric
+{
+	$basetexture "models/props_destruction/rubble_wall_ceiling01"
+	$bumpmap "models/props_destruction/rubble_wall_ceiling01_normal"
+	$normalmapalphaenvmapmask 1
+	$surfaceprop default
+	$envmap "metal/black_wall_envmap_002a"
+	hdr
+	{
+		$envmap "metal/black_wall_envmap_002a_hdr"
+	}
+	$envmapcontrast 0.99
+	$envmapsaturation 0.1
+	$envmaptint 0.3 0.3 0.3
+	}

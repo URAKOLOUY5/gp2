@@ -1,0 +1,8 @@
+"sandbox"
+{
+	"base"		"base"
+	"title"		"Portal 2 (Singleplayer)"
+	"category"	"other"
+	"maps"		"^sp_a1_|^sp_a2|^sp_a3|^sp_a4|^sp_a5"
+	"menusystem"	"0"
+}

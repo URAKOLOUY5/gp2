@@ -1,0 +1,89 @@
+"Error"
+{
+	"channel"		"CHAN_STATIC"
+	"soundlevel"		"SNDLVL_NONE"
+	"wave"		"error.wav"
+}
+
+"Hud.Hint"
+{
+	"channel"		"CHAN_STATIC"
+	"soundlevel"		"SNDLVL_NONE"
+	"wave"		"ui/hint.wav"
+}
+
+"Explo.Distant"
+{
+	"channel"		"CHAN_STATIC"
+	"soundlevel"		"SNDLVL_GUNFIRE"
+	"rndwave"
+	{
+		"wave"		"props/explosions/explo_distant_med_01.wav"
+		"wave"		"props/explosions/explo_distant_med_02.wav"
+		"wave"		"props/explosions/explo_distant_med_03.wav"
+		"wave"		"props/explosions/explo_distant_med_04.wav"
+		"wave"		"props/explosions/explo_distant_med_05.wav"
+		"wave"		"props/explosions/explo_distant_med_06.wav"
+	}
+}
+
+"Explo.SemiDistant01"
+{
+	"channel"		"CHAN_STATIC"
+	"soundlevel"		"SNDLVL_GUNFIRE"
+	"wave"		"props/explosions/a4_semi_distant_explosion_01.wav"
+	
+	"soundentry_version" "2"
+
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"import_stack" "p2_update_default"
+			
+			"mixer"
+			{
+				"mixgroup" "xLoud"
+			}
+		}
+	}
+}
+
+"Explo.SemiDistant02"
+{
+	"channel"		"CHAN_STATIC"
+	"soundlevel"		"SNDLVL_GUNFIRE"
+	"wave"		"props/explosions/a4_semi_distant_explosion_02.wav"
+		
+	"soundentry_version" "2"
+
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"import_stack" "p2_update_default"
+			
+			"mixer"
+			{
+				"mixgroup" "xLoud"
+			}
+		}
+	}
+}
+
+"Default.Null"
+{
+	"channel"		"CHAN_BODY"
+	"soundlevel"		"SNDLVL_NORM"
+	"wave"		"common/null.wav"
+	"soundentry_version" "2"
+
+	"operator_stacks"
+	{
+		"start_stack"
+		{
+			"import_stack" 	"P2_null_start" //don't try to play wave			
+		}
+	}
+}
+

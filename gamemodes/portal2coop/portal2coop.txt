@@ -1,0 +1,8 @@
+"sandbox"
+{
+	"base"		"base"
+	"title"		"Portal 2 (Co-op)"
+	"category"	"other"
+	"maps"		"^mp_coop"
+	"menusystem"	"0"
+}

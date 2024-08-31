@@ -1,0 +1,13 @@
+"UnlitGeneric"
+{
+    "$baseTexture" "media/animalking"
+	"Proxies"
+	{
+	    "AnimatedTexture"
+		{
+			"animatedtexturevar" "$baseTexture"
+			"animatedtextureframenumvar" "$frame"
+			"animatedtextureframerate" "24"
+		}
+	}
+}

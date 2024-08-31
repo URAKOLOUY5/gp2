@@ -1,0 +1,9 @@
+// Created by Crowbar 0.74
+version 1
+nodes
+  0 "pCube8" -1
+end
+skeleton
+  time 0
+    0 2346.000000 -4392.000000 3406.000000 1.689919 0.013226 0.004104
+end

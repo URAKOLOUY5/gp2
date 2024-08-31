@@ -1,0 +1,9 @@
+// Created by Crowbar 0.74
+version 1
+nodes
+  0 "endRubblevcollide" -1
+end
+skeleton
+  time 0
+    0 -2399.303223 3968.635986 -2158.604736 1.570969 -0.000173 -0.000173
+end
