@@ -1,4 +1,6 @@
-# About GP2 Framework
+![splash](https://github.com/user-attachments/assets/b3d32283-e025-4cc6-975c-cd24be00fb38)
+
+# About
 
 Addon that adds support for Portal 2 maps for Garry's Mod. 
 
