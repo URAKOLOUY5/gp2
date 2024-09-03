@@ -2,6 +2,8 @@
 
 # About
 
+# [Discord](https://discord.gg/Kg6qjXTunU) | [Download](https://github.com/URAKOLOUY5/gp2/archive/refs/heads/development.zip)
+
 Addon that adds support for Portal 2 maps for Garry's Mod. 
 
 Due to the scope of Garry's Mod it is not possible to add support for Vscripts and so on, so support for maps on the engine level is not possible.
