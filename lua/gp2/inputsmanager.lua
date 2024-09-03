@@ -20,13 +20,11 @@ hook.Add("AcceptInput", "GP2::AcceptInput", function(ent, name, activator, calle
         callback(ent, activator, caller, value)
     end
 
-    if name == "_OnCompletion" then            
-        if ent.IsScriptSceneEntity and isfunction(ent.IsScriptSceneEntity) and ent:IsScriptSceneEntity() then
-            ent:_OnCompletion()
-        end          
+    if name:find("^O_") then
+        ent:TriggerConnectedOutput(name:gsub("^O_", ""))
     end
 
-    if name == "_OnCanceled" then
+    if name == "O_OnCanceled" then
         -- HACK to use GetCurrentScene on actors
         local vcd = ent:GetInternalVariable("SceneFile")
 
@@ -42,14 +40,10 @@ hook.Add("AcceptInput", "GP2::AcceptInput", function(ent, name, activator, calle
                     end
                 end
             end
-        end
-
-        if ent.IsScriptSceneEntity and isfunction(ent.IsScriptSceneEntity) and ent:IsScriptSceneEntity() then
-            ent:_OnCanceled()
-        end            
+        end         
     end
 
-    if name == "_OnStart"  then
+    if name == "O_OnStart"  then
         -- HACK to use GetCurrentScene on actors
         local vcd = ent:GetInternalVariable("SceneFile")
 
@@ -65,11 +59,7 @@ hook.Add("AcceptInput", "GP2::AcceptInput", function(ent, name, activator, calle
                     end
                 end
             end
-        end
-
-        if ent.IsScriptSceneEntity and isfunction(ent.IsScriptSceneEntity) and ent:IsScriptSceneEntity() then
-            ent:_OnStart() 
-        end            
+        end         
     end
 end)
 

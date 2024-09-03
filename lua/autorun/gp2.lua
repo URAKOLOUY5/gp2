@@ -43,10 +43,10 @@ local PreferredCarryAngles = {
 }
 
 if SERVER then
-    -- EntityKeyValue hooks
-    include("gp2/keyvalues.lua")
     -- AcceptInput hooks
     include("gp2/inputsmanager.lua")
+    -- EntityKeyValue hooks
+    include("gp2/keyvalues.lua")
     -- Vscripts (serverside only)
     include("gp2/vscriptmanager.lua")
     include("gp2/entityextensions.lua")

@@ -35,6 +35,14 @@ hook.Add("EntityKeyValue", "GP2::EntityKeyValue", function(ent, k, v)
             func(ent, v)
         end
     end
+
+    -- Recall the Output as input
+    local lowerk = k:lower()
+    if lowerk:StartsWith("on") then
+        local name = k .. " !self," .. "O_" .. lowerk .. ",,0,-1"
+        --GP2.Print("Adding output  => %q ", name)
+        ent:Input("AddOutput", NULL, NULL, name)
+    end
 end)
 
 GP2.KeyValueHandler.Add("brightnessscale", function(ent, v)

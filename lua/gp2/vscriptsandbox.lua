@@ -36,61 +36,9 @@ local sandbox = {
 }
 
 local SceneEntityMT = {}
-SceneEntityMT.__connectedOutputs = {}
 
 function SceneEntityMT:__tostring()
 	return "SceneEntity [" .. self:EntIndex() .. "][" .. self.m_szScenePath .. "]"
-end
-
-function SceneEntityMT:_OnCompletion()
-    self.__connectedOutputs["OnCompletion"] = self.__connectedOutputs["OnCompletion"] or {}
-    
-    for _, connection in ipairs(self.__connectedOutputs["OnCompletion"]) do
-        local target = connection[1]
-        local name = connection[2]
-
-        GP2.VScriptMgr.CallScriptFunction(target, name, true, self)
-    end
-end
-
-function SceneEntityMT:_OnCanceled()
-    self.__connectedOutputs["OnCanceled"] = self.__connectedOutputs["OnCanceled"] or {}
-    
-    for _, connection in ipairs(self.__connectedOutputs["OnCanceled"]) do
-        local target = connection[1]
-        local name = connection[2]
-
-        GP2.VScriptMgr.CallScriptFunction(target, name, true, self)
-    end
-end
-
-function SceneEntityMT:_OnStart()
-    self.__connectedOutputs["OnStart"] = self.__connectedOutputs["OnStart"] or {}
-    
-    for _, connection in ipairs(self.__connectedOutputs["OnStart"]) do
-        local target = connection[1]
-        local name = connection[2]
-
-        GP2.VScriptMgr.CallScriptFunction(target, name, true, self)
-    end
-end
-
-function SceneEntityMT:ConnectOutput(name, func, caller)
-    self.__connectedOutputs[name] = self.__connectedOutputs[name] or {}
-    table.insert(self.__connectedOutputs[name], {caller, func})
-end
-
-function SceneEntityMT:DisconnectOutput(lookupname, lookupfunc)
-    self.__connectedOutputs[lookupname] = self.__connectedOutputs[lookupname] or {}
-
-    for i, connection in ipairs(self.__connectedOutputs[lookupname]) do
-        local target = connection[1]
-        local name = connection[2]
-
-        if name == lookupfunc then
-            table.remove(self.__connectedOutputs[lookupname], i)
-        end
-    end
 end
 
 function SceneEntityMT:IsScriptSceneEntity()
@@ -140,9 +88,9 @@ sandbox.CreateSceneEntity = function(path)
 	entity:SetName("@sceneentity" .. entity:EntIndex())
 	entity:Spawn()
 	entity:Activate()
-    entity:Fire('AddOutput', 'OnStart ' .. '!self,_OnStart,,0,-1')
-    entity:Fire('AddOutput', 'OnCompletion ' .. '!self,_OnCompletion,,0,-1')
-    entity:Fire('AddOutput', 'OnCanceled ' .. '!self,_OnCanceled,,0,-1')
+    entity:Fire('AddOutput', 'OnStart ' .. '!self,O_OnStart,,0,-1')
+    entity:Fire('AddOutput', 'OnCompletion ' .. '!self,O_OnCompletion,,0,-1')
+    entity:Fire('AddOutput', 'OnCanceled ' .. '!self,O_OnCanceled,,0,-1')
 
     local originalMT = getmetatable(entity)
     
