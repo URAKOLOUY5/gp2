@@ -9,6 +9,10 @@ ENT.Type = "anim"
 local LASER_EXTENTS_DEFAULT = Vector(16, 16, 24)
 local RELAY_EXTENTS = Vector(10, 10, 24)
 
+local ALLOWED_CLASSES_TO_DAMAGE = {
+    ["env_portal_laser"] = true
+}
+
 function ENT:SetupDataTables()
     self:NetworkVar( "Bool", "Powered" )
     self:NetworkVar( "Bool", "TerminalPoint" )
@@ -85,9 +89,16 @@ end
 function ENT:OnTakeDamage(info)
     local attacker = info:GetAttacker()
 
+    if not IsValid(info:GetAttacker()) then
+        return
+    end
+
+    if not ALLOWED_CLASSES_TO_DAMAGE[info:GetAttacker():GetClass()] then
+        return
+    end
+
     self:PowerOn()
     self:NextThink(CurTime() + 0.1)
-    return
 end
 
 if SERVER then
