@@ -38,8 +38,8 @@ GP2.VScriptMgr = {
 
         timer.Simple(0, function()
             -- Call precache once on map load
-            GP2.VScriptMgr.CallScriptFunction(ent, "Precache", true, NULL)
             GP2.VScriptMgr.CallScriptFunction(ent, "OnPostSpawn", true, NULL)
+            GP2.VScriptMgr.CallScriptFunction(ent, "Precache", true, NULL)
         end)
     end,
 
