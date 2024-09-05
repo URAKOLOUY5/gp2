@@ -32,6 +32,10 @@ function printdebug(msg)
 end
 
 -- Dialogs from glados.nut converted to [mapname] = data format
+function MapNameConversion(orgname)
+    return MapBspConversion[orgname] or orgname
+end
+
 GladosDialog = 
 {
     ["sp_a1_intro2"] = { prestart = "PreHub01PortalCarouselEntry01", completed = "PreHub01PortalCarouselSuccess01" },
@@ -513,7 +517,7 @@ function PuzzleStart()
     local mapname = game.GetMap()
     printdebug('=========== Puzzle Start on ' .. mapname)
 
-    local level = GladosDialog[mapname]
+    local level = GladosDialog[MapNameConversion(mapname)]
 
     if level and level.start then
         printdebug('=========== Puzzle Start : playing scene ' .. level.start)
@@ -526,7 +530,7 @@ function PuzzlePreStart()
 	local mapname = game.GetMap()
     printdebug('=========== Puzzle Pre Start on ' .. mapname)
 
-    local level = GladosDialog[mapname]
+    local level = GladosDialog[MapNameConversion(mapname)]
 
     if level and level.prestart then
         printdebug('=========== Puzzle Pre Start : playing scene ' .. level.prestart)
@@ -539,7 +543,7 @@ function PuzzleCompleted()
 	local mapname = game.GetMap()
     printdebug('=========== Puzzle Completed on ' .. mapname)
 
-    local level = GladosDialog[mapname]
+    local level = GladosDialog[MapNameConversion(mapname)]
 
     if level and level.completed then
         printdebug('=========== Puzzle Completed : playing scene ' .. level.completed)
@@ -552,7 +556,7 @@ function ExitStarted()
 	local mapname = game.GetMap()
     printdebug('=========== Puzzle ExitStarted on ' .. mapname)
 
-    local level = GladosDialog[mapname]
+    local level = GladosDialog[MapNameConversion(mapname)]
 
     if level and level.exitstarted then
         printdebug('=========== Puzzle ExitStarted : playing scene ' .. level.exitstarted)
