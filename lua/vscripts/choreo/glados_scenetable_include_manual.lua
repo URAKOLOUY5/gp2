@@ -481,12 +481,12 @@ function sp_a1_intro_cognitive_gauntlet_over()
 	sp_a1_intro_cognitive_gauntlet_said = true
 end
 
-//good luck! as you fall into the vault
+--good luck! as you fall into the vault
 function sp_a1_intro_good_luck()
 	GladosPlayVcd(361)
 end
 
-// sp_a1_intro7
+-- sp_a1_intro7
 if curMapName == "sp_a1_intro7" then
 	sp_a1_intro7_popped = false
 	sp_a1_intro7_camethrough = false
@@ -751,7 +751,7 @@ function sp_a1_wakeup_transport()
 end
 
 -- ****************************************************************************************************
--- SP_A2_TRUST_FLING scenetable			  
+-- sp_a2_trust_fling scenetable
 -- ****************************************************************************************************
 
 if (curMapName == "sp_a2_trust_fling") then
@@ -816,15 +816,15 @@ if (curMapName == "sp_a2_trust_fling") then
 	}
 end
 
-SceneTableLookup[-300] = "-300_01"// Oh, sorry. Some of these test chambers haven't been cleaned in ages.
+SceneTableLookup[-300] = "-300_01"-- Oh, sorry. Some of these test chambers haven't been cleaned in ages.
 
-SceneTableLookup[-301] = "-301_01"// So sometimes there's still trash in them. Standing around. Smelling, and being useless.
+SceneTableLookup[-301] = "-301_01"-- So sometimes there's still trash in them. Standing around. Smelling, and being useless.
 
-SceneTableLookup[-302] = "-302_01"// Try to avoid the garbage hurtling towards you.
+SceneTableLookup[-302] = "-302_01"-- Try to avoid the garbage hurtling towards you.
 
-SceneTableLookup[-303] = "-303_01"// Don't TEST with the garbage. It's garbage.
+SceneTableLookup[-303] = "-303_01"-- Don't TEST with the garbage. It's garbage.
 
-SceneTableLookup[-304] = "-304_01"// Press the button again.
+SceneTableLookup[-304] = "-304_01"-- Press the button again.
 
 function sp_a2_trust_fling_garbage_spawn()
 	GladosPlayVcd( -300 )
@@ -840,4 +840,632 @@ end
 
 function sp_a2_trust_fling_elevator_stop()
 	GladosPlayVcd(465)
+end
+
+-- ****************************************************************************************************
+-- sp_a2_pit_flings scenetable
+-- ****************************************************************************************************
+
+if curMapName == "sp_a2_pit_flings" then
+    -- triggered when player picks up cube for the first time
+    SceneTable["-200_01"] = {
+        vcd = CreateSceneEntity("scenes/npc/glados/fizzlecube01.vcd"), -- Oh. Did I accidentally fizzle that before you could complete the test? I'm sorry.
+        char = "glados",
+        postdelay = 1.0,
+        predelay = 0.0,
+        next = "-201_01",
+        noDingOff = true,
+        noDingOn = true
+    }
+    
+    SceneTable["-201_01"] = {
+        vcd = CreateSceneEntity("scenes/npc/glados/fizzlecube03.vcd"), -- Go ahead and grab another one so that it won't also fizzle and you won't look stupid again.
+        char = "glados",
+        postdelay = 0.0,
+        predelay = 0.0,
+        next = null,
+        noDingOff = true,
+        noDingOn = true,
+        fires = {
+            {entity = "drop_new_box_relay", input = "trigger", parameter = "", delay = 1.0, fireatstart = true},
+        }
+    }
+    
+    -- triggered when player picks up the second box
+    SceneTable["-203_01"] = {
+        vcd = CreateSceneEntity("scenes/npc/glados/fizzlecube05.vcd"), -- Oh. No. I fizzled that one too.
+        char = "glados",
+        postdelay = 0.0,
+        predelay = 0.0,
+        next = "-204_01",
+        noDingOff = true,
+        noDingOn = true,
+        queue = true,
+        fires = {
+            {entity = "drop_new_box_relay", input = "trigger", parameter = "", delay = 0.0},
+            {entity = "companion_cube_trigger", input = "kill", parameter = "", delay = 0.0, fireatstart = true},
+        }
+    }
+    
+    SceneTable["-204_01"] = {
+        vcd = CreateSceneEntity("scenes/npc/glados/fizzlecube06.vcd"), -- Oh well. We have warehouses FULL of the things. Absolutely worthless. I'm happy to get rid of them.
+        char = "glados",
+        postdelay = 0.0,
+        predelay = 1.0,
+        next = null,
+        noDingOff = true,
+        noDingOn = true
+    }
+    
+    -- This line plays from the PuzzleCompleted call
+    SceneTable["sp_a2_pit_flingsCubeSmuggleEnding01"] = {
+        vcd = CreateSceneEntity("scenes/npc/glados/sp_a2_pit_flings03.vcd"), -- Every test chamber is equiped with a fizzler. This one is broken.
+        char = "glados",
+        postdelay = 0.0,
+        predelay = 0.0,
+        next = "sp_a2_pit_flingsCubeSmuggleEnding02",
+        noDingOff = true,
+        noDingOn = true
+    }
+    
+    SceneTable["sp_a2_pit_flingsCubeSmuggleEnding02"] = {
+        vcd = CreateSceneEntity("scenes/npc/glados/sp_a2_pit_flings02.vcd"), -- Don't take anything with you.
+        char = "glados",
+        postdelay = 0.0,
+        predelay = 0.0,
+        next = null,
+        noDingOff = true,
+        noDingOn = true,
+        fires = {
+            {entity = "smuggled_cube_fizzle_trigger", input = "enable", parameter = "", delay = 0.0},
+            {entity = "glados_summon_elevator_relay", input = "trigger", parameter = "", delay = 0.5, fireatstart = true}
+        }
+    }
+
+    -- called when smuggled cube fizzles
+    SceneTable["-206_01"] = {
+        vcd = CreateSceneEntity("scenes/npc/glados/sp_a2_pit_flings06.vcd"), -- I think that one was about to say "I love you." They ARE sentient, of course. We just have a LOT of them.
+        char = "glados",
+        postdelay = 0.0,
+        predelay = 2,
+        next = null,
+        noDingOff = true,
+        noDingOn = true,
+        fires = {{entity = "@transition_script", input = "runscriptcode", parameter = "TransitionReady()", delay = 0.0}}
+    }
+    
+    -- Player got stuck, glados taunts then spawns another cube
+    SceneTable["-207_01"] = {
+        vcd = CreateSceneEntity("scenes/npc/glados/fizzlecube02.vcd"), -- go ahead and grab another one
+        char = "glados",
+        postdelay = 0.0,
+        predelay = 0.0,
+        next = null,
+        noDingOff = true,
+        noDingOn = true,
+        fires = {
+            {entity = "drop_new_box_relay", input = "trigger", parameter = "", delay = 0.0}
+        }
+    }
+
+	boxDissolveCount = 1
+end
+
+SceneTableLookup[-200] = "-200_01" -- Oh. Did I accidentally fizzle that before you could complete the test? I'm sorry.
+
+SceneTableLookup[-201] = "-201_01" -- Go ahead and grab another one so that it won't also fizzle and you won't look stupid again.
+
+SceneTableLookup[-202] = "-202_01" -- Go ahead. I PROMISE not to fizzle it this time.
+
+SceneTableLookup[-203] = "-203_01" -- Oh. No. I fizzled that one too.
+
+SceneTableLookup[-204] = "-204_01" -- Oh well. We have warehouses FULL of the things. Absolutely worthless. I'm happy to get rid of them.
+
+SceneTableLookup[-205] = "-205_01" -- Go ahead. This time I promise you'll look incrementally less stupid than the previous two times in which you looked incredibly stupid.
+
+SceneTableLookup[-206] = "-206_01" -- I think that one was about to say "I love you." They ARE sentient, of course. We just have a LOT of them.
+
+SceneTableLookup[-207] = "-207_01" -- ** player got stuck dialog here
+
+function sp_laser_lift_pit_flings_cube_lost()
+	if boxDissolveCount == 1 then
+		GladosPlayVcd( -200 )
+	elseif boxDissolveCount == 2 then
+		GladosPlayVcd( -203 )
+	else
+		print("====== Cube lost! spawning a new one...")
+		EntFire( "drop_new_box_relay", "trigger", 0, 0, 0 )
+	end
+
+	boxDissolveCount = boxDissolveCount + 1
+end
+
+-- Called when sp_laser_lift_pit_flings companion cube is picked up
+function sp_laser_lift_pit_flings_companion_cube_dissolved()
+	print("***DISSOLVING cube_dropper_box!")
+
+	-- spawn a new box whenever ready
+	sp_laser_lift_pit_flings_cube_lost();
+end
+
+-- Called if player tries to smuggle cube out of level
+function sp_a2_pit_flings_smuggled_cube_fizzle()
+	GladosPlayVcd( -206 )
+end
+
+-- Triggered when the player gets into an unwinnable state
+function sp_a2_pit_flings_player_stuck()
+	GladosPlayVcd( -207 )
+end
+
+function sp_a2_fizzler_training_Have_To_Go()
+	GladosPlayVcd(546)
+end
+
+
+-- ****************************************************************************************************
+-- sp_a2_sphere_peek
+-- ****************************************************************************************************
+
+if curMapName == "sp_a2_sphere_peek" then
+	peekctr = 0
+end
+
+function sp_catapult_fling_sphere_peek()
+	if peekctr == 0 then
+		GladosPlayVcd(335)
+	elseif peekctr == 2 then
+		GladosPlayVcd(362)
+	elseif peekctr == 4 then
+		GladosPlayVcd(363)
+	end
+
+	peekctr = peekctr + 1
+end
+
+
+-- ****************************************************************************************************
+-- sp_a2_ricochet
+-- ****************************************************************************************************
+function RicochetFutureStarter()
+	GladosPlayVcd(631)	
+end
+
+-- ****************************************************************************************************
+-- sp_a2_bridge_intro
+-- ****************************************************************************************************
+function bridge_intro_door()
+	GladosPlayVcd(236)
+end
+
+
+-- ****************************************************************************************************
+-- SP_A2_BRIDGE_THE_GAP - BIRD!
+-- ****************************************************************************************************
+
+if curMapName == "sp_a2_bridge_the_gap" then
+    -- Perfect, the door's malfunctioning. I guess somebody's going to have to repair that too. [beat] No, don't get up. I'll be right back. Don't touch anything.
+    SceneTable["-500_00"] = {
+        vcd = CreateSceneEntity("scenes/npc/glados/sp_trust_fling_sphereinterrupt01.vcd"),
+        postdelay = 0.000,
+        next = nil,
+        char = "glados",
+        fires = {
+            {entity = "start_wheatley_window_scene_relay", input = "trigger", parameter = "", delay = 3.0}
+        },
+        predelay = 0.2,
+        queue = 1 
+    }
+
+    -- Hey! Hey! Up here!
+    SceneTable["-500_01"] = {vcd = CreateSceneEntity("scenes/npc/sphere03/sp_trust_fling01.vcd"), postdelay = 0.2, next = "-500_02", char = "wheatley", noDingOff = true, noDingOn = true}
+
+    -- I found some bird eggs up here. Just dropped 'em into the door mechanism.  Shut it right down. I--AGH!
+    SceneTable["-500_02"] = {
+        vcd = CreateSceneEntity("scenes/npc/sphere03/sp_trust_flingAlt07.vcd"),
+        postdelay = 0.1,
+        next = "-500_03",
+        char = "wheatley",
+        noDingOff = true,
+        noDingOn = true,
+        fires = {
+            {entity = "bird_attack_start_relay", input = "Trigger", parameter = "", delay = 3.6, fireatstart = true},
+        }
+    }
+
+    -- BIRD BIRD BIRD BIRD
+    SceneTable["-500_03"] = {vcd = CreateSceneEntity("scenes/npc/sphere03/sp_trust_flingAlt02.vcd"), postdelay = 2.5, next = "-500_04", char = "wheatley", noDingOff = true, noDingOn = true}
+
+    -- [out of breath] Okay. That's probably the bird, isn't it? That laid the eggs! Livid!
+    SceneTable["-500_04"] = {
+        vcd = CreateSceneEntity("scenes/npc/sphere03/sp_trust_flingAlt08.vcd"),
+        postdelay = 0.4,
+        next = "-500_05",
+        char = "wheatley",
+        noDingOff = true,
+        noDingOn = true,
+        fires = {
+            {entity = "bird_attack_end_relay", input = "Trigger", parameter = "", delay = 0.0, fireatstart = true} 
+        }
+    }
+
+    -- Okay, look, the point is, we're gonna break out of here! Very soon, I promise! 
+    SceneTable["-500_05"] = {vcd = CreateSceneEntity("scenes/npc/sphere03/sp_a2_bridge_the_gap_expo01.vcd"), postdelay = 0.1, next = "-500_06", char = "wheatley", noDingOff = true, noDingOn = true}
+
+    -- I just have to figure out how.
+    SceneTable["-500_06"] = {vcd = CreateSceneEntity("scenes/npc/sphere03/sp_a2_bridge_the_gap_expo03.vcd"), postdelay = 0.4, next = "-500_07", char = "wheatley", noDingOff = true, noDingOn = true}
+
+    -- Here she comes! Just keep testing! Remember, you never saw me!
+    SceneTable["-500_07"] = {
+        vcd = CreateSceneEntity("scenes/npc/sphere03/sp_a2_bridge_the_gap_expo06.vcd"),
+        postdelay = 1,
+        next = nil,
+        char = "wheatley",
+        fires = {
+            {entity = "trick_door_open_relay", input = "Trigger", parameter = "", delay = 3.3, fireatstart = true},
+            {entity = "wheatley_depart_scene_relay", input = "Trigger", parameter = "", delay = 3, fireatstart = true}
+        },
+        noDingOff = true,
+        noDingOn = true
+    }
+end
+
+-- ****************************************************************************************************
+-- sp_a2_bridge_the_gap scenetable
+-- ****************************************************************************************************
+
+if curMapName == "sp_a2_bridge_the_gap" then
+    -- Perfect, the door's malfunctioning. I guess somebody's going to have to repair that too. [beat] No, don't get up. I'll be right back. Don't touch anything.
+    SceneTable["-500_00"] = {
+        vcd = CreateSceneEntity("scenes/npc/glados/sp_trust_fling_sphereinterrupt01.vcd"),
+        postdelay = 0.000,
+        next = nil,
+        char = "glados",
+        fires = {
+            {entity = "start_wheatley_window_scene_relay", input = "trigger", parameter = "", delay = 3.0}
+        },
+        predelay = 0.2,
+        queue = 1 
+    }
+
+    -- Hey! Hey! Up here!
+    SceneTable["-500_01"] = {vcd = CreateSceneEntity("scenes/npc/sphere03/sp_trust_fling01.vcd"), postdelay = 0.2, next = "-500_02", char = "wheatley", noDingOff = true, noDingOn = true}
+
+    -- I found some bird eggs up here. Just dropped 'em into the door mechanism.  Shut it right down. I--AGH!
+    SceneTable["-500_02"] = {
+        vcd = CreateSceneEntity("scenes/npc/sphere03/sp_trust_flingAlt07.vcd"),
+        postdelay = 0.1,
+        next = "-500_03",
+        char = "wheatley",
+        noDingOff = true,
+        noDingOn = true,
+        fires = {
+            {entity = "bird_attack_start_relay", input = "Trigger", parameter = "", delay = 3.6, fireatstart = true},
+        }
+    }
+
+    -- BIRD BIRD BIRD BIRD
+    SceneTable["-500_03"] = {vcd = CreateSceneEntity("scenes/npc/sphere03/sp_trust_flingAlt02.vcd"), postdelay = 2.5, next = "-500_04", char = "wheatley", noDingOff = true, noDingOn = true}
+
+    -- [out of breath] Okay. That's probably the bird, isn't it? That laid the eggs! Livid!
+    SceneTable["-500_04"] = {
+        vcd = CreateSceneEntity("scenes/npc/sphere03/sp_trust_flingAlt08.vcd"),
+        postdelay = 0.4,
+        next = "-500_05",
+        char = "wheatley",
+        noDingOff = true,
+        noDingOn = true,
+        fires = {
+            {entity = "bird_attack_end_relay", input = "Trigger", parameter = "", delay = 0.0, fireatstart = true} 
+        }
+    }
+
+    -- Okay, look, the point is, we're gonna break out of here! Very soon, I promise! 
+    SceneTable["-500_05"] = {vcd = CreateSceneEntity("scenes/npc/sphere03/sp_a2_bridge_the_gap_expo01.vcd"), postdelay = 0.1, next = "-500_06", char = "wheatley", noDingOff = true, noDingOn = true}
+
+    -- I just have to figure out how.
+    SceneTable["-500_06"] = {vcd = CreateSceneEntity("scenes/npc/sphere03/sp_a2_bridge_the_gap_expo03.vcd"), postdelay = 0.4, next = "-500_07", char = "wheatley", noDingOff = true, noDingOn = true}
+
+    -- Here she comes! Just keep testing! Remember, you never saw me!
+    SceneTable["-500_07"] = {
+        vcd = CreateSceneEntity("scenes/npc/sphere03/sp_a2_bridge_the_gap_expo06.vcd"),
+        postdelay = 1,
+        next = nil,
+        char = "wheatley",
+        fires = {
+            {entity = "trick_door_open_relay", input = "Trigger", parameter = "", delay = 3.3, fireatstart = true},
+            {entity = "wheatley_depart_scene_relay", input = "Trigger", parameter = "", delay = 3, fireatstart = true}
+        },
+        noDingOff = true,
+        noDingOn = true
+    }
+
+	SceneTableLookup[-500] = "-500_00" 	-- Perfect, the door's malfunctioning. I guess somebody's going to have to repair that too. [beat] No, don't get up. I'll be right back. Don't touch anything.
+	SceneTableLookup[-501] = "-500_01" 	-- /Hey! Hey! Up here!
+										-- I found some bird eggs up here. Just dropped 'em into the door mechanism.  Shut it right down. I--AGH!					
+										-- BIRD BIRD BIRD BIRD
+										-- [out of breath] Okay. That's probably the bird, isn't it? That laid the eggs! Livid!
+										-- Anyway, look, the point is we're gonna break out of here, alright? But we can't do it yet. Look for me fifteen chambers ahead.
+										-- Here she comes! Just play along! RememberFifteenChambers!
+end
+
+-- Called when door malfunction begins
+function sp_a2_bridge_the_gap_brokendoor_scene()
+	GladosPlayVcd( -500 )
+end
+
+function sp_a2_bridge_the_gap_window_scene()
+	GladosPlayVcd( -501 )
+end
+
+-- ****************************************************************************************************
+-- sp_a2_column_blocker scenetable (birthday surprize)
+-- ****************************************************************************************************
+if curMapName == "sp_a2_column_blocker" then
+    SceneTable["-400_01"] = {
+        vcd = CreateSceneEntity("scenes/npc/glados/testchambermisc34.vcd"), -- initiating surprise in 3...2...1.
+        char = "glados",
+        postdelay = 0.0,
+        predelay = 0.0,
+        next = "-401_01",
+        noDingOff = true,
+        noDingOn = true,
+        fires = {
+            {entity = "surprise_room_lights_on", input = "Trigger", parameter = "", delay = 0.2},
+        }
+    }
+    
+    SceneTable["-401_01"] = {
+        vcd = CreateSceneEntity("scenes/npc/glados/testchambermisc35.vcd"), -- i made it all up
+        char = "glados",
+        postdelay = 2.5,
+        predelay = 2.0,
+        next = "-402_01",
+        noDingOff = true,
+        noDingOn = true,
+        fires = {
+            {entity = "surprise_room_effects_relay", input = "Trigger", parameter = "", delay = 0.6},
+            {entity = "surprise_room_party_horn_sound", input = "playsound", parameter = "", delay = 0.3}
+        }
+    }
+    
+    SceneTable["-402_01"] = {
+        vcd = CreateSceneEntity("scenes/npc/glados/testchambermisc41.vcd"), -- surprise.
+        char = "glados",
+        postdelay = 2.0,
+        predelay = 0.0,
+        next = "-403_01",
+        noDingOff = true,
+        noDingOn = true
+    }
+    
+    SceneTable["-403_01"] = {
+        vcd = CreateSceneEntity("scenes/npc/glados/sp_a2_column_blocker01.vcd"), -- your parents are probably dead. ...i doubt they'd want to see you.
+        char = "glados",
+        postdelay = 0.0,
+        predelay = 0.0,
+        next = nil,
+        noDingOff = true,
+        noDingOn = true,
+        fires = {
+            {entity = "surprise_room_door_relay", input = "trigger", parameter = "", delay = 1.5, fireatstart = true}
+        }
+    }
+
+	SceneTableLookup[-400] = "-400_01"	-- Initiating surprise in 3... 2... 1.
+										-- I made it all up
+										-- Surprise
+										-- Your parents are probably dead... Wouldn't want to see you.
+end
+
+function Wheatley_Elevator_Scene_Start()
+	GladosPlayVcd(495)
+end
+	
+function Wheatley_Elevator_Scene_Ow()
+	GladosPlayVcd(496)
+end
+	
+-- ****************************************************************************************************
+-- sp_a2_bts1
+-- ****************************************************************************************************
+
+if curMapName == "sp_a2_bts1" then
+    sp_a2_bts1_FakeEntered = false
+end
+
+function JailbreakGladosSomethingWrong()
+    GladosPlayVcd(301)
+end
+
+function JailbreakWheatleyHeyLady()
+    GladosPlayVcd(497)
+end
+
+function JailbreakICanHearYou()
+    EntFire("@sphere", "SetIdleSequence", "sphere_damaged_glance_concerned", 0)
+    GladosPlayVcd(498)
+end
+
+function JailbreakWheatleyCloseChamber()
+    WheatleyStopNag()   
+    GladosPlayVcd(500)
+end
+
+function WheatleyKeepMoving()
+    -- WheatleyStopNag()        
+    -- GladosPlayVcd(501)
+end
+
+function WheatleyGoGoGoNag()
+    GladosPlayVcd(502)
+end
+
+function JailbreakLastTestIntro()
+    WheatleyStopNag()   
+    GladosPlayVcd(503)
+end
+
+function JailbreakLastChamberMain()
+    WheatleyStopNag()   
+    GladosPlayVcd(504)
+end
+
+function JailbreakLastTestDeer()
+    sp_a2_bts1_FakeEntered = true
+    WheatleyStopNag()   
+    GladosPlayVcd(505)
+end
+
+function JailBreakHowStupid()
+    if not sp_a2_bts1_FakeEntered then
+        WheatleyStopNag()       
+        GladosPlayVcd(506)
+    end 
+end
+
+function JailbreakBridgeDisappear()
+    WheatleyStopNag()   
+    GladosPlayVcd(507)
+end
+
+function JailbreakLookOutTurrets()
+    WheatleyStopNag()   
+    GladosPlayVcd(508)
+end
+
+function JailBreak2Trapped()
+    WheatleyStopNag()   
+    GladosPlayVcd(573)
+end
+
+function JailBreak2Gunfire()
+    GladosPlayVcd(574)
+end
+
+function bts2_wheatley_comeon_prompt()
+    GladosPlayVcd(587)
+end
+
+function JailBreak2AlmostOut()
+    GladosPlayVcd(575)
+end
+
+function JailBreak2BringingDown()
+    GladosPlayVcd(576)
+end
+
+function JailbreakHurryHurry()
+    WheatleyStopNag()   
+    GladosPlayVcd(509)
+end
+
+function JailbreakGetInTheLift()
+    WheatleyStopNag()   
+    GladosPlayVcd(510)
+end
+
+function jailbreak_player_in_exit_elevator()
+    WheatleyStopNag()   
+    GladosPlayVcd(511)
+end
+
+function Jailbreak2ThisWay()
+    WheatleyStopNag()   
+    GladosPlayVcd(512)
+end
+
+function JailbreakGoGo()
+    WheatleyStopNag()   
+    GladosPlayVcd(513)
+end
+
+function JailbreakComeOnComeOn()
+    WheatleyStopNag()   
+    GladosPlayVcd(514)
+end
+
+-- ****************************************************************************************************
+-- sp_a2_bts3
+-- ****************************************************************************************************
+
+if curMapName == "sp_a2_bts3" then
+    -- ====================================== Ghost Story scene
+    
+    SceneTable["-2500_01"] = {
+        vcd = CreateSceneEntity("scenes/npc/sphere03/sphere_flashlight_tour07.vcd"), -- Ooh.  Dark down here, isn't it.
+        char = "wheatley",
+        postdelay = 0.0,
+        predelay = 0.0,
+        next = "-2500_02",
+        noDingOff = true,
+        noDingOn = true
+    }
+    
+    SceneTable["-2500_02"] = {
+        vcd = CreateSceneEntity("scenes/npc/sphere03/sphere_flashlight_tour57.vcd"), -- They say that the old caretaker of this place...
+        char = "wheatley",
+        postdelay = 0.0,
+        predelay = 1.0,
+        next = nil,
+        noDingOff = true,
+        noDingOn = true
+    }   
+    
+    -- ====================================== Smelly Humans scene
+    SceneTable["-2503_01"] = {
+        vcd = CreateSceneEntity("scenes/npc/sphere03/sphere_flashlight_tour58.vcd"), -- Here's an interesting story.. (smelly humans story)
+        char = "wheatley",
+        postdelay = 0.0,
+        predelay = 0.0,
+        next = "-2503_02",
+        noDingOff = true,
+        noDingOn = true
+    }
+    
+    SceneTable["-2503_02"] = {
+        vcd = CreateSceneEntity("scenes/npc/sphere03/sphere_flashlight_tour59.vcd"), -- the um.. sorry, that's.. just tending to the humans.
+        char = "wheatley",
+        postdelay = 0.0,
+        predelay = 0.0,
+        next = "-2503_03",
+        noDingOff = true,
+        noDingOn = true
+    }
+    
+    SceneTable["-2503_03"] = {
+        vcd = CreateSceneEntity("scenes/npc/sphere03/sphere_flashlight_tour60.vcd"), -- Sorry about that.  That just slipped out.
+        char = "wheatley",
+        postdelay = 0.0,
+        predelay = 0.0,
+        next = nil,
+        noDingOff = true,
+        noDingOn = true
+    }
+    
+    SceneTable["-2504_01"] = {
+        vcd = CreateSceneEntity("scenes/npc/sphere03/sphere_flashlight_tour62.vcd"), -- Ahh. Humans!  Love 'em!
+        char = "wheatley",
+        postdelay = 0.0,
+        predelay = 0.0,
+        next = nil,
+        noDingOff = true,
+        noDingOn = true
+    }
+
+	SceneTableLookup[-2500] = "-2500_01" // OOh.  Dark down here, isn't it. (ghost story)
+	SceneTableLookup[-2503] = "-2503_01" // (smelly humans)
+	SceneTableLookup[-2504] = "-2504_01" // humans, love 'em!
+end
+
+function sp_a2_bts3_ghoststory()
+	GladosPlayVcd(-2500)
+end
+
+function sp_a2_bts3_smellyhumanstart()
+	GladosPlayVcd(-2503)
+end
+
+function sp_a2_bts3_smellyhumanlovethem()
+	GladosPlayVcd(-2504)
 end

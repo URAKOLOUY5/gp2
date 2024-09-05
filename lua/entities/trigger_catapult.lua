@@ -89,6 +89,10 @@ function ENT:StartTouch(other)
         return
     end
 
+    if not self:PassesTriggerFilters(other) then
+        return
+    end
+
     -- Don't refire too quickly
     local refireIndex = other:IsPlayer() and other:EntIndex() or 1
 
@@ -221,7 +225,7 @@ function ENT:CalculateLaunchVector(victim, target)
     local vecTargetPos = target:GetPos()
 
     if victim:IsPlayer() then
-        vecTargetPos.z = vecTargetPos.z - 32
+        vecTargetPos.z = vecTargetPos.z - 64
     end
 
     local speed = victim:IsPlayer() and self:GetPlayerSpeed() or self:GetPhysicsSpeed()
@@ -248,14 +252,14 @@ function ENT:CalculateLaunchVectorPreserve(vecInitialVelocity, victim, target, f
 
     -- If victim is player, adjust target position so player's center will hit the target
     if victim:IsPlayer() or forcePlayer then
-        vecTargetPos.z = vecTargetPos.z - 32
+        vecTargetPos.z = vecTargetPos.z - 64
     end
 
     local vecDiff = (vecTargetPos - vecSourcePos)
 
     local flHeight = vecDiff.z
     local flDist = vecDiff:Length2D()
-    local flVelocity = (pVictim:IsPlayer() or forcePlayer) and self:GetPlayerSpeed() or self:GetPhysicsSpeed()
+    local flVelocity = (victim:IsPlayer() or forcePlayer) and self:GetPlayerSpeed() or self:GetPhysicsSpeed()
     local flGravity = -1 * sv_gravity:GetFloat()
 
     if flDist == 0.0 then
@@ -323,7 +327,11 @@ function ENT:LaunchByDirection(victim)
             victim:SetGroundEntity(NULL)
         end
 
-        victim:SetAbsVelocity(vecPush)
+        hook.Add("Move", "GP2::test_setupmove_removespeed" .. victim:EntIndex(), function(ply, mv, cmd)
+            if victim == ply then
+                mv:SetVelocity(vecPush)
+            end
+        end)
         self:OnLaunchedVictim(victim)
 
         -- Do air control suppression (NO, there's no airaccelerate block in gmod's player :/)

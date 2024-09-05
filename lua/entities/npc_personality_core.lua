@@ -134,11 +134,11 @@ if SERVER then
 
     function ENT:KeyValue(k, v)   
         if k == "ModelSkin" then
-            self.ModelSkin = tonumber(v)
+            self:SetSkin(tonumber(v))
         end
 
-        if k == "altmodel" then
-            self.UseAltModel = tobool(v)
+        if k == "altmodel" then   
+            self:SetModel(CORE_SKINS_MODEL)
         end
 
         if k:StartsWith("On") then
@@ -147,11 +147,7 @@ if SERVER then
     end
 
     function ENT:ChooseSkins()
-        if self.UseAltModel then
-            self:SetModel(CORE_SKINS_MODEL)
-        end
 
-        self:SetSkin(self.ModelSkin)
     end
 
     function ENT:SetIdleSequence(sequence)
