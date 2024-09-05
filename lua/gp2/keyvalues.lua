@@ -13,6 +13,7 @@ GP2.KeyValueHandler = {
 hook.Add("EntityKeyValue", "GP2::EntityKeyValue", function(ent, k, v)
     local callback = GP2.KeyValueHandler.Callbacks[k]
 
+    -- Replace transition trigger with trigger_multiple 
     if ent:GetClass() == "trigger_once" and v:find("OnPostTransition()") then
         local trigger_multiple = ents.Create("trigger_multiple")
         trigger_multiple:Fire("AddOutput", k .. " " .. v)
