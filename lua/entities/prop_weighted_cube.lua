@@ -38,13 +38,13 @@ local CUBE_REFLECTIVE_RUSTED_SKIN = 1
 local CUBE_REFLECTIVE_BOUNCE_SKIN = 2
 local CUBE_REFLECTIVE_SPEED_SKIN = 3
 
--- ANTIQUE skins
-local CUBE_ANTIQUE_CLEAN_SKIN = 0
-local CUBE_ANTIQUE_CLEAN_ACTIVATED_SKIN = 1
-local CUBE_ANTIQUE_BOUNCE_SKIN = 2
-local CUBE_ANTIQUE_BOUNCE_ACTIVATED_SKIN = 2
-local CUBE_ANTIQUE_SPEED_SKIN = 3
-local CUBE_ANTIQUE_SPEED_ACTIVATED_SKIN = 3
+-- SPHERE skins
+local CUBE_SPHERE_CLEAN_SKIN = 0
+local CUBE_SPHERE_CLEAN_ACTIVATED_SKIN = 1
+local CUBE_SPHERE_BOUNCE_SKIN = 2
+local CUBE_SPHERE_BOUNCE_ACTIVATED_SKIN = 2
+local CUBE_SPHERE_SPEED_SKIN = 3
+local CUBE_SPHERE_SPEED_ACTIVATED_SKIN = 3
 
 -- Antique cube skins
 local CUBE_ANTIQUE_CLEAN_SKIN = 0
@@ -55,7 +55,7 @@ local CUBE_ANTIQUE_SPEED_SKIN = 2
 CUBE_STANDARD = 0
 CUBE_COMPANION = 1
 CUBE_REFLECTIVE = 2
-CUBE_ANTIQUE = 3
+CUBE_SPHERE = 3
 CUBE_ANTIQUE = 4
 
 NO_PAINT_POWER = 0
@@ -63,7 +63,7 @@ BOUNCE_POWER = 1
 SPEED_POWER = 2
 PORTAL_POWER = 4
 
-ENT.Type2Info = {
+CUBE_TYPE_TO_INFO = {
     [CUBE_STANDARD] = {
         model = CUBE_MODEL
     },
@@ -74,7 +74,7 @@ ENT.Type2Info = {
         model = CUBE_REFLECT_MODEL,
         spawnflags = SF_PHYSPROP_ENABLE_ON_PHYSCANNON
     },
-    [CUBE_ANTIQUE] = {
+    [CUBE_SPHERE] = {
         model = CUBE_SHPERE_MODEL
     },
     [CUBE_ANTIQUE] = {
@@ -118,13 +118,13 @@ function ENT:SetCubeSkin()
         elseif self:GetPaintPower() == NO_PAINT_POWER then
             self:SetSkin(CUBE_REFLECTIVE_CLEAN_SKIN)
         end
-    elseif self:GetCubeType() == CUBE_ANTIQUE then
+    elseif self:GetCubeType() == CUBE_SPHERE then
         if self:GetPaintPower() == BOUNCE_POWER then
-            self:SetSkin(self.Activated and CUBE_ANTIQUE_BOUNCE_ACTIVATED_SKIN or CUBE_ANTIQUE_BOUNCE_SKIN)    
+            self:SetSkin(self.Activated and CUBE_SPHERE_BOUNCE_ACTIVATED_SKIN or CUBE_SPHERE_BOUNCE_SKIN)    
         elseif self:GetPaintPower() == SPEED_POWER then
-            self:SetSkin(self.Activated and CUBE_ANTIQUE_SPEED_ACTIVATED_SKIN or CUBE_ANTIQUE_SPEED_SKIN)    
+            self:SetSkin(self.Activated and CUBE_SPHERE_SPEED_ACTIVATED_SKIN or CUBE_SPHERE_SPEED_SKIN)    
         elseif self:GetPaintPower() == NO_PAINT_POWER then
-            self:SetSkin(self.Activated and CUBE_ANTIQUE_CLEAN_ACTIVATED_SKIN or CUBE_ANTIQUE_CLEAN_SKIN)    
+            self:SetSkin(self.Activated and CUBE_SPHERE_CLEAN_ACTIVATED_SKIN or CUBE_SPHERE_CLEAN_SKIN)    
         end
     elseif self:GetCubeType() == CUBE_ANTIQUE then
         if self:GetPaintPower() == BOUNCE_POWER then
@@ -143,16 +143,15 @@ function ENT:Initialize()
         self:SetUseType(SIMPLE_USE)
     end
 
-    self:SetModel(self.Type2Info[self:GetCubeType()].model)
+    print(self:GetCubeType())
+    self:SetModel(CUBE_TYPE_TO_INFO[self:GetCubeType()].model)
     self:SetCubeSkin()
 
     if SERVER then
         self:PhysicsInit(SOLID_VPHYSICS)
-        timer.Simple(0.1, function()
-            if IsValid(self:GetPhysicsObject()) then
-                self:GetPhysicsObject():Wake()
-            end
-        end)
+        if IsValid(self:GetPhysicsObject()) then
+            self:GetPhysicsObject():Wake()
+        end
     end
 end
 
@@ -257,6 +256,33 @@ if SERVER then
     function ENT:UpdateTransmitState()
         return TRANSMIT_ALWAYS -- always because i don't care it looks bad on clientside
     end
+
+    function ENT:OnPhysgunPickup(ply, ent)
+        self:TriggerOutput("OnPhysGunPickup")
+
+        return true
+    end
+
+    function ENT:OnPhysgunDrop(ply, ent)
+        self:TriggerOutput("OnPhysGunDrop")
+    end
+
+    function ENT:OnPlayerPickup(ply, ent)
+        self:TriggerOutput("OnPlayerPickup")
+    end
+
+    function ENT:OnPlayerDrop(ply, ent, thrown)
+        self:TriggerOutput("OnPlayerDrop")    
+        self:TriggerOutput("OnPhysGunDrop")    
+    end
+
+    function ENT:OnGravGunPickup(ply)
+        self:TriggerOutput("OnPhysGunPickup")    
+    end
+
+    function ENT:OnGravGunDrop(ply, ent, thrown)
+        self:TriggerOutput("OnPhysGunDrop")    
+    end    
 end
 
 function ENT:HasLaser()
