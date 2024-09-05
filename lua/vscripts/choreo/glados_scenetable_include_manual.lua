@@ -630,7 +630,9 @@ end
 function sp_a1_intro7_DontLeaveMeNag()
 end
 
-// sp_a1_wakeup
+-- ****************************************************************************************************
+-- sp_a1_wakeup scenetable			  
+-- ****************************************************************************************************
 
 if curMapName == "sp_a1_wakeup" then
 	sp_a1_wakeup_gantryexpositionover = false
@@ -746,4 +748,96 @@ function sp_a1_wakeup_WheatleyGettingGrabbed()
 end
 
 function sp_a1_wakeup_transport()
+end
+
+-- ****************************************************************************************************
+-- SP_A2_TRUST_FLING scenetable			  
+-- ****************************************************************************************************
+
+if (curMapName == "sp_a2_trust_fling") then
+	SceneTable["-300_01"] = {
+		vcd = CreateSceneEntity("scenes/npc/glados/sp_a2_trust_fling01.vcd"), -- Oh, sorry. Some of these test chambers haven't been cleaned in ages.
+		char = "glados",
+		postdelay = 0.0,
+		predelay = 1.0,
+		next = "-301_01",
+		noDingOff = true,
+		noDingOn = true
+	}
+
+	SceneTable["-301_01"] = {
+		vcd = CreateSceneEntity("scenes/npc/glados/sp_a2_trust_fling02.vcd"), -- So sometimes there's still trash in them. Standing around. Smelling, and being useless.
+		char = "glados",
+		postdelay = 0.0,
+		predelay = 0.0,
+		next = "-302_01",
+		noDingOff = true,
+		noDingOn = true
+	}
+
+
+	-- triggered when second box hits the ground
+	SceneTable["-302_01"] = {
+		vcd = CreateSceneEntity("scenes/npc/glados/sp_a2_trust_fling03.vcd"), -- Try to avoid the garbage hurtling towards you.
+		char = "glados",
+		postdelay = 0.0,
+		predelay = 0.5,
+		next = nil,
+		noDingOff = true,
+		noDingOn = true,
+		fires = {
+		{ entity = "garbage_pickup_relay", input = "enable", parameter = "", delay = 0.5 }
+		}
+	}
+
+
+	-- triggered when player picks up the second box
+	SceneTable["-303_01"] = {
+		vcd = CreateSceneEntity("scenes/npc/glados/sp_a2_trust_fling04.vcd"), -- Don't TEST with the garbage. It's garbage.
+		char = "glados",
+		postdelay = 0.0,
+		predelay = 0.0,
+		next = nil,
+		noDingOff = true,
+		noDingOn = true,
+		fires = {
+		{ entity = "button_press_dialog_relay", input = "trigger", parameter = "", delay = 0.5 }
+		}
+	}
+
+	SceneTable["-304_01"] = {
+		vcd = CreateSceneEntity("scenes/npc/glados/faithplategarbage06.vcd"), -- Press the button again.
+		char = "glados",
+		postdelay = 0.0,
+		predelay = 0.0,
+		next = nil,
+		noDingOff = true,
+		noDingOn = true
+	}
+end
+
+SceneTableLookup[-300] = "-300_01"// Oh, sorry. Some of these test chambers haven't been cleaned in ages.
+
+SceneTableLookup[-301] = "-301_01"// So sometimes there's still trash in them. Standing around. Smelling, and being useless.
+
+SceneTableLookup[-302] = "-302_01"// Try to avoid the garbage hurtling towards you.
+
+SceneTableLookup[-303] = "-303_01"// Don't TEST with the garbage. It's garbage.
+
+SceneTableLookup[-304] = "-304_01"// Press the button again.
+
+function sp_a2_trust_fling_garbage_spawn()
+	GladosPlayVcd( -300 )
+end
+
+function sp_a2_trust_fling_garbage_pickup()
+	GladosPlayVcd( -303 )
+end
+
+function sp_a2_trust_fling_button_press_reminder()
+	GladosPlayVcd( -304 )
+end
+
+function sp_a2_trust_fling_elevator_stop()
+	GladosPlayVcd(465)
 end
