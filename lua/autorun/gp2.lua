@@ -56,7 +56,16 @@ if SERVER then
         -- Try to call OnPostPlayerSpawn on all Vscripted entities
         -- and siltently fail if there's no OnPostPlayerSpawn function in script
         -- pass player to scripts to handle logic per player
+
         GP2.VScriptMgr.CallHookFunction("OnPostPlayerSpawn", true, ply)
+    end)
+
+    hook.Add("PlayerInitialSpawn", "GP2::PlayerInitialSpawn", function(ply, transition)
+        -- Call this one for changelevels
+        -- since player_activated called only once
+        if transition then
+            --GP2.VScriptMgr.CallHookFunction("OnPostSpawn", true)
+        end
     end)
 
     hook.Add("PostCleanupMap", "GP2::PostCleanupMap", function()
@@ -159,6 +168,15 @@ if SERVER then
             return true
         end
     end )
+
+    net.Receive(GP2.Net.SendLoadedToServer, function(len, ply)
+        local whom = net.ReadEntity()
+        --GP2.Print("Player " .. tostring(whom) .. " loaded on server!")
+
+        if whom == Entity(1) then
+            GP2.VScriptMgr.CallHookFunction("OnPostSpawn", true)
+        end
+    end)
 else
     include("gp2/client/hud.lua")
     include("gp2/client/vgui.lua")
@@ -167,4 +185,11 @@ else
     hook.Add("Think", "GP2::Think", function()
         SoundManager.Think()
     end)
+
+    gameevent.Listen( "player_activate" )
+    hook.Add( "player_activate", "GP2::PlayerActivate", function( data ) 
+        net.Start(GP2.Net.SendLoadedToServer)
+            net.WriteEntity(LocalPlayer())
+        net.SendToServer()
+    end )
 end

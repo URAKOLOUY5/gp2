@@ -37,8 +37,6 @@ GP2.VScriptMgr = {
         entswithvscripts[ent] = true
 
         timer.Simple(0, function()
-            -- Call precache once on map load
-            GP2.VScriptMgr.CallScriptFunction(ent, "OnPostSpawn", true, NULL)
             GP2.VScriptMgr.CallScriptFunction(ent, "Precache", true, NULL)
         end)
     end,
@@ -67,7 +65,7 @@ GP2.VScriptMgr = {
             return
         end
     
-        GP2.Print("Running script '%s' on entity '%s'", fl, ent:GetName())
+        GP2.Print("Running script '%s' on entity '%s'", fl, ent:GetName() ~= "" and ent:GetName() or ent:GetClass())
         local scope = ent:GetOrCreateVScriptScope()
 
         scope.self = ent
@@ -161,6 +159,8 @@ GP2.VScriptMgr = {
         if not success and runtimeErr then
             GP2.VScriptMgr.Error(runtimeErr:gsub("CompileString%:%d+: ", "RunScriptCode: "))
         end        
+
+        --GP2.Print("Calling the %q on %q", code, tostring(ent))
     end,
 
     --
@@ -204,6 +204,8 @@ GP2.VScriptMgr = {
                 GP2.VScriptMgr.CallScriptFunctionWithArgs(ent, hookname, failesilent, ...)
             end
         end
+
+        --GP2.Print("Calling the hook function %q", hookname)
     end,
 
     Think = function()
@@ -219,9 +221,11 @@ GP2.VScriptMgr = {
 
         GP2.Error(msg, ...)
 
-        net.Start(GP2.Net.SendVscriptError)
-            net.WriteString(msg)
-        net.Broadcast()
+        if player.GetCount() > 0 then
+            net.Start(GP2.Net.SendVscriptError)
+                net.WriteString(msg)
+            net.Broadcast()
+        end
     end,
 }
 

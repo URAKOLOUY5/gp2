@@ -17,6 +17,7 @@ AddNetworkMessage "SendProgressSignDisplay"
 AddNetworkMessage "SendRemoveProgressSignDisplay"
 AddNetworkMessage "SendPrecacheMovie"
 AddNetworkMessage "SendDeferredParticleSystem"
+AddNetworkMessage "SendLoadedToServer"
 
 if SERVER then
     for net in pairs(GP2.Net) do
