@@ -121,7 +121,10 @@ function ENT:CreateWall()
         self:SetUpdated(true)
     else
         if not self.WallImpact then
-            self.WallImpact = CreateParticleSystemNoEntity("projected_wall_impact", tr.HitPos - fwd * 4, tr.HitNormal:Angle())
+            local wallImpactAng = tr.HitNormal:Angle()
+            wallImpactAng.z = self:GetAngles().z
+
+            self.WallImpact = CreateParticleSystemNoEntity("projected_wall_impact", tr.HitPos - fwd * 4, wallImpactAng)
             self.WallImpact:SetControlPoint(1, Vector(1,1,1))
 
         end
