@@ -11,8 +11,8 @@ ENT.AutomaticFrameAdvance = true
 local CORE_MODEL = "models/npcs/personality_sphere/personality_sphere.mdl"
 local CORE_SKINS_MODEL = "models/npcs/personality_sphere/personality_sphere_skins.mdl"
 
-ENT.m_fMaxYawSpeed = 200 -- Max turning speed
-ENT.m_iClass = CLASS_PLAYER_ALLY -- NPC Class
+ENT.m_fMaxYawSpeed = 200
+ENT.m_iClass = CLASS_PLAYER_ALLY
 
 if SERVER then
     ENT.IdleOverrideSequence = 0

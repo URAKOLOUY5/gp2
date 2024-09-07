@@ -4,7 +4,7 @@
 -- ----------------------------------------------------------------------------
 
 AddCSLuaFile()
-ENT.Base = "base_nextbot"
+ENT.Type = "anim"
 
 local TURRET_MODEL = "models/npcs/turret/turret.mdl"
 local TURRET_MODEL_SKELETON = "models/npcs/turret/turret_skeleton.mdl"
@@ -27,9 +27,15 @@ local BLACKLISTED_ENEMIES = {
     ["npc_security_camera"] = true
 }
 
+local PORTAL_FLOOR_TURRET_MAX_SHOT_DELAY = 2
+
 AccessorFunc( ENT, "m_iClass", "NPCClass" )
 
 PrecacheParticleSystem("turret_coop_explosion")
+
+ENT.AutomaticFrameAdvance = true
+
+local g_debug_turret = GetConVar("g_debug_turret")
 
 -- -------------------------------------------------
 -- Shared methods
@@ -43,14 +49,38 @@ function ENT:SetupDataTables()
     self:NetworkVar("Bool", "UseSuperDamageScale")
     self:NetworkVar("Bool", "HasAmmo")
     self:NetworkVar("Float", "Range")
+    self:NetworkVar("Float", "MaxYawSpeed")
     self:NetworkVar("String", "State")
+    self:NetworkVar("Entity", "HoldingPlayer")
 
     if SERVER then
         self:SetRange(1024)
         self:SetHasAmmo(true)
         self:SetIsActive(true)
         self:SetState("Idle")
+        self:SetMaxYawSpeed(360.0)
     end
+end
+
+function ENT:Think()
+    if SERVER then
+        self:FindEnemy()
+
+        if IsValid(self:GetHoldingPlayer()) and not self:IsPlayerHolding() then
+            self:GetHoldingPlayer(NULL)
+        end
+    
+        if self.ThinkFunction and isfunction(self.ThinkFunction) and CurTime() > self.ThinkNextFunction then
+            self.ThinkFunction(self)
+        end
+
+        self:UpdateFacing(self.vecGoalAngles)
+    else
+        self:SetNextClientThink(CurTime())
+    end
+
+    self:NextThink(CurTime())
+    return true
 end
 
 -- -------------------------------------------------
@@ -99,73 +129,144 @@ if SERVER then
         self.Enemy = NULL
         self.IsOnSide = false
         self.UseSuperDamageScale = false
-        self.NextFireTime = 0
+        self.NextShotTime = 0
         self.LastSight = 0
-        
-        self:SetNPCClass(CLASS_COMBINE)
+        self.SearchSpeed = math.Rand(1.0, 1.4)
+        self.attachmentEyes = self:LookupAttachment("eyes")
+        self.ThinkFunction = self.ThinkIdle
+        self.ThinkNextFunction = CurTime() + 0.1
+        self.SequenceFinishTime = 0
+        self.vecGoalAngles = self:GetAngles()
+        self.NextAlertSound = CurTime()
+
         self:SetModel(TURRET_MODEL)
         self:SetHealth(10)
         self:SetSkin(self.SkinNumber or 0)
         self:SetBloodColor(DONT_BLEED)
+        self:SetNPCClass(CLASS_COMBINE)
+        self:SetUseType(SIMPLE_USE)
+        self:PhysicsInit(SOLID_VPHYSICS)
+        
+        -- It breaks some things
+        -- so i did normalize
+        local angles = self:GetAngles()
+        angles:Normalize()
+        self:SetAngles(angles)
+
+        self.SequenceRetract = self:LookupSequence("retract")
+        self.SequenceDeploy = self:LookupSequence("deploy")
     end
-    
-    function ENT:Think()
-        self:FindEnemy()
-        self:NextThink(CurTime() + 0.1)
+
+    function ENT:IsNPC()
         return true
+    end
+
+    function ENT:GetEyePos()
+        return self:GetAttachment(self:LookupAttachment("eyes")).Pos
+    end
+
+    function ENT:PlaySequence(name, addDuration)
+        addDuration = addDuration or 0
+
+        self:ResetSequence(name)
+
+        self.SequenceFinishTime = CurTime() + self:SequenceDuration() + addDuration
+    end
+
+    function ENT:PlayingSequenceFinished()
+        return CurTime() > self.SequenceFinishTime + 0.5
+    end
+
+    function ENT:ThinkIdle()
+        self.vecGoalAngles = self:GetAngles()
+
+        if self:PlayingSequenceFinished() then
+            if self:HasEnemy() then
+                GP2.Print("ThinkIdle: Found enemy")
+                self:PlaySequence("deploy", -0.5)
+                self:SetThinkFunction(self.ThinkDeploy)
+                self:SetNextThink(CurTime() + 0.05)
+            end
+        end
+    end
+
+    function ENT:ThinkDeploy()
+        if self:PlayingSequenceFinished() then
+            print("ThinkDeploy()")
+            self:SetThinkFunction(self.ThinkAttack)
+        end
+    end
+
+    function ENT:ThinkAttack()
+        if self:HasEnemy() then
+            self:Shoot(self:GetEnemy())
+
+            local dir = self:GetEnemy():GetPos() - self:GetPos()
+
+            self.vecGoalAngles = dir:Angle()
+            self:EmitAlertSound()
+        else
+            self:SetThinkFunction(self.ThinkSearch)
+            self:SetNextThink(CurTime() + 0.05)
+        end
+    end
+
+    function ENT:ThinkSearch()
+        if self:HasEnemy() then
+            -- I searched and found enemy
+            self:SetThinkFunction(self.ThinkDeploy)
+            GP2.Print("ThinkSearch: Found enemy")
+
+            -- Give enemies that are farther away a longer grace period
+            local distanceRatio = self:GetPos():Distance(self:GetEnemy():GetPos()) / self:GetRange()
+            self.NextShotTime = CurTime() + distanceRatio * distanceRatio * PORTAL_FLOOR_TURRET_MAX_SHOT_DELAY
+        else
+            if CurTime() > self.LastSight then
+                self.vecGoalAngles = self:GetAngles()
+
+                if self:IsRelaxedAim() then
+                    self:PlaySequence("retract")
+                    self:SetThinkFunction(self.ThinkIdle)
+                    self:SetNextThink(CurTime() + 0.1)
+                end
+            else
+                local angles = self:GetAngles()
+
+                self.vecGoalAngles.x = angles.x + ( math.sin( ( self.LastSight + CurTime() * self.SearchSpeed ) * 1.5 ) * 20 )
+                self.vecGoalAngles.y = angles.y + ( math.sin( ( self.LastSight + CurTime() * self.SearchSpeed ) * 2.5 ) * 20 )             
+            end
+        end
+    end
+
+    function ENT:ThinkHeld()
+        if not self:IsPlayerHolding() then
+            self:SetThinkFunction(self.ThinkSearch)
+            self:SetNextThink(CurTime() + 0.1)
+        end
+
+        self.LastSight = CurTime() + FLOOR_TURRET_MAX_WAIT
+        
+        -- if not self:Dissolving() then
+        if self.NextShotTime < CurTime() then
+            self:DryFire()
+            self.NextShotTime = CurTime() + math.Rand(0.25, 0.75)
+
+            self.vecGoalAngles.x = self:GetAngles().x + math.Rand(-15, 15)
+            self.vecGoalAngles.y = self:GetAngles().y + math.Rand(-40, 40)
+        end
+        -- end
+    end
+
+    function ENT:SetThinkFunction(func)
+        self.ThinkFunction = func
+    end
+
+    function ENT:SetNextThink(time)
+        self.ThinkNextFunction = time
     end
 
     function ENT:Classify()
         return CLASS_COMBINE
-    end
-
-    function ENT:RunBehaviour()
-        while true do
-            local state = self:GetState()
-
-            -- Right now i'm idling
-            if state == "Idle" then
-                -- I've found enemy, switch to Attack mode
-                if self:HasEnemy() then
-                    self:PlaySequenceAndWait("deploy")
-                    self:SetState("Attack")
-                end
-            elseif state == "Attack" then
-                -- I've lost enemy, go to Search mode
-                if not self:HasEnemy() then
-                    self:SetState("Search")
-                else
-                    -- Shoot at enemy
-                    self:Shoot(self.Enemy)
-                    
-                    local enemyPos = self.Enemy:GetPos()
-                    local selfPos = self:GetPos()
-                    local targetPos = self:WorldToLocal(enemyPos)
-    
-                    local aimYaw = math.deg(math.atan2(targetPos.y, targetPos.x))
-                    local aimPitch = -math.deg(math.atan2(targetPos.z, targetPos:Length2D()))
-    
-                    self:SetAimPose(aimYaw, aimPitch)
-                end
-            elseif state == "Search" then
-                -- I'm searching for new enemy
-                -- and found it
-                if self:HasEnemy() then
-                    self:SetState("Attack")
-                -- otherwise rotate gun around
-                else
-                    -- haven't found it before FLOOR_TURRET_MAX_WAIT (or FLOOR_TURRET_SHORT_WAIT if fastRetire)
-                    if CurTime() >= self.LastSight then
-                        self:PlaySequenceAndWait("retract")
-                        self:SetState("Idle")
-                    -- rotate guns around
-                    else
-                    end
-                end
-            end
-            
-            coroutine.yield()
-        end
     end
 
     -- Find enemy in cone 
@@ -211,22 +312,32 @@ if SERVER then
             -- Don't react to some entities, because I don't care about them
             if BLACKLISTED_ENEMIES[ent:GetClass()] then continue end
 
-            -- If it's not visible
-            if not ent:Visible(self) then continue end
+            local mins, maxs = ent:GetCollisionBounds()
+            local center = (maxs + mins) / 2
     
             -- Traceline to player to hit against everything solid (windows, props or entities)
             local trace = util.TraceLine({
-                start = self:EyePos(),
-                endpos = ent:EyePos(),
+                start = self:GetEyePos(),
+                endpos = ent:GetPos() + center,
                 filter = {self, ent},
                 mask = MASK_SHOT
             })
 
+
             if trace.Hit then continue end
-    
+
+            debugoverlay.Line(self:GetEyePos(), trace.HitPos, 0.1, Color(0,255,155))
+
             self.Enemy = ent
             self.LastSight = CurTime() + (self:HasSpawnflag(SF_FAST_RETIRE) and FLOOR_TURRET_SHORT_WAIT or FLOOR_TURRET_MAX_WAIT)
             break
+        end
+    end
+
+    function ENT:EmitAlertSound()
+        if CurTime() > self.NextAlertSound then
+            self:EmitSound("NPC_FloorTurret.Activate")
+            self.NextAlertSound = CurTime() + 3.0
         end
     end
 
@@ -239,17 +350,46 @@ if SERVER then
         return IsValid(self.Enemy)
     end
 
-    function ENT:SetAimPose(yaw, pitch, delta)
-        delta = delta or 0.3
+    function ENT:GetEnemy()
+        return self.Enemy
+    end
 
-        local aimYaw = self:GetPoseParameter("aim_yaw")
-        local aimPitch = self:GetPoseParameter("aim_pitch")
+    function ENT:UpdateFacing(angDir)
+        local attachment = self:GetAttachment(self:LookupAttachment("light"))
+        if not attachment then
+            return false
+        end
+    
+        local vecGoalLocalAngles = self:WorldToLocalAngles(angDir)
+        
+        local pitch = math.ApproachAngle(self:GetPoseParameter("aim_pitch"), vecGoalLocalAngles.p, 0.007 * self:GetMaxYawSpeed())
+        local yaw = math.ApproachAngle(self:GetPoseParameter("aim_yaw"), vecGoalLocalAngles.y, 0.007 * self:GetMaxYawSpeed())
+    
+        self:SetPoseParameter("aim_pitch", pitch)
+        self:SetPoseParameter("aim_yaw", yaw)
+        
+        local bMoved = math.abs(pitch - self:GetPoseParameter("aim_pitch")) > 0.1 or math.abs(yaw - self:GetPoseParameter("aim_yaw")) > 0.1
+        self.LaserAngle = self.LaserAngle or Angle(0,0,0)
+        self.LaserAngle.x = pitch
+        self.LaserAngle.y = self:GetAngles().y + yaw
+    
+        if g_debug_turret:GetBool() then
+            local vecMuzzle = attachment.Pos
+            local vecGoalDir = self.LaserAngle:Forward()
+            
+            debugoverlay.Cross(vecMuzzle, 2, 0.05, Color(255, 0, 0), false)
+            debugoverlay.Cross(vecMuzzle + vecGoalDir * 256, 2, 0.05, Color(255, 0, 0), false)
+            debugoverlay.Line(vecMuzzle, vecMuzzle + vecGoalDir * 256, 0.05, Color(255, 0, 0), false)
+        end
+    
+        return bMoved
+    end
 
-        aimYaw = Lerp(delta, aimYaw, yaw)
-        aimPitch = Lerp(delta, aimPitch, pitch)
+    function ENT:IsRelaxedAim()
+        local curPitch = self:GetPoseParameter("aim_pitch")
+        local curYaw = self:GetPoseParameter("aim_yaw")
 
-        self:SetPoseParameter("aim_yaw", aimYaw)
-        self:SetPoseParameter("aim_pitch", aimPitch)
+        return math.abs(curPitch) < 0.01 and math.abs(curYaw) < 0.01
     end
 
     function ENT:GetAttackSpread(target)
@@ -307,7 +447,7 @@ if SERVER then
 
     -- Shot at target or randomly
     function ENT:Shoot(target)
-        if CurTime() > self.NextFireTime then
+        if CurTime() > self.NextShotTime then
             local lowerGun = tobool(math.random(0, 1))
     
             if self:GetHasAmmo() then
@@ -322,7 +462,7 @@ if SERVER then
                         local min, max = target:GetCollisionBounds()
                         local center = (max + min) / 2
 
-                        direction = ((target:GetPos() + center) - self:EyePos()):GetNormalized()
+                        direction = ((target:GetPos() + center) - attach.Pos):GetNormalized()
                     else
                         direction = attach.Ang:Forward()
                     end
@@ -357,11 +497,22 @@ if SERVER then
     
                 self:EmitSound("NPC_FloorTurret.ShotSounds")
             else
-                self:EmitSound("NPC_FloorTurret.DryFire")
+                self:DryFire()
             end
 
             self:ShakeAim(2)
-            self.NextFireTime = CurTime() + math.Rand(0.09, 0.1)
+            self.NextShotTime = CurTime() + math.Rand(0.09, 0.1)
+        end
+    end
+
+    function ENT:DryFire()
+        self:EmitSound( "NPC_FloorTurret.DryFire")
+        self:EmitSound( "NPC_FloorTurret.Activate" )
+
+        if math.Rand(0, 1) > 0.5 then
+            self.NextShotTime = CurTime() + math.Rand(1, 2.5)
+        else
+            self.NextShotTime = CurTime() + 0.1
         end
     end
 
@@ -378,8 +529,37 @@ if SERVER then
         return 0
     end
 
+    function ENT:GetPreferredCarryAngles(ply)
+            -- Fix PITCH rotation for turrets
+            local angles = ply:EyeAngles()
+            local selfAngles = self:GetAngles()
+            return Angle(0 - angles.x,0,0)
+    end
+
+    function ENT:Use(activator, caller, useType, value)
+        if activator:IsPlayer() and not activator:IsPlayerHolding() then
+            activator:PickupObject(self)
+            self:SetHoldingPlayer(activator)
+            self.NextShotTime = CurTime() + 0.5
+            self:PlaySequence("idlealert")
+            self:SetThinkFunction(self.ThinkHeld)
+        end
+    end
 end
 
 -- -------------------------------------------------
 -- Client methods
 -- -------------------------------------------------
+
+if CLIENT then
+    function ENT:Draw(studio)
+        --local holdingPlayer = self:GetHoldingPlayer()
+        --if IsValid(holdingPlayer) and holdingPlayer == LocalPlayer() then
+            --cam.IgnoreZ(true)
+        --end
+
+        self:DrawModel(studio)
+        
+        --cam.IgnoreZ(false)
+    end
+end
