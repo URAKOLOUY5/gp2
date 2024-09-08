@@ -85,6 +85,8 @@ function ENT:Initialize()
 end
 
 function ENT:StartTouch(other)
+    if not self.RefireDelay then return end
+
     if not IsValid(other) then
         return
     end
@@ -216,6 +218,13 @@ function ENT:StartTouch(other)
                 self:LaunchByDirection(other)
             end
         end
+    end
+end
+
+function ENT:EndTouch(other)
+    -- Remove from list becuase player won't catapult prop
+    if not other:IsPlayer() and self.AbortedLaunchees[other] then
+        self.AbortedLaunchees[other] = nil
     end
 end
 
