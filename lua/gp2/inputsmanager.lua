@@ -24,6 +24,19 @@ hook.Add("AcceptInput", "GP2::AcceptInput", function(ent, name, activator, calle
         ent:TriggerConnectedOutput(name:gsub("^O_", ""))
     end
 
+    if ent:GetClass() == "env_projectedtexture" and name == "TurnOn" then
+        local othersPj = ents.FindByClass(ent:GetClass())
+
+        for i = 1, #othersPj do
+            local pj = othersPj[i]
+
+            if not IsValid(pj) then continue end
+            if pj == ent then continue end
+
+            pj:Input("TurnOff")
+        end
+    end
+
     if name == "O_OnCanceled" then
         -- HACK to use GetCurrentScene on actors
         local vcd = ent:GetInternalVariable("SceneFile")

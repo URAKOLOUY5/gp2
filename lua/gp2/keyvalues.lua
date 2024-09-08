@@ -64,3 +64,9 @@ GP2.KeyValueHandler.Add("lightcolor", function(ent, v)
         ent:SetKeyValue("lightcolor", r .. " " .. g .. " " .. b .. " " .. a)
     end)
 end, "env_projectedtexture")
+
+GP2.KeyValueHandler.Add("spawnflags", function(ent, v)
+    if bit.band(tonumber(v), 1) == 0 then
+        ent:Input("TurnOff")
+    end
+end, "env_projectedtexture")
