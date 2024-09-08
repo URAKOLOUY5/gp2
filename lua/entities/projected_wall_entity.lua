@@ -9,6 +9,8 @@ ENT.Type = "anim"
 local MAX_RAY_LENGTH = 8192
 local PROJECTED_WALL_WIDTH = 72
 
+ENT.PhysicsSolidMask = CONTENTS_SOLID+CONTENTS_MOVEABLE+CONTENTS_BLOCKLOS
+
 PrecacheParticleSystem("projected_wall_impact")
 
 function ENT:SetupDataTables()
@@ -117,6 +119,7 @@ function ENT:CreateWall()
         
         self:PhysicsInitConvex(verts, "hard_light_bridge")
         self:GetPhysicsObject():EnableMotion(false)
+        self:GetPhysicsObject():SetContents(CONTENTS_SOLID+CONTENTS_MOVEABLE+CONTENTS_BLOCKLOS)
         self:EnableCustomCollisions(true)                
         self:SetUpdated(true)
     else

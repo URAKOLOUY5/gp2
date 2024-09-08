@@ -1469,3 +1469,24 @@ end
 function sp_a2_bts3_smellyhumanlovethem()
 	GladosPlayVcd(-2504)
 end
+
+-- ****************************************************************************************************
+-- sp_a2_bts4
+-- ****************************************************************************************************
+if curMapName == "sp_a2_bts4" then
+	sp_a2_bts4_redemption_turret_held = false
+	sp_a2_bts4_redemption_turret_babble_index = 0
+	sp_a2_bts4_redemption_turret_babbling = false
+end	
+
+
+function bts4_redemption_line_turret_safe()
+end
+
+function SabotageFactoryRecycledTurretNoticesPlayer()
+	GladosPlayVcd(439, nil, "conveyor_turret_body")
+end
+
+function bts4_redemption_line_turret_pickup()
+	sp_a2_bts4_redemption_turret_held = true
+end

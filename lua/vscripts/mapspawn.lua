@@ -38,3 +38,21 @@ local robot_drops = ents.FindByName("robot_drop_0*")
 for _, ent in pairs(robot_drops) do
     ent:DrawShadow(false)
 end
+
+-- HACK for CLIP brushes for turrets
+
+local MAPS_WITH_BROKEN_TURRETS = {
+    ["sp_a2_turret_intro"] = true,
+    ["sp_a2_laser_vs_turret"] = true,
+    ["sp_a2_turret_blocker"] = true,
+}
+
+if MAPS_WITH_BROKEN_TURRETS[game.GetMap()] then
+    local turrets = ents.FindByClass("npc_portal_turret_floor")
+
+    for _, turret in ipairs(turrets) do
+        if IsValid(turret:GetPhysicsObject()) then
+            turret:GetPhysicsObject():Sleep()
+        end
+    end
+end
