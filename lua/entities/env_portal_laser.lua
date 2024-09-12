@@ -213,14 +213,16 @@ function ENT:DoLaser(child)
             if not IsValid(entity) then continue end
     
             -- Check if the entity is damagable
-            if entity:IsOnGround() and entity:IsPlayer() then
-                PushPlayerAwayFromLine(entity, start, rayEndPos, 300)
-                EmitSoundAtClosestPoint(entity, start, rayEndPos, "Flesh.LaserBurn")
-                entity:TakeDamage(8)
+            if entity:IsPlayer() then
+                if entity:IsOnGround() then
+                    PushPlayerAwayFromLine(entity, start, rayEndPos, 300)
+                    EmitSoundAtClosestPoint(entity, start, rayEndPos, "Flesh.LaserBurn")
+                    entity:TakeDamage(8)
+                end
             elseif entity:GetClass() == "npc_portal_turret_floor" then
                 entity:Ignite(5)
             else
-                entity:TakeDamage(8)
+                entity:TakeDamage(8, self)
             end      
         end
     else
