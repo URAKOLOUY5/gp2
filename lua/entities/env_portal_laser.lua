@@ -220,7 +220,7 @@ function ENT:DoLaser(child)
             elseif entity:GetClass() == "npc_portal_turret_floor" then
                 entity:Ignite(5)
             else
-                entity:TakeDamage(0, self)
+                entity:TakeDamage(8)
             end      
         end
     else

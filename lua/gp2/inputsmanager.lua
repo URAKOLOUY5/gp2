@@ -24,7 +24,7 @@ hook.Add("AcceptInput", "GP2::AcceptInput", function(ent, name, activator, calle
         ent:TriggerConnectedOutput(name:gsub("^O_", ""))
     end
 
-    if ent:GetClass() == "env_projectedtexture" and name == "TurnOn" then
+    if ent:GetClass() == "env_projectedtexture" and name:lower() == "turnon" then
         local othersPj = ents.FindByClass(ent:GetClass())
 
         for i = 1, #othersPj do
@@ -35,6 +35,28 @@ hook.Add("AcceptInput", "GP2::AcceptInput", function(ent, name, activator, calle
 
             pj:Input("TurnOff")
         end
+    end
+
+    -- Hack for sp_a2_bts4
+    if ent:GetClass() == "env_entity_maker" and name:lower() == "forcespawn" and ent:GetName() == "conveyor_turret_maker" then
+        timer.Simple(1, function()
+            local conveyor_turret_body = ents.FindByName("conveyor_turret_body")
+
+            for i = 1, #conveyor_turret_body do
+                local turret = conveyor_turret_body[i]
+
+                if IsValid(turret) then
+                    local phys = turret:GetPhysicsObject()
+                    local direction = ent:GetInternalVariable("PostSpawnDirection")
+                    local vel = Angle(0, 205, 0)
+    
+                    if IsValid(phys) then
+                        phys:SetVelocity(vel:Forward() * 500)
+                        turret:SetVelocity(vel:Forward() * 500)
+                    end
+                end
+            end
+        end)
     end
 
     if name == "O_OnCanceled" then

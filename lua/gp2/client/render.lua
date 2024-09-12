@@ -88,7 +88,7 @@ function EnvPortalLaser.Render()
 
         laser.trailPoints = laser.trailPoints or {}
         
-        render.SetMaterial(laser:GetLethalDamage() and LASER_MATERIAL_LETHAL or LASER_MATERIAL)
+        render.SetMaterial(LASER_MATERIAL)
         render.DrawBeam(start, tr.HitPos, 32, 0, 1, laser:GetLethalDamage() and LETHAL_COLOR or NORMAL_COLOR)
 
         -- Update impact point particles

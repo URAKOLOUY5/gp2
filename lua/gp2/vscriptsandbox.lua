@@ -139,6 +139,7 @@ end
 sandbox.EntFireByHandle = function(handle, input, value, delay)
     if IsValid(handle) then
         handle:Fire(input, value, delay)
+        print('EntFireByHandle ' .. tostring(handle) .. ' ' .. input .. ' ' .. value)
     end
 end
 
