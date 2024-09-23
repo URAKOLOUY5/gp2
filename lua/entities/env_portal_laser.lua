@@ -217,7 +217,7 @@ function ENT:DoLaser(child)
                 if entity:IsOnGround() then
                     PushPlayerAwayFromLine(entity, start, rayEndPos, 300)
                     EmitSoundAtClosestPoint(entity, start, rayEndPos, "Flesh.LaserBurn")
-                    entity:TakeDamage(8)
+                    entity:TakeDamage(8, self)
                 end
             elseif entity:GetClass() == "npc_portal_turret_floor" then
                 entity:Ignite(5)
