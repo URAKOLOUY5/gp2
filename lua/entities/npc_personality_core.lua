@@ -14,6 +14,10 @@ local CORE_SKINS_MODEL = "models/npcs/personality_sphere/personality_sphere_skin
 ENT.m_fMaxYawSpeed = 200
 ENT.m_iClass = CLASS_PLAYER_ALLY
 
+local sv_personality_core_pca_pitch = CreateConVar("sv_personality_core_pca_pitch", "180", FCVAR_NONE, "Pitch value for personality core perferred carry angles.")
+local sv_personality_core_pca_yaw = CreateConVar("sv_personality_core_pca_yaw", "-90", FCVAR_NONE, "Yaw value for personality core perferred carry angles.")
+local sv_personality_core_pca_roll = CreateConVar("sv_personality_core_pca_roll", "195", FCVAR_NONE, "Roll value for personality core perferred carry angles.")
+
 if SERVER then
     ENT.IdleOverrideSequence = 0
 end
