@@ -151,6 +151,14 @@ sandbox.PrecacheMovie = function(movieName)
     net.Broadcast()
 end
 
+sandbox.ScriptShowHudMessageAll = function(message, delay)
+    delay = delay or 0
+
+    timer.Simple(delay, function()
+        PrintMessage( HUD_PRINTCENTER, message )
+    end)
+end
+
 VscriptGlobals = VscriptGlobals or {}
 sandbox.Globals = VscriptGlobals
 

@@ -1,0 +1,8 @@
+"portal2extras"
+{
+	"base"		"base"
+	"title"		"Portal 2 (Extras)"
+	"category"	"other"
+	"maps"		"e1912"
+	"menusystem"	"0"
+}

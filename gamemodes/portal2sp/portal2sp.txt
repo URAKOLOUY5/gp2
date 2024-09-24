@@ -1,4 +1,4 @@
-"sandbox"
+"portal2sp"
 {
 	"base"		"base"
 	"title"		"Portal 2 (Singleplayer)"
