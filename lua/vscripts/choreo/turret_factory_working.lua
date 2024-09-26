@@ -141,7 +141,7 @@ end
 function OnPostSpawn()
     if not Globals.GlobalTurretFactoryQueue then
         QueueInitialize()
-        if DBG then print("===== Initializing QUEUE.  Length: " .. #GlobalTurretFactoryQueue) end
+        if DBG then print("===== Initializing QUEUE.  Length: " .. #Globals.GlobalTurretFactoryQueue) end
     end
 end
 
@@ -155,7 +155,7 @@ function QueueAdd()
     table.insert(Globals.GlobalTurretFactoryQueue, self:GetName())
     if DBG then print("====== Adding " .. self:GetName() .. " to queue. Length = " .. #Globals.GlobalTurretFactoryQueue) end
     if #Globals.GlobalTurretFactoryQueue > 4 then
-        if DBG then print("====== Turret queue reached " .. #Globals.GlobalTurretFactoryQueue .. ". Removing turret " .. Globals.GlobalTurretFactoryQueue[1] .. " New queue Length = " .. #GlobalTurretFactoryQueue) end
+        if DBG then print("====== Turret queue reached " .. #Globals.GlobalTurretFactoryQueue .. ". Removing turret " .. Globals.GlobalTurretFactoryQueue[1] .. " New queue Length = " .. #Globals.GlobalTurretFactoryQueue) end
 
         -- detonate turret
         EntFire(Globals.GlobalTurretFactoryQueue[1], "selfdestruct", 0, 0)

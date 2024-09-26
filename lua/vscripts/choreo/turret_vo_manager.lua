@@ -289,7 +289,7 @@ Globals.TurretVoManager.GoodTurretFail = function(turret)
 	EntFireByHandle( vcd_handle, "start", "", 0 )
 
     if math.random(1,10) > 5 then
-        local vcd_handle = Globals.TurretVoManager.vcds["sp_sabotage_factory_defect_laugh0" + math.random(1,6)].handle
+        local vcd_handle = Globals.TurretVoManager.vcds["sp_sabotage_factory_defect_laugh0" .. math.random(1,6)].handle
         -- EntFireByHandle( Globals.TurretVoManager.vcds["sp_sabotage_factory_defect_laugh0"].handle, "SetTarget1", "replacement_template_turret", 0)
         EntFireByHandle( vcd_handle, "SetTarget1", "replacement_template_turret", 0)
 		EntFireByHandle( vcd_handle, "start", "", math.Rand(0,0.2) )

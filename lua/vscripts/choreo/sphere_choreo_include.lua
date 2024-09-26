@@ -113,7 +113,7 @@ function SpeakLine(line)
             end
 
             NextNagLine = line
-            NextNagTime = Time() + dialogLine.nagDelay
+            NextNagTime = CurTime() + dialogLine.nagDelay
         end
 
         if dialogLine.relay then

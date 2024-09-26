@@ -31,6 +31,8 @@ function ENT:KeyValue(k, v)
         self:SetApplyAngularImpulse(tobool(v)) 
     elseif k == "AirCtrlSupressionTime" then
         self:SetAirCtrlSupressionTime(tonumber(v)) 
+    elseif k == "StartDisabled" then
+        self:Fire("Disable")
     end
 
     if k:StartsWith("On") then
@@ -58,6 +60,8 @@ function ENT:SetupDataTables()
     self:NetworkVar( "Bool", "OnlyVelocityCheck" )
     self:NetworkVar( "Bool", "ApplyAngularImpulse" )
     self:NetworkVar( "Bool", "DirectionSuppressAirControl" )
+    
+    self:NetworkVar( "Bool", "Enabled" )
 
     if SERVER then
         -- Defaulting to true
@@ -67,6 +71,7 @@ function ENT:SetupDataTables()
         self:SetLowerThreshold(0.30)
         self:SetPlayerSpeed(450)
         self:SetPhysicsSpeed(450)
+        self:SetEnabled(true)
     end
 end
 
@@ -82,6 +87,10 @@ function ENT:Initialize()
     for i = 1, player.GetCount() + 1 do
         self.RefireDelay[i] = 0.0
     end
+end
+
+function ENT:AcceptInput(name, activator, caller, data)
+
 end
 
 function ENT:StartTouch(other)

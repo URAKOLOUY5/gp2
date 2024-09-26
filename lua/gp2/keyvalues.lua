@@ -27,6 +27,10 @@ hook.Add("EntityKeyValue", "GP2::EntityKeyValue", function(ent, k, v)
         ent:Remove()
     end
 
+    if ent:GetClass() == "npc_portal_turret_floor" then
+        print(k, v)
+    end
+
     if callback then
         local func = callback[1]
         local classname = callback[2]

@@ -26,6 +26,12 @@ local TURRET_EYE_GLOW = Material("sprites/glow1_scripted.vmt")
 local PROJECTED_WALL_MATERIAL = Material("effects/projected_wall")
 local END_POINT_PULSE_SCALE = 16
 
+local HALF_VECTOR = Vector(0.5,0.5,0.5)
+local HALF2_VECTOR = Vector(0.25,0.25,0.25)
+
+TURRET_EYE_GLOW:SetVector("$color", HALF_VECTOR)
+TURRET_BEAM_MATERIAL:SetVector("$color", HALF2_VECTOR)
+
 function EnvPortalLaser.AddToRenderList(laser)
     EnvPortalLaser.Lasers[laser] = true
 end
@@ -124,7 +130,7 @@ function NpcPortalTurretFloor.Render()
             continue
         end
 
-        if not turret:GetIsActive() then continue end
+        if turret:GetEyeState() == 3 then continue end
 
         turret.attachNum = turret.attachNum or turret:LookupAttachment("light")
         local attach = turret:GetAttachment(turret.attachNum)
@@ -174,7 +180,7 @@ function NpcPortalTurretFloor.Render()
         if turret:GetEyeState() < 3 and not turret.Flicked then
             render.SetBlend(0.2)
             render.SetMaterial(TURRET_BEAM_MATERIAL)
-            TURRET_BEAM_MATERIAL:SetVector("$color", Vector(0.5,0.5,0.5))
+            TURRET_BEAM_MATERIAL:SetVector("$color", HALF_VECTOR)
             render.DrawBeam(start, tr.HitPos, 2, 0, 1, TURRET_BEAM_COLOR)
 
             render.OverrideBlend( true, BLEND_SRC_COLOR, BLEND_SRC_ALPHA, BLENDFUNC_ADD )
@@ -186,12 +192,12 @@ function NpcPortalTurretFloor.Render()
         turret.EyeGlowSize = turret.EyeGlowSize or 32
         turret.EyeGlowColor = turret.EyeGlowColor or Color(255,0,0)
 
-        if not turret:GetAsActor() then
+        if not turret:GetIsAsActor() then
             if turret:GetEyeState() == 1 then
-                turret.EyeGlowColor.r = Lerp(FrameTime() * 15, turret.EyeGlowColor.r, 192)
+                turret.EyeGlowColor.r = Lerp(FrameTime() * 15, turret.EyeGlowColor.r, 128)
                 turret.EyeGlowSize = Lerp(FrameTime() * 5, turret.EyeGlowSize, 32)
             elseif turret:GetEyeState() == 2 then
-                turret.EyeGlowColor.r = Lerp(FrameTime() * 15, turret.EyeGlowColor.r, 255)
+                turret.EyeGlowColor.r = Lerp(FrameTime() * 15, turret.EyeGlowColor.r, 192)
                 turret.EyeGlowSize = Lerp(FrameTime() * 5, turret.EyeGlowSize, 48)
             elseif turret:GetEyeState() == 3 then
                 turret.EyeGlowColor.r = Lerp(FrameTime() * 15, turret.EyeGlowColor.r, 0)
@@ -202,9 +208,14 @@ function NpcPortalTurretFloor.Render()
             turret.EyeGlowSize = Lerp(FrameTime() * 5, turret.EyeGlowSize, 32)
         end
 
-        turret.EyeGlowColor.r = turret.EyeGlowColor.r * pixelVisibility
+        local lp = LocalPlayer()
+        local plyPos = lp:GetPos()
+        local directionToPlayer = (plyPos - turret:GetPos()):GetNormalized()
+        local fwd = turret:GetAngles():Forward()
+        local dot = fwd:Dot(directionToPlayer)
+        local opacity = math.Clamp((dot + 1) / 2, 0, 1)
 
-        TURRET_EYE_GLOW:SetVector("$color", Vector(0.5,0.5,0.5))
+        turret.EyeGlowColor.r = 255 * opacity
 
         render.OverrideBlend( true, BLEND_SRC_COLOR, BLEND_SRC_ALPHA, BLENDFUNC_ADD )
         render.SetMaterial(TURRET_EYE_GLOW)

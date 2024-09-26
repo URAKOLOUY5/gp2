@@ -863,7 +863,7 @@ if curMapName == "sp_a2_pit_flings" then
         char = "glados",
         postdelay = 0.0,
         predelay = 0.0,
-        next = null,
+        next = nil,
         noDingOff = true,
         noDingOn = true,
         fires = {
@@ -892,7 +892,7 @@ if curMapName == "sp_a2_pit_flings" then
         char = "glados",
         postdelay = 0.0,
         predelay = 1.0,
-        next = null,
+        next = nil,
         noDingOff = true,
         noDingOn = true
     }
@@ -913,7 +913,7 @@ if curMapName == "sp_a2_pit_flings" then
         char = "glados",
         postdelay = 0.0,
         predelay = 0.0,
-        next = null,
+        next = nil,
         noDingOff = true,
         noDingOn = true,
         fires = {
@@ -928,7 +928,7 @@ if curMapName == "sp_a2_pit_flings" then
         char = "glados",
         postdelay = 0.0,
         predelay = 2,
-        next = null,
+        next = nil,
         noDingOff = true,
         noDingOn = true,
         fires = {{entity = "@transition_script", input = "runscriptcode", parameter = "TransitionReady()", delay = 0.0}}
@@ -940,7 +940,7 @@ if curMapName == "sp_a2_pit_flings" then
         char = "glados",
         postdelay = 0.0,
         predelay = 0.0,
-        next = null,
+        next = nil,
         noDingOff = true,
         noDingOn = true,
         fires = {
@@ -1453,9 +1453,9 @@ if curMapName == "sp_a2_bts3" then
         noDingOn = true
     }
 
-	SceneTableLookup[-2500] = "-2500_01" // OOh.  Dark down here, isn't it. (ghost story)
-	SceneTableLookup[-2503] = "-2503_01" // (smelly humans)
-	SceneTableLookup[-2504] = "-2504_01" // humans, love 'em!
+	SceneTableLookup[-2500] = "-2500_01" -- OOh.  Dark down here, isn't it. (ghost story)
+	SceneTableLookup[-2503] = "-2503_01" -- (smelly humans)
+	SceneTableLookup[-2504] = "-2504_01" -- humans, love 'em!
 end
 
 function sp_a2_bts3_ghoststory()
@@ -1477,6 +1477,19 @@ if curMapName == "sp_a2_bts4" then
 	sp_a2_bts4_redemption_turret_held = false
 	sp_a2_bts4_redemption_turret_babble_index = 0
 	sp_a2_bts4_redemption_turret_babbling = false
+
+	sp_a2_bts4_StillThinkingNagStage = 0
+	sp_a2_bts4_StillThinkingNagOK = false
+	sp_a2_bts4_StillThinkingNagIdx = 0
+	sp_a2_bts4_StillThinkingNagTime = 0
+	sp_a2_bts4_MentionedSwap = false
+	sp_a2_bts4_At_Window = false
+	sp_a2_bts4_At_Big_Potato = false
+	sp_a2_bts4_At_Volcano = false
+	sp_a2_bts4_Intro_Talking = false
+	sp_a2_bts4_Science_Fair_Busy = false
+	sp_a2_bts4_Did_Big_Potato = false
+	sp_a2_bts4_Did_Volcano = 0
 end	
 
 
@@ -1489,4 +1502,2102 @@ end
 
 function bts4_redemption_line_turret_pickup()
 	sp_a2_bts4_redemption_turret_held = true
+
+	if not sp_a2_bts4_redemption_turret_babbling then
+		GladosPlayVcd(614, nil, "conveyor_turret_body")
+	end
 end
+
+function bts4_redemption_line_turret_drop()
+	sp_a2_bts4_redemption_turret_held = false
+end
+
+function bts4_redemption_line_turret_babble_start()
+	sp_a2_bts4_redemption_turret_babbling = true
+end
+
+function bts4_redemption_line_turret_babble_end()
+	local dly = math.Rand(2, 5)
+	sp_a2_bts4_redemption_turret_babbling = false
+	if sp_a2_bts4_redemption_turret_held then
+		EntFire("@glados","runscriptcode","bts4_redemption_line_turret_babble()",dly)
+	end
+end
+
+function bts4_redemption_line_turret_babble()
+	if not sp_a2_bts4_redemption_turret_babbling then
+		if sp_a2_bts4_redemption_turret_held then
+			if sp_a2_bts4_redemption_turret_babble_index < 8 then
+				sp_a2_bts4_redemption_turret_babble_index = sp_a2_bts4_redemption_turret_babble_index + 1
+				GladosPlayVcd(614+sp_a2_bts4_redemption_turret_babble_index, nil, "conveyor_turret_body")				
+			end
+		end
+	end
+end
+
+function bts4_redemption_line_turret_not_saved()
+	GladosCharacterStopScene("conveyor_turret_body")
+	GladosPlayVcd(613, nil, "conveyor_turret_body")
+end
+
+function bts4_redemption_line_fizzler_approach()
+end
+
+function bts4_redemption_line_turret_achievement()
+end
+
+function bts4_redemption_line_turret_fizzled()
+	GladosCharacterStopScene("conveyor_turret_body")
+	GladosPlayVcd(613, nil, "conveyor_turret_body")
+end
+
+function FactoryWheatleyHey()
+	GladosPlayVcd(515)
+end
+
+function FactoryFollowMe()
+	GladosPlayVcd(516)
+end
+
+function FactoryAlmostThere()
+	GladosPlayVcd(518)
+end
+
+function FactoryTahDah()
+	GladosPlayVcd(517)
+end
+
+function FactoryScannerIntro()
+	sp_a2_bts4_At_Window = true
+	if not sp_a2_bts4_Intro_Talking then
+		GladosPlayVcd(519)
+	end
+end
+
+function FactoryScannerSpeech()
+	GladosPlayVcd(519)
+end
+
+function FactoryCheckAtWindowEnd()
+	sp_a2_bts4_Intro_Talking = false
+	if sp_a2_bts4_At_Window then
+		FactoryScannerSpeech()
+	end
+end
+
+function FactoryCheckAtWindowStart()
+	sp_a2_bts4_Intro_Talking = true
+
+	if sp_a2_bts4_At_Window then
+		FactoryScannerSpeech()
+	end
+end
+
+function FactoryControlDoorHackIntro()
+	GladosPlayVcd(520)
+end
+
+function FactoryControlRoomHackSuccess()
+	WheatleyStopNag()
+	GladosPlayVcd(521)
+end
+
+function FactoryFirstTurretTaken()
+	WheatleyStopNag()
+	GladosPlayVcd(522)
+end
+
+function FactoryFirstTurretPulled()
+	--WheatleyStopNag()
+	--GladosPlayVcd()
+end
+
+function FactoryEnableThinkingNag()
+	printdebug("%%%%%%%%%%%%%%%%ENABLE STILL THINKING NAG")
+	sp_a2_bts4_StillThinkingNagOK = true
+end
+
+function FactoryDisableThinkingNag()
+	printdebug("%%%%%%%%%%%%%%%%DISABLE STILL THINKING NAG")
+	sp_a2_bts4_StillThinkingNagOK = false
+end
+
+function FactoryStillThinkingNag()
+	printdebug("%%%%%%%%%%%%%%%%STILL THINKING NAG")
+	if sp_a2_bts4_StillThinkingNagStage == 0 then
+		if not sp_a2_bts4_StillThinkingNagOK then
+		return
+		end
+		if characterCurscene("wheatley") ~= nil then
+		sp_a2_bts4_StillThinkingNagTime = CurTime()
+		return
+		end  
+		if CurTime() - sp_a2_bts4_StillThinkingNagTime > 5 and math.random(1, 100) > 50 then
+		sp_a2_bts4_StillThinkingNagIdx = sp_a2_bts4_StillThinkingNagIdx + 1
+		sp_a2_bts4_StillThinkingNagTime = CurTime()
+		if sp_a2_bts4_StillThinkingNagIdx == 1 then
+			GladosPlayVcd(523)
+		elseif sp_a2_bts4_StillThinkingNagIdx == 2 then
+			GladosPlayVcd(524)
+		elseif sp_a2_bts4_StillThinkingNagIdx == 3 then
+			GladosPlayVcd(525)
+		elseif sp_a2_bts4_StillThinkingNagIdx == 4 then
+			GladosPlayVcd(526)
+		elseif sp_a2_bts4_StillThinkingNagIdx == 5 then
+			GladosPlayVcd(527)
+		elseif sp_a2_bts4_StillThinkingNagIdx == 6 then
+			GladosPlayVcd(528)
+		elseif sp_a2_bts4_StillThinkingNagIdx == 7 then
+			sp_a2_bts4_MentionedSwap = true
+			GladosPlayVcd(529)
+		elseif sp_a2_bts4_StillThinkingNagIdx == 8 then
+			sp_a2_bts4_MentionedSwap = true
+			GladosPlayVcd(530)
+		else
+			sp_a2_bts4_MentionedSwap = true
+			GladosPlayVcd(531)
+		end
+		end
+	elseif sp_a2_bts4_StillThinkingNagStage == 1 then
+	end
+end
+
+function FactoryWhereAreYouGoing()
+	if not sp_a2_bts4_MentionedSwap then
+		GladosPlayVcd(532)
+	end
+end
+
+function FactoryWhereAreYouGoingTwo()
+	if not sp_a2_bts4_MentionedSwap then
+		GladosPlayVcd(533)
+	end
+end
+
+function FactoryBroughtBackDefectiveTurret()
+	printdebug("$$$$$$$$$$$$$CRAP TURRET TRIGGER")
+	sp_a2_bts4_StillThinkingNagStage = 2
+
+	if not sp_a2_bts4_MentionedSwap then
+		GladosPlayVcd(535)
+	else
+		GladosPlayVcd(534)
+	end
+end
+
+function FactoryWheatleyShoutout()
+	if not sp_a2_bts4_MentionedSwap then
+		GladosPlayVcd(541)
+	end
+end
+
+function FactoryEnterScannerRoomWithTurret()
+	if not sp_a2_bts4_MentionedSwap then
+		GladosPlayVcd(540)
+	end
+end
+
+function FactorySuccess()
+	sp_a2_bts4_StillThinkingNagStage = 2
+	if sp_a2_bts4_MentionedSwap then
+		GladosPlayVcd(539)
+	else
+		GladosPlayVcd(538)
+	end
+end
+
+function ScienceFairBusy()
+	sp_a2_bts4_Science_Fair_Busy = true
+end
+
+function ScienceFairNotBusy()
+	sp_a2_bts4_Science_Fair_Busy = true
+
+	if sp_a2_bts4_At_Volcano then
+		PlayerNearScienceFairVolcano()
+		return
+	end
+
+	if sp_a2_bts4_At_Big_Potato then
+		PlayerLookingAtScienceFairPotato()
+		return
+	end
+end
+
+function PlayerNearScienceFairVolcano()
+	sp_a2_bts4_At_Volcano = true
+	if not sp_a2_bts4_Science_Fair_Busy then
+		if sp_a2_bts4_Did_Volcano == 0 then
+		sp_a2_bts4_Did_Volcano = 1
+		GladosPlayVcd(583)
+		elseif sp_a2_bts4_Did_Volcano == 1 then
+		sp_a2_bts4_Did_Volcano = 2
+		GladosPlayVcd(584)
+		end
+	end  
+end
+
+function PlayerLeavingScienceFairVolcano()
+	sp_a2_bts4_At_Volcano = false
+end
+
+function PlayerLookingAtScienceFairPotato() -- fires once player looks at potato plant
+	sp_a2_bts4_At_Big_Potato = true
+
+	if not sp_a2_bts4_Science_Fair_Busy then
+		if not sp_a2_bts4_Did_Big_Potato then
+			sp_a2_bts4_Did_Big_Potato = true
+			GladosPlayVcd(582)
+		end
+	end
+end
+
+function PlayerNotLookingAtScienceFairPotato()
+	sp_a2_bts4_At_Big_Potato = true
+end
+
+function sabotage_factory_WatchTheLine()
+	GladosPlayVcd(441)
+end
+
+function sabotage_factory_ReachedHackingSpot()
+	GladosPlayVcd(442)
+	print("reaced hacking sport")
+end
+
+function sabotage_factory_PlayerReachedWheatley()
+	WheatleyStopNag()
+	GladosPlayVcd(443)
+end
+
+function sabotage_factory_PlayerReachedExitDoor()
+	WheatleyStopNag()
+	GladosPlayVcd(444)
+end
+
+function ScienceFairGoingTheRightWay()
+	GladosPlayVcd( -100 )
+end
+
+function ScienceFairBringDaughter()
+	GladosPlayVcd( -101 )
+end
+
+function JustToReassureYou()
+	GladosPlayVcd( -102 )
+end
+
+function DefinitelySureThisWay()
+	GladosPlayVcd( -103 )
+end
+
+function sp_a2_bts4_end_dialog()
+	GladosPlayVcd( -104 )
+end
+
+if curMapName == "sp_a2_bts4" or curMapName == "sabotage_offices" then
+    SceneTable["-100_01"] = {
+        vcd = CreateSceneEntity("scenes/npc/sphere03/sp_sabotage_panel_sneak01.vcd"), -- Alright, we took out her turrets. Now lets take out her toxin.
+        char = "wheatley",
+        postdelay = 0.0,
+        predelay = 0.0,
+        next = nil,
+        noDingOff = true,
+        noDingOn = true,
+        queue = true
+    }
+
+    SceneTable["-101_01"] = {
+        vcd = CreateSceneEntity("scenes/npc/sphere03/sphere_flashlight_tour41.vcd"), -- Bring your daughter to work day.  That did not end well.
+        char = "wheatley",
+        postdelay = 1.0,
+        predelay = 0.0,
+        next = "-101_02",
+        noDingOff = true,
+        noDingOn = true,
+        fires = {
+            {entity = "@glados", input = "runscriptcode", parameter = "ScienceFairBusy()", delay = 0.0, fireatstart = true}
+        }
+    }
+
+    SceneTable["-101_02"] = {
+        vcd = CreateSceneEntity("scenes/npc/sphere03/sphere_flashlight_tour42.vcd"), -- And 40 potato batteries.  Embarassing.
+        char = "wheatley",
+        postdelay = 0.0,
+        predelay = 0.0,
+        next = nil,
+        noDingOff = true,
+        noDingOn = true,
+        fires = {
+            {entity = "@glados", input = "runscriptcode", parameter = "ScienceFairNotBusy()", delay = 0.0},
+            {entity = "lookat_potato_exhibits_relay", input = "trigger", parameter = "", delay = 0.2, fireatstart = true},
+            {entity = "wheatley_exhibit_move_triggers", input = "enable", parameter = "", delay = 4.0, fireatstart = true},
+            {entity = "lookat_player_rl", input = "trigger", parameter = "", delay = 3, fireatstart = true}
+        }
+    }
+
+    SceneTable["-102_01"] = {
+        vcd = CreateSceneEntity("scenes/npc/sphere03/sphere_flashlight_tour44.vcd"), -- Pretty sure we're going the right way. Just to reassure you.
+        char = "wheatley",
+        postdelay = 0.0,
+        predelay = 0.0,
+        next = nil,
+        noDingOff = true,
+        noDingOn = true,
+        queue = true,
+        queuepredelay = 1.0
+    }
+
+    SceneTable["-103_01"] = {
+        vcd = CreateSceneEntity("scenes/npc/sphere03/sphere_flashlight_tour50.vcd"), -- Don't worry i'm absolutely guaranteeing you it is this way.
+        char = "wheatley",
+        postdelay = 0.0,
+        predelay = 0.0,
+        next = nil,
+        noDingOff = true,
+        noDingOn = true,
+        fires = {
+            {entity = "lookat_deadend_relay", input = "trigger", parameter = "", delay = 2.0, fireatstart = true}, -- aim light down deadend
+            {entity = "move_wheatley_to_deadend_relay", input = "trigger", parameter = "", delay = 3.0, fireatstart = true}, -- move towards deadend
+            {entity = "lookat_deadend_entry_relay", input = "trigger", parameter = "", delay = 3.7, fireatstart = true}, -- aim light back
+            {entity = "move_wheatley_to_exit_relay", input = "trigger", parameter = "", delay = 4.0, fireatstart = true} -- move out of deadend
+        }
+    }
+
+    SceneTable["-104_01"] = {
+        vcd = CreateSceneEntity("scenes/npc/sphere03/sphere_flashlight_tour52.vcd"), -- Definitely sure it's this way.  I dont know where it is.
+        char = "wheatley",
+        postdelay = 0.0,
+        predelay = 0.0,
+        next = nil,
+        noDingOff = true,
+        noDingOn = true
+    }
+end
+
+SceneTableLookup[-100] = "-100_01" -- Alright we took out her turrets. Now lets go take out her neurotoxin as well.
+
+SceneTableLookup[-101] = "-101_01" -- Bring your daughter to work day.  That did not end well.
+									--  And 40 potato batteries.  Embarassing.
+
+SceneTableLookup[-102] = "-102_01" -- Pretty sure we're going the right way. Just to reassure you.
+
+SceneTableLookup[-103] = "-103_01" -- Don't worry i'm absolutely guaranteeing you it is this way.  Ah, It's not this way.
+
+SceneTableLookup[-104] = "-104_01" -- Definitely sure it's this way.  Not entirely sure.  I don't know where it is.
+
+-- ****************************************************************************************************
+-- sp_a2_bts5
+-- ****************************************************************************************************
+
+if curMapName == "sp_a2_bts5" then
+	bts5_cuts = 0
+end
+
+if curMapName == "sp_a2_bts5" then
+    bts5_cuts = 0
+end
+
+function ToxinWheatleyGreetsYou() -- this tank is big - let's get to the observation room
+    GladosPlayVcd(561)
+end
+
+function ToxinTurretDestructionOurHandiwork() -- when the players see the good turrets into the crusher
+    GladosPlayVcd(562)
+end
+
+function ToxinTheDoorIsLocked() -- As the player gets to the top of the lift
+    GladosPlayVcd(563)
+end
+
+function ToxinDoorIsNowOpenMovingToMonitor() -- When the player disables the panels
+    GladosPlayVcd(564)
+end
+
+function ToxinCutOffFrontOfRoom() -- when the player chops off the front of the room
+    nuke()
+    GladosPlayVcd(565)
+end
+
+function ToxinPipeCut() -- called when *each* pipe is cut
+    bts5_cuts = bts5_cuts + 1
+
+    if bts5_cuts == 1 then
+        GladosPlayVcd(566)
+    elseif bts5_cuts == 4 then
+        GladosPlayVcd(567)
+    elseif bts5_cuts == 5 then
+        GladosPlayVcd(568)
+    elseif bts5_cuts == 8 then
+        GladosPlayVcd(569)
+    end
+end
+
+-- we will delay the glass breaking until the destruction is played out.
+function ToxinGettingPulledIntoPipe()
+    nuke()
+    GladosPlayVcd(570)
+end
+
+-- player starts vault trap
+function VaultTrapStart()
+	GladosPlayVcd(-50)
+end
+
+-- player begins moving in relaxation vault
+function VaultTrapStartMoving()
+	GladosPlayVcd(-53)
+end
+
+function TurretScene()
+	GladosPlayVcd(-700)
+end
+
+function TurretDeathReactionDialog()
+	GladosPlayVcd(-57)
+end
+
+function WheatleyBouncingDownTubeDialog()
+end
+
+function WheatleyLandsInChamberDialog()
+	GladosPlayVcd(-61)
+end
+
+function CoreDetectedDialog()
+end
+
+function WheatleyCoreSocketed()
+	StopWheatleyPluginNag()
+	GladosPlayVcd(-71)
+end
+
+function StalemateAssociateNotSoFast()
+	StopWheatleyPluginNag()
+	GladosPlayVcd(-84)
+end
+
+function CoreTransferInitiated()
+	nuke()
+	EntFire("glados_shutdown_particles_relay", "trigger", 0, 0 )
+	GladosPlayVcd(-88)
+end
+
+function WheatleyCoreTransferStart()
+	sp_a2_core_xfer_left_annex = true
+	GladosPlayVcd(-4)
+end
+
+function sp_a2_core_leave_annex_nag()
+	if not sp_a2_core_xfer_left_annex then
+		GladosPlayVcd(-45)
+	end
+end
+
+function PitHandsGrabGladosHead()
+	GladosPlayVcd(-89)
+end
+
+function PullGladosIntoPit()
+	GladosPlayVcd(-90)
+end
+
+function CoreTransferCompleted()
+	GladosPlayVcd(-9)
+end
+
+function PlayerEnteredElevator()
+	StopWheatleyElevatorNag()
+	CorePlayerInElevator = 1 -- this will prevent the elevator nag from being triggered by subsequent IO
+	EntFire("@exit_elevator_music_relay","trigger", 0, 0 )
+	GladosPlayVcd(-13) -- I knew it was going to be cool being in charge..
+	
+	-- delete many of the small_pos arms
+	EntFire("small_pos1", "kill", 0, 0 )
+	EntFire("small_pos3", "kill", 0, 0 )
+	EntFire("small_pos4", "kill", 0, 0 )
+	EntFire("small_pos7", "kill", 0, 0 )
+	EntFire("small_pos9", "kill", 0, 0 )
+	EntFire("small_pos10", "kill", 0, 0 )
+end
+
+function DialogDuringPotatosManufacture()
+	GladosPlayVcd(-33)
+end
+
+function PotatosPresentation()
+	GladosPlayVcd(-34)
+end
+
+function ElevatorMoronScene()
+	GladosPlayVcd(-37)
+end
+
+function ElevatorConclusion()
+	GladosPlayVcd(-44)
+end
+
+-- ****************************************************************************************************
+-- GLADOS BATTLE scenetable
+-- ****************************************************************************************************
+
+SceneTableLookup = SceneTableLookup or {} -- Initialize the table if it doesn't exist
+
+SceneTableLookup[-50] = "-20_01"        -- I honestly didn't think you would fall for that
+                                                                                -- In fact, I devised a much more elaborate trap ahead, for when you got through this easy one.
+                                                                                -- If I had known it would be this easy, I would have just dangled a turkey leg
+
+SceneTableLookup[-53] = "-21_01"        -- But anyway. Here we are. Again.
+                                                                                -- I hope you brought something more powerful than the portal gun this time
+                                                                                -- It was nice catching up. Lets get to business.
+                                                                                -- You remember my turrets don't you... oh wait, that's you in 5 seconds. goodbye.
+
+SceneTableLookup[-700] = "-700_01" -- turret conversation here
+SceneTableLookup[-750] = "-750_01" -- wheatley neurotoxin ride nags here
+
+SceneTableLookup[-57] = "-22_01"        -- My turrets!
+                                                                                -- Oh, you were busy back there
+                                                                                -- //I suppose we could just sit in this room and glare at each other until somebody drops dead, but I have a better idea.
+                                                                                -- Your old friend, deadly neurotoxin. If i were you i'd take a deep breath and hold it.
+
+SceneTableLookup[-61] = "-23_01"        -- Hello!
+                                                                                -- I hate you so much
+                                                                                -- Warning: Central core is 80 percent corrupted. 
+                                                                                -- That's funny, I don't feel corrupt. In fact, I feel pretty good.
+                                                                                -- Alternate core detected.
+                                                                                -- That's ME they're talking about!
+                                                                                -- To initiate a core transfer, please deposit substitute core in receptacle.
+                                                                                -- Core transfer?
+                                                                                -- Oh, you are kidding me.
+
+SceneTableLookup[-760] = "-760_01" -- Wheatley socket scene start
+SceneTableLookup[-761] = "-760_01d" -- Wheatley socket nag start
+
+SceneTableLookup[-71] = "-24_01"        --Substitute core accepted.
+                                                                                --Substitute core, are you ready to start the procedure?
+                                                                                --Yes.
+                                                                                --Corrupted core, are you ready to start the procedure?
+                                                                                --No!
+                                                                                --Nonononononono!
+                                                                                --Stalemate detected. Transfer procedure cannot continue.
+                                                                                --Yes! You little worm!
+                                                                                --...unless a stalemate associate is present to press the stalemate resolution button.
+                                                                                --Leave me in! Leave me in! Go press it!
+                                                                                --Don't do it.
+                                                                                --Don't press that button. You don't know what you're doing.
+
+SceneTableLookup[-72] = "-72_01" 	--Pull me out pull me out pull me out!
+	
+SceneTableLookup[-73] = "-73_01" 	--Oh yes she is!
+
+SceneTableLookup[-755] = "-755_01" --Button press nags
+
+SceneTableLookup[-84] = "-25_01"        --Not so fast!
+                                                                                --Think about this.
+                                                                                --You need to be a trained stalemate associate to press that button. You're unqualified. I know this sounds like an obvious ploy, but I'm really not joking.
+                                                                                --Impersonating a stalemate associate. I just added that to the list. It's a list I made of all the things you've done. Well, it's a list that I AM making, because you're still doing things right now, even though I'm telling you to stop. Stop, by the way.
+
+SceneTableLookup[-88] = "-26_01"        -- Ahhhh!
+                                                                                -- Stalemate Resolved. Core Transfer Initiated.
+
+SceneTableLookup[-4] = "-4_01"  -- Wheatley: Here I go!
+                                                                                -- Wheatley: Wait, what if this hurts?
+                                                                                -- Wheatley: Wait, what if it really hurts? Ohh, I didn't think of that
+                                                                                -- Wheatley: Oh no!  Oh no oh no --
+                                                                                -- Wheatley: Ahhhhh!
+
+SceneTableLookup[-89] = "-27_00"  -- GLaDOS: GET YOUR HANDS OFF ME! NO! NO! STOP!
+
+SceneTableLookup[-90] = "-27_01"        -- CHELL! STOP THIS! I AM YOUR MOTHER!
+                                                                                -- ALRIGHT, FINE! THAT'S NOT TRUE!
+SceneTableLookup[-91] = "-27_03" -- BUT IT COULD BEEEEEAAHHH!
+
+SceneTableLookup[-93] = "-28_01"        -- Glados GIBBERING
+
+SceneTableLookup[-666] = "-666_01"      -- Wheatley Elevator Nag
+
+SceneTableLookup[-9] = "-5_01"  -- Wheatley: Wow! Check ME out, Partner!
+                                                                                -- We did it! I can't believe we did it! I'm in control of the whole facility now!
+                                                                                -- Oh! Right, the escape elevator! I'll call it now.
+                                                                                -- Elevator --called. You get in. I'll tell it to take you to the surface.                                                                              
+
+SceneTableLookup[-13] = "-14_01"        -- GLaDOS: Don't do this.. Don't do this...
+                                                                                -- GLaDOS: Oh. it's you.
+                                                                                -- Wheatley: I knew it was gonna be cool being in charge of everything, but... WOW, is this cool! This body is amazing!
+                                                                                -- Glados: No.
+                                                                                -- Wheatley: And check this out! I'm brilliant now! [spanish] I don't know what I just said, but I can find out.
+                                                                                -- Wheatley: Oh! The elevator. Sorry. [ elevator moves ]
+                                                                                -- Wheatley: Wow, look how small you are! I can barely see you down there! But I'm HUGE. [evil laugh] Where did THAT come from? 
+                                                                                -- Glados: So here's a couple of facts. Absolute power corrupts. Absolutely.
+                                                                                -- Wheatley: Actually... hold on. 
+                                                                                -- Wheatley: Why do we have to leave right this minute? [elevator descends]
+                                                                                -- Glados: And if you combine absolute power with an absolute moron, inside the world's most powerful supercomputer... 
+                                                                                -- Wheatley: You be quiet! I was smart enough to take control of the whole building away from you, wasn't I? 
+                                                                                -- Glados: You didn't do anything. SHE did all the work.
+                                                                                -- Wheatley: Oh really? Well, maybe it's time I DID something, then. 
+                                                                                -- Glados: What are you doing?
+                                                                                -- Glados: No!
+
+-- - potatos
+
+SceneTableLookup[-33] = "-10_01"        -- I'm on to you too, lady. .. who's the boss?  Little old Wheatley!
+
+SceneTableLookup[-34] = "-11_01"        -- Ah...!
+                                                                                -- THAT is a potato battery. Now you live in it.
+                                                                                -- Just... kill me.
+
+SceneTableLookup[-37] = "-12_01"        -- There! See? I'm huge, you're trapped and she's a potato!  who's a moron now?
+                                                                                -- Still you.
+                                                                                -- How about now? now who's a moron?
+                                                                                -- Still you. You're still a moron.
+                                                                                -- NOW WHO'S A MORON?
+                                                                                -- If you weren't such a moron, you'd know who.
+                                                                                -- I am not a moron! 
+
+SceneTableLookup[-44] = "-13_01"        -- How about if I PUNCHED.YOU.INTO.THIS.PIT. Huh?  Who's a moron now?
+                                                                                -- Uh oh.                                                                                                                                       
+
+-- ****************************************************************************************************
+-- GLaDOS Battle
+-- ****************************************************************************************************
+
+if curMapName == "sp_a2_core" then -- TODO: CHANGE THIS TO CORRECT MAP NAME
+	SceneTable ["-20_01" ] =
+	{
+		vcd = CreateSceneEntity("scenes/npc/glados/fgbrvtrap02.vcd"), // I honestly didn't think you would fall for that
+		char = "glados",
+		postdelay = 1.3,
+		predelay = 1.0,
+		next = "-20_02",
+		noDingOff = true,
+		noDingOn = true
+	}
+	
+	SceneTable ["-20_02" ] =
+	{
+		vcd = CreateSceneEntity("scenes/npc/glados/fgbrvtrap03.vcd"), // In fact, I devised a much more elaborate trap ahead, for when you got through this easy one.
+		char = "glados",
+		postdelay = 0.8,
+		predelay = 0.0,
+		next = "-20_03",
+		noDingOff = true,
+		noDingOn = true
+	}
+	
+	SceneTable ["-20_03" ] =
+	{
+		vcd = CreateSceneEntity("scenes/npc/glados/fgbrvtrap05.vcd"), // If I had known it would be this easy, I would have just dangled a turkey leg
+		char = "glados",
+		postdelay = 2.0,
+		predelay = 0.0,
+		next = nil,
+		noDingOff = true,
+		noDingOn = true,
+		fires=
+		{
+			{entity="rv_start_moving_trigger",input="enable",parameter="",delay=0.5}
+		}
+		
+		
+	}
+	
+// ======================================  Plays when player lands in moving vault
+	SceneTable ["-21_01" ] =
+	{
+		vcd = CreateSceneEntity("scenes/npc/glados/fgbturrets01.vcd"), // Well, it was nice catching up. Lets get to business.
+		char = "glados",
+		postdelay = 0.8,
+		predelay = 1.0,
+		next = "-21_02",
+		noDingOff = true,
+		noDingOn = true
+	}
+	
+	SceneTable ["-21_02" ] =
+	{
+		vcd = CreateSceneEntity("scenes/npc/glados/fgb_trap01.vcd"), // I hope you brought something more powerful than the portal gun this time
+		char = "glados",
+		postdelay = 0.4,
+		predelay = 0.0,
+		next = "-21_03",
+		noDingOff = true,
+		noDingOn = true,
+		fires=
+		{
+			{entity="glados_chamber_body",input="setanimation",parameter="gladosbattle_firstpart",delay=0,fireatstart=true}, // ANIM
+			{entity="glados_chamber_body",input="setdefaultanimation",parameter="glados_idle_rightside",delay=0,fireatstart=true}
+		}
+	}
+	
+	SceneTable ["-21_03" ] =
+	{
+		vcd = CreateSceneEntity("scenes/npc/glados/fgb_trap02.vcd"), // Otherwise you're about to become the past president of the being alive club, ha ha. 
+		char = "glados",
+		postdelay = 0.6,
+		predelay = 0.0,
+		next = "-21_03b",
+		noDingOff = true,
+		noDingOn = true,
+		talkover=true,
+		fires=
+		{
+			{entity="deploy_turrets_relay",input="Trigger",parameter="",delay=4,fireatstart=true}	
+		}
+	}
+
+	SceneTable ["-21_03b" ] =
+	{
+		vcd = CreateSceneEntity("scenes/npc/glados/fgb_trap03.vcd"), // Seriously, though--goodbye.
+		char = "glados",
+		postdelay = 0.0,
+		predelay = 0.0,
+		next = nil,
+		noDingOff = true,
+		noDingOn = true,
+		talkover=true	
+	}	
+	
+	
+/*	SceneTable ["-21_04" ] =
+	{
+		vcd = CreateSceneEntity("scenes/npc/glados/fgbturrets02.vcd"), // You remember my turrets don't you... oh wait, that's you in 5 seconds. goodbye.
+		char = "glados",
+		postdelay = -9.0,
+		predelay = 0.0,
+		next = "-700_01",
+		noDingOff = true,
+		noDingOn = true,
+		talkover=true,
+		fires=
+		{
+			{entity="deploy_turrets_relay",input="Trigger",parameter="",delay=4,fireatstart=true},		
+		}
+	}
+*/	
+// ====================================== Turrets deployed scene
+
+	SceneTable ["-700_01" ] =
+	{
+		vcd = CreateSceneEntity("scenes/npc/turret/glados_battle_defect_arrive18.vcd"), // [muffled turret talking]
+		char = "turret",
+		postdelay = 0.0,
+		predelay = 0.0,
+		next = "-700_02",
+		noDingOff = true,
+		noDingOn = true,
+		talkover=true,	
+		settarget1="turret_02-chamber_npc_turret"
+	}
+	
+	SceneTable ["-700_02" ] =
+	{
+		vcd = CreateSceneEntity("scenes/npc/turret/sp_sabotage_factory_defect_dryfire05.vcd"), // dry fire
+		char = "turret",
+		postdelay = -0.5,
+		predelay = 0.0,
+		next = "-700_03",
+		noDingOff = true,
+		noDingOn = true,
+		talkover=true,
+		settarget1="turret_02-chamber_npc_turret",
+		fires=
+		{
+			{entity="box_turret_push_trigger",input="enable",parameter="",delay=0.0,fireatstart=true}	// turret falls over
+		}
+	}
+	
+	SceneTable ["-700_03" ] =
+	{
+		vcd = CreateSceneEntity("scenes/npc/turret/glados_battle_defect_arrive01.vcd"), // it's my big chance!
+		char = "turret",
+		postdelay = 0.0,
+		predelay = 0.0,
+		next = "-700_04",
+		noDingOff = true,
+		noDingOn = true,
+		talkover=true,		
+		settarget1="turret_01-chamber_npc_turret",
+		fires=
+		{
+			{entity="turret_01-chamber_npc_turret_guns_out_ss",input="beginsequence",parameter="",delay=0, fireatstart=true}, // pop out guns
+			{entity="turret_01-chamber_npc_turret",input="ignite",parameter="",delay=0},
+		}
+	}
+	
+	SceneTable ["-700_04" ] =
+	{
+		vcd = CreateSceneEntity("scenes/npc/turret/sp_sabotage_factory_defect_dryfire07.vcd"), // dry fire
+		char = "turret",
+		postdelay = 0.0,
+		predelay = 0.0,
+		next = "-700_05",
+		noDingOff = true,
+		noDingOn = true,
+		talkover=true,
+		settarget1="turret_01-chamber_npc_turret"
+	}
+	
+	SceneTable ["-700_05" ] =
+	{
+		vcd = CreateSceneEntity("scenes/npc/turret/glados_battle_defect_arrive15.vcd"), //  This is trouble
+		char = "turret",
+		postdelay = 0.0,
+		predelay = 0.0,
+		next = "-700_06",
+		noDingOff = true,
+		noDingOn = true,
+		talkover=true,
+		settarget1="turret_01-chamber_npc_turret",
+		fires=
+		{
+			{entity="turret_01-chamber_npc_turret",input="selfdestructimmediately",parameter="",delay=0.0},		
+			{entity="turret_02-chamber_npc_turret",input="ignite",parameter="",delay=0.1}
+		}
+	}
+	
+	SceneTable ["-700_06" ] =
+	{
+		vcd = CreateSceneEntity("scenes/npc/turret/glados_battle_defect_arrive17.vcd"), // [muffled turret talking while on fire]
+		char = "turret",
+		postdelay = 0.0,
+		predelay = 0.0,
+		next = "-700_07",
+		noDingOff = true,
+		noDingOn = true,
+		talkover=true,		
+		settarget1="turret_02-chamber_npc_turret",
+		fires=
+		{
+			{entity="turret_02-chamber_npc_turret",input="selfdestructimmediately",parameter="",delay=0.0}
+		}
+	}
+	
+	SceneTable ["-700_07" ] =
+	{
+		vcd = CreateSceneEntity("scenes/npc/turret/glados_battle_defect_arrive12.vcd"), // ahhh not again!
+		char = "turret",
+		postdelay = 0.0,
+		predelay = 0.0,
+		next = "-700_08",
+		noDingOff = true,
+		noDingOn = true,
+		talkover=true,
+		settarget1="turret_03-chamber_npc_turret",
+		fires=
+		{
+			{entity="turret_03-chamber_npc_turret",input="selfdestruct",parameter="",delay=0,fireatstart=true},
+			{entity="turret_03-chamber_npc_turret",input="selfdestructimmediately",parameter="",delay=0.5}
+		}
+	}
+	
+	SceneTable ["-700_08" ] =
+	{
+		vcd = CreateSceneEntity("scenes/npc/turret/glados_battle_defect_arrive07.vcd"), // Here it comes, pal!
+		char = "turret",
+		postdelay = 0.5,
+		predelay = 0.0,
+		next = "-700_09",
+		noDingOff = true,
+		noDingOn = true,
+		talkover=true,
+		settarget1="turret_04-chamber_npc_turret",
+		fires=
+		{
+			{entity="turret_04-chamber_npc_turret_guns_out_ss",input="beginsequence",parameter="",delay=0, fireatstart=true}, // pop out guns
+		}
+	}
+	
+	
+	SceneTable ["-700_09" ] =
+	{
+		vcd = CreateSceneEntity("scenes/npc/turret/glados_battle_defect_arrive08.vcd"), // Locked and loaded!
+		char = "turret",
+		postdelay = 0.0,
+		predelay = 0.0,
+		next = "-700_10",
+		noDingOff = true,
+		noDingOn = true,
+		talkover=true,
+		settarget1="turret_05-chamber_npc_turret",
+		fires=
+		{
+			{entity="turret_05 -chamber_npc_turret_guns_out_ss",input="beginsequence",parameter="",delay=0, fireatstart=true}, // pop out guns
+		}
+	}
+	
+	SceneTable ["-700_10" ] =
+	{
+		vcd = CreateSceneEntity("scenes/npc/turret/sp_sabotage_factory_defect_dryfire01.vcd"), // dry fire
+		char = "turret",
+		postdelay = 0.0,
+		predelay = 0.0,
+		next = "-700_11",
+		noDingOff = true,
+		noDingOn = true,
+		talkover=true,
+		settarget1="turret_04-chamber_npc_turret",
+		fires=
+		{
+			{entity="turret_04-chamber_npc_turret",input="ignite",parameter="",delay=0,fireatstart=true},
+			{entity="turret_04-chamber_npc_turret",input="selfdestructimmediately",parameter="",delay=1.0},
+			{entity="turret_05-chamber_npc_turret",input="ignite",parameter="",delay=0},
+		}
+		
+		// explodes, cracks glass
+		// sets turret 5 on fire
+	}
+	
+	
+	SceneTable ["-700_11" ] =
+	{
+		vcd = CreateSceneEntity("scenes/npc/turret/glados_battle_defect_arrive16.vcd"), // Oh this aint' good
+		char = "turret",
+		postdelay = 0.0,
+		predelay = 0.0,
+		next = nil,
+		noDingOff = true,
+		noDingOn = true,
+		settarget1="turret_05-chamber_npc_turret",
+		fires=
+		{
+			{entity="turret_05-chamber_npc_turret",input="selfdestructimmediately",parameter="",delay=0.0},
+			{entity="@glados",input="RunScriptCode",parameter="TurretDeathReactionDialog()",delay=0.3}
+		}
+	}
+	
+	/*
+	
+	// ====================================== Turret Death Reaction
+	SceneTable["-22_01"] =
+	{
+		vcd=CreateSceneEntity("scenes/npc/glados/fgbturrets04.vcd") // My turrets!
+		char="glados"
+		postdelay=0.1
+		predelay = 0.0
+		next="-22_02"
+		noDingOff=true
+		noDingOn=true
+	}
+	*/
+	
+	SceneTable["-22_01"] =
+	{
+		vcd=CreateSceneEntity("scenes/npc/glados/fgb_trap05.vcd"), // Ohhhhh. You were busy back there.
+		char="glados",
+		postdelay=0.8,
+		predelay = 0.0,
+		next="-22_03",
+		noDingOff=true,
+		noDingOn=true
+	}
+	
+	SceneTable["-22_03"] =
+	{
+		vcd=CreateSceneEntity("scenes/npc/glados/fgb_trap06.vcd"), //I suppose we could just sit in this room and glare at each other until somebody drops dead, but I have a better idea.
+		char="glados",
+		postdelay=0.1,
+		predelay = 0.0,
+		next="-22_05",
+		noDingOff=true,
+		noDingOn=true,
+		fires=
+		{
+			{entity="deploy_neurotoxin_tube_relay",input="Trigger",parameter="",delay=5.00, fireatstart=true}
+		}
+	}
+	
+	/*(SceneTable["-22_04"] =
+	{
+		vcd=CreateSceneEntity("scenes/npc/glados/gladosbattle_pre07.vcd") // Your old friend, deadly neurotoxin.
+		char="glados"
+		postdelay=0.3
+		predelay = 0.0
+		next="-22_05"
+		noDingOff=true
+		noDingOn=true
+	}*/
+	
+	SceneTable["-22_05"] =
+	{
+		vcd=CreateSceneEntity("scenes/npc/glados/fgb_trap08.vcd"), //Your old friend, deadly neurotoxin. If I were you, I'd take a deep breath right now and hold it.
+		char="glados",
+		postdelay=0.1,
+		predelay = 0.0,
+		next= nil,
+		noDingOff=true,
+		noDingOn=true,
+		fires=
+		{
+			{entity="deploy_wheatley_relay",input="Trigger",parameter="",delay=0.00},
+			//{entity="glados_watch_wheatley_deploy_relay",input="Trigger",parameter="",delay=0.4} // makes glados spin to watch wheatley
+			{entity="@glados",input="runscriptcode",parameter="StartWheatleyNeurotoxinRideNag()",delay=0.00}
+		}
+	}
+
+	-- ======================================
+	-- Wheatley neurotoxin ride
+	-- ======================================
+
+	SceneTable["-750_01"] = {
+		vcd = CreateSceneEntity("scenes/npc/sphere03/sp_a2_wheatley_ows05.vcd"),
+		idlerandom = true,
+		idlerepeat = true,
+		postdelay = 0.1,
+		next = nil,
+		char = "glados",
+		noDingOff = true,
+		noDingOn = true,
+		idle = true,
+		talkover = true,
+		idleminsecs = 0.0,
+		idlemaxsecs = 0.0,
+		idlegroup = "wheatleybouncepain",
+		idleorderingroup = 1
+	}
+
+	SceneTable["-750_02"] = {
+		vcd = CreateSceneEntity("scenes/npc/sphere03/sp_a2_wheatley_ows06.vcd"),
+		postdelay = 0.0,
+		next = nil,
+		char = "glados",
+		noDingOff = true,
+		noDingOn = true,
+		talkover = true,
+		idlegroup = "wheatleybouncepain",
+		idleorderingroup = 2
+	}
+
+	SceneTable["-750_03"] = {
+		vcd = CreateSceneEntity("scenes/npc/sphere03/sp_a2_wheatley_ows01.vcd"),
+		postdelay = 0.0,
+		next = nil,
+		char = "glados",
+		noDingOff = true,
+		noDingOn = true,
+		talkover = true,
+		idlegroup = "wheatleybouncepain",
+		idleorderingroup = 3
+	}
+
+	SceneTable["-750_04"] = {
+		vcd = CreateSceneEntity("scenes/npc/sphere03/sp_a2_wheatley_ows02.vcd"),
+		postdelay = 0.0,
+		next = nil,
+		char = "glados",
+		noDingOff = true,
+		noDingOn = true,
+		talkover = true,
+		idlegroup = "wheatleybouncepain",
+		idleorderingroup = 4
+	}
+
+	SceneTable["-750_05"] = {
+		vcd = CreateSceneEntity("scenes/npc/sphere03/sp_a2_wheatley_ows20.vcd"),
+		postdelay = 0.0,
+		next = nil,
+		char = "glados",
+		noDingOff = true,
+		noDingOn = true,
+		talkover = true,
+		idlegroup = "wheatleybouncepain",
+		idleorderingroup = 5
+	}
+
+	SceneTable["-750_06"] = {
+		vcd = CreateSceneEntity("scenes/npc/sphere03/sp_a2_wheatley_ows15.vcd"),
+		postdelay = 0.0,
+		next = nil,
+		char = "glados",
+		noDingOff = true,
+		noDingOn = true,
+		talkover = true,
+		idlegroup = "wheatleybouncepain",
+		idleorderingroup = 6
+	}
+
+	SceneTable["-750_07"] = {
+		vcd = CreateSceneEntity("scenes/npc/sphere03/sp_a2_wheatley_ows10.vcd"),
+		postdelay = 0.0,
+		next = nil,
+		char = "glados",
+		noDingOff = true,
+		noDingOn = true,
+		talkover = true,
+		idlegroup = "wheatleybouncepain",
+		idleorderingroup = 7
+	}
+
+	SceneTable["-750_08"] = {
+		vcd = CreateSceneEntity("scenes/npc/sphere03/sp_a2_wheatley_ows18.vcd"),
+		postdelay = 0.0,
+		next = nil,
+		char = "glados",
+		noDingOff = true,
+		noDingOn = true,
+		talkover = true,
+		idlegroup = "wheatleybouncepain",
+		idleorderingroup = 8
+	}
+end
+
+function StartWheatleyNeurotoxinRideNag()
+	GladosPlayVcd( -750 )
+end
+
+function StopWheatleyNeurotoxinRideNag()
+	GladosStopNag()
+	GladosCharacterStopScene("wheatley")  -- this will make wheatley stop talking if he is currently playing a vcd
+end
+
+-- ====================================== Wheatley Lands In Chamber
+SceneTable["-23_01"] = {
+    vcd = CreateSceneEntity("scenes/npc/sphere03/fgb_hello01.vcd"),
+    char = "wheatley",
+    postdelay = 1.1,
+    predelay = 0.0,
+    next = "-23_02",
+    noDingOff = true,
+    noDingOn = true,
+    fires = {
+        { entity = "shatter_vault_glass_relay", input = "Trigger", parameter = "", delay = 0.4 }
+    }
+}
+
+SceneTable["-23_02"] = {
+    vcd = CreateSceneEntity("scenes/npc/glados/gladosbattle_pre09.vcd"),
+    char = "glados",
+    postdelay = 0.0,
+    predelay = 0.8,
+    next = "-23_03",
+    noDingOff = true,
+    noDingOn = true
+}
+
+--CoreDetected
+SceneTable["-23_03"] = {
+    vcd = CreateSceneEntity("scenes/npc/announcer/gladosbattle11.vcd"),
+    char = "announcer",
+    postdelay = 0.0,
+    predelay = 0.0,
+    next = "-23_04",
+    noDingOff = true,
+    noDingOn = true
+}
+
+SceneTable["-23_04"] = {
+    vcd = CreateSceneEntity("scenes/npc/glados/gladosbattle_xfer04.vcd"),
+    char = "glados",
+    postdelay = 0.0,
+    predelay = 0.0,
+    next = "-23_05",
+    noDingOff = true,
+    noDingOn = true,
+    fires = {
+        { entity = "glados_chamber_body", input = "setanimation", parameter = "gladosbattle_xfer04", delay = 0, fireatstart = true },
+        { entity = "glados_chamber_body", input = "setdefaultanimation", parameter = "glados_idle_agitated_more", delay = 0, fireatstart = true }
+    }
+}
+
+SceneTable["-23_05"] = {
+    vcd = CreateSceneEntity("scenes/npc/announcer/gladosbattle12.vcd"),
+    char = "announcer",
+    postdelay = 0.0,
+    predelay = 0.0,
+    next = "-23_06",
+    noDingOff = true,
+    noDingOn = true
+}
+
+SceneTable["-23_06"] = {
+    vcd = CreateSceneEntity("scenes/npc/sphere03/fgb_that_is_me02.vcd"),
+    char = "wheatley",
+    postdelay = 0.0,
+    predelay = 0.0,
+    next = "-23_07",
+    noDingOff = true,
+    noDingOn = true
+}
+
+SceneTable["-23_07"] = {
+    vcd = CreateSceneEntity("scenes/npc/announcer/gladosbattle13.vcd"),
+    char = "announcer",
+    postdelay = -5.0,
+    predelay = 0.0,
+    next = "-23_08",
+    noDingOff = true,
+    noDingOn = true,
+    talkover = true,
+    fires = {
+        { entity = "deploy_core_receptacle_relay", input = "Trigger", parameter = "", delay = 0.3, fireatstart = true },
+        { entity = "display_socket_instructions_relay", input = "Trigger", parameter = "", delay = 0.3, fireatstart = true }
+    }
+}
+
+SceneTable["-23_08"] = {
+    vcd = CreateSceneEntity("scenes/npc/glados/gladosbattle_xfer05.vcd"),
+    char = "glados",
+    postdelay = 0.0,
+    predelay = 0.0,
+    next = "-23_09",
+    noDingOff = true,
+    noDingOn = true,
+    talkover = true
+}
+
+SceneTable["-23_09"] = {
+    vcd = CreateSceneEntity("scenes/npc/glados/gladosbattle_xfer06.vcd"),
+    char = "glados",
+    postdelay = 0.0,
+    predelay = 0.0,
+    next = nil,
+    noDingOff = true,
+    noDingOn = true,
+    talkover = true,
+    fires = {
+        { entity = "@glados", input = "RunScriptCode", parameter = "StartWheatleyPluginScene()", delay = 0.0 }
+    }
+}
+
+-- ======================================
+-- Wheatley socket plug in start
+-- ======================================
+SceneTable["-760_01"] = {
+    vcd = CreateSceneEntity("scenes/npc/sphere03/fgb_plugin_nags01.vcd"),
+    char = "wheatley",
+    predelay = 0.0,
+    postdelay = 0.1,
+    next = "-760_01a",
+    noDingOff = true,
+    noDingOn = true,
+    talkover = true
+}
+
+SceneTable["-760_01a"] = {
+    vcd = CreateSceneEntity("scenes/npc/glados/sp_a2_core02.vcd"),
+    postdelay = 0.1,
+    predelay = 0,
+    next = "-760_01b",
+    char = "glados",
+    noDingOff = true,
+    noDingOn = true,
+    talkover = true,
+    fires = {
+        { entity = "glados_chamber_body", input = "setanimation", parameter = "sp_a2_core02", delay = 0, fireatstart = true },
+        { entity = "glados_chamber_body", input = "setdefaultanimation", parameter = "glados_idle_agitated_more", delay = 0, fireatstart = true }
+    }
+}
+
+SceneTable["-760_01b"] = {
+    vcd = CreateSceneEntity("scenes/npc/sphere03/fgb_doit_nags08.vcd"),
+    postdelay = 0.0,
+    predelay = 0.0,
+    next = "-760_01c",
+    char = "wheatley",
+    noDingOff = true,
+    noDingOn = true,
+    talkover = true
+}
+
+SceneTable["-760_01c"] = {
+    vcd = CreateSceneEntity("scenes/npc/glados/sp_a2_core01.vcd"),
+    postdelay = 0.0,
+    predelay = 0.0,
+    next = nil,
+    char = "glados",
+    noDingOff = true,
+    noDingOn = true,
+    talkover = true,
+    fires = {
+        { entity = "glados_chamber_body", input = "setanimation", parameter = "sp_a2_core01", delay = 0, fireatstart = true },
+        { entity = "@glados", input = "RunScriptCode", parameter = "StartWheatleyPluginNag()", delay = 0 }
+    }
+}
+
+-- ======================================
+-- Wheatley socket plug in start
+-- ======================================
+SceneTable["-760_01"] = {
+    vcd = CreateSceneEntity("scenes/npc/sphere03/fgb_plugin_nags01.vcd"),
+    char = "wheatley",
+    predelay = 0.0,
+    postdelay = 0.1,
+    next = "-760_01a",
+    noDingOff = true,
+    noDingOn = true,
+    talkover = true
+}
+
+SceneTable["-760_01a"] = {
+    vcd = CreateSceneEntity("scenes/npc/glados/sp_a2_core02.vcd"),
+    postdelay = 0.1,
+    predelay = 0,
+    next = "-760_01b",
+    char = "glados",
+    noDingOff = true,
+    noDingOn = true,
+    talkover = true,
+    fires = {
+        { entity = "glados_chamber_body", input = "setanimation", parameter = "sp_a2_core02", delay = 0, fireatstart = true },
+        { entity = "glados_chamber_body", input = "setdefaultanimation", parameter = "glados_idle_agitated_more", delay = 0, fireatstart = true }
+    }
+}
+
+SceneTable["-760_01b"] = {
+    vcd = CreateSceneEntity("scenes/npc/sphere03/fgb_doit_nags08.vcd"),
+    postdelay = 0.0,
+    predelay = 0.0,
+    next = "-760_01c",
+    char = "wheatley",
+    noDingOff = true,
+    noDingOn = true,
+    talkover = true
+}
+
+SceneTable["-760_01c"] = {
+    vcd = CreateSceneEntity("scenes/npc/glados/sp_a2_core01.vcd"),
+    postdelay = 0.0,
+    predelay = 0.0,
+    next = nil,
+    char = "glados",
+    noDingOff = true,
+    noDingOn = true,
+    talkover = true,
+    fires = {
+        { entity = "glados_chamber_body", input = "setanimation", parameter = "sp_a2_core01", delay = 0, fireatstart = true },
+        { entity = "@glados", input = "RunScriptCode", parameter = "StartWheatleyPluginNag()", delay = 0 }
+    }
+}
+
+-- ======================================
+-- Wheatley socket plugin nag
+-- ======================================
+
+SceneTable["-760_01d"] = {vcd=CreateSceneEntity("scenes/npc/sphere03/fgb_doit_nags09.vcd"),idlerandomonrepeat=true, idlerepeat=true, idleminsecs=1.5, idlemaxsecs=3.0, postdelay=0.1,next=nil,char="wheatley", noDingOff=true, noDingOn=true, idle=true, talkover=true, idlegroup="socketwheatleynag", idleorderingroup=1, idleunder=1}
+
+SceneTable["-760_02"] = {vcd=CreateSceneEntity("scenes/npc/sphere03/fgb_plugin_nags06.vcd"),postdelay=0.1,next="-760_02a",char="wheatley",noDingOff=true,noDingOn=true, talkover=true, idlegroup="socketwheatleynag",idleorderingroup=2, idleindex=2}
+SceneTable["-760_02a"] = {vcd=CreateSceneEntity("scenes/npc/glados/gladosbattle_xfer13.vcd"),postdelay=0.1,next="-760_02b",char="glados",noDingOff=true,noDingOn=true, talkover=true, idlegroup="socketwheatleynag",idleorderingroup=2, idleunder=2}
+SceneTable["-760_02b"] = {vcd=CreateSceneEntity("scenes/npc/sphere03/fgb_doit_nags06.vcd"),postdelay=0.1,next="-760_02c",char="wheatley",noDingOff=true,noDingOn=true, talkover=true, idlegroup="socketwheatleynag",idleorderingroup=2, idleunder=2}
+SceneTable["-760_02c"] = {vcd=CreateSceneEntity("scenes/npc/sphere03/fgb_doit_nags03.vcd"),postdelay=1.0,next=nil,char="wheatley",noDingOff=true,noDingOn=true, talkover=true, idlegroup="socketwheatleynag",idleorderingroup=2, idleunder=2}
+
+SceneTable["-760_03"] = {vcd=CreateSceneEntity("scenes/npc/sphere03/fgb_plugin_nags08.vcd"),postdelay=0.1,next="-760_03a",char="wheatley",noDingOff=true,noDingOn=true, talkover=true,idlegroup="socketwheatleynag",idleorderingroup=3, idleindex=3}
+SceneTable["-760_03a"] = {vcd=CreateSceneEntity("scenes/npc/glados/sp_a2_core03.vcd"),postdelay=0.1,next=nil,char="glados",noDingOff=true,noDingOn=true, talkover=true, idlegroup="socketwheatleynag",idleorderingroup=3, idleunder=3}
+
+SceneTable["-760_04"] = {vcd=CreateSceneEntity("scenes/npc/sphere03/fgb_plugin_nags07.vcd"),postdelay=0.1,next="-760_04a",char="wheatley",noDingOff=true,noDingOn=true,talkover=true,idlegroup="socketwheatleynag",idleorderingroup=4, idleindex=4}
+SceneTable["-760_04a"] = {vcd=CreateSceneEntity("scenes/npc/glados/sp_a2_core04.vcd"),postdelay=0.1,next=nil,char="glados",noDingOff=true,noDingOn=true, talkover=true, idlegroup="socketwheatleynag",idleorderingroup=4, idleunder=4}
+
+SceneTable["-760_05"] = {vcd=CreateSceneEntity("scenes/npc/sphere03/fgb_plugin_nags05.vcd"),postdelay=0.1,next="-760_05a",char="wheatley",noDingOff=true,noDingOn=true,talkover=true,idlegroup="socketwheatleynag",idleorderingroup=5, idleindex=5}
+SceneTable["-760_05a"] = {vcd=CreateSceneEntity("scenes/npc/glados/gladosbattle_xfer13.vcd"),postdelay=0.1,next=nil,char="glados",noDingOff=true,noDingOn=true, talkover=true, idlegroup="socketwheatleynag",idleorderingroup=5, idleunder=5}
+
+SceneTable["-760_06"] = {vcd=CreateSceneEntity("scenes/npc/sphere03/fgb_plugin_nags09.vcd"),postdelay=0.1,next="-760_06a",char="wheatley",noDingOff=true,noDingOn=true,talkover=true,idlegroup="socketwheatleynag",idleorderingroup=6, idleindex=6}
+SceneTable["-760_06a"] = {vcd=CreateSceneEntity("scenes/npc/glados/sp_a2_core04.vcd"),postdelay=0.1,next=nil,char="glados",noDingOff=true,noDingOn=true, talkover=true, idlegroup="socketwheatleynag",idleorderingroup=6, idleunder=6}
+
+SceneTable["-760_07"] = {vcd=CreateSceneEntity("scenes/npc/sphere03/fgb_plugin_nags11.vcd"),postdelay=0.1,next="-760_07a",char="wheatley",noDingOff=true,noDingOn=true, talkover=true,idlegroup="socketwheatleynag",idleorderingroup=7, idleindex=7}
+SceneTable["-760_07a"] = {vcd=CreateSceneEntity("scenes/npc/glados/gladosbattle_xfer12.vcd"),postdelay=0.1,next=nil,char="glados",noDingOff=true,noDingOn=true, talkover=true, idlegroup="socketwheatleynag",idleorderingroup=7, idleunder=7}
+
+function StartWheatleyPluginScene()
+	GladosPlayVcd( -760 )
+end
+
+function StartWheatleyPluginNag()
+	GladosPlayVcd( -761 )
+end
+
+function StopWheatleyPluginNag()
+	nuke()
+end
+
+-- ====================================== Wheatley Plugged in
+SceneTable["-24_01"] = 
+{
+    vcd=CreateSceneEntity("scenes/npc/announcer/gladosbattle14.vcd"), --Substitute core accepted. [UPGRADED]
+    char="announcer",
+    postdelay=0.1,
+    predelay = 0.0,
+    next="-24_02",
+    noDingOff=true,
+    noDingOn=true,
+    talkover=true,
+    fires=
+    {
+        {entity="core_transfer_nag_relay",input="kill",parameter="",delay=0.0, fireatstart=true},
+        {entity="glados_lookat_wheatley",input="trigger",parameter="",delay=0.0, fireatstart=true}
+    }
+}
+
+SceneTable["-24_02"] = 
+{
+    vcd=CreateSceneEntity("scenes/npc/announcer/gladosbattle15.vcd"), --Substitute core, are you ready to start the procedure? [UPGRADED]
+    char="announcer",
+    postdelay=0.0,
+    predelay = 0.0,
+    next= "-24_03",
+    noDingOff=true,
+    noDingOn=true,
+    talkover=true
+}
+
+SceneTable["-24_03"] = 
+{
+    vcd=CreateSceneEntity("scenes/npc/sphere03/fgb_ready_glados01.vcd"),    -- Yes!
+    char="wheatley",
+    postdelay=0.0,
+    predelay = 0.0,
+    next= "-24_04",
+    noDingOff=true,
+    noDingOn=true
+}
+
+SceneTable["-24_04"] = 
+{
+    vcd=CreateSceneEntity("scenes/npc/announcer/gladosbattle16.vcd"), --Corrupted core, are you ready to start the procedure? [UPGRADED]
+    char="announcer",
+    postdelay=0.0,
+    predelay = 0.0,
+    next= "-24_05",
+    noDingOff=true,
+    noDingOn=true,
+    fires=
+    {
+        {entity="@glados",input="runscriptcode",parameter="sp_sabotage_glados_specials(1)",delay=0.7},
+        {entity="glados_chamber_body",input="setanimation",parameter="gladosbattle_xfer07",delay=0,fireatstart=true}, -- ANIM
+        {entity="glados_chamber_body",input="setdefaultanimation",parameter="glados_idle_agitated_more",delay=0,fireatstart=true}
+    }
+}
+
+SceneTable["-24_05"] = 
+{
+    vcd=CreateSceneEntity("scenes/npc/glados/gladosbattle_xfer07.vcd"), --No!
+    char="glados",
+    postdelay=0.4,
+    predelay = 0.0,
+    next= "-24_06",
+    noDingOff=true,
+    noDingOn=true,
+    talkover=true
+}
+
+SceneTable["-24_06"] = 
+{
+    vcd=CreateSceneEntity("scenes/npc/glados/gladosbattle_xfer08.vcd"),     -- Nonononono!
+    char="glados",
+    postdelay=0.0,
+    predelay = 0.0,
+    next= "-24_07",
+    noDingOff=true,
+    noDingOn=true,
+    talkover=true
+}
+
+SceneTable["-24_07"] = 
+{
+    vcd=CreateSceneEntity("scenes/npc/announcer/gladosbattle17.vcd"),    --Stalemate detected. Transfer procedure cannot continue. [UPGRADED]
+    char="announcer",
+    postdelay=0.0,
+    predelay = 0.0,
+    next= "-24_08",
+    noDingOff=true,
+    noDingOn=true
+}
+
+SceneTable["-24_08"] = 
+{
+    vcd=CreateSceneEntity("scenes/npc/glados/gladosbattle_xfer10.vcd"), --Yes! 
+    char="glados",
+    postdelay=0.0,
+    predelay = 0.0,
+    next= "-24_09",
+    noDingOff=true,
+    noDingOn=true,
+    talkover=true,
+    fires=
+    {
+        {entity="@glados",input="runscriptcode",parameter="sp_sabotage_glados_specials(2)",delay=0.3,fireatstart=true}
+    }
+}
+
+SceneTable["-24_09"] = 
+{
+    vcd = CreateSceneEntity("scenes/npc/announcer/gladosbattle18.vcd"), -- ...unless a stalemate associate is present to press the stalemate resolution button. [UPGRADED]
+    char = "announcer",
+    postdelay = 0.0,
+    predelay = 0.0,
+    next = "-24_10",
+    noDingOff = true,
+    noDingOn = true,
+    talkover = true,
+    fires =
+    {
+        {entity = "open_stalemate_room_doors_relay", input = "trigger", parameter = "", delay = 0.0},
+        {entity = "display_button_press_instructions_relay", input = "Trigger", parameter = "", delay = 0.0}
+    }
+}
+
+SceneTable["-24_10"] = 
+{
+    vcd = CreateSceneEntity("scenes/npc/sphere03/fgb_leave_me_in01.vcd"), -- Leave me in! Leave me in! Go press it!
+    char = "wheatley",
+    postdelay = 0.0,
+    predelay = 0.4,
+    next = "-24_11",
+    noDingOff = true,
+    noDingOn = true
+}
+
+SceneTable["-24_11"] = 
+{
+    vcd = CreateSceneEntity("scenes/npc/glados/gladosbattle_xfer13.vcd"), -- Don't do it.
+    char = "glados",
+    postdelay = 0.0,
+    predelay = 0.0,
+    next = "-24_12",
+    noDingOff = true,
+    noDingOn = true,
+    fires =
+    {
+        {entity = "glados_lookat_player", input = "trigger", parameter = "", delay = 0.0, fireatstart = true}
+    }
+}
+
+SceneTable["-24_12"] = 
+{
+    vcd = CreateSceneEntity("scenes/npc/sphere03/fgb_doit_nags01.vcd"), -- Yes, do do it!
+    char = "wheatley",
+    postdelay = 0.0,
+    predelay = 0.0,
+    next = "-24_13",
+    noDingOff = true,
+    noDingOn = true
+}
+
+SceneTable["-24_13"] = 
+{
+    vcd = CreateSceneEntity("scenes/npc/glados/gladosbattle_xfer11.vcd"), -- Don't press that button. You don't know what you're doing.
+    char = "glados",
+    postdelay = 0.0,
+    predelay = 0.0,
+    next = "-24_14",
+    noDingOff = true,
+    noDingOn = true
+}
+
+SceneTable["-24_14"] = 
+{
+    vcd = CreateSceneEntity("scenes/npc/sphere03/fgb_stalemate_nags05.vcd"), -- I think she's lying.
+    char = "wheatley",
+    postdelay = 0.0,
+    predelay = 0.0,
+    next = nil,
+    noDingOff = true,
+    noDingOn = true,
+    fires =
+    {
+        {entity = "@glados", input = "RunScriptCode", parameter = "StartStalemateButtonPressNag()", delay = 0}
+    }
+}
+
+-- Stalemate button press nags
+SceneTable["-755_01"] = {
+	vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_2nd_first_test_solve_nags06.vcd"),
+	predelay = {7, 12},
+	postdelay = 0.1,
+	next = "-755_02",
+	char = "wheatley",
+	noDingOff = true,
+	noDingOn = true,
+	idle = true,
+	talkover = true,
+	idleminsecs = 7.0,
+	idlemaxsecs = 12.0,
+	idlegroup = "pressthebutton",
+	idleorderingroup = 1,
+  }
+  
+  SceneTable["-755_02"] = {
+	vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_2nd_first_test_solve_nags07.vcd"),
+	postdelay = 3.1,
+	next = "-755_03",
+	char = "wheatley",
+	noDingOff = true,
+	noDingOn = true,
+	talkover = true,
+	idlegroup = "pressthebutton",
+	idleorderingroup = 2,
+  }
+  
+  SceneTable["-755_03"] = {
+	vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_2nd_first_test_solve_nags08.vcd"),
+	postdelay = 3.1,
+	next = "-755_04",
+	char = "wheatley",
+	noDingOff = true,
+	noDingOn = true,
+	talkover = true,
+	idlegroup = "pressthebutton",
+	idleorderingroup = 3,
+  }
+  
+  SceneTable["-755_04"] = {
+	vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_2nd_first_test_solve_nags09.vcd"),
+	postdelay = 3.1,
+	next = "-755_05",
+	char = "wheatley",
+	noDingOff = true,
+	noDingOn = true,
+	talkover = true,
+	idlegroup = "pressthebutton",
+	idleorderingroup = 4,
+  }
+  
+  SceneTable["-755_05"] = {
+	vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_2nd_first_test_solve_nags10.vcd"),
+	postdelay = 3.1,
+	next = nil, -- Correctly using nil for no next scene
+	char = "wheatley",
+	noDingOff = true,
+	noDingOn = true,
+	talkover = true,
+	idlegroup = "pressthebutton",
+	idleorderingroup = 5,
+  }
+
+SceneTable["-72_01"] =
+{
+	vcd=CreateSceneEntity("scenes/npc/sphere03/sp_a2_core_pullmeout01.vcd"),
+	char="wheatley",
+	postdelay=0.0,
+	predelay = 0.0,
+	next=nil,
+	noDingOff=true,
+	noDingOn=true,
+	talkover = true
+}
+
+//Wheatley "Oh yes she is" line
+SceneTable["-73_01"] =
+{
+	vcd=CreateSceneEntity("scenes/npc/sphere03/fgb_ready_glados06.vcd"),
+	char="wheatley",
+	postdelay=0.0,
+	predelay = 0.0,
+	next=nil,
+	noDingOff=true,
+	noDingOn=true,
+	talkover = true
+}
+
+function StartStalemateButtonPressNag()
+	GladosPlayVcd( -755 )
+end
+
+function StopStalemateButtonPressNag()
+	nuke()	
+end
+
+function sp_sabotage_glados_specials(arg)
+	if arg == 1 then
+		GladosPlayVcd(-73)
+	elseif arg == 2 then
+		GladosPlayVcd(-72)
+	end
+end
+
+-- ButtonDenied
+SceneTable["-25_01"] = {
+	vcd = CreateSceneEntity("scenes/npc/glados/gladosbattle_xfer14.vcd"), --Not so fast!
+	postdelay = 0.3,
+	next = "-25_02",
+	char = "glados",
+	noDingOff = true,
+	noDingOn = true,
+	talkover = false,
+	fires = {
+	  {entity = "glados_chamber_body", input = "setanimation", parameter = "gladosbattle_xfer14", delay = 0, fireatstart = true} --ANIM
+	}
+  }
+  
+  SceneTable["-25_02"] = {
+	vcd = CreateSceneEntity("scenes/npc/glados/gladosbattle_xfer15.vcd"), --Think about this.
+	postdelay = 0.2,
+	next = "-25_03",
+	char = "glados",
+	noDingOff = true,
+	noDingOn = true,
+	talkover = false
+  }
+  
+  SceneTable["-25_03"] = {
+	vcd = CreateSceneEntity("scenes/npc/glados/gladosbattle_xfer16.vcd"), --You need to be a trained stalemate associate to press that button. You're unqualified. I know this sounds like an obvious ploy, but I'm really not joking.
+	postdelay = 0.2,
+	next = "-25_04",
+	char = "glados",
+	noDingOff = true,
+	noDingOn = true,
+	talkover = false
+  }
+  
+  --Don't listen to her! It IS true that you don't have the qualifications. But you've got something more important than that. A finger, with which to press that button, so that she won't kill us.
+  SceneTable["-25_04"] = {
+	vcd = CreateSceneEntity("scenes/npc/sphere03/fgb_stalemate_nags06.vcd"),
+	postdelay = 0.0,
+	next = "-25_05",
+	char = "wheatley",
+	noDingOff = true,
+	noDingOn = true,
+	talkover = false
+  }
+  
+  --Impersonating a stalemate associate. I just added that to the list. It's a list I made of all the things you've done. Well, it's a list that I AM making, because you're still doing things right now, even though I'm telling you to stop. Stop, by the way.
+  SceneTable["-25_05"] = {
+	vcd = CreateSceneEntity("scenes/npc/glados/gladosbattle_xfer17.vcd"),
+	postdelay = 0.2,
+	next = "-25_06",
+	char = "glados",
+	noDingOff = true,
+	noDingOn = true,
+	talkover = false
+  }
+  
+  --I... that's probably correct. But where it is incorrect is while I've been stalling you WE JUST PRESSED THE BUTTON! USE THE MOMENT OF CONFUSION I'VE JUST CREATED TO PRESS THE BUTTON!
+  SceneTable["-25_06"] = {
+	vcd = CreateSceneEntity("scenes/npc/sphere03/fgb_stalemate_nags12.vcd"),
+	postdelay = 3.0,
+	next = "-25_07",
+	char = "wheatley",
+	noDingOff = true,
+	noDingOn = true,
+	talkover = false
+  }
+  
+  --Have I ever told you the qualities I love most in you? In order: Number one: resolving things, disputes highest among them. Number one, tied: Button-pushing.
+  SceneTable["-25_07"] = {
+	vcd = CreateSceneEntity("scenes/npc/sphere03/fgb_stalemate_nags08.vcd"),
+	postdelay = 3.0,
+	next = "-25_08",
+	char = "wheatley",
+	noDingOff = true,
+	noDingOn = true,
+	talkover = false
+  }
+  
+  --First thing I thought about you...
+  SceneTable["-25_08"] = {
+	vcd = CreateSceneEntity("scenes/npc/sphere03/fgb_stalemate_nags07.vcd"),
+	postdelay = 3.0,
+	next = "-25_08a",
+	char = "wheatley",
+	noDingOff = true,
+	noDingOn = true,
+	talkover = false
+  }
+  
+  --Don't want to rush you...
+  SceneTable["-25_08a"] = {
+	vcd = CreateSceneEntity("scenes/npc/sphere03/fgb_stalemate_nags09.vcd"),
+	postdelay = 3.0,
+	next = "-25_09",
+	char = "wheatley",
+	noDingOff = true,
+	noDingOn = true,
+	talkover = false
+  }
+  
+  --Here's a good idea...
+  SceneTable["-25_09"] = {
+	vcd = CreateSceneEntity("scenes/npc/sphere03/fgb_stalemate_nags04.vcd"),
+	postdelay = 0.1,
+	next = nil,  -- Correctly using nil
+	char = "wheatley",
+	noDingOff = true,
+	noDingOn = true,
+	talkover = false,
+	fires = {
+	  {entity = "@glados", input = "RunScriptCode", parameter = "StartStalemateButtonPressNag()", delay = 0}
+	}
+  }
+
+function StartStalemateRoomLeadLights()
+	SetArmSkinOff()
+	
+	StalemateRoomLeadLightsOn = 1
+	
+	EntFire("@glados", "RunScriptCode", "StalemateRoomLeadLights()", 0 )
+end
+
+function StopStalemateRoomLeadLights()
+	StalemateRoomLeadLightsOn = 0
+
+	EntFire("stalemate_runway_lights_relay", "cancelpending", "", 0 )
+	EntFire("@glados", "RunScriptCode", "SetArmSkinOn()", 2.7 )
+end
+
+-- ============================================================================
+-- Causes arm lights to animate towards stalemate room
+-- ============================================================================
+function StalemateRoomLeadLights()
+    if StalemateRoomLeadLightsOn then
+        local delay = 0
+
+        -- blink right side of room
+        for i = 12, 3, -1 do
+            EntFire("chamber_arm_" .. i, "skin", "1", delay)
+            EntFire("chamber_arm_" .. i, "skin", "2", delay + 0.1)
+            delay = delay + 0.2
+        end
+
+        delay = 0
+
+        -- blink left side of room
+        for i = 14, 23 do
+            EntFire("chamber_arm_" .. i, "skin", "1", delay)
+            EntFire("chamber_arm_" .. i, "skin", "2", delay + 0.1)
+            delay = delay + 0.2
+        end
+
+        EntFire("stalemate_runway_lights_relay", "trigger", "", 2)
+    end
+end
+
+-- ============================================================================
+-- Causes arm lights to switch from blue to red when Wheatley turns evil
+-- ============================================================================
+function CoreRoomPanelLookTurnRed()
+    local delay = 0
+
+    -- Set all the skins to the off state
+    EntFire("chamber_arm_*", "skin", "2", 0)
+
+    -- Set the first panel to have the red light on
+    EntFire("chamber_arm_1", "skin", "1", delay)
+
+    delay = delay + 0.2
+
+    -- blink right side of room
+    for i = 2, 12 do
+        EntFire("chamber_arm_" .. i, "skin", "1", delay)
+        delay = delay + 0.1
+    end
+
+    delay = 0
+
+    -- blink left side of room
+    for i = 24, 13, -1 do
+        EntFire("chamber_arm_" .. i, "skin", "1", delay)
+        delay = delay + 0.2
+    end
+end
+
+
+function SetArmSkinOff()
+	EntFire( "chamber_arm_*", "skin", "2", 0 )
+end
+
+function SetArmSkinOn()
+	EntFire( "chamber_arm_*", "skin", "0", 0 )
+end
+
+-- track stalemate room light state
+StalemateRoomLeadLightsOn = 0
+
+-- Stalemate button pressed
+SceneTable["-26_01"] = {
+	vcd = CreateSceneEntity("scenes/npc/glados/sp_sabotage_glados_dropped01.vcd"), -- ahhh!
+	char = "glados",
+	postdelay = 0.5,
+	predelay = 0.0,
+	next = "-26_02",
+	noDingOff = true,
+	noDingOn = true,
+	fires = {
+	  {entity = "glados_chamber_body", input = "setanimation", parameter = "Sp_sabotage_glados_dropped", delay = 0, fireatstart = true}, -- ANIM
+	  {entity = "glados_chamber_body", input = "setdefaultanimation", parameter = "glados_pit_eyegrab", delay = 0, fireatstart = true}
+	}
+  }
+  
+  SceneTable["-26_02"] = {
+	vcd = CreateSceneEntity("scenes/npc/announcer/gladosbattle19.vcd"), -- Stalemate Resolved. Core Transfer Initiated. [UPGRADED]
+	char = "announcer",
+	postdelay = 0.5,
+	predelay = 0.0,
+	next = nil, -- Correctly using nil
+	noDingOff = true,
+	noDingOn = true,
+	fires = {
+	  {entity = "@glados", input = "runscriptcode", parameter = "sp_a2_core_leave_annex_nag()", delay = 3.0}
+	}
+  }
+
+function a2_core_stalemate_button_pressed()
+	GladosPlayVcd(-45)
+end
+
+-- Wheatley transfer scene
+SceneTable["-4_01"] = {
+	vcd = CreateSceneEntity("scenes/npc/sphere03/fgb_xfer_start03.vcd"), -- Here I go!
+	char = "wheatley",
+	postdelay = 0.6,
+	predelay = 0.0,
+	next = "-4_02",
+	noDingOff = true,
+	noDingOn = true,
+	talkover = true,
+  }
+  
+  SceneTable["-4_02"] = {
+	vcd = CreateSceneEntity("scenes/npc/sphere03/fgb_xfer_start04.vcd"), -- Wait, what if this hurts? What if this really hurts?
+	char = "wheatley",
+	postdelay = 0.0,
+	predelay = 0.0,
+	next = "-4_03",
+	noDingOff = true,
+	noDingOn = true,
+	talkover = true,
+  }
+  
+  SceneTable["-4_03"] = {
+	vcd = CreateSceneEntity("scenes/npc/glados/fgbwheatleytransfer03.vcd"), -- Oh it will.  Believe me, it will.
+	char = "glados",
+	postdelay = 0.0,
+	predelay = 0.0,
+	next = "-4_04",
+	noDingOff = true,
+	noDingOn = true,
+	fires = {
+	  {entity = "glados_chamber_body", input = "setanimation", parameter = "fgbwheatleytransfer03", delay = 0, fireatstart = true}, -- ANIM
+	  {entity = "glados_chamber_body", input = "setdefaultanimation", parameter = "glados_pit_eyegrab", delay = 0, fireatstart = true}
+	}
+  }
+  
+  SceneTable["-4_04"] = {
+	vcd = CreateSceneEntity("scenes/npc/sphere03/fgb_transfer_pain01.vcd"), -- Are you just saying that, or is it really going to hurt? You're just saying that, no, you're not aren't you, it's really going to hurt, isn't it?
+	char = "wheatley",
+	postdelay = 0.0,
+	predelay = 0.0,
+	next = "-4_05",
+	noDingOff = true,
+	noDingOn = true,
+  }
+  
+  
+  SceneTable["-4_05"] = {
+	vcd = CreateSceneEntity("scenes/npc/sphere03/sp_a2_core_goingtohurt01.vcd"), -- Exactly how much pain are we tAGGGHHH!
+	char = "wheatley",
+	postdelay = 0.0,
+	predelay = 0.0,
+	next = nil,
+	noDingOff = true,
+	noDingOn = true,
+	talkover = true,
+	fires = {
+	  {entity = "maintenance_pit_script", input = "RunScriptCode", parameter = "OpenMaintenancePitDoor()", delay = 0.7, fireatstart = true},
+	  {entity = "@glados", input = "RunScriptCode", parameter = "PitHandsGrabGladosHead()", delay = 3.0, fireatstart = true},
+	  {entity = "glados_pit_player_clip_relay", input = "trigger", parameter = "", delay = 0.8, fireatstart = true} -- pushes player off of maintenance pit
+	}
+  }
+  
+  
+  -- Glados initial grab by small pit arms
+  SceneTable["-27_00"] = {
+	vcd = CreateSceneEntity("scenes/npc/glados/fgbgladostransfer15.vcd"), -- Get your hands off me!
+	char = "glados",
+	postdelay = 0.1,
+	predelay = 0.0,
+	next = nil,
+	noDingOff = true,
+	noDingOn = true,
+	talkover = true,
+	fires = {
+	  {entity = "pitgrab_player_looking_at_glados_aisc", input = "enable", parameter = "", delay = 0}
+	}
+  }
+
+  SceneTable["-27_01"] = {
+	vcd = CreateSceneEntity("scenes/npc/glados/sp_a2_core_drag_to_hell01.vcd"),
+	char = "glados",
+	postdelay = 0.0,
+	predelay = 0.0,
+	next = nil,
+	noDingOff = true,
+	noDingOn = true,
+	fires = {
+	  {entity = "glados_head_removal_spark_timer", input = "enable", parameter = "", delay = 1, fireatstart = true},
+	  {entity = "glados_head_removal_spark_timer", input = "disable", parameter = "", delay = 3, fireatstart = true},
+	  {entity = "@glados", input = "runscriptcode", parameter = "CoreRoomWiltAnim()", delay = 7.0, fireatstart = true},
+	  {entity = "maintenance_pit_script", input = "RunScriptCode", parameter = "EjectGladosHead()", delay = 0.0},
+	  {entity = "begin_wheatley_emergence_relay", input = "trigger", parameter = "", delay = 2.0},
+	  {entity = "@glados", input = "RunScriptCode", parameter = "CoreTransferCompleted()", delay = 2.5},
+	  {entity = "maintenance_pit_script", input = "RunScriptCode", parameter = "RevealWheatley()", delay = 2.0},
+	}
+  }
+
+  -- Glados gibberish nag
+SceneTable["-28_01"] = {
+	vcd = CreateSceneEntity("scenes/npc/glados/sp_sabotage_glados_gibberish01.vcd"),
+	idlerandom = true,
+	idlerepeat = true,
+	postdelay = 0.1,
+	next = nil,
+	char = "glados",
+	noDingOff = true,
+	noDingOn = true,
+	idle = true,
+	talkover = true,
+	idleminsecs = 0.0,
+	idlemaxsecs = 0.0,
+	idlegroup = "gibberish",
+	idleorderingroup = 1,
+  }
+  SceneTable["-28_02"] = {
+	vcd = CreateSceneEntity("scenes/npc/glados/sp_sabotage_glados_gibberish03.vcd"),
+	postdelay = 0.1,
+	next = nil,
+	char = "glados",
+	noDingOff = true,
+	noDingOn = true,
+	talkover = true,
+	idlegroup = "gibberish",
+	idleorderingroup = 2,
+  }
+  SceneTable["-28_03"] = {
+	vcd = CreateSceneEntity("scenes/npc/glados/sp_sabotage_glados_gibberish04.vcd"),
+	postdelay = 0.1,
+	next = nil,
+	char = "glados",
+	noDingOff = true,
+	noDingOn = true,
+	talkover = true,
+	idlegroup = "gibberish",
+	idleorderingroup = 3,
+  }
+  SceneTable["-28_04"] = {
+	vcd = CreateSceneEntity("scenes/npc/glados/sp_sabotage_glados_gibberish05.vcd"),
+	postdelay = 0.1,
+	next = nil,
+	char = "glados",
+	noDingOff = true,
+	noDingOn = true,
+	talkover = true,
+	idlegroup = "gibberish",
+	idleorderingroup = 4,
+  }
+  SceneTable["-28_05"] = {
+	vcd = CreateSceneEntity("scenes/npc/glados/sp_sabotage_glados_gibberish06.vcd"),
+	postdelay = 0.1,
+	next = nil,
+	char = "glados",
+	noDingOff = true,
+	noDingOn = true,
+	talkover = true,
+	idlegroup = "gibberish",
+	idleorderingroup = 5,
+  }
+  SceneTable["-28_06"] = {
+	vcd = CreateSceneEntity("scenes/npc/glados/sp_sabotage_glados_gibberish07.vcd"),
+	postdelay = 0.1,
+	next = nil,
+	char = "glados",
+	noDingOff = true,
+	noDingOn = true,
+	talkover = true,
+	idlegroup = "gibberish",
+	idleorderingroup = 6,
+  }
