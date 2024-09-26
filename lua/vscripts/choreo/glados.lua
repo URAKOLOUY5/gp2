@@ -1263,9 +1263,9 @@ end
 
 function nag_array_compare(a, b)
     if a.orderingroup > b.orderingroup then
-        return true
-    elseif a.orderingroup < b.orderingroup then
         return false
+    elseif a.orderingroup < b.orderingroup then
+        return true
     else
         return false
     end
