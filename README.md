@@ -2,7 +2,7 @@
 
 # About
 
-# [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3338296486) | [Discord](https://discord.gg/Kg6qjXTunU) | [Download Development Build](https://github.com/URAKOLOUY5/gp2/archive/refs/heads/development.zip)
+# [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3338296486) | [Discord](https://discord.gg/Kg6qjXTunU) | [Download](https://github.com/URAKOLOUY5/gp2/archive/refs/heads/development.zip)
 
 Addon that adds support for Portal 2 maps for Garry's Mod. 
 
