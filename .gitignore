@@ -1,3 +1,5 @@
 *.fgd
 !base_portal2.fgd
 p2
+.env
+venv/*

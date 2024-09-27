@@ -1,0 +1,23 @@
+{
+	"title"		:	"GP2 Framework",
+	"type"		:	"ServerContent",
+	"tags"		:	[ "fun" ],
+	"ignore"	:
+	[
+		"modelsrc/*",
+		"resource/fonts/LICENSE.txt",
+		"scripts/soundscapes_*.txt",
+		"*.pcf_broken",
+		".env",
+		".git/*",
+		".gitignore",
+		".gitversion",
+		"venv/*",
+		"publish.bat",
+		"publish.py",
+		"addon.png",
+		"addon.png",
+		"LICENSE",
+		"README.md"
+	]
+}
