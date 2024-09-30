@@ -1,6 +1,6 @@
 -- Rewritten choreo/glados.nut script
 
-debug = false
+debug = true
 debug_interval = 5
 
 curMapName = game.GetMap()
@@ -200,6 +200,11 @@ function GladosPlayVcd(arg, IgnoreQueue, caller)
             sceneStart = 0
         end
 
+        if not SceneTable[arg] then
+            error("Argument " .. tostring(arg) .. " doesn't exist in SceneTable")
+            return
+        end
+
         -- if SkipIfBusy is present & we're already playing a scene, skip this new scene
         if SceneTable[arg]["skipifbusy"] then
             if IsValid(characterCurscene(SceneTable[arg].char)) then
@@ -378,8 +383,8 @@ function GladosPlayVcd(arg, IgnoreQueue, caller)
             EntFireByHandle( SceneTable[arg].vcd, "PitchShift", pitchOverride.tostring(), 0 )
         end
 
-        -- Setup next line (if there is one) then
-        if SceneTable[arg].next or inst.isNag then
+        -- Setup next line (if there is one)
+        if SceneTable[arg].next ~= nil or inst.isNag then
             local pdelay = EvaluateTimeKey("postdelay", SceneTable[arg])
 
             -- if this is a nag, use min/max defined in the first entry in the scene
@@ -427,7 +432,7 @@ function GladosPlayVcd(arg, IgnoreQueue, caller)
                         inst.naginchain = false                        
                     end
                 else
-                    inst.waitNext = SceneTable[arg].next;
+                    inst.waitNext = SceneTable[arg].next
                 end
 
                 -- If we're in a nag vcd chain, use the vcds postdelay rather than the nag-wide delay

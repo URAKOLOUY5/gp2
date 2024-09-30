@@ -2041,121 +2041,33 @@ end
 -- GLADOS BATTLE scenetable
 -- ****************************************************************************************************
 
-SceneTableLookup = SceneTableLookup or {} -- Initialize the table if it doesn't exist
-
-SceneTableLookup[-50] = "-20_01"        -- I honestly didn't think you would fall for that
-                                                                                -- In fact, I devised a much more elaborate trap ahead, for when you got through this easy one.
-                                                                                -- If I had known it would be this easy, I would have just dangled a turkey leg
-
-SceneTableLookup[-53] = "-21_01"        -- But anyway. Here we are. Again.
-                                                                                -- I hope you brought something more powerful than the portal gun this time
-                                                                                -- It was nice catching up. Lets get to business.
-                                                                                -- You remember my turrets don't you... oh wait, that's you in 5 seconds. goodbye.
-
-SceneTableLookup[-700] = "-700_01" -- turret conversation here
-SceneTableLookup[-750] = "-750_01" -- wheatley neurotoxin ride nags here
-
-SceneTableLookup[-57] = "-22_01"        -- My turrets!
-                                                                                -- Oh, you were busy back there
-                                                                                -- //I suppose we could just sit in this room and glare at each other until somebody drops dead, but I have a better idea.
-                                                                                -- Your old friend, deadly neurotoxin. If i were you i'd take a deep breath and hold it.
-
-SceneTableLookup[-61] = "-23_01"        -- Hello!
-                                                                                -- I hate you so much
-                                                                                -- Warning: Central core is 80 percent corrupted. 
-                                                                                -- That's funny, I don't feel corrupt. In fact, I feel pretty good.
-                                                                                -- Alternate core detected.
-                                                                                -- That's ME they're talking about!
-                                                                                -- To initiate a core transfer, please deposit substitute core in receptacle.
-                                                                                -- Core transfer?
-                                                                                -- Oh, you are kidding me.
-
-SceneTableLookup[-760] = "-760_01" -- Wheatley socket scene start
-SceneTableLookup[-761] = "-760_01d" -- Wheatley socket nag start
-
-SceneTableLookup[-71] = "-24_01"        --Substitute core accepted.
-                                                                                --Substitute core, are you ready to start the procedure?
-                                                                                --Yes.
-                                                                                --Corrupted core, are you ready to start the procedure?
-                                                                                --No!
-                                                                                --Nonononononono!
-                                                                                --Stalemate detected. Transfer procedure cannot continue.
-                                                                                --Yes! You little worm!
-                                                                                --...unless a stalemate associate is present to press the stalemate resolution button.
-                                                                                --Leave me in! Leave me in! Go press it!
-                                                                                --Don't do it.
-                                                                                --Don't press that button. You don't know what you're doing.
-
-SceneTableLookup[-72] = "-72_01" 	--Pull me out pull me out pull me out!
-	
-SceneTableLookup[-73] = "-73_01" 	--Oh yes she is!
-
-SceneTableLookup[-755] = "-755_01" --Button press nags
-
-SceneTableLookup[-84] = "-25_01"        --Not so fast!
-                                                                                --Think about this.
-                                                                                --You need to be a trained stalemate associate to press that button. You're unqualified. I know this sounds like an obvious ploy, but I'm really not joking.
-                                                                                --Impersonating a stalemate associate. I just added that to the list. It's a list I made of all the things you've done. Well, it's a list that I AM making, because you're still doing things right now, even though I'm telling you to stop. Stop, by the way.
-
-SceneTableLookup[-88] = "-26_01"        -- Ahhhh!
-                                                                                -- Stalemate Resolved. Core Transfer Initiated.
-
-SceneTableLookup[-4] = "-4_01"  -- Wheatley: Here I go!
-                                                                                -- Wheatley: Wait, what if this hurts?
-                                                                                -- Wheatley: Wait, what if it really hurts? Ohh, I didn't think of that
-                                                                                -- Wheatley: Oh no!  Oh no oh no --
-                                                                                -- Wheatley: Ahhhhh!
-
-SceneTableLookup[-89] = "-27_00"  -- GLaDOS: GET YOUR HANDS OFF ME! NO! NO! STOP!
-
-SceneTableLookup[-90] = "-27_01"        -- CHELL! STOP THIS! I AM YOUR MOTHER!
-                                                                                -- ALRIGHT, FINE! THAT'S NOT TRUE!
-SceneTableLookup[-91] = "-27_03" -- BUT IT COULD BEEEEEAAHHH!
-
-SceneTableLookup[-93] = "-28_01"        -- Glados GIBBERING
-
-SceneTableLookup[-666] = "-666_01"      -- Wheatley Elevator Nag
-
-SceneTableLookup[-9] = "-5_01"  -- Wheatley: Wow! Check ME out, Partner!
-                                                                                -- We did it! I can't believe we did it! I'm in control of the whole facility now!
-                                                                                -- Oh! Right, the escape elevator! I'll call it now.
-                                                                                -- Elevator --called. You get in. I'll tell it to take you to the surface.                                                                              
-
-SceneTableLookup[-13] = "-14_01"        -- GLaDOS: Don't do this.. Don't do this...
-                                                                                -- GLaDOS: Oh. it's you.
-                                                                                -- Wheatley: I knew it was gonna be cool being in charge of everything, but... WOW, is this cool! This body is amazing!
-                                                                                -- Glados: No.
-                                                                                -- Wheatley: And check this out! I'm brilliant now! [spanish] I don't know what I just said, but I can find out.
-                                                                                -- Wheatley: Oh! The elevator. Sorry. [ elevator moves ]
-                                                                                -- Wheatley: Wow, look how small you are! I can barely see you down there! But I'm HUGE. [evil laugh] Where did THAT come from? 
-                                                                                -- Glados: So here's a couple of facts. Absolute power corrupts. Absolutely.
-                                                                                -- Wheatley: Actually... hold on. 
-                                                                                -- Wheatley: Why do we have to leave right this minute? [elevator descends]
-                                                                                -- Glados: And if you combine absolute power with an absolute moron, inside the world's most powerful supercomputer... 
-                                                                                -- Wheatley: You be quiet! I was smart enough to take control of the whole building away from you, wasn't I? 
-                                                                                -- Glados: You didn't do anything. SHE did all the work.
-                                                                                -- Wheatley: Oh really? Well, maybe it's time I DID something, then. 
-                                                                                -- Glados: What are you doing?
-                                                                                -- Glados: No!
-
--- - potatos
-
-SceneTableLookup[-33] = "-10_01"        -- I'm on to you too, lady. .. who's the boss?  Little old Wheatley!
-
-SceneTableLookup[-34] = "-11_01"        -- Ah...!
-                                                                                -- THAT is a potato battery. Now you live in it.
-                                                                                -- Just... kill me.
-
-SceneTableLookup[-37] = "-12_01"        -- There! See? I'm huge, you're trapped and she's a potato!  who's a moron now?
-                                                                                -- Still you.
-                                                                                -- How about now? now who's a moron?
-                                                                                -- Still you. You're still a moron.
-                                                                                -- NOW WHO'S A MORON?
-                                                                                -- If you weren't such a moron, you'd know who.
-                                                                                -- I am not a moron! 
-
-SceneTableLookup[-44] = "-13_01"        -- How about if I PUNCHED.YOU.INTO.THIS.PIT. Huh?  Who's a moron now?
-                                                                                -- Uh oh.                                                                                                                                       
+SceneTableLookup[-50] = "-20_01"
+SceneTableLookup[-53] = "-21_01"
+SceneTableLookup[-700] = "-700_01"
+SceneTableLookup[-750] = "-750_01"
+SceneTableLookup[-57] = "-22_01"
+SceneTableLookup[-61] = "-23_01"
+SceneTableLookup[-760] = "-760_01"
+SceneTableLookup[-761] = "-760_01d"
+SceneTableLookup[-71] = "-24_01"
+SceneTableLookup[-72] = "-72_01"
+SceneTableLookup[-73] = "-73_01"
+SceneTableLookup[-755] = "-755_01"
+SceneTableLookup[-84] = "-25_01"
+SceneTableLookup[-88] = "-26_01"
+SceneTableLookup[-4] = "-4_01"
+SceneTableLookup[-89] = "-27_00"
+SceneTableLookup[-90] = "-27_01"
+SceneTableLookup[-91] = "-27_03"
+SceneTableLookup[-93] = "-28_01"
+SceneTableLookup[-666] = "-666_01"
+SceneTableLookup[-9] = "-5_01"
+SceneTableLookup[-13] = "-14_01"
+SceneTableLookup[-33] = "-10_01"
+SceneTableLookup[-34] = "-11_01"
+SceneTableLookup[-37] = "-12_01"
+SceneTableLookup[-44] = "-13_01"
+SceneTableLookup[-45] = "-45_01"                                                                                                                                  
 
 -- ****************************************************************************************************
 -- GLaDOS Battle
@@ -3399,6 +3311,22 @@ end
 StalemateRoomLeadLightsOn = 0
 
 -- Stalemate button pressed
+SceneTable ["-45_01" ] =
+{
+	vcd = CreateSceneEntity("scenes/npc/announcer/gladosbattle20.vcd"),
+	char = "announcer",
+	postdelay = 0.01,
+	predelay = 0.0,
+	next = nil,
+	noDingOff = true,
+	noDingOn = true,
+	fires=
+	{	
+		{entity="@glados",input="runscriptcode",parameter="sp_a2_core_leave_annex_nag()",delay=7.0}
+	}
+}
+
+
 SceneTable["-26_01"] = {
 	vcd = CreateSceneEntity("scenes/npc/glados/sp_sabotage_glados_dropped01.vcd"), -- ahhh!
 	char = "glados",
@@ -3418,7 +3346,7 @@ SceneTable["-26_01"] = {
 	char = "announcer",
 	postdelay = 0.5,
 	predelay = 0.0,
-	next = nil, -- Correctly using nil
+	next = nil,
 	noDingOff = true,
 	noDingOn = true,
 	fires = {
@@ -3490,7 +3418,8 @@ SceneTable["-4_01"] = {
 	fires = {
 	  {entity = "maintenance_pit_script", input = "RunScriptCode", parameter = "OpenMaintenancePitDoor()", delay = 0.7, fireatstart = true},
 	  {entity = "@glados", input = "RunScriptCode", parameter = "PitHandsGrabGladosHead()", delay = 3.0, fireatstart = true},
-	  {entity = "glados_pit_player_clip_relay", input = "trigger", parameter = "", delay = 0.8, fireatstart = true} -- pushes player off of maintenance pit
+	  {entity = "glados_pit_player_clip_relay", input = "trigger", parameter = "", delay = 0.8, fireatstart = true}, -- pushes player off of maintenance pit
+	  {entity = "@glados", input = "RunScriptCode", parameter = "GladosCharacterStopScene('wheatley')", delay = 0.2} -- idon't know this is just hack to prevent wheatley speaking twice :/ and breaking whole sequence
 	}
   }
   
@@ -3601,3 +3530,64 @@ SceneTable["-28_01"] = {
 	idlegroup = "gibberish",
 	idleorderingroup = 6,
   }
+
+if curMapName == "sp_a2_core" then
+	GlobalPanelAnimationList = {}
+
+	sp_a2_core_xfer_left_annex = false
+
+	for i = 1, 25 do
+		local entry = {}
+
+		local random_anim = math.random(1,4)
+		entry = {
+			panel_name = "chamber_arm_" .. i,
+			wilt_animation = "core_arms_WILT_0" .. random_anim,
+			unwilt_animation = "core_arms_UNWILT_0" .. random_anim,
+
+			lookup_small_animation = "core_arms_LOOKUP_SMALL_0" .. random_anim,
+			lookup_animation = "core_arms_LOOKUP_0" .. random_anim,
+			lookup_idle_animation = "core_arms_LOOKUP_IDLE_0" .. random_anim,
+			lookup_return_animation = "core_arms_LOOKUP_RETURN_0" .. random_anim
+		}
+
+		table.insert(GlobalPanelAnimationList, entry)
+	end
+end
+
+function CoreRoomRippleAnim()
+	EntFire( "chamber_arm_*", "setanimation", "core_ripple", 0 )
+end
+
+function CoreRoomWiltAnim()
+	-- ensure that the panels have been swapped (this may have occured already after stalemate, this is just a required failsafe)
+	EntFire("swap_stalemate_panels_rl", "trigger", 0, 0 )
+
+	for index, val in ipairs(GlobalPanelAnimationList) do
+		-- ensure that the panels have been swapped (this may have occured already after stalemate, this is just a required failsafe)
+		EntFire( GlobalPanelAnimationList[index].panel_name, "SetAnimation", GlobalPanelAnimationList[index].wilt_animation, 0 )
+	end
+
+	-- blink the skin from off to blue
+	EntFire( "blink_panel_error_lights_timer", "enable", 0, 0 )
+end
+
+function CoreRoomUnWiltAnim()
+	// stop the blinking
+	EntFire( "blink_panel_error_lights_timer", "disable", 0, 0 )
+
+	EntFire("@glados", "RunScriptCode", "SetArmSkinOn()", 1.1 )
+	EntFire("@glados", "RunScriptCode", "SetArmSkinOff()", 1.2 )
+	
+	EntFire("@glados", "RunScriptCode", "SetArmSkinOn()", 1.3 )
+	EntFire("@glados", "RunScriptCode", "SetArmSkinOff()", 1.4 )
+	
+	EntFire("@glados", "RunScriptCode", "SetArmSkinOn()", 1.5 )
+	
+	// ripple the room once the light blinking stops
+	EntFire("@glados", "RunScriptCode", "CoreRoomRippleAnim()", 1.5 )
+
+	for index, val in ipairs(GlobalPanelAnimationList) do
+		EntFire( GlobalPanelAnimationList[index].panel_name, "SetAnimation", GlobalPanelAnimationList[index].unwilt_animation, 0 )
+	end
+end

@@ -160,7 +160,7 @@ GP2.VScriptMgr = {
             GP2.VScriptMgr.Error(runtimeErr:gsub("CompileString%:%d+: ", "RunScriptCode: ( '" .. (ent:GetName() ~= "" and ent:GetName() or ent:GetClass()) .. "' )"))
         end        
 
-        --GP2.Print("Calling the %q on %q", code, tostring(ent))
+        GP2.Print("Calling the %q on %q", code, tostring(ent))
     end,
 
     --
