@@ -60,7 +60,7 @@ hook.Add("AcceptInput", "GP2::AcceptInput", function(ent, name, activator, calle
     end
 
     if name == "O_OnCompleted" then
-        -- HACK to use O_OnCompleted on actors
+        -- HACK to use GetCurrentScene on actors
         local vcd = ent:GetInternalVariable("SceneFile")
 
         if vcd then

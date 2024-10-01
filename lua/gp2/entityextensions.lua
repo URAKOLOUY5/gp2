@@ -38,19 +38,6 @@ function MetaEntity:DisconnectOutput(lookupname, lookupfunc)
     end
 end
 
-function MetaEntity:DisconnectOutput(lookupname, lookupfunc)
-    lookupname = lookupname:lower()
-
-    local nameTable = connectedOutputs[self] and connectedOutputs[self][lookupname]
-    if not nameTable then return end
-
-    for i = #nameTable, 1, -1 do
-        if nameTable[i][2] == lookupfunc then
-            table.remove(nameTable, i)
-        end
-    end
-end
-
 function MetaEntity:TriggerConnectedOutput(name)
     name = name:lower()
 
