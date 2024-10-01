@@ -1,6 +1,6 @@
 -- Rewritten choreo/glados.nut script
 
-debug = true
+debug = false
 debug_interval = 5
 
 curMapName = game.GetMap()

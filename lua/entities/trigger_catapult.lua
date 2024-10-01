@@ -4,6 +4,21 @@ local mats = {}
 
 local sv_gravity = GetConVar("sv_gravity")
 
+local SF_TRIGGER_ALLOW_CLIENTS				= 0x01		// Players can fire this trigger
+local SF_TRIGGER_ALLOW_NPCS					= 0x02		// NPCS can fire this trigger
+local SF_TRIGGER_ALLOW_PUSHABLES				= 0x04		// Pushables can fire this trigger
+local SF_TRIGGER_ALLOW_PHYSICS				= 0x08		// Physics objects can fire this trigger
+local SF_TRIGGER_ONLY_PLAYER_ALLY_NPCS		= 0x10		// *if* NPCs can fire this trigger, this flag means only player allies do so
+local SF_TRIGGER_ONLY_CLIENTS_IN_VEHICLES		= 0x20		// *if* Players can fire this trigger, this flag means only players inside vehicles can 
+local SF_TRIGGER_ALLOW_ALL					= 0x40		// Everything can fire this trigger EXCEPT DEBRIS!
+local SF_TRIGGER_ONLY_CLIENTS_OUT_OF_VEHICLES	= 0x200	// *if* Players can fire this trigger, this flag means only players outside vehicles can 
+local SF_TRIGGER_ONLY_NPCS_IN_VEHICLES		= 0X800	// *if* NPCs can fire this trigger, only NPCs in vehicles do so (respects player ally flag too)
+local SF_TRIGGER_DISALLOW_BOTS                = 0x1000   // Bots are not allowed to fire this trigger
+
+local pushable = {
+    ["func_pushable"] = true
+}
+
 function ENT:KeyValue(k, v)
     if k == "playerSpeed" then
         self:SetPlayerSpeed(tonumber(v))
@@ -33,6 +48,8 @@ function ENT:KeyValue(k, v)
         self:SetAirCtrlSupressionTime(tonumber(v)) 
     elseif k == "StartDisabled" then
         self:Fire("Disable")
+    elseif k == "filtername" then
+        self:SetFilterName(v)
     end
 
     if k:StartsWith("On") then
@@ -51,6 +68,7 @@ function ENT:SetupDataTables()
     self:NetworkVar( "Angle", "LaunchDirection" )
 
     self:NetworkVar( "String", "LaunchTargetName" )
+    self:NetworkVar( "String", "FilterName" )
     
     self:NetworkVar( "Entity", "LaunchTarget" )
 
@@ -91,6 +109,37 @@ end
 
 function ENT:AcceptInput(name, activator, caller, data)
 
+end
+
+function ENT:PassesTriggerFilters(ent)
+    if self:HasSpawnFlags(SF_TRIGGER_ALLOW_ALL) or (self:HasSpawnFlags(SF_TRIGGER_ALLOW_CLIENTS) and ent:IsPlayer()) or (self:HasSpawnFlags(SF_TRIGGER_ALLOW_NPCS) and ent:IsNPC()) or (self:HasSpawnFlags(SF_TRIGGER_ALLOW_PUSHABLES) and ent:GetClass() == "func_pushable") or (self:HasSpawnFlags(SF_TRIGGER_ALLOW_PHYSICS) and ent:GetMoveType() == MOVETYPE_VPHYSICS) then
+        if ent:IsNPC() then
+            if self:HasSpawnFlags(SF_TRIGGER_ONLY_PLAYER_ALLY_NPCS) and IsFriendEntityName(ent:GetClass()) == false then return false end
+        end
+
+        if self:HasSpawnFlags(SF_TRIGGER_ONLY_CLIENTS_IN_VEHICLES) and ent:IsPlayer() then
+            if ent:InVehicle() == false then return false end
+        end
+
+        if self:HasSpawnFlags(SF_TRIGGER_ONLY_CLIENTS_OUT_OF_VEHICLES) and ent:IsPlayer() then
+            if ent:InVehicle() == true then return false end
+        end
+
+        local filterName = self:GetFilterName()
+
+        if filterName ~= nil and filterName ~= "" then
+            local filter = ents.FindByName(filterName)[1]
+
+            if IsValid(filter) and filter.PassesFilter then
+                local res = self:PassesFilter(filter, self, ent)
+                return res
+            end
+        end
+
+        return true
+    end
+
+    return false
 end
 
 function ENT:StartTouch(other)
