@@ -21,6 +21,8 @@ local matWarningIcon = Material("hud/warning.png", "smooth")
 
 local ScrWide, ScrHeight = ScrW(), ScrH()
 
+GP2_VERSION = include "../version.lua"
+
 local function CreateFonts()
     surface.CreateFont("VscriptErrorText", {
         font = "Roboto Medium",
@@ -162,6 +164,13 @@ GP2.Hud.DeclareLegacyElement(function(scrw, scrh)
 
         RenderError(err, i)
     end
+end)
+
+GP2.Hud.DeclareLegacyElement(function(scrw, scrh)
+    surface_SetFont("DebugOverlay")
+    surface_SetTextPos(10, scrh - 16)
+    surface_SetTextColor(255,255,255,255)
+    surface_DrawText(GP2_VERSION)
 end)
 
 local GP2_Hud_Render = GP2.Hud.Render
