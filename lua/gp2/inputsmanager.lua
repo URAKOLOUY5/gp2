@@ -59,6 +59,25 @@ hook.Add("AcceptInput", "GP2::AcceptInput", function(ent, name, activator, calle
         end)
     end
 
+    if name == "O_OnCompleted" then
+        -- HACK to use O_OnCompleted on actors
+        local vcd = ent:GetInternalVariable("SceneFile")
+
+        if vcd then
+            local vcdContent = file.Read(vcd, "GAME")
+
+            if vcdContent then
+                for actorName in vcdContent:gmatch('actor%s+"(.-)"') do
+                    for _, entity in ipairs(ents.GetAll()) do
+                        if entity:GetName() == actorName then
+                            entity:SetCurrentScene(NULL)
+                        end
+                    end
+                end
+            end
+        end         
+    end
+
     if name == "O_OnCanceled" then
         -- HACK to use GetCurrentScene on actors
         local vcd = ent:GetInternalVariable("SceneFile")

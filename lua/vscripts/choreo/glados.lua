@@ -306,7 +306,7 @@ function GladosPlayVcd(arg, IgnoreQueue, caller)
     if arg ~= nil then
         local ltalkover = SceneTable[arg]["talkover"]
 
-        if not ltalkover then
+        if ltalkover == nil then
             -- Cancel any vcd that's already playing
             GladosAllCharactersStopScene()
         else
@@ -349,7 +349,7 @@ function GladosPlayVcd(arg, IgnoreQueue, caller)
 
         inst:addFiredVcd(SceneTable[arg].index)
 
-        if dingon and not inst.waitNoDingOnt then
+        if dingon and not inst.waitNoDingOn then
             EntFireByHandle( SceneTable[arg].vcd, "Start", "", 0.18 )
         else	
             EntFireByHandle( SceneTable[arg].vcd, "Start", "", 0.00 )
@@ -380,7 +380,7 @@ function GladosPlayVcd(arg, IgnoreQueue, caller)
         end
 
         if pitchOverride ~= nil then
-            EntFireByHandle( SceneTable[arg].vcd, "PitchShift", pitchOverride.tostring(), 0 )
+            EntFireByHandle( SceneTable[arg].vcd, "PitchShift", tostring(pitchOverride), 0 )
         end
 
         -- Setup next line (if there is one)
@@ -444,10 +444,10 @@ function GladosPlayVcd(arg, IgnoreQueue, caller)
             end
 
             inst.waitLength = pdelay
+        else
+            inst.waitNext = nil
+            printdebug("=================== SCENE END")
         end
-    else
-        inst.waitNext = nil
-        printdebug("=================== SCENE END")
     end
 end
 
@@ -457,21 +457,9 @@ function GladosCharacterStopScene(arg)
 
     if curscene and IsValid(curscene) then
         printdebug("&&&&&&STOP SCENE: " .. arg .. " FOUND SCENE TO DELETE!!!!!!!!!")
-        timer.Simple(0.01, function()
-            curscene:Input("Cancel")
-        end)
+        EntFireByHandle(curscene, "Cancel", "", 0)
     else
         printdebug("&&&&&&STOP SCENE: NO SCENE TO DELETE FOR " .. arg)
-    end
-end
-
-function GladosStopTalking()
-    local curscene = self:GetCurrentScene()
-	pitchOverride = nil
-	waitNext = nil
-	waitLength = nil
-	if curscene ~= nil and IsValid(curscene) then
-		EntFireByHandle( curscene, "Cancel", "", 0 )
     end
 end
 
@@ -629,25 +617,25 @@ function GladosThink()
                 printdebug("*******LAUNCHING PREDELAYED SCENE")
                 GladosPlayVcd(val)
             end
+        end
 
-            if val.waitExitingEarly then
-                if CurTime() - val.waitExitingEarlyStartTime >= val.waitExitingEarlyThreshold then
-                    local team
-                    val.waitExitingEarly = false
-                    local curscene = characterCurscene(val.currentCharacter)
+        if val.waitExitingEarly then
+            if CurTime() - val.waitExitingEarlyStartTime >= val.waitExitingEarlyThreshold then
+                local team
+                val.waitExitingEarly = false
+                local curscene = characterCurscene(val.currentCharacter)
 
-                    if curscene ~= nil and IsValid(curscene) then
-                        curscene:DisconnectOutput( "OnCompletion", "PlayNextScene" )
-                        curscene:DisconnectOutput( "OnCompletion", "SkipOnCompletion" )
-                        curscene:ConnectOutput( "OnCompletion", "SkipOnCompletion", self )
-                        team = curscene.id
-                        val.waitVcdCurrent = findIndex(team)
-                    end
-
-                    printdebug("====Scene " .. val.index .. " EXITING EARLY")
-                    PlayNextSceneInternal(val)
-                    return
+                if IsValid(curscene) then
+                    curscene:DisconnectOutput( "OnCompletion", "PlayNextScene" )
+                    curscene:DisconnectOutput( "OnCompletion", "SkipOnCompletion" )
+                    curscene:ConnectOutput( "OnCompletion", "SkipOnCompletion", self )
+                    team = curscene.id
+                    val.waitVcdCurrent = findIndex(team)
                 end
+
+                printdebug("====Scene " .. val.index .. " EXITING EARLY")
+                PlayNextSceneInternal(val)
+                return
             end
         end
     end
@@ -669,6 +657,7 @@ function GladosThink()
             if CurTime() - val.waitStartTime >= val.waitLength then
                 val.waiting = 0
                 GladosPlayVcd(val)
+                printdebug("\n\n ARE WE WAITING TO PLAY ANOTHER VCD? - YES!")
             end
         end
     end
@@ -843,30 +832,28 @@ function scene(a, caller)
     printdebug("Creating scene with index " .. a)
     
     -- Instance properties
-    self.index = a
-    self.owner = caller
+    self.index = 0
+    self.owner = nil
     self.currentCharacter = ""
     self.waitSceneStart = 0 -- 1 means we're waiting for the current vcd to finish so we can play the next vcd in the chain
     self.waiting = 0
-    self.waitVcdCurrent = nil
-    self.waitStartTime = CurTime()
-    self.waitLength = CurTime()
+    self.waitVcdCurrent = nil -- SceneTable index of last launched vcd
+    self.waitStartTime = 0
+    self.waitLength = 0
     self.waitNext = nil
     self.waitExitingEarly = false
-    self.waitExitingEarlyStartTime = CurTime()
-    self.waitExitingEarlyThreshold = 0.00 -- How many seconds sould the VCD play before moving on to the next one
-    self.waitDelayingUntil = nil
-    self.waitPreDelayed = false
-    self.waitPreDelayedEntry = nil
+    self.waitExitingEarlyStartTime = 0
+    self.waitExitingEarlyThreshold = 0.00 -- How many seconds should the VCD play before moving on to the next one
     self.waitNoDingOff = false
     self.waitNoDingOn = false
+    self.waitFires = {}
     self.waitVcdTeam = -1
     self.waitFiredVcds = {}
+    self.isNag = false
+    self.nags = {}
+    self.nagpool = {}
     self.nagminsecs = 0
     self.nagmaxsecs = 0
-    self.nags = {}
-    self.isNag = false
-    self.nagpool = {}
     self.naglastfetched = nil
     self.nagrandom = false
     self.nagrandomonrepeat = false
