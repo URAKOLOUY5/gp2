@@ -21,8 +21,6 @@ local matWarningIcon = Material("hud/warning.png", "smooth")
 
 local ScrWide, ScrHeight = ScrW(), ScrH()
 
-GP2_VERSION = include "../version.lua"
-
 local function CreateFonts()
     surface.CreateFont("VscriptErrorText", {
         font = "Roboto Medium",

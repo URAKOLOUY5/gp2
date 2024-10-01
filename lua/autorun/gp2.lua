@@ -30,6 +30,8 @@ include("gp2/netmessages.lua")
 include("gp2/soundmanager.lua")
 include("gp2/particles.lua")
 
+GP2_VERSION = include("gp2/version.lua")
+
 hook.Add("Initialize", "GP2::Initialize", function()
     SoundManager.Initialize()
 end)
