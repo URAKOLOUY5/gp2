@@ -113,7 +113,6 @@ MapPlayOrder = {
 
     -- ====================== ACT 3 ======================
     -- Underground
-    "@bottomless_pit",
     "sp_a3_00",
     "sp_a3_01",
     "sp_a3_03",
