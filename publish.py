@@ -58,6 +58,11 @@ def execute_fastgmad_update(git_commit):
 with open(".gitversion", 'w') as f:
     dt = datetime.datetime.now()
     f.write(f"{dt.date()}|{dt.strftime('%I:%M %p')}")
+    
+# Write lua/gp2/version
+with open("lua/gp2/version.lua", 'w') as f:
+    dt = datetime.datetime.now()
+    f.write(f"return 'GP2 Framework {dt.date()}|{dt.strftime('%I:%M %p')}'")
 
 # Publish to Workshop
 execute_fastgmad_update(get_latest_git_commit())
