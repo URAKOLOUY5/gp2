@@ -4,9 +4,9 @@
 -- ----------------------------------------------------------------------------
 
 AddCSLuaFile()
-SWEP.Slot = 1
-SWEP.SlotPos = 1
-SWEP.DrawAmmo = true
+SWEP.Slot = 0
+SWEP.SlotPos = 2
+SWEP.DrawAmmo = false
 SWEP.DrawCrosshair = true
 SWEP.Spawnable = true
 
