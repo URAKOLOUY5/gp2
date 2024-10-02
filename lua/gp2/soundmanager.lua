@@ -58,10 +58,10 @@ else
 
         if not (fl and availableLanguages[languageName]) then
             if not availableLanguages['english'] then
-                gp2error("Closecaptions for language " .. languageName .. " haven't been added to cache, english as fallback language cannot be used!")
+                GP2.Error("Closecaptions for language " .. languageName .. " haven't been added to cache, english as fallback language cannot be used!")
                 return
             else
-                gp2error("Closecaptions for language " .. languageName .. " haven't been added to cache, instead english will be used") 
+                GP2.Error("Closecaptions for language " .. languageName .. " haven't been added to cache, instead english will be used") 
                 fl = file.Read("data_static/subtitles_english.txt", "GAME")
             end
         end

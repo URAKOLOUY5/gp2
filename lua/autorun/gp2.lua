@@ -36,14 +36,6 @@ hook.Add("Initialize", "GP2::Initialize", function()
     SoundManager.Initialize()
 end)
 
---local sv_personality_core_pca_pitch = CreateConVar("sv_personality_core_pca_pitch", "180", FCVAR_NONE, "Pitch value for personality core perferred carry angles.")
---local sv_personality_core_pca_yaw = CreateConVar("sv_personality_core_pca_yaw", "-90", FCVAR_NONE, "Yaw value for personality core perferred carry angles.")
---local sv_personality_core_pca_roll = CreateConVar("sv_personasv_personality_core_pca_rolllity_core_pca_pitch", "195", FCVAR_NONE, "Roll value for personality core perferred carry angles.")
-
-local PreferredCarryAngles = {
-    ["npc_wheatley_core"] = Angle(180, -90, 195)
-}
-
 if SERVER then
     -- AcceptInput hooks
     include("gp2/inputsmanager.lua")
@@ -63,11 +55,6 @@ if SERVER then
     end)
 
     hook.Add("PlayerInitialSpawn", "GP2::PlayerInitialSpawn", function(ply, transition)
-        -- Call this one for changelevels
-        -- since player_activated called only once
-        if transition then
-            --GP2.VScriptMgr.CallHookFunction("OnPostSpawn", true)
-        end
     end)
 
     hook.Add("PostCleanupMap", "GP2::PostCleanupMap", function()
@@ -96,13 +83,17 @@ if SERVER then
             
             if IsValid(ply:GetEntityInUse()) then
                 vm:ResetSequence(10)
+                vm:RemoveEffects(EF_NODRAW)
                 ply.HeldEntityRecently = true
             else
                 if ply.HeldEntityRecently then
                     vm:ResetSequence(12)
+                    vm:RemoveEffects(EF_NODRAW)
                     ply.HeldEntityRecently = false
                 end
             end
+
+
         end
     end)
 
@@ -152,12 +143,6 @@ if SERVER then
         if ent.OnGravGunPunt and isfunction(ent.OnGravGunPunt) then
             return ent:OnGravGunPunt(ply)
         end
-    end)
-
-    hook.Add("GetPreferredCarryAngles", "GP2::GetPreferredCarryAnglesWheatley", function(ent)
-        local ret = PreferredCarryAngles[ent:GetClass()]
-
-        if ret then return ret end
     end)
 
     hook.Add( "PlayerFootstep", "GP2::PlayerFootsteps", function( ply, pos, foot, sound, volume, rf )
