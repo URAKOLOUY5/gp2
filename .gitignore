@@ -3,3 +3,5 @@
 p2
 .env
 venv/*
+mapsrc/*
+!mapsrc/*.vmf

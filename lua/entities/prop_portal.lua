@@ -114,7 +114,7 @@ if CLIENT then
             BORDER_MATERIALS[self:GetType()]:SetFloat("$PortalStatic", 1)
             BORDER_MATERIALS[self:GetType()]:SetFloat("$PortalOpenAmount", self.OpenAmount)
             BORDER_MATERIALS[self:GetType()]:SetFloat("$Stage", 2)
-            BORDER_MATERIALS[self:GetType()]:SetFloat("$PortalColorScale", 0.25)
+            BORDER_MATERIALS[self:GetType()]:SetFloat("$PortalColorScale", 1)
 		cam.End3D2D()
 	end
 
