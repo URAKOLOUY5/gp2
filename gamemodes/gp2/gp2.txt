@@ -1,0 +1,8 @@
+"gp2"
+{
+	"base"		"base"
+	"title"		"GP2 Framework"
+	"category"	"other"
+	"maps"		"^gp2_"
+	"menusystem"	"0"
+}
