@@ -41,6 +41,8 @@ function SWEP:Deploy()
         self:GetOwner():GetViewModel(0):SetBodygroup(1, 1)
         self:SetBodygroup(1, 1)
     end
+
+    return true
 end
 
 function SWEP:PrimaryAttack()
