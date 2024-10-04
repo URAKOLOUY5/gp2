@@ -36,6 +36,14 @@ local function CreateFonts()
         weight = 600,
         antialias = true,
     })
+
+    surface.CreateFont("DebugOverlayBig", {
+        font = "Courier New",
+        extended = true,
+        size = 28,
+        weight = 400,
+        outline = true
+    })
 end
 
 CreateFonts()
@@ -170,6 +178,8 @@ GP2.Hud.DeclareLegacyElement(function(scrw, scrh)
     surface_SetTextColor(255,255,255,255)
     surface_DrawText(GP2_VERSION)
 end)
+
+GP2.Hud.DeclareLegacyElement(PaintManager.LegacyHud)
 
 local GP2_Hud_Render = GP2.Hud.Render
 

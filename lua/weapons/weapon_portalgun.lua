@@ -129,3 +129,7 @@ if SERVER then
         self:SetBodygroup(1, 1)
     end
 end
+
+function SWEP:ViewModelDrawn(vm)
+    vm:RemoveEffects(EF_NODRAW)
+end

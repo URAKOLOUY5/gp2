@@ -44,6 +44,7 @@ if SERVER then
     -- Vscripts (serverside only)
     include("gp2/vscriptmanager.lua")
     include("gp2/entityextensions.lua")
+    include("gp2/paint.lua")
     include("gp2/vgui.lua")
 
     hook.Add("PlayerSpawn", "GP2::PlayerSpawn", function(ply, transition)
@@ -64,6 +65,8 @@ if SERVER then
 
     hook.Add("InitPostEntity", "GP2::InitPostEntity", function()
         GP2.VScriptMgr.RunScriptFileHandless("mapspawn")
+
+        PaintManager.Initialize()
     end)
 
     hook.Add("Think", "GP2::Think", function()
@@ -165,6 +168,8 @@ if SERVER then
         end
     end)
 else
+    include("gp2/paint.lua")
+
     include("gp2/client/hud.lua")
     include("gp2/client/vgui.lua")
     include("gp2/client/render.lua")
