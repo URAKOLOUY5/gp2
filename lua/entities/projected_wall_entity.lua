@@ -17,9 +17,14 @@ function ENT:SetupDataTables()
     self:NetworkVar( "Bool", "Updated" )
     self:NetworkVar( "Bool", "GotInitialPosition" )
     self:NetworkVar( "Vector", "InitialPosition" )
+    self:NetworkVar( "Float", "DistanceToHit" )
 end
 
 function ENT:Initialize()
+    if SERVER then
+        self.TraceFraction = 0
+    end
+    self:AddEffects(EF_NODRAW)
 end
 
 function ENT:Think()
@@ -28,12 +33,28 @@ function ENT:Think()
     end
     
 if CLIENT then
-    self:SetNextClientThink(CurTime() + 0.1)
+    self:SetNextClientThink(CurTime())
 
     if not ProjectedWallEntity.IsAdded(self) then
         self:CreateWall()
     end
 end
+    local startPos = self:GetPos()
+    local angles = self:GetAngles()
+    local fwd = angles:Forward()
+
+    local tr = util.TraceLine({
+        start = startPos,
+        endpos = startPos + fwd * MAX_RAY_LENGTH,
+        mask = MASK_SOLID_BRUSHONLY,
+    })
+
+
+    if self.TraceFraction != tr.Fraction then
+        self:SetUpdated(false)
+        self.TraceFraction = tr.Fraction
+    end
+
     self:NextThink(CurTime())
     return true
 end
@@ -48,7 +69,7 @@ function ENT:OnRemove(fd)
 end
 
 function ENT:CreateWall()
-    local startPos = self:GetParent():GetPos()
+    local startPos = self:GetPos()
     local angles = self:GetAngles()
     local fwd = angles:Forward()
     local right = angles:Right()
@@ -56,14 +77,17 @@ function ENT:CreateWall()
     local tr = util.TraceLine({
         start = startPos,
         endpos = startPos + fwd * MAX_RAY_LENGTH,
-        mask = MASK_NPCWORLDSTATIC,
+        mask = MASK_SOLID_BRUSHONLY,
     })
 
     local hitPos = tr.HitPos
     local distance = hitPos:Distance(startPos)
     local v = -distance / 192
 
-    local halfLength = (tr.HitPos - startPos):Length() / 2
+    self:SetDistanceToHit(distance)
+
+    local fullLength = (tr.HitPos - startPos):Length()
+    local halfLength = fullLength / 2
     local halfWidth = PROJECTED_WALL_WIDTH / 2
 
     local verts_col = {
@@ -71,10 +95,10 @@ function ENT:CreateWall()
         Vector(-halfLength, -halfWidth, 0),
         Vector(-halfLength, halfWidth, -1),
         Vector(-halfLength, halfWidth, 0),
-        Vector(halfLength, -halfWidth, -1),
-        Vector(halfLength, -halfWidth, 0),
-        Vector(halfLength, halfWidth, -1),
-        Vector(halfLength, halfWidth, 0)
+        Vector(fullLength, -halfWidth, -1),
+        Vector(fullLength, -halfWidth, 0),
+        Vector(fullLength, halfWidth, -1),
+        Vector(fullLength, halfWidth, 0)
     }
 
     if CLIENT then
@@ -96,21 +120,24 @@ function ENT:CreateWall()
         ProjectedWallEntity.AddToRenderList(self, self.Mesh)
     end
 
-    self:SetPos((startPos + tr.HitPos) / 2)
-
     if SERVER then
         self:PhysicsInitStatic(6)
         self:SetUpdated(true)
     else
         if not self.WallImpact then
             local wallImpactAng = tr.HitNormal:Angle()
-            wallImpactAng.z = self:GetAngles().z
+
             self.WallImpact = CreateParticleSystemNoEntity("projected_wall_impact", tr.HitPos - fwd * 4, wallImpactAng)
-            self.WallImpact:SetControlPoint(1, Vector(1, 1, 1))
+            
+            --idk how to work with this particle, maybe converter fucked it up
+            --self.WallImpact:SetControlPoint(1, Vector(1,1,1))
+        end
+
+        if not self:GetUpdated() and self.WallImpact then
+            self.WallImpact:StopEmissionAndDestroyImmediately()
+            self.WallImpact = nil
         end
     end
-
-    PrintTable(verts_col)
 
     self:EnableCustomCollisions(true) 
     self:PhysicsInitConvex(verts_col, "hard_light_bridge")

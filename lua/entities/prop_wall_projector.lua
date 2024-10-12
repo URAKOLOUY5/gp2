@@ -12,15 +12,15 @@ function ENT:Initialize()
     if SERVER then
         self:PhysicsInitStatic(SOLID_VPHYSICS)
 
-        if not self.DisabledOnStart then
+        if self.StartEnabled then
             self:Enable()
         end
     end
 end
 
 function ENT:KeyValue(k, v)
-    if k == "DisableHelper" then
-        self.DisabledOnStart = not tobool(v)
+    if k == "StartEnabled" then
+        self.StartEnabled = tobool(v)
     elseif k == "skin" then
         self:SetSkin(tonumber(v))
     end
@@ -50,7 +50,7 @@ if SERVER then
             self.WallEntity:SetPos(self:GetPos() + ang:Forward() * 8)
             self.WallEntity:SetParent(self)
             self.WallEntity:SetAngles(ang)
-            self.WallEntity:CreateWall()
+
         end
     end
 
