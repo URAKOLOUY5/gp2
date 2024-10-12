@@ -23,6 +23,7 @@ end
 function ENT:Initialize()
     if SERVER then
         self.TraceFraction = 0
+        self:SetModel("models/props_junk/PopCan01a.mdl")
     end
     self:AddEffects(EF_NODRAW)
 end
@@ -121,6 +122,7 @@ function ENT:CreateWall()
     end
 
     if SERVER then
+        -- It don't work without it
         self:PhysicsInitStatic(6)
         self:SetUpdated(true)
     else
