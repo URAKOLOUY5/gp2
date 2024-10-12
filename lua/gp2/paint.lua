@@ -8,7 +8,7 @@ local TraceLine = util.TraceLine
 PaintManager = {}
 PaintManager.ReplicatedPlayerList = {}
 
-gp2_blobulator_debug = CreateConVar("gp2_blobulator_debug", "1", FCVAR_CHEAT + FCVAR_REPLICATED, "Enable debug visualization for Blobulator/Paint implementation")
+gp2_blobulator_debug = CreateConVar("gp2_blobulator_debug", "0", FCVAR_CHEAT + FCVAR_REPLICATED, "Enable debug visualization for Blobulator/Paint implementation")
 bounce_paint_color = CreateConVar("bounce_paint_color", "0 165 255 255", FCVAR_CHEAT + FCVAR_REPLICATED, "Color of Bounce gel")
 speed_paint_color = CreateConVar("speed_paint_color", "255 165 0 255", FCVAR_CHEAT + FCVAR_REPLICATED, "Color of Speed gel")
 portal_paint_color = CreateConVar("portal_paint_color", "128 128 128 255", FCVAR_CHEAT + FCVAR_REPLICATED, "Color of Portal gel")

@@ -89,6 +89,11 @@ function ENT:Initialize()
 end
 
 function ENT:Think(ent)
+    if SERVER then
+        local owner = self:GetOwner()
+
+        if not IsValid(owner) then return end
+    end
 end
 
 if CLIENT then
