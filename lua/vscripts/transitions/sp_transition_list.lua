@@ -6,6 +6,10 @@ FIRST_MAP_WITH_UPGRADE_GUN = "sp_a2_laser_intro"
 FIRST_MAP_WITH_POTATO_GUN = "sp_a3_speed_ramp"
 LAST_PLAYTEST_MAP = "sp_a4_finale4"
 
+FORCED_NO_PORTALGUN = {
+    ["sp_a2_intro"] = true
+}
+
 CHAPTER_TITLES = {
     ["sp_a1_intro1"] = { title_text = "#portal2_Chapter1_Title", subtitle_text = "#portal2_Chapter1_Subtitle", displayOnSpawn = false, displaydelay = 1.0 },
     ["sp_a2_laser_intro"] = { title_text = "#portal2_Chapter2_Title", subtitle_text = "#portal2_Chapter2_Subtitle", displayOnSpawn = true, displaydelay = 2.5 },
@@ -219,6 +223,8 @@ function OnPostPlayerSpawn(ply)
     local map = game.GetMap()
 
     for i, level in ipairs(MapPlayOrder) do
+        if FORCED_NO_PORTALGUN[level] then continue end
+
         if level == FIRST_MAP_WITH_GUN then
             mapWithGunIndex = i
         end

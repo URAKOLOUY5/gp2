@@ -37,6 +37,34 @@ hook.Add("AcceptInput", "GP2::AcceptInput", function(ent, name, activator, calle
         end
     end
 
+    if ent:GetClass() == "point_servercommand" and value == "give weapon_portalgun" then
+        for _, ply in ipairs(player.GetAll()) do
+            ply:Give("weapon_portalgun")
+        end
+    end 
+
+    -- Hack for sp_a2_bts4
+    if ent:GetClass() == "env_entity_maker" and name:lower() == "forcespawn" and ent:GetName() == "conveyor_turret_maker" then
+        timer.Simple(1, function()
+            local conveyor_turret_body = ents.FindByName("conveyor_turret_body")
+
+            for i = 1, #conveyor_turret_body do
+                local turret = conveyor_turret_body[i]
+
+                if IsValid(turret) then
+                    local phys = turret:GetPhysicsObject()
+                    local direction = ent:GetInternalVariable("PostSpawnDirection")
+                    local vel = Angle(0, 205, 0)
+    
+                    if IsValid(phys) then
+                        phys:SetVelocity(vel:Forward() * 500)
+                        turret:SetVelocity(vel:Forward() * 500)
+                    end
+                end
+            end
+        end)
+    end
+
     if name == "O_OnCompleted" then
         -- HACK to use GetCurrentScene on actors
         local vcd = ent:GetInternalVariable("SceneFile")
