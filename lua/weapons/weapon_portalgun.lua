@@ -29,6 +29,10 @@ SWEP.Category = "Portal 2"
 function SWEP:Initialize()
     self:SetDeploySpeed(1)
     self:SetHoldType("shotgun")
+
+    if SERVER then
+        self.NextIdleTime = 0
+    end
 end
 
 function SWEP:SetupDataTables()
@@ -46,11 +50,15 @@ function SWEP:Deploy()
 end
 
 function SWEP:PrimaryAttack()
+    if not SERVER then return end
+
     if not self:CanPrimaryAttack() then return end
     self:GetOwner():EmitSound("Weapon_Portalgun.fire_blue")
 
     self:SendWeaponAnim(ACT_VM_PRIMARYATTACK)
 	self:GetOwner():SetAnimation(PLAYER_ATTACK1)
+
+    self.NextIdleTime = CurTime() + 0.5
 
     if IsValid(self:GetOwner()) and self:GetOwner():IsPlayer() then
         self:GetOwner():ViewPunch(Angle(math.Rand(-1, -0.5), math.Rand(-1, 1), 0))
@@ -63,11 +71,15 @@ function SWEP:PrimaryAttack()
 end
 
 function SWEP:SecondaryAttack()
+    if not SERVER then return end
+
     if not self:CanPrimaryAttack() then return end
     self:GetOwner():EmitSound("Weapon_Portalgun.fire_red")
 
     self:SendWeaponAnim(ACT_VM_PRIMARYATTACK)
 	self:GetOwner():SetAnimation(PLAYER_ATTACK1)
+
+    self.NextIdleTime = CurTime() + 0.5
 
     if IsValid(self:GetOwner()) and self:GetOwner():IsPlayer() then
         self:GetOwner():ViewPunch(Angle(math.Rand(-1, -0.5), math.Rand(-1, 1), 0))
@@ -116,6 +128,20 @@ end
 
 function SWEP:Think()
     if SERVER then
+        if SERVER then
+            local owner = self:GetOwner()
+            if not IsValid(owner) then return true end
+    
+            if owner:KeyPressed(IN_USE) then
+                self:SendWeaponAnim(ACT_VM_FIZZLE)
+                self.NextIdleTime = CurTime() + 0.5
+            end
+
+            if CurTime() > self.NextIdleTime and self:GetActivity() ~= ACT_VM_IDLE then
+                self:SendWeaponAnim(ACT_VM_IDLE)
+            end
+        end
+
         self:NextThink(CurTime())
         return true
     end
