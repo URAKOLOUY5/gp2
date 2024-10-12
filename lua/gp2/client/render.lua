@@ -29,6 +29,8 @@ local END_POINT_PULSE_SCALE = 16
 local HALF_VECTOR = Vector(0.5,0.5,0.5)
 local HALF2_VECTOR = Vector(0.25,0.25,0.25)
 
+local gp2_projected_wall_dlight = CreateClientConVar("gp2_projected_wall_dlight", "1", true, false, "Should Hard Light Bridge emit light? Can be expensive if bridge is long!", 0, 1)
+
 TURRET_EYE_GLOW:SetVector("$color", HALF_VECTOR)
 TURRET_BEAM_MATERIAL:SetVector("$color", HALF2_VECTOR)
 
@@ -115,6 +117,24 @@ function ProjectedWallEntity.Render()
         if wall and wall:IsValid() then
             render.SetMaterial(PROJECTED_WALL_MATERIAL)
             wall:Draw()
+
+            if gp2_projected_wall_dlight:GetBool() then
+                for i = 64, entity:GetDistanceToHit() - 32, 32 do
+                    local dlight = DynamicLight( i )
+                    local point = entity:GetParent():GetPos() + entity:GetAngles():Forward() * i
+
+                    if dlight then
+                        dlight.pos = point
+                        dlight.r = 0
+                        dlight.g = 25
+                        dlight.b = 75
+                        dlight.brightness = 1
+                        dlight.decay = 1000 * FrameTime()
+                        dlight.size = 192
+                        dlight.dietime = CurTime() + 1
+                    end
+                end
+            end
         end
     end
 end
