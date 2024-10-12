@@ -108,9 +108,10 @@ function PrepareTeleport()
 end
 
 function OnPostPlayerSpawn(ply)
-	if ply:EntIndex() == 1 then
+	if ply:EntIndex() == 1 and not ply.NotMotifsFirstTime then
 		Globals.MotifIndex = 0
 		Globals.TransitionReady = 0
 		Globals.TransitionFired = 0
+		ply.NotMotifsFirstTime = true
 	end
 end

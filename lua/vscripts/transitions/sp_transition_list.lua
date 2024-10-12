@@ -116,21 +116,13 @@ MapPlayOrder = {
     "sp_a3_00",
     "sp_a3_01",
     "sp_a3_03",
-    "@test_dome_lift",
     "sp_a3_jump_intro",
-    "@test_dome_lift",
     "sp_a3_bomb_flings",
-    "@test_dome_lift",
     "sp_a3_crazy_box",
-    "@test_dome_lift",
     "sp_a3_transition01",
-    "@test_dome_lift",
     "sp_a3_speed_ramp",
-    "@test_dome_lift",
     "sp_a3_speed_flings",
-    "@test_dome_lift",
     "sp_a3_portal_intro",
-    "@hallway",
     "sp_a3_end",
 
     -- ====================== ACT 4 ======================
@@ -170,13 +162,10 @@ MapPlayOrder = {
 
     -- Wheatley Escape
     "sp_a4_finale1",
-    "@hallway",
     "sp_a4_finale2",
-    "@hallway",
     "sp_a4_finale3",
-    "@hallway",
 
-    -- FIXME: WHEATLEY BATTLE
+    -- Wheatley Battle
     "sp_a4_finale4",
 
     -- Demo files

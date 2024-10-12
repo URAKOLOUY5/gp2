@@ -56,3 +56,21 @@ if MAPS_WITH_BROKEN_TURRETS[game.GetMap()] then
         end
     end
 end
+
+function OnPostPlayerSpawn(ply)
+    if game.GetMap() == "sp_a3_01" then
+        local ang = ply:GetAngles()
+        local i = ply:EntIndex()
+        local initialPlayerPos = ply:GetPos()
+        local initialPos = Vector(-719.880005, -1852, 0)
+        local offset = ang:Right() * (32 * (i - 1))
+
+        -- Teleport player to area to open areaportal properly
+        ply:SetPos(initialPos + offset)
+        
+        timer.Simple(13, function()
+            ply:SetPos(initialPlayerPos)
+            print('Set pos to back')
+        end)
+    end
+end

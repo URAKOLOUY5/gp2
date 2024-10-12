@@ -59,12 +59,13 @@ if SERVER then
     end)
 
     hook.Add("PostCleanupMap", "GP2::PostCleanupMap", function()
-        GP2.VScriptMgr.RunScriptFileHandless("mapspawn")
+        GP2.VScriptMgr.InitializeScriptForEntity(game.GetWorld(), "mapspawn")
         GP2.VScriptMgr.CallHookFunction("OnPostSpawn", true)
     end)
 
     hook.Add("InitPostEntity", "GP2::InitPostEntity", function()
-        GP2.VScriptMgr.RunScriptFileHandless("mapspawn")
+        GP2.VScriptMgr.InitializeScriptForEntity(game.GetWorld(), "mapspawn")
+        GP2.VScriptMgr.CallHookFunction("OnPostSpawn", true)
 
         PaintManager.Initialize()
     end)

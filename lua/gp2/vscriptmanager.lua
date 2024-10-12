@@ -33,8 +33,8 @@ GP2.VScriptMgr = {
     -- Run script file
     -- 
     InitializeScriptForEntity = function(ent, v)
-        GP2.VScriptMgr.RunScriptFile(ent, v)
         entswithvscripts[ent] = true
+        GP2.VScriptMgr.RunScriptFile(ent, v)
 
         timer.Simple(0, function()
             GP2.VScriptMgr.CallScriptFunction(ent, "Precache", true, NULL)
@@ -194,18 +194,16 @@ GP2.VScriptMgr = {
         if func and func then
             func(...)
         elseif not failesilent then
-            GP2.VScriptMgr.Error("Attempt to call script function with name '%s' (not found)")
+            GP2.VScriptMgr.Error("Attempt to call script function with name '%s' (not found)", funcname)
         end
     end,
 
     CallHookFunction = function(hookname, failesilent, ...)
         for ent in pairs(entswithvscripts) do
-            if IsValid(ent) then
+            if IsValid(ent) or ent:IsWorld() then
                 GP2.VScriptMgr.CallScriptFunctionWithArgs(ent, hookname, failesilent, ...)
             end
         end
-
-        --GP2.Print("Calling the hook function %q", hookname)
     end,
 
     Think = function()
