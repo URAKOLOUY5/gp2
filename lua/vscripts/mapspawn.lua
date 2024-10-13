@@ -32,10 +32,10 @@ if IsValid(elevator_1_bottom_path_1) then
     elevator_1_bottom_path_1:SetPos(pos)
 end
 
--- Fix shadows for trap on sp_a1_intro3
-local robot_drops = ents.FindByName("robot_drop_0*")
+-- Fix shadows for prop_dynamic
+local prop_dynamics = ents.FindByClass("prop_dynamic")
 
-for _, ent in pairs(robot_drops) do
+for _, ent in pairs(prop_dynamics) do
     ent:DrawShadow(false)
 end
 
