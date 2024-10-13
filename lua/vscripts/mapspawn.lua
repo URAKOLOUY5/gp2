@@ -74,3 +74,10 @@ function OnPostPlayerSpawn(ply)
         end)
     end
 end
+
+-- Set @glados model to mossman to get poseparameter
+local glados = ents.FindByName("@glados")[1]
+
+if IsValid(glados) then
+    glados:SetModel("models/mossman.mdl")
+end

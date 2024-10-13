@@ -162,6 +162,14 @@ sandbox.ScriptShowHudMessageAll = function(message, delay)
     end)
 end
 
+sandbox.TurnOnPotatos = function()
+    SetGlobalBool("GP2::PotatosEnabled", true)
+end
+
+sandbox.TurnOffPotatos = function()
+    SetGlobalBool("GP2::PotatosEnabled", false)
+end
+
 VscriptGlobals = VscriptGlobals or {}
 sandbox.Globals = VscriptGlobals
 

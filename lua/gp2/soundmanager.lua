@@ -93,13 +93,3 @@ else
         emitCaption(name, duration)
     end)  
 end
-
-hook.Add("EntityEmitSound", "GP2::EntityEmitSound", function(data)
-    local name = data.OriginalSoundName
-    local level = data.SoundLevel
-    local ent = data.Entity
-    local pos = data.Pos
-    local duration = SoundDuration(data.SoundName)
-
-    SoundManager.EntityEmitSound(name, ent, level, pos, duration)
-end)

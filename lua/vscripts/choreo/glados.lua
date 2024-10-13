@@ -1268,3 +1268,13 @@ end
 -------------------------------------------------------------------------------
 -- Nag Table functions end
 -------------------------------------------------------------------------------
+
+-- Control Potatos light
+
+function PotatosTurnOff()
+    TurnOffPotatos()
+end
+
+function PotatosTurnOn()
+    TurnOnPotatos()    
+end

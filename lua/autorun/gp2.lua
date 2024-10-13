@@ -32,10 +32,6 @@ include("gp2/particles.lua")
 
 GP2_VERSION = include("gp2/version.lua")
 
-hook.Add("Initialize", "GP2::Initialize", function()
-    SoundManager.Initialize()
-end)
-
 if SERVER then
     -- AcceptInput hooks
     include("gp2/inputsmanager.lua")
@@ -46,6 +42,12 @@ if SERVER then
     include("gp2/entityextensions.lua")
     include("gp2/paint.lua")
     include("gp2/vgui.lua")
+    include("gp2/mouthmanager.lua")
+
+    hook.Add("Initialize", "GP2::Initialize", function()
+        SoundManager.Initialize()
+        MouthManager.Initialize()
+    end)
 
     hook.Add("PlayerSpawn", "GP2::PlayerSpawn", function(ply, transition)
         -- Try to call OnPostPlayerSpawn on all Vscripted entities
@@ -68,20 +70,23 @@ if SERVER then
         GP2.VScriptMgr.CallHookFunction("OnPostSpawn", true)
 
         PaintManager.Initialize()
+
+        SetGlobalFloat("GP2::GladosActorMouth", 1)
     end)
 
     hook.Add("Think", "GP2::Think", function()
         GP2.VScriptMgr.Think()
         -- SoundManager.Think()
+        MouthManager.Think()
 
         for _, ply in ipairs(player.GetHumans()) do
-            if not ply:Alive() then return end
+            if not ply:Alive() then continue end
             local wep = ply:GetActiveWeapon()
-            if not IsValid(wep) then return end
-            if wep:GetClass() ~= "weapon_portalgun" then return end
+            if not IsValid(wep) then continue end
+            if wep:GetClass() ~= "weapon_portalgun" then continue end
             local vm = ply:GetViewModel(0)
 
-            if not IsValid(vm) then return end
+            if not IsValid(vm) then continue end
 
             vm:RemoveEffects(EF_NODRAW)
             
@@ -96,8 +101,6 @@ if SERVER then
                     ply.HeldEntityRecently = false
                 end
             end
-
-
         end
     end)
 
@@ -160,6 +163,18 @@ if SERVER then
         end
     end )
 
+    hook.Add("EntityEmitSound", "GP2::EntityEmitSound", function(data)
+        local name = data.OriginalSoundName
+        local file_path = data.SoundName
+        local level = data.SoundLevel
+        local ent = data.Entity
+        local pos = data.Pos
+        local duration = SoundDuration(data.SoundName)
+    
+        SoundManager.EntityEmitSound(name, ent, level, pos, duration)
+        MouthManager.EmitSound(ent, file_path)
+    end)    
+
     net.Receive(GP2.Net.SendLoadedToServer, function(len, ply)
         local whom = net.ReadEntity()
         --GP2.Print("Player " .. tostring(whom) .. " loaded on server!")
@@ -169,6 +184,10 @@ if SERVER then
         end
     end)
 else
+    hook.Add("Initialize", "GP2::Initialize", function()
+        SoundManager.Initialize()
+    end)
+
     include("gp2/paint.lua")
 
     include("gp2/client/hud.lua")

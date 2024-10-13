@@ -253,7 +253,7 @@ function OnPostPlayerSpawn(ply)
 
         if i >= mapWithGunPotatoGun and level == map then
             timer.Simple(0, function()
-                ply:GetActiveWeapon():UpdatePotatoGun()
+                ply:GetActiveWeapon():UpdatePotatoGun(true)
             end)
         end
     end
@@ -268,7 +268,15 @@ function TransitionFromMap()
         local order = MapPlayOrder[i]
 
         if order == game.GetMap() then
-            local nextMap = MapPlayOrder[i + 1]
+            local i1 = i + 1
+            local nextMap = MapPlayOrder[i1]
+
+            while nextMap ~= nil and nextMap:StartsWith("@") do
+                i1 = i1 + 1
+                nextMap = MapPlayOrder[i1]
+            end
+
+            if not nextMap then return end
 
             if nextMap then
                 print("Changing level to " .. nextMap)

@@ -121,5 +121,28 @@ hook.Add("AcceptInput", "GP2::AcceptInput", function(ent, name, activator, calle
             end
         end         
     end
+
+    if ent:GetClass() == "logic_playerproxy" then
+        local potatoGunActions = {
+            addpotatostoportalgun = true,
+            removepotatosfromportalgun = false
+        }
+
+        name = name:lower()
+        
+        if potatoGunActions[name] ~= nil then
+            for _, ply in ipairs(player.GetAll()) do
+                if not ply:Alive() then continue end
+                
+                for _, wep in ipairs(ply:GetWeapons()) do
+                    if wep:GetClass() == "weapon_portalgun" then
+                        local isActive = ply:GetActiveWeapon() == wep
+                        wep:UpdatePotatoGun(isActive and potatoGunActions[name])
+                        wep:SetIsPotatoGun(potatoGunActions[name])
+                    end
+                end
+            end
+        end
+    end
 end)
 

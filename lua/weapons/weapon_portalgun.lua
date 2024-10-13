@@ -128,31 +128,36 @@ end
 
 function SWEP:Think()
     if SERVER then
-        if SERVER then
-            local owner = self:GetOwner()
-            if not IsValid(owner) then return true end
-    
-            if owner:KeyPressed(IN_USE) then
-                self:SendWeaponAnim(ACT_VM_FIZZLE)
-                self.NextIdleTime = CurTime() + 0.5
-            end
+        local owner = self:GetOwner()
+        if not IsValid(owner) then return true end
 
-            if CurTime() > self.NextIdleTime and self:GetActivity() ~= ACT_VM_IDLE then
-                self:SendWeaponAnim(ACT_VM_IDLE)
-            end
+        if owner:KeyPressed(IN_USE) then
+            self:SendWeaponAnim(ACT_VM_FIZZLE)
+            self.NextIdleTime = CurTime() + 0.5
         end
 
-        self:NextThink(CurTime())
-        return true
+        if CurTime() > self.NextIdleTime and self:GetActivity() ~= ACT_VM_IDLE then
+            self:SendWeaponAnim(ACT_VM_IDLE)
+        end
     end
+
+    self:NextThink(CurTime())
+    return true
 end
 
 if SERVER then
-    function SWEP:UpdatePotatoGun()
-        self:SendWeaponAnim(ACT_VM_DEPLOY)
-        self:SetIsPotatoGun(true)
-        self:GetOwner():GetViewModel(0):SetBodygroup(1, 1)
-        self:SetBodygroup(1, 1)
+    function SWEP:UpdatePotatoGun(into)
+        self:SendWeaponAnim(ACT_VM_DRAW)
+        self.NextIdleTime = CurTime() + 5
+        if into then
+            self:GetOwner():GetViewModel(0):SetBodygroup(1, 1)
+            self:SetBodygroup(1, 1)
+            self:SetIsPotatoGun(true)
+        else
+            self:GetOwner():GetViewModel(0):SetBodygroup(1, 0)
+            self:SetBodygroup(1, 0)
+            self:SetIsPotatoGun(false)
+        end
     end
 end
 
