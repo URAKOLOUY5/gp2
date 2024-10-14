@@ -29,6 +29,10 @@ GP2 = {
 include("gp2/netmessages.lua")
 include("gp2/soundmanager.lua")
 include("gp2/particles.lua")
+AddCSLuaFile("gp2/netmessages.lua")
+AddCSLuaFile("gp2/soundmanager.lua")
+AddCSLuaFile("gp2/particles.lua")
+
 
 GP2_VERSION = include("gp2/version.lua")
 
@@ -189,10 +193,13 @@ else
     end)
 
     include("gp2/paint.lua")
-
+    AddCSLuaFile("gp2/paint.lua")
     include("gp2/client/hud.lua")
+    AddCSLuaFile("gp2/client/hud.lua")
     include("gp2/client/vgui.lua")
+    AddCSLuaFile("gp2/client/vgui.lua")
     include("gp2/client/render.lua")
+    AddCSLuaFile("gp2/client/render.lua")
 
     hook.Add("Think", "GP2::Think", function()
         SoundManager.Think()
