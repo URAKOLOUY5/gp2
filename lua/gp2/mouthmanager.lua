@@ -11,9 +11,23 @@ local actors = {}
 local specialCharsRegex = "[*#@><^)}!?&~+%$%%%(%%-]"
 local NWVAR_MOUTH = "NWVAR_MOUTH"
 
-local ADVANCE_DELAY = 1 / 16
+local ADVANCE_DELAY = 1 / (16 + 2)
 
-local GladosMouth = 1
+local PotatosMouth = 1
+local SphereMouth = 1
+
+local PotatosMouthName = "GP2::GladosActorMouth"
+local SphereMouthName = "GP2::SphereMouth"
+
+local sphereClasses = {
+    ["npc_personality_core"] = true,
+    ["npc_wheatley_boss"] = true,
+    ["generic_actor"] = true
+}
+
+local potatoClasses = {
+    ["generic_actor"] = true
+}
 
 function MouthManager.Initialize()
     local lipsyncs = {}
@@ -36,7 +50,7 @@ function MouthManager.Initialize()
     for _, lipsync in ipairs(lipsyncs) do
         local content = file.Read(lipsync, "GAME")
         local relativePath = string.gsub(lipsync, "^sound/", "")
-        relativePath = string.gsub(relativePath, "_lipsync_", "")
+        relativePath = string.gsub(relativePath, "_lipsync_", ""):lower()
 
         local data = CompileString(content, "LIPSYNC DATA ", true)()
 
@@ -50,7 +64,7 @@ local function removeSpecialCharacters(filePath)
 end
 
 function MouthManager.EmitSound(actor, soundFile)
-    soundFile = removeSpecialCharacters(soundFile)
+    soundFile = removeSpecialCharacters(soundFile):lower()
 
     GP2.Print("Mouth emitted " .. soundFile .. ' on target ' .. tostring(actor))
     
@@ -62,6 +76,8 @@ end
 function MouthManager.Think()
     for actor, data in pairs(actors) do
         if not actors[actor] then continue end
+
+        local class = actor:GetClass()
 
         local marker = data.marker
         local soundFile = data.soundFile
@@ -79,12 +95,23 @@ function MouthManager.Think()
 
             data.marker = marker
 
-            GladosMouth = math.max(lpData[marker], 0.1)
             GP2.Print("Updating MOUTH to " .. lpData[marker] .. " value")
             data.nextAdvanceTime = CurTime() + ADVANCE_DELAY
+            
+            -- Wheatley
+            if sphereClasses[class] then
+                SphereMouth = math.max(lpData[marker], 0.1)
+            elseif potatoClasses[class] then
+                PotatosMouth = math.max(lpData[marker], 0.1)
+            else
+                -- Remove actor from list because it's not valid for proxy
+                actors[actor] = nil
+            end
         end
     end
 
-    GladosMouth = math.Approach(GladosMouth, 0, 0.03)
-    SetGlobalFloat("GP2::GladosActorMouth", GladosMouth)
+    PotatosMouth = math.Approach(PotatosMouth, 0.1, 0.03)
+    SphereMouth = math.Approach(SphereMouth, 0.1, 0.03)
+    SetGlobalFloat(PotatosMouthName, PotatosMouth)
+    SetGlobalFloat(SphereMouthName, SphereMouth)
 end
