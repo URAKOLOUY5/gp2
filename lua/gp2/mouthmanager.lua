@@ -29,6 +29,19 @@ local potatoClasses = {
     ["generic_actor"] = true
 }
 
+local potatoNames = {
+    ["@glados"] = true,
+    ["@actor_potatos"] = true,
+}
+
+local function is_sphere(ent)
+    return sphereClasses[ent:GetClass()] and not potatoNames[ent:GetName()]
+end
+
+local function is_potatos(ent)
+    return potatoClasses[ent:GetClass()] and potatoNames[ent:GetName()]
+end
+
 function MouthManager.Initialize()
     local lipsyncs = {}
     
@@ -65,10 +78,10 @@ end
 
 function MouthManager.EmitSound(actor, soundFile)
     soundFile = removeSpecialCharacters(soundFile):lower()
-
-    GP2.Print("Mouth emitted " .. soundFile .. ' on target ' .. tostring(actor))
     
     if not lipsyncData[soundFile] then return end
+
+    GP2.Print("Mouth emitted " .. soundFile .. ' on target ' .. tostring(actor))
 
     actors[actor] = { marker = 0, value = 1, soundFile = soundFile, nextAdvanceTime = CurTime() }    
 end
@@ -94,24 +107,21 @@ function MouthManager.Think()
             end 
 
             data.marker = marker
-
-            GP2.Print("Updating MOUTH to " .. lpData[marker] .. " value")
             data.nextAdvanceTime = CurTime() + ADVANCE_DELAY
-            
+
             -- Wheatley
-            if sphereClasses[class] then
-                SphereMouth = math.max(lpData[marker], 0.1)
-            elseif potatoClasses[class] then
+            if is_sphere(actor) then
+                SphereMouth = math.max(lpData[marker], 0.5)
+                --print('Mouth for sphere updated to ' .. SphereMouth)
+            elseif is_potatos(actor) then
                 PotatosMouth = math.max(lpData[marker], 0.1)
-            else
-                -- Remove actor from list because it's not valid for proxy
-                actors[actor] = nil
+                --print('Mouth for potatos updated to ' .. PotatosMouth)
             end
         end
     end
 
     PotatosMouth = math.Approach(PotatosMouth, 0.1, 0.03)
-    SphereMouth = math.Approach(SphereMouth, 0.1, 0.03)
+    SphereMouth = math.Approach(SphereMouth, 0, 0.03)
     SetGlobalFloat(PotatosMouthName, PotatosMouth)
     SetGlobalFloat(SphereMouthName, SphereMouth)
 end
