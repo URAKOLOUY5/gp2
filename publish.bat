@@ -24,8 +24,8 @@ if errorlevel 1 (
     exit /b 1
 )
 
-echo Publish completed!
-
 python publish.py
+
+echo Publish completed!
 
 endlocal
