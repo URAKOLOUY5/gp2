@@ -3,3 +3,4 @@ numpy
 pyqt6
 qt6-applications
 matplotlib
+pyinstaller
