@@ -81,7 +81,7 @@ function MouthManager.EmitSound(actor, soundFile)
     
     if not lipsyncData[soundFile] then return end
 
-    GP2.Print("Mouth emitted " .. soundFile .. ' on target ' .. tostring(actor))
+    -- GP2.Print("Mouth emitted " .. soundFile .. ' on target ' .. tostring(actor))
 
     actors[actor] = { marker = 0, value = 1, soundFile = soundFile, nextAdvanceTime = CurTime() }    
 end
