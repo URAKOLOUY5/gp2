@@ -122,13 +122,13 @@ hook.Add("AcceptInput", "GP2::AcceptInput", function(ent, name, activator, calle
         end         
     end
 
+    name = name:lower()
+
     if ent:GetClass() == "logic_playerproxy" then
         local potatoGunActions = {
             addpotatostoportalgun = true,
             removepotatosfromportalgun = false
         }
-
-        name = name:lower()
         
         if potatoGunActions[name] ~= nil then
             for _, ply in ipairs(player.GetAll()) do
@@ -142,6 +142,22 @@ hook.Add("AcceptInput", "GP2::AcceptInput", function(ent, name, activator, calle
                     end
                 end
             end
+        end
+    end
+
+    if ent:GetClass() == "env_tonemap_controller" and name == "setbloomscale" then
+        loweredValue = tonumber(value) * 0.2
+
+        if not ent.DontCallBloomScaleAgain then
+            ent.DontCallBloomScaleAgain = true
+            --print('Rerouting setbloomscale out to ' .. loweredValue)
+            ent:Input("setbloomscale", NULL, NULL, loweredValue)
+
+            timer.Simple(0, function()
+                ent.DontCallBloomScaleAgain = nil
+            end)
+
+            return true
         end
     end
 end)

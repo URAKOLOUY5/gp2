@@ -75,7 +75,22 @@ if SERVER then
 
         PaintManager.Initialize()
 
-        SetGlobalFloat("GP2::GladosActorMouth", 1)
+        
+        timer.Simple(0, function()
+            local tonemapCtrls = ents.FindByClass("env_tonemap_controller")
+
+            if #tonemapCtrls == 0 then
+                local ctrl = ents.Create("env_tonemap_controller")
+                ctrl:Spawn()
+                ctrl:Activate()
+                table.insert(tonemapCtrls, ctrl)
+            end
+    
+            for _, ent in ipairs(tonemapCtrls) do
+                -- Set to 1, triggers reroute in inputsmanager.lua
+                ent:Input("setbloomscale", NULL, NULL, 1)
+            end
+        end)
     end)
 
     hook.Add("Think", "GP2::Think", function()
