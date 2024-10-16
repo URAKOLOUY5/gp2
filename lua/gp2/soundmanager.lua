@@ -32,13 +32,16 @@ else
     local cc_lang = GetConVar("cc_lang")
     local languageName = ""
 
+    local recentCaptions = {}
+
     local availableLanguages = {}
 
     local function emitCaption(name, duration)
         local token = tokens[name:lower()]
         duration = duration * 4.414815018085938 -- idk it works, for some reasons duration produces strange values?
-        if token then 
+        if token and not recentCaptions[token] then 
             gui.AddCaption(token, duration)
+            recentCaptions[token] = CurTime() + 0.5
         end
     end
 
@@ -80,6 +83,12 @@ else
             GP2.Print("Current language for closecaptions is " .. languageName)
             precacheClosecaptionFiles()
             precacheClosecaptions()
+        end
+
+        for token, removalTime in pairs(recentCaptions) do
+            if CurTime() > removalTime then
+                recentCaptions[token] = nil
+            end
         end
     end
     
