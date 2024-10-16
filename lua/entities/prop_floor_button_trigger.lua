@@ -5,8 +5,9 @@
 
 ENT.Type = "brush"
 ENT.Base = "base_brush"
-ENT.TouchingEnts = 0
+ENT.TouchingEnts = {}
 ENT.Button = NULL
+ENT.IsPressed = false
 
 local BUTTON_VALID_ENTS = {
     ["player"] = true,
@@ -23,28 +24,39 @@ function ENT:SetButton(btn)
     self.Button = btn
 end
 
+function ENT:Think()
+    for i = #self.TouchingEnts, 1, -1 do
+        local ent = self.TouchingEnts[i]
+
+        if not IsValid(ent) then
+            table.remove(self.TouchingEnts, i)
+        end
+    end
+
+    if #self.TouchingEnts == 0 and self.IsPressed and IsValid(self.Button) then
+        self.Button:PressOut()
+        self.IsPressed = false
+    end
+end
+
 function ENT:StartTouch(ent)
     if IsValid(self.Button) and BUTTON_VALID_ENTS[ent:GetClass()] 
     and isfunction(self.Button.IsButton) and self.Button:IsButton() then
-        self.TouchingEnts = self.TouchingEnts + 1
+        table.insert(self.TouchingEnts, ent)
         self.Button:Press()
 
         if ent:GetClass() == "prop_weighted_cube" then
             ent:SetActivated(true)
         end
+
+        self.IsPressed = true
     end
 end
 
 function ENT:EndTouch(ent)
-    self.TouchingEnts = self.TouchingEnts - 1
+    table.RemoveByValue(self.TouchingEnts, ent)
 
     if ent:GetClass() == "prop_weighted_cube" then
         ent:SetActivated(false)
-    end
-
-    if self.TouchingEnts == 0 then
-        if IsValid(self.Button) then
-            self.Button:PressOut()
-        end
     end
 end
