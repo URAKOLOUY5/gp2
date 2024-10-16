@@ -1,0 +1,68 @@
+Water
+{
+	$surfaceprop Slime
+
+	$envmap "env_cubemap"
+	$envmaptint "[0.91 0.91 0.91]"
+	$envmapsaturation 0.5
+	$fresnelreflection 1.01
+
+	$normalmap "liquids/water_river_normal_sharp"
+	$bottommaterial "nature/water_coast01_beneath"
+	$bumpframe 0
+
+	$abovewater 1
+	$forceexpensive 1
+
+	$reflecttexture "_rt_waterreflection"
+	$reflecttint "{176 149 130}"
+	$reflectamount 0.5
+
+	$refracttexture "_rt_waterrefraction"
+	$refract 1
+	$refracttint "{1 1 1}"
+	$refractamount 0.5
+
+	$fogenable 1
+	$fogcolor "{34 30 19 3}"
+	$fogstart 0
+	$fogend 15
+
+	$bumptransform "center 0.5 0.5 scale 15 15 rotate 0 translate 0 0"
+
+	%compilewater 1
+
+	$cvar "[.5 .5]"
+	$svar "[7 7]"
+	$rvar 15
+	$tvar "[0 0]"
+
+	$sine1 0
+	$sine2 0
+
+	Proxies
+	{
+		linearramp
+		{
+			rate .01
+			initialvalue 0
+			resultvar "$tvar[0]"
+		}
+		
+		linearramp
+		{
+			rate .04
+			initialvalue 0
+			resultvar "$tvar[1]"
+		}
+
+		texturetransform
+		{
+			centervar $cvar
+			scalevar $svar
+			rotatevar $rvar
+			translatevar $tvar
+			resultvar $bumptransform
+		}
+	}
+}
