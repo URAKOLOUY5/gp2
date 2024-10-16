@@ -235,9 +235,8 @@ function ENT:AnimateThink()
 					}
 				)
 
-				if tr.Hit then
+				if not tr.Hit then
 					self:ResetSequence("intheair")
-					print('inthair')
 				else
 					local random = math.random(0, 2)
 
