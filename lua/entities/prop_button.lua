@@ -17,8 +17,6 @@ util.PrecacheSound("Portal.button_up")
 util.PrecacheSound("Portal.button_locked")
 util.PrecacheSound("Portal.room1_TickTock")
 
-local BUTTON_MODEL = "models/props/switch001.mdl"
-
 ENT.__input2func = {
     ["press"] = function(self, activator, caller, data)
         self:Press()
@@ -35,7 +33,7 @@ ENT.__input2func = {
 }
 
 function ENT:Initialize()
-    self:SetModel(BUTTON_MODEL)
+    self:SetModel(self:GetButtonModelName())
     self:PhysicsInitStatic(SOLID_VPHYSICS)
     
     if SERVER then
@@ -44,6 +42,13 @@ function ENT:Initialize()
 
     self.UpSequence = self:LookupSequence( "up" )
     self.DownSequence = self:LookupSequence( "down" )
+
+    self.SoundDown = "Portal.button_down"
+    self.SoundUp = "Portal.button_up"
+end
+
+function ENT:GetButtonModelName()
+    return "models/props/switch001.mdl"
 end
 
 function ENT:SetupDataTables()
@@ -83,7 +88,7 @@ function ENT:Press()
     if self:GetIsPressed() then return end
 
     self:SetIsPressed(true)
-    self:EmitSound("Portal.button_down")
+    self:EmitSound(self.SoundDown)
     self:ResetSequence(self.DownSequence)
     self:TriggerOutput("OnPressed")
     self.NextReleaseTime = CurTime() + self.DelayBeforeReset
@@ -91,7 +96,7 @@ end
 
 function ENT:CancelPress()
     self:SetIsPressed(false)
-    self:EmitSound("Portal.button_up")
+    self:EmitSound(self.SoundUp)
     self:ResetSequence(self.UpSequence)
 end
 
