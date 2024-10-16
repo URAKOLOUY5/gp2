@@ -67,7 +67,7 @@ function MouthManager.Initialize()
 
         local data = CompileString(content, "LIPSYNC DATA ", true)()
 
-        print('Added [ "' .. relativePath .. '"] = ' .. tostring(#data))
+        --print('Added [ "' .. relativePath .. '"] = ' .. tostring(#data))
         lipsyncData[relativePath] = data
     end
 end
