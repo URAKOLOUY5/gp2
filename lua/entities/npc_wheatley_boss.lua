@@ -31,3 +31,12 @@ function ENT:KeyValue(k, v)
         self:SetModel(v)
     end
 end
+
+function ENT:Think()
+    if SERVER then
+        self:UpdateBoneFollowers()
+    end
+
+    self:NextThink(CurTime())
+    return true
+end
