@@ -144,7 +144,6 @@ SceneTableLookup[-4447] = "-4447_01"	-- might have gone too far...
 -- sp_a4_tb_catch
 -- ======================================
 	
-	4470
 SceneTableLookup[-4470] = "-4470_01"	--Good lord is that classical music...
 SceneTableLookup[-4412] = "-4412_01"	-- Oh! I didn’t hear you come in.  I was just polishing my… book museum, when it occurred to me, I’ve read all of the books. Tragic. Speaking as someone who can literally read. Not bragging.
 										-- Anyway. Just finished the last one. The hardest one. Machiavelli. Don’t know what all the fuss was about. Understood it perfectly.
@@ -3012,38 +3011,38 @@ SceneTableLookup[-4951] = "-4951_01" 	-- Oh thank god, you're alright.
 		-- Hey! Come back! Come back!
 		SceneTable["-4805_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_mashplate_escape02.vcd") 
-			char = "wheatley"
-			postdelay = 1.0
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true
-			--queue = true
-			queuecharacter = "glados"
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_mashplate_escape02.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
+			noDingOn = true,
+			--queue = true,
+			queuecharacter = "glados",
 		}
 		
 		-- No, seriously. Do come back. Come back. Please.
 		SceneTable["-4806_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_death_trap_escape02.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_death_trap_escape02.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true
 		}
 
 		-- Okay, I've decided not to kill you. IF you come back.
 		SceneTable["-4807_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_death_trap_escape03.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_death_trap_escape03.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true
 		}
 
@@ -3054,294 +3053,244 @@ SceneTableLookup[-4951] = "-4951_01" 	-- Oh thank god, you're alright.
 		-- Oh! You came back! Didn't actually plan... for that. Can't actually reset the death trap. So. Ah. Could you jump into that pit, there? Would you mind just jumping in... to the pit?
 		SceneTable["-4500_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale01_cameback01.vcd") 
-			char = "wheatley"
-			postdelay = 0.2 
-			predelay = 0.0
-			next = "-4500_02"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale01_cameback01.vcd"),
+			char = "wheatley",
+			postdelay = 0.2,
+			predelay = 0.0,
+			next = "-4500_02",
+			noDingOff = true,
 			noDingOn = true
 		}	
 
 		-- Could you just jump into that pit? There. That deadly pit.    
 		SceneTable["-4500_02" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale01_cameback_nags01.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = "-4500_03"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale01_cameback_nags01.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = "-4500_03",
+			noDingOff = true,
 			noDingOn = true
 		}		
 
 		-- You're saying to yourself, why should I jump into the pit? I'll tell you why. Guess who's down there? Your parents! You're not adopted after all! It's your natural parents down there in the pit. SHould have mentioned it before. But I didn't. So jump on    
 		SceneTable["-4500_03" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale01_cameback_nags02.vcd") 
-			char = "wheatley"
-			postdelay = 1.0  
-			predelay = 0.0
-			next = "-4500_04"
-			noDingOff = true
-			noDingOn = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale01_cameback_nags02.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = "-4500_04",
+			noDingOff = true,
+			noDingOn = true,
 		}	
 
 		-- Oh I'll tell you what's also down there. Your parents and... There's also an escape elevator!. Down there. Funny. I should have mentioned it before.  But so it's down there. So pop down. Jump down. You've got your folks down there and an escape elevator  
 		SceneTable["-4500_04" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale01_cameback_nags03.vcd") 
-			char = "wheatley"
-			postdelay = 1.0   
-			predelay = 0.0
-			next = "-4500_05"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale01_cameback_nags03.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = "-4500_05",
+			noDingOff = true,
 			noDingOn = true
 		}		
 
 		-- And what else is down there... Tell you what, it's only a new jumpsuit. A very trendy designer jumpsuit from France. Down there.  Which is exactly your size. And it it's a bit baggy, we got a tailor down there as well.                                      
 		SceneTable["-4500_05" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale01_cameback_nags04.vcd") 
-			char = "wheatley"
-			postdelay = 1.0   
-			predelay = 0.0
-			next = "-4500_06"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale01_cameback_nags04.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = "-4500_06",
+			noDingOff = true,
 			noDingOn = true
 		}	
 
 		-- And what's this, a lovely handbag? And the three portal device! It's all down there!                                                                                                                                                                         
 		SceneTable["-4500_06" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale01_cameback_nags05.vcd") 
-			char = "wheatley"
-			postdelay = 1.0  
-			predelay = 0.0
-			next = "-4500_07"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale01_cameback_nags05.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = "-4500_07",
+			noDingOff = true,
 			noDingOn = true
 		}	
 
 		-- Um. You've got a yacht. And... Boys! Loads of fellas. Hunky guys down there. Possibly even a boyfriend! Who's to say at this stage. But, a lot of good looking fellas down there. And, ah, a boy band as well! That haven't seen a woman in years.                                                                                                                                                                                
 		SceneTable["-4500_07" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale01_cameback_nags06.vcd") 
-			char = "wheatley"
-			postdelay = 3.0
-			predelay = 0.0
-			next = "-4500_08"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale01_cameback_nags06.vcd"),
+			char = "wheatley",
+			postdelay = 3.0,
+			predelay = 0.0,
+			next = "-4500_08",
+			noDingOff = true,
 			noDingOn = true
 		}	
 
 		-- You really do have brain damage, don't you?
 		SceneTable["-4500_08" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale01_cameback02.vcd") 
-			char = "glados"
-			postdelay = 0.1 
-			predelay = 0.0
-			next = "-4500_09"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale01_cameback02.vcd"),
+			char = "glados",
+			postdelay = 0.1,
+			predelay = 0.0,
+			next = "-4500_09",
+			noDingOff = true,
 			noDingOn = true
 		}			
 
 		-- I can't believe you came back.
 		SceneTable["-4500_09" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale01_cameback01.vcd") 
-			char = "glados"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale01_cameback01.vcd"),
+			char = "glados",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true
 		}	
 		
 		-- Oh! Good! I did not think that was going to work.
 		SceneTable["-4854_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_playerdies01.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_playerdies01.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true	
 		}
 		
 		-- Do you remember when we were friends? 
 		SceneTable["-4808_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_death_trap_escape06.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_death_trap_escape06.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true
 		}
 		
 		-- Ahh, friendship. Friendly times. We had a lot of good times, remember? Back in the old days.
 		SceneTable["-4809_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_death_trap_escape07.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_death_trap_escape07.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true
 		}
 		
 		-- Oh. Just thinking back to the old times. The old days when we were friends, good old friends. Not enemies. And I would say something like "Come back!" and you'd be like, "Yeah, no problem," and you'd come back. Whatever happened to those days?
 		SceneTable["-4810_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_death_trap_escape05.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_death_trap_escape05.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true
 		}
 
 		-- Ah. Can't help but notice you're not coming back.
 		SceneTable["-4811_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_death_trap_escape04.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_death_trap_escape04.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true
 		}
 
 		-- Oh! I've got an idea.
 		SceneTable["-4812_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_death_trap_escape10.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_death_trap_escape10.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true
 		}
 		
 		-- Yes! Yes! In your face!
 		SceneTable["-4498_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale01_smash02.vcd") 
-			char = "wheatley"
-			postdelay = 1.2 
-			predelay = 0.8
-			next = "-4498_02"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale01_smash02.vcd"),
+			char = "wheatley",
+			postdelay = 1.2,
+			predelay = 0.8,
+			next = "-4498_02",
+			noDingOff = true,
 			noDingOn = true
 		}		
 
 		-- Fine. Let the games begin.
 		SceneTable["-4498_02" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale01_smash03.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale01_smash03.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
+			noDingOn = true,
 		}
-
-		
-	}
-
-
-		
-	if (curMapName=="sp_a4_finale1")
-	
-	{	
-		/*
-		-- ====================================== Finale Escape
-		
-		-- I don’t get it.
-		SceneTable["-4031_01" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_escapeoutofbounds01.vcd") 
-			char = "glados"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4031_02"
-			noDingOff = true
-			noDingOn = true	
-		}
-		
-		-- Oh.  Mashed Potatos.  I just got it.
-		SceneTable["-4031_02" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_escapeoutofbounds02.vcd") 
-			char = "glados"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4031_03"
-			noDingOff = true
-			noDingOn = true	
-		}
-		
-		-- We need to escape now.  Right now.
-		SceneTable["-4031_03" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_escapeoutofbounds03.vcd") 
-			char = "glados"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true
-		}
-		*/
-	}
-	
+    end
 	
 -- ======================================
 -- Wheatley finale2 chase
 -- ======================================
 	
-	if (curMapName=="sp_a4_finale2")
-	{
+	if (curMapName=="sp_a4_finale2") then
 		-- Hold on, hold on, hold on...
 		SceneTable["-4820_01"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_trapintro01.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.5
-			next = "-4820_02"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_trapintro01.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.5,
+			next = "-4820_02",
+			noDingOff = true,
 			noDingOn = true
 		}
 		-- Almost there. Don’t mind me. Continue escaping.
 		SceneTable["-4820_02"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_trapintro02.vcd") 
-			char = "wheatley"
-			postdelay = 20 
-			predelay = 0.0
-			next = "-4821_01"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_trapintro02.vcd"),
+			char = "wheatley",
+			postdelay = 20,
+			predelay = 0.0,
+			next = "-4821_01",
+			noDingOff = true,
 			noDingOn = true
 		}
 		-- So-yes. It's a trap. But it's the only way through. Let's just do it.
 		SceneTable["-4821_01"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale2_itsatrap01.vcd") 
-			char = "glados"
-			postdelay = 0.2 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale2_itsatrap01.vcd"),
+			char = "glados",
+			postdelay = 0.2,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true
 		}
 
@@ -3349,450 +3298,373 @@ SceneTableLookup[-4951] = "-4951_01" 	-- Oh thank god, you're alright.
 		-- Ha! Death trap!
 		SceneTable["-4822_01"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_turrettrap_enter01.vcd") 
-			char = "wheatley"
-			postdelay = 0.6 
-			predelay = 0.0
-			next = "-4822_01a"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_turrettrap_enter01.vcd"),
+			char = "wheatley",
+			postdelay = 0.6,
+			predelay = 0.0,
+			next = "-4822_01a",
+			noDingOff = true,
 			noDingOn = true
 		}
 		
 		-- Hello!
 		SceneTable ["-4822_01a" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/turret/finale02_turret_defect_return01.vcd")
-			char = "turret"
-			postdelay = -0.4
-			predelay = 0.0
-			next = "-4822_01b"
-			noDingOff = true
-			noDingOn = true	
-			settarget1="turret_4"
+			vcd = CreateSceneEntity("scenes/npc/turret/finale02_turret_defect_return01.vcd"),
+			char = "turret",
+			postdelay = -0.4,
+			predelay = 0.0,
+			next = "-4822_01b",
+			noDingOff = true,
+			noDingOn = true	,
+			settarget1="turret_4",
 			talkover = true
 		}
 
 		-- Hello!
 		SceneTable ["-4822_01b" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/turret/finale02_turret_defect_return02.vcd")
-			char = "turret"
-			postdelay = -0.4
-			predelay = 0.0
-			next = "-4822_01c"
-			noDingOff = true
-			noDingOn = true	
-			settarget1="turret_2"
+			vcd = CreateSceneEntity("scenes/npc/turret/finale02_turret_defect_return02.vcd"),
+			char = "turret",
+			postdelay = -0.4,
+			predelay = 0.0,
+			next = "-4822_01c",
+			noDingOff = true,
+			noDingOn = true	,
+			settarget1="turret_2",
 			talkover = true
 		}	
 
 		-- Hello!
 		SceneTable ["-4822_01c" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/turret/finale02_turret_defect_return05.vcd")
-			char = "turret"
-			postdelay = 1.6
-			predelay = 0.0
-			next = "-4822_02"
-			noDingOff = true
-			noDingOn = true	
-			settarget1="turret_8"
+			vcd = CreateSceneEntity("scenes/npc/turret/finale02_turret_defect_return05.vcd"),
+			char = "turret",
+			postdelay = 1.6,
+			predelay = 0.0,
+			next = "-4822_02",
+			noDingOff = true,
+			noDingOn = true	,
+			settarget1="turret_8",
 			talkover = true
 		}			
 		
 		-- Hello!
 		SceneTable ["-4822_02" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/turret/finale02_turret_defect_return08.vcd")
-			char = "turret"
-			postdelay = -0.4
-			predelay = 0.0
-			next = "-4822_02a"
-			noDingOff = true
-			noDingOn = true	
-			settarget1="turret_8"
+			vcd = CreateSceneEntity("scenes/npc/turret/finale02_turret_defect_return08.vcd"),
+			char = "turret",
+			postdelay = -0.4,
+			predelay = 0.0,
+			next = "-4822_02a",
+			noDingOff = true,
+			noDingOn = true,
+			settarget1="turret_8",
 			talkover = true
 		}	
 		
 		-- Are they killing you? Say no if they aren't.
 		SceneTable["-4822_02a"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_turrettrap_nags01.vcd") 
-			char = "wheatley"
-			postdelay = 2.6
-			predelay = 0.0
-			next = "-4822_03"
-			noDingOff = true
-			noDingOn = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_turrettrap_nags01.vcd"),
+			char = "wheatley",
+			postdelay = 2.6,
+			predelay = 0.0,
+			next = "-4822_03",
+			noDingOff = true,
+			noDingOn = true,
 			talkover = true
 		}
 		
 		-- I don't even know who I'm talking to. You're dead in there. You're dead.
 		SceneTable["-4822_03"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_turrettrap_nags02.vcd") 
-			char = "wheatley"
-			postdelay = 1.6 
-			predelay = 0.0
-			next = "-4822_04"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_turrettrap_nags02.vcd"),
+			char = "wheatley",
+			postdelay = 1.6,
+			predelay = 0.0,
+			next = "-4822_04",
+			noDingOff = true,
 			noDingOn = true
 		}
 		-- Are they killing you? They are aren't they.
 		SceneTable["-4822_04"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_turrettrap_nags03.vcd") 
-			char = "wheatley"
-			postdelay = 1.6 
-			predelay = 0.0
-			next = "-4822_05"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_turrettrap_nags03.vcd"),
+			char = "wheatley",
+			postdelay = 1.6,
+			predelay = 0.0,
+			next = "-4822_05",
+			noDingOff = true,
 			noDingOn = true
 		}
 		-- Are you dead yet?
 		SceneTable["-4822_05"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_turrettrap_nags04.vcd") 
-			char = "wheatley"
-			postdelay = 1.6
-			predelay = 0.0
-			next = "-4822_06"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_turrettrap_nags04.vcd"),
+			char = "wheatley",
+			postdelay = 1.6,
+			predelay = 0.0,
+			next = "-4822_06",
+			noDingOff = true,
 			noDingOn = true
 		}
 		-- Dying quietly in there. Courageous. Very courageous.
 		SceneTable["-4822_06"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_turrettrap_nags05.vcd") 
-			char = "wheatley"
-			postdelay = 1.6 
-			predelay = 0.0
-			next = "-4822_07"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_turrettrap_nags05.vcd"),
+			char = "wheatley",
+			postdelay = 1.6,
+			predelay = 0.0,
+			next = "-4822_07",
+			noDingOff = true,
 			noDingOn = true
 		}
 		-- Don't know what to do with myself now that my arch nemesis is dead.
 		SceneTable["-4822_07"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_turrettrap_nags06.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_turrettrap_nags06.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true
 		}
 
 		
-			
-		
-		
 		-- Ha! Was that your bullet-riddled body, flying out of the room? Ha haaaaa It wasn't was it? Those were the rubbish ones, weren't they?
 		SceneTable["-4823_01"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_turrettrap_exit01.vcd") 
-			char = "wheatley"
-			postdelay = 0.4 
-			predelay = 0.0
-			next = "-4823_02"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_turrettrap_exit01.vcd"),
+			char = "wheatley",
+			postdelay = 0.4,
+			predelay = 0.0,
+			next = "-4823_02",
+			noDingOff = true,
 			noDingOn = true
 		}
 
 		-- Well, no matter. I'm STILL holding all the cards, and they're allll Full Houses! I've never played cards. Meaning to learn, when we're done here.
 		SceneTable["-4823_02"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_beamtrap_intro01.vcd") 
-			char = "wheatley"
-			postdelay = 0.4 
-			predelay = 0.0
-			next = "-4823_03"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_beamtrap_intro01.vcd"),
+			char = "wheatley",
+			postdelay = 0.4,
+			predelay = 0.0,
+			next = "-4823_03",
+			noDingOff = true,
 			noDingOn = true
 		}
 		-- Anyway, new turrets. Not defective. Unbeatable. I imagine.
 		SceneTable["-4823_03"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_beamtrap_intro02.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_beamtrap_intro02.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true
 		}
 
-
-
-		
 		-- I see. Clever. Very clever of you.
 		SceneTable["-4824_01"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_beamtrap_inbeama01.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4824_02"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_beamtrap_inbeama01.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = "-4824_02",
+			noDingOff = true,
 			noDingOn = true
 		}
 		-- And foolish. Trapped. At my mercy. Don't have any. Merciless.
 		SceneTable["-4824_02"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_beamtrap_inbeama02.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_beamtrap_inbeama02.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true
 		}
 
 		-- Ha! Spinny-blade-wall! 
 		SceneTable["-4825_01"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale02_spinnyblade05.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4825_02"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale02_spinnyblade05.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = "-4825_02",
+			noDingOff = true,
 			noDingOn = true
 		}
 		
 		-- Machiavellian.
 		SceneTable["-4825_02"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale02_spinnyblade03.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale02_spinnyblade03.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true
 		}
 		
 		-- Nnng!
 		SceneTable["-4826_01"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_beamtrap_escape01.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = "-4826_02"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_beamtrap_escape01.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = "-4826_02",
+			noDingOff = true,
 			noDingOn = true
 		}
 		-- This is turning into a real battle of wits, isn't it?
 		SceneTable["-4826_02"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_mashplate_intro01.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_mashplate_intro01.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true
 		}
-
-
-
-		/*
-		-- There's NO WAY out of this room. Ignore the door. Shouldn't be there.
-		SceneTable["-4827_01"] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_sp_a4_finale02_trapped_idles01.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = "-4827_02"
-			noDingOff = true
-			noDingOn = true
-		}
-		-- Didn't... want the door there. Sort of threw everything together at the last minute.
-		SceneTable["-4827_02"] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_sp_a4_finale02_trapped_idles02.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = "null"
-			noDingOff = true
-			noDingOn = true
-		}
-		*/
 		
 		-- Holmes versus Moriarty.
 		SceneTable["-4828_01"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_mashplate_intro05.vcd") 
-			char = "wheatley"
-			postdelay = 0.3 
-			predelay = 0.0
-			next = "-4828_03"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_mashplate_intro05.vcd"),
+			char = "wheatley",
+			postdelay = 0.3,
+			predelay = 0.0,
+			next = "-4828_03",
+			noDingOff = true,
 			noDingOn = true
 		}
-		
-		/*
-		-- Caesar versus Cicero.
-		SceneTable["-4828_02"] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_mashplate_intro06.vcd") 
-			char = "wheatley"
-			postdelay = 0.3 
-			predelay = 0.0
-			next = "-4828_03"
-			noDingOff = true
-			noDingOn = true
-		}
-		*/
-		
+
 		-- Aristotle versus Mashy-spike-plate!
 		SceneTable["-4828_03"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_mashplate_intro07.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_mashplate_intro07.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true
 		}
-
-
 
 		-- Stay still, please.
 		SceneTable["-4829_01"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_mashplate_mashing01.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_mashplate_mashing01.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true
 		}
+
 		-- Alright, stop moving.
 		SceneTable["-4830_01"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_mashplate_mashing02.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_mashplate_mashing02.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true
 		}
+
 		-- Ohhh. Almost got you there.
 		SceneTable["-4831_01"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_mashplate_mashing04.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_mashplate_mashing04.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true
 		}
 		
 		-- Where'd you go?
 		SceneTable["-4832_01"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_mashplate_escape01.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = "-4832_02"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_mashplate_escape01.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = "-4832_02",
+			noDingOff = true,
 			noDingOn = true
 		}
 		-- Come back! Come back!
 		SceneTable["-4832_02"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_mashplate_escape02.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_mashplate_escape02.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true
 		}
 		-- Did something break back there?
 		SceneTable["-4833_01"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_pipe_collapse01.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = "-4833_02"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_pipe_collapse01.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = "-4833_02",
+			noDingOff = true,
 			noDingOn = true
 		}
 		-- Oh! Oh! Did it kill you? Oh, that would be lovely.
 		SceneTable["-4833_02"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_pipe_collapse02.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = "-4833_03"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_pipe_collapse02.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = "-4833_03",
+			noDingOff = true,
 			noDingOn = true
 		}
 		-- Hello?
 		SceneTable["-4833_03"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_pipe_collapse03.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = "-4833_04"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_pipe_collapse03.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = "-4833_04",
+			noDingOff = true,
 			noDingOn = true
 		}
 		-- Oh! Oh oh! Yes. Alright. Just had a brainwave. I'll be back. If you're still alive. Don't die until I find you. Great.
 		SceneTable["-4833_04"] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_pipe_collapse04.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale02_pipe_collapse04.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true
-		}
-
-
-/*		
-		-- Think you're clever, do you? Well guess what. Gloves are off. May the best man win. Sphere. May the best sphere win. Swap that in. Much more clever. Books.
-		SceneTable["-4834_01"] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_sp_a4_finale02_exit01.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = "-4834_02"
-			noDingOff = true
-			noDingOn = true
-		}
-		-- Reactor meltdown, imminent death, we know, we KNOW...
-		SceneTable["-4834_02"] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_sp_a4_finale02_exit02.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = "null"
-			noDingOff = true
-			noDingOn = true
-		}
-*/
-		
-		
-		
-		
-	}
+		}		
+	end
 	
 
 	
@@ -3800,18 +3672,16 @@ SceneTableLookup[-4951] = "-4951_01" 	-- Oh thank god, you're alright.
 -- Wheatley finale3
 -- ======================================
 
-	if (curMapName=="sp_a4_finale3")
-	{
-	
+	if (curMapName=="sp_a4_finale3") then
 		-- Crushing's too good for him. First he'll spend a year in the incinerator. Year two: cryogenic refrigeration wing. Then TEN years in the chamber I built where all the robots scream at you. THEN I'll kill him.                                                                                                                                                                                 
 		SceneTable["-4849_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_misc_lift04.vcd") 
-			char = "glados"
-			postdelay = 0.0 
-			predelay = 3.7
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_misc_lift04.vcd"),
+			char = "glados",
+			postdelay = 0.0,
+			predelay = 3.7,
+			next = null,
+			noDingOff = true,
 			noDingOn = true			
 		}
 	
@@ -3819,12 +3689,12 @@ SceneTableLookup[-4951] = "-4951_01" 	-- Oh thank god, you're alright.
 		-- Ah! There you are. Let me just get rid of this catwalk here. 
 		SceneTable["-4850_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech01.vcd") 
-			char = "wheatley"
-			postdelay = 5.0 
-			predelay = 0.0
-			next = "-4850_01a"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech01.vcd"),
+			char = "wheatley",
+			postdelay = 5.0,
+			predelay = 0.0,
+			next = "-4850_01a",
+			noDingOff = true,
 			noDingOn = true	
 		}
 		
@@ -3832,239 +3702,239 @@ SceneTableLookup[-4951] = "-4951_01" 	-- Oh thank god, you're alright.
 		-- There we go. I wanted to talk to you for a moment. 
 		SceneTable["-4850_01a" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech02.vcd") 
-			char = "wheatley"
-			postdelay = 0.2 
-			predelay = 0.0
-			next = "-4850_02"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech02.vcd"),
+			char = "wheatley",
+			postdelay = 0.2,
+			predelay = 0.0,
+			next = "-4850_02",
+			noDingOff = true,
 			noDingOn = true	
 		}
 		
 		-- I'll be honest: The death traps have been a bit of a failure so far. For both of us. And you are getting very close to my lair. 
 		SceneTable["-4850_02" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech03.vcd") 
-			char = "wheatley"
-			postdelay = 0.2
-			predelay = 0.0
-			next = "-4850_02a"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech03.vcd"),
+			char = "wheatley",
+			postdelay = 0.2,
+			predelay = 0.0,
+			next = "-4850_02a",
+			noDingOff = true,
 			noDingOn = true	
 		}
 
 		-- Lair gag
 		SceneTable["-4850_02a" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech04.vcd") 
-			char = "wheatley"
-			postdelay = 0.2
-			predelay = 0.0
-			next = "-4850_03"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech04.vcd"),
+			char = "wheatley",
+			postdelay = 0.2,
+			predelay = 0.0,
+			next = "-4850_03",
+			noDingOff = true,
 			noDingOn = true	
 		}
 		
 		-- So I just wanted to give you the chance to kill yourself. Just, you know, jump into the masher there. Less a death trap and more a death option.
 		SceneTable["-4850_03" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech05.vcd") 
-			char = "wheatley"
-			postdelay = 0.1
-			predelay = 0.0
-			next = "-4850_04"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech05.vcd"),
+			char = "wheatley",
+			postdelay = 0.1,
+			predelay = 0.0,
+			next = "-4850_04",
+			noDingOff = true,
 			noDingOn = true	
 		}
 		-- Sounds crazy, I know. But hear me out. Once you get to my lair, death will not be optional. It will be mandatory. No tricks, no surprises: just you dying, as a result of me killing you. 
 		SceneTable["-4850_04" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech06.vcd") 
-			char = "wheatley"
-			postdelay = 0.2
-			predelay = 0.0
-			next = "-4850_05"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech06.vcd"),
+			char = "wheatley",
+			postdelay = 0.2,
+			predelay = 0.0,
+			next = "-4850_05",
+			noDingOff = true,
 			noDingOn = true	
 		}
 		-- Seems like a lot of effort to walk all that way just to die, doesn’t it? When there’s a perfectly serviceable death option right here. Again: not a death trap. Your death would be entirely voluntary. And appreciated.
 		SceneTable["-4850_05" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech07.vcd") 
-			char = "wheatley"
-			postdelay = 0.8 
-			predelay = 0.0
-			next = "-4850_07"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech07.vcd"),
+			char = "wheatley",
+			postdelay = 0.8,
+			predelay = 0.0,
+			next = "-4850_07",
+			noDingOff = true,
 			noDingOn = true	
 		}
 
 		-- It does work. It will kill you, if that was your concern. As you can see, it mashes. With considerable force. Quick, painless.
 		SceneTable["-4850_07" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech08.vcd") 
-			char = "wheatley"
-			postdelay = 0.3 
-			predelay = 0.0
-			next = "-4850_08"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech08.vcd"),
+			char = "wheatley",
+			postdelay = 0.3,
+			predelay = 0.0,
+			next = "-4850_08",
+			noDingOff = true,
 			noDingOn = true	
 		}
 		-- In summary: walk all the way to certain doom, or give up now. Honorably. Save yourself a trip. It’s win-win... Win. Extra win in there. 
 		SceneTable["-4850_08" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech09.vcd") 
-			char = "wheatley"
-			postdelay = 0.8 
-			predelay = 0.0
-			next = "-4850_09"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech09.vcd"),
+			char = "wheatley",
+			postdelay = 0.8,
+			predelay = 0.0,
+			next = "-4850_09",
+			noDingOff = true,
 			noDingOn = true	
 		}
 		-- I put a lot of effort in getting this lair for you. It'd certainly show me if you simply died, painlessly, twenty feet from the door. Just desserts. No more than I deserve, I suppose. If I'm honest.
 		SceneTable["-4850_09" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech10.vcd") 
-			char = "wheatley"
-			postdelay = 1.0 
-			predelay = 0.0
-			next = "-4850_10"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech10.vcd"),
+			char = "wheatley",
+			postdelay = 1.0,
+			predelay = 0.0,
+			next = "-4850_10",
+			noDingOff = true,
 			noDingOn = true	
 		}
 		-- I tell you, if I was up against impossible odds, this is the way I'd want to go out: mashed with dignity.
 		SceneTable["-4850_10" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech11.vcd") 
-			char = "wheatley"
-			postdelay = 0.2 
-			predelay = 0.0
-			next = "-4850_11"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech11.vcd"),
+			char = "wheatley",
+			postdelay = 0.2,
+			predelay = 0.0,
+			next = "-4850_11",
+			noDingOff = true,
 			noDingOn = true	
 		}
 		
 		-- Ah. And here's the best part. There's a conveyor belt that will convey you in convenient comfort right into the masher. You won't have to lift a finger. Everything's been taken care of. Didn't have to. But I'm a giver. I give.
 		SceneTable["-4850_11" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech12.vcd") 
-			char = "wheatley"
-			postdelay = 0.4 
-			predelay = 0.0
-			next = "-4850_12"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech12.vcd"),
+			char = "wheatley",
+			postdelay = 0.4,
+			predelay = 0.0,
+			next = "-4850_12",
+			noDingOff = true,
 			noDingOn = true	
 		}
 	
 		-- Anyway. Take your time. I’ll let you think about it.
 		SceneTable["-4850_12" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech13.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_speech13.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true	
 		}
 		
 		-- I'll take that as a no, then. Well. May the best man win. Sphere. May the best sphere win. Swap that in. Much more clever. Books.
 		SceneTable["-4852_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_escape01.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true	
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_escape01.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
+			noDingOn = true,
 			fires=
-			[
+			{
 				{entity="wheatley_studio-wheatley_leave_relay",input="Trigger",parameter="",delay=2.3,fireatstart=true },
 				{entity="wheatley_studio-wheatley_return_relay",input="Trigger",parameter="",delay=3.0,fireatstart=true },
 				{entity="wheatley_studio-wheatley_leave_relay",input="Trigger",parameter="",delay=7.5,fireatstart=true },
-			]
+			}
 		}
 
 		-- Oh! Oh! I'll take that as a no. Not choosing the death trap. Not dying.
 		SceneTable["-4851_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_escape02.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true	
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_escape02.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
+			noDingOn = true,
 			fires=
-			[
+			{
 				{entity="wheatley_studio-wheatley_leave_relay",input="Trigger",parameter="",delay=0.0 },
-			]
+			}
 		}
 
 		-- Oh! Good! I did not think that was going to work.
 		SceneTable["-4853_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_playerdies01.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true	
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_finale03_playerdies01.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
+			noDingOn = true,
 			fires=
-			[
+			{	
 				{entity="wheatley_studio-wheatley_leave_relay",input="Trigger",parameter="",delay=0.0 },
-			]
+			}
 		}
 
 		-- Oh my god... what has he done to this place...
 		SceneTable["-8833_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale3_speech01.vcd") 
-			char = "glados"
-			postdelay = 1.5 
-			predelay = 3.0
-			next = null
-			queue = true
-			queuecharacter = "wheatley"			
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale3_speech01.vcd"),
+			char = "glados",
+			postdelay = 1.5,
+			predelay = 3.0,
+			next = null,
+			queue = true,
+			queuecharacter = "wheatley",
+			noDingOff = true,
 			noDingOn = true			
 		}	
 		
 		-- You know, I'm not stupid. I know you don't want to put me back in charge.                                                                                                                                                                                    
 		SceneTable["-8834_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale3_tbeam01.vcd") 
-			char = "glados"
-			postdelay = 0.5
-			predelay = 8.0
-			next = "-8834_02"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale3_tbeam01.vcd"),
+			char = "glados",
+			postdelay = 0.5,
+			predelay = 8.0,
+			next = "-8834_02",
+			noDingOff = true,
 			noDingOn = true			
 		}	
 		
 		-- You think I'll betray you. And on any other day, you'd be right.                                                                                                                                                                                    
 		SceneTable["-8834_02" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale3_tbeam05.vcd") 
-			char = "glados"
-			postdelay = 0.8 
-			predelay = 0.0
-			next = "-8834_03"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale3_tbeam05.vcd"),
+			char = "glados",
+			postdelay = 0.8,
+			predelay = 0.0,
+			next = "-8834_03",
+			noDingOff = true,
 			noDingOn = true			
 		}				
 
 		-- Listen, the scientists were always hanging cores on me to regulate my behavior. I've heard voices all my life But now I hear the voice of a conscience, and it's terrifying, because for the first time it's my voice.                                                                                                                                                                                                                         
 		SceneTable["-8834_03" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale3_tbeam07.vcd") 
-			char = "glados"
-			postdelay = 0.4 
-			predelay = 0.0
-			next = "-8834_04"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale3_tbeam07.vcd"),
+			char = "glados",
+			postdelay = 0.4,
+			predelay = 0.0,
+			next = "-8834_04",
+			noDingOff = true,
 			noDingOn = true			
 		}			
 		
@@ -4072,18 +3942,15 @@ SceneTableLookup[-4951] = "-4951_01" 	-- Oh thank god, you're alright.
 		-- I'm being serious, I think there's something really wrong with me.                                                                                                                                                                                     
 		SceneTable["-8834_04" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale3_tbeam09.vcd") 
-			char = "glados"
-			postdelay = 0.6 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale3_tbeam09.vcd"),
+			char = "glados",
+			postdelay = 0.6,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true			
 		}
-	
-		
-		
-	}
+	end
 
 -- **************************************************************************************************
 -- Boss Battle
@@ -4093,35 +3960,32 @@ SceneTableLookup[-4951] = "-4951_01" 	-- Oh thank god, you're alright.
 -- Boss Battle
 -- ****************************************************************************************************
 	
-	if (curMapName=="sp_a4_finale4")
-	{
-
+	if (curMapName=="sp_a4_finale4") then
 		-- ====================================== Corrupted Core Intro
 		
 		-- Corrupted cores! We're in luck. 
 		SceneTable["-4900_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale4_intro02.vcd") 
-			char = "glados"
-			postdelay = 0.2 
-			predelay = 0.0
-			next = "-4900_02"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale4_intro02.vcd"),
+			char = "glados",
+			postdelay = 0.2,
+			predelay = 0.0,
+			next = "-4900_02",
+			noDingOff = true,
 			noDingOn = true	
 		}		
 	
 		-- You find a way to stun him, I'll send you a core, and then you attach it to him. If we do it a few times, he might become corrupt enough for another core transfer.                                                                                          
 		SceneTable["-4900_02" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale4_intro05.vcd") 
-			char = "glados"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale4_intro05.vcd"),
+			char = "glados",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true	
 		}
-
 
 		
 		-- ====================================== Breaker Shaft
@@ -4129,36 +3993,36 @@ SceneTableLookup[-4951] = "-4951_01" 	-- Oh thank god, you're alright.
 		-- Plug me on to this socket.
 		SceneTable["-4901_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale4_plugmein01.vcd") 
-			char = "glados"
-			postdelay = 10.0
-			predelay = 0.0
-			next = "-4901_02"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale4_plugmein01.vcd"),
+			char = "glados",
+			postdelay = 10.0,
+			predelay = 0.0,
+			next = "-4901_02",
+			noDingOff = true,
 			noDingOn = true	
 		}
 		
 		-- Plug me in nag
 		SceneTable["-4901_02" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale4_plugmein05.vcd") 
-			char = "glados"
-			postdelay = 10.0 
-			predelay = 0.0
-			next = "-4901_03"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale4_plugmein05.vcd") ,
+			char = "glados",
+			postdelay = 10.0, 
+			predelay = 0.0,
+			next = "-4901_03",
+			noDingOff = true,
 			noDingOn = true	
 		}
 		
 		-- Plug me in nag
 		SceneTable["-4901_03" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale4_plugmein03.vcd") 
-			char = "glados"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale4_plugmein03.vcd"),
+			char = "glados",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true	
 		}		
 
@@ -4166,16 +4030,16 @@ SceneTableLookup[-4951] = "-4951_01" 	-- Oh thank god, you're alright.
 		-- Look, even if you still think we're enemies, we're enemies with some urgent common interests: Not blowing up. Revenge.                                                                                                                                                                                                                                                                                                                          
 		SceneTable["-2298_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_a4_newrevenge01.vcd") 
-			char = "glados"
-			postdelay = 0.2 
-			predelay = 0.0
-			next = "-2298_02"
-			noDingOff = true
-			noDingOn = true
+			vcd = CreateSceneEntity("scenes/npc/glados/potatos_a4_newrevenge01.vcd"),
+			char = "glados",
+			postdelay = 0.2,
+			predelay = 0.0,
+			next = "-2298_02",
+			noDingOff = true,
+			noDingOn = true,
 
 			fires=
-			[
+			{
 				-- all coords somewhat random, avg of three SetParentAttachmentMaintainOffset settings
 				{entity="wheatley_shield",input="setlocalorigin",parameter="13.1 277.2 -31.0",delay=3.0},
 				{entity="wheatley_shield",input="setlocalangles",parameter="0 180 90",delay=3.0},
@@ -4183,487 +4047,78 @@ SceneTableLookup[-4951] = "-4951_01" 	-- Oh thank god, you're alright.
 				{entity="futbol_shooter",input="setlocalangles",parameter="86.5 158.6 66.5",delay=3.0},
 				{entity="wheatley_shadow_brush",input="setlocalorigin",parameter="6.0 12.5 -10.0",delay=3.0},
 				{entity="wheatley_shadow_brush",input="setlocalangles",parameter="86.5 158.6 66.5",delay=3.0},
-			]
+			}
 		}	
 
 		-- You like revenge, right? Everybody likes revenge. Well, let's go get some.                                                                                                                                                                                      
 		SceneTable["-2298_02" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale3_tbeam11.vcd") 
-			char = "glados"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale3_tbeam11.vcd"),
+			char = "glados",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true			
 		}	
-		
-		/*
-		-- I realize there's some handwaving in the part where you stun him, but try to figure something out. 
-		SceneTable["-2298_01" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale4_intro06.vcd") 
-			char = "glados"
-			postdelay = 0.7 
-			predelay = 3.0
-			next = "-2298_02"
-			noDingOff = true
-			noDingOn = true	
-		}
-		
-		-- Good luck!
-		SceneTable["-2298_02" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale4_elevator03.vcd") 
-			char = "glados"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true	
-		}
-		*/
-
-		
-		
-		-- ====================================== Chamber Intro
-		
-		/*
-		-- Hello.
-		SceneTable["-4910_01" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_bb_intro01.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4910_02"
-			noDingOff = true
-			noDingOn = true	
-		}
-		
-		-- According to the control panel light up here, the entire building's going to self destruct in six minutes. I'm pretty sure it's a problem with the light. But in case it isn't, I'm going to have to kill you.
-		SceneTable["-4910_02" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_bb_intro02.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4910_03"
-			noDingOff = true
-			noDingOn = true	
-		}
-		
-		-- So, let's call that three minutes, and then a minute break, which should leave a leisurely two minutes to figure out how to shut down whatever's starting all these fires. Also, I watched the tapes of you killing her
-		SceneTable["-4910_03" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_bb_intro03.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4910_04"
-			noDingOff = true
-			noDingOn = true	
-		}
-		
-		-- One: No portal surfaces.
-		SceneTable["-4910_04" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_bb_intro04.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4910_05"
-			noDingOff = true
-			noDingOn = true	
-			fires=
-			[
-				{entity="wheatley_neurotoxin_relay",input="Trigger",parameter="",delay=7.0},
-			]
-		}
-		
-		-- Two: Start the neurotoxin. In two minutes. Gives you plenty of time to think about it. I'm joking. Two: We're doing it now.
-		SceneTable["-4910_05" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_bb_intro05.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4910_06"
-			noDingOff = true
-			noDingOn = true	
-			fires=
-			[
-				{entity="wheatley_shield_relay",input="Trigger",parameter="",delay=2.0},
-			]
-		}
-		
-		-- Three: Bomb-proof shields. Leading directly into Four: Bombs. Explosive ones. For throwing at you.
-		SceneTable["-4910_06" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_bb_intro06.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4910_07"
-			noDingOff = true
-			noDingOn = true	
-			fires=
-			[
-				{entity="wheatley_bomb_relay",input="Trigger",parameter="",delay=5.0},
-			]
-		}
-		
-		-- You know what, this plan is so good, I'm going to give you a sporting chance and turn off the neurotoxin. No I'm not. Goodbye.
-		SceneTable["-4910_07" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_bb_intro07.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true	
-		}
-		
-		*/
-		
-		-- ====================================== Pre-Pipe Destruction
-		
-		-- Where are you going? Don't run. Don't run. The harder you breathe, the more neurotoxin you'll inhale. It's bloody clever. Devilish.
-		
-		/*
-		SceneTable["-4911_01" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_bb_taunt_a01.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true	
-		}
-		
-		*/
-
-		-- ====================================== Post-Pipe Destruction
-		
-		-- No! Um... That's an impression of you. Because you just fell into my trap. There. Just now. Ha. I wanted you to trick me into bursting that pipe. Gives you false hope. Leads to overconfidence. Mistakes. Fatal missteps. All part of my plan.
-		/*
-		SceneTable["-4912_01" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_bb_tubebreak01.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true	
-		}
-		*/
-
-		-- ====================================== Post-Pipe Post Portal Destruction
-		
-		/*
-		-- Oh, you are using it. Well, I dodged a bullet there. Welcome back. To the steel bosom of my death trap. Ha.
-		SceneTable["-4913_01" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_bb_tubebreak03.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true	
-		}
-		*/
 		
 		-- ====================================== Core Delivery
 		
 		-- Here's the first corrupted core
 		SceneTable["-4915_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale4_corenags03.vcd") 
-			char = "glados"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4915_02"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale4_corenags03.vcd"),
+			char = "glados",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = "-4915_02",
+			noDingOff = true,
 			noDingOn = true	
 		}
 		
 		-- Place it onto Wheatley
 		SceneTable["-4915_02" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale4_corenags05.vcd") 
-			char = "glados"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true	
+			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale4_corenags05.vcd"),
+			char = "glados",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
+			noDingOn = true,
 			fires=
-			[
+			{
 				{entity="@glados",input="RunScriptCode",parameter="Core01Babble1()",delay=1.0},
-			]
+			}
 		}
 		
 		-- Here's the second corrupted core
 		SceneTable["-4916_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale4_corenags09.vcd") 
-			char = "glados"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true	
+			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale4_corenags09.vcd"),
+			char = "glados",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
+			noDingOn = true,
 			fires=
-			[
+			{
 				{entity="@glados",input="RunScriptCode",parameter="Core02Babble1()",delay=0.8},
-			]
+			}
 		}
-		
-		/*
-		-- I am having trouble with the system
-		SceneTable["-4916_02" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_deliver_cores04.vcd") 
-			char = "glados"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4916_03"
-			noDingOff = true
-			noDingOn = true	
-		}
-		
-		-- I will have to use a new delivery location
-		SceneTable["-4916_03" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_deliver_cores05.vcd") 
-			char = "glados"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true	
-			fires=
-			[
-				{entity="@glados",input="RunScriptCode",parameter="Core02Babble1()",delay=1.0},
-			]
-		}
-		*/
 		
 		-- Here's the third corrupted core
 		SceneTable["-4917_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale4_corenags15.vcd") 
-			char = "glados"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/potatos_sp_a4_finale4_corenags15.vcd"),
+			char = "glados",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true	
 		}
-		
-		/*
-		-- It's coming to the other side of the chamber
-		SceneTable["-4917_02" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/glados/potatos_deliver_cores07.vcd") 
-			char = "glados"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true	
-		}
-		
-		-- ====================================== Wake-Up Clueless
-		*/
-		/*
-		
-		-- I'm awake again!
-		SceneTable["-4920_01" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_bb_wakeup01.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true	
-		}
-		*/
-		
-		/*
-		
-		-- Ah! Good power nap! Well rested.
-		SceneTable["-4921_01" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_bb_wakeup02.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true	
-		}
-		
-		-- Took a little nap there. Refreshed. Ready to kill you.
-		SceneTable["-4922_01" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_bb_wakeup03.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true	
-		}
-		
-		-- ====================================== Wake-Up Still Clueless
-		
-		-- Ohhhh. I see what you're doing. I... no. No I don't.
-		SceneTable["-4925_01" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_bb_wakeup04.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true	
-		}
-		
-		-- Trying to... guess the significance of these spheres you keep putting on me...
-		SceneTable["-4926_01" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_bb_wakeup05.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true	
-		}
-		
-		-- Ah-HA! I-- no. Lost it. Almost had it.
-		SceneTable["-4927_01" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_bb_wakeup06.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true	
-		}
-		
-		-- Are they supposed to weigh me down? Because they're actually very light. Stylish. Accessorizing.
-		SceneTable["-4928_01" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_bb_wakeup07.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true	
-		}
-		
-		*/
-
-		-- ====================================== Core Transfer
-
-		/*
-		-- Alternate core detected.
-		SceneTable["-4930_01" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/announcer/gladosbattle03.vcd") 
-			char = "announcer"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4930_02"
-			noDingOff = true
-			noDingOn = true	
-		}
-		
-		-- Substitute core, are you ready to start the procedure?
-		SceneTable["-4930_02" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/announcer/gladosbattle06.vcd") 
-			char = "announcer"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4930_03"
-			noDingOff = true
-			noDingOn = true	
-		}
-		
-		-- Yes!
-		SceneTable["-4930_03" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/glados/sp_sabotage_glados_yes01.vcd") 
-			char = "glados"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4930_04"
-			noDingOff = true
-			noDingOn = true	
-		}
-		
-		-- Corrupted core, are you ready to start the procedure?
-		SceneTable["-4930_04" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/announcer/gladosbattle07.vcd") 
-			char = "announcer"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4930_05"
-			noDingOff = true
-			noDingOn = true	
-		}
-		
-		-- Ah, false.
-		SceneTable["-4930_05" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_a4_paradox07.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4930_06"
-			noDingOff = true
-			noDingOn = true	
-		}
-		
-		-- Stalemate detected.  Transfer procedure cannot continue.
-		SceneTable["-4930_06" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/announcer/gladosbattle08.vcd") 
-			char = "announcer"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4930_07"
-			noDingOff = true
-			noDingOn = true	
-		}
-		
-		-- Unless a stalemate associate is present and can press the stalemate resolution button.
-		SceneTable["-4930_07" ] =
-		{
-			vcd = CreateSceneEntity("scenes/npc/announcer/gladosbattle09.vcd") 
-			char = "announcer"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
-			noDingOn = true	
-			fires=
-			[
-				{entity="stalemate_relay",input="Trigger",parameter="",delay=0.0},
-			]
-		}
-		*/
 		
 		-- ====================================== Stalemate Button Nags
 		
@@ -4679,12 +4134,12 @@ SceneTableLookup[-4951] = "-4951_01" 	-- Oh thank god, you're alright.
 		
 		SceneTable["ThornSide01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/core03/babble25.vcd") 
-			char = "core03"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/core03/babble25.vcd"),
+			char = "core03",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true	
 		}
 
@@ -4692,168 +4147,166 @@ SceneTableLookup[-4951] = "-4951_01" 	-- Oh thank god, you're alright.
 		-- PART 5: BOOBY TRAP THE STALEMATE BUTTON!
 		SceneTable["-4941_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_button_press01.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4941_02"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_button_press01.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = "-4941_02",
+			noDingOff = true,
 			noDingOn = true	
 		}
 		
 		-- What, are you still alive? You are joking. Well, I'm still in control. AND I HAVE NO IDEA HOW TO FIX THIS PLACE.
 		SceneTable["-4941_02" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_button_press03.vcd") 
-			char = "wheatley"
-			postdelay = 0.2 
-			predelay = 0.0
-			next = "-4941_03"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_button_press03.vcd"),
+			char = "wheatley",
+			postdelay = 0.2,
+			predelay = 0.0,
+			next = "-4941_03",
+			noDingOff = true,
 			noDingOn = true	
 		}
 		
 		--You had to play bloody cat and mouse, didn't you?  While people were trying to work. Yes, well, now we're all going to pay the price. WE'RE ALL GOING TO BLOODY DIE.
 		SceneTable["-4941_03" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_button_press04.vcd") 
-			char = "wheatley"
-			postdelay = 0.3 
-			predelay = 0.0
-			next = "-4941_04"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_button_press04.vcd"),
+			char = "wheatley",
+			postdelay = 0.3,
+			predelay = 0.0,
+			next = "-4941_04",
+			noDingOff = true,
 			noDingOn = true	
 		}
 
 		--Oh yes, brilliant. Take one last look at your precious human moon. Because it cannot help you now!
 		SceneTable["-4941_04" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_button_press05.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_button_press05.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true	
 		}
 
 
-		-- ====================================== Portal Placed
-/*		
-00;00;33;19 – bw_finale04_portal_opens_short08.wav
-00;00;34;02 – bw_finale04_portal_opens13.wav
-00;00;34;24 – bw_finale04_portal_opens15.wav
-00;00;35;28 – bw_finale04_through_portal01.wav
-00;00;36;19 – bw_finale04_portal_opens03.wav
-00;00;40;09 – bw_finale04_through_portal01.wav
-00;00;40;24 – bw_finale04_through_portal02.wav
-00;00;41;21 – bw_finale04_portal_opens15_short07.wav
-00;00;42;03 – bw_finale04_through_portal03.wav
-00;00;45;00 – bw_finale04_portal_opens16.wav
-00;00;47;16 – bw_finale04_through_portal04.wav
-00;00;53;03 – bw_finale04_through_portal05.wav
-00;00;54;06 – bw_finale04_through_portal06.wav
-*/
+		-- ====================================== Portal Placed		
+-- 00;00;33;19 – bw_finale04_portal_opens_short08.wav
+-- 00;00;34;02 – bw_finale04_portal_opens13.wav
+-- 00;00;34;24 – bw_finale04_portal_opens15.wav
+-- 00;00;35;28 – bw_finale04_through_portal01.wav
+-- 00;00;36;19 – bw_finale04_portal_opens03.wav
+-- 00;00;40;09 – bw_finale04_through_portal01.wav
+-- 00;00;40;24 – bw_finale04_through_portal02.wav
+-- 00;00;41;21 – bw_finale04_portal_opens15_short07.wav
+-- 00;00;42;03 – bw_finale04_through_portal03.wav
+-- 00;00;45;00 – bw_finale04_portal_opens16.wav
+-- 00;00;47;16 – bw_finale04_through_portal04.wav
+-- 00;00;53;03 – bw_finale04_through_portal05.wav
+-- 00;00;54;06 – bw_finale04_through_portal06.wav
 		
 		
 		-- AHHHHHHH!
 		SceneTable["-4950_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_portal_opens_short08.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4950_01a"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_portal_opens_short08.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = "-4950_01a",
+			noDingOff = true,
 			noDingOn = true	
 		}
 		
 
 		SceneTable["-4950_01a" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_portal_opens13.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4950_01b"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_portal_opens13.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = "-4950_01b",
+			noDingOff = true,
 			noDingOn = true	
 		}
 
 		SceneTable["-4950_01b" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_portal_opens15.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4950_01c"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_portal_opens15.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = "-4950_01c",
+			noDingOff = true,
 			noDingOn = true	
 		}
 
 		SceneTable["-4950_01c" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_through_portal01.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4950_01d"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_through_portal01.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = "-4950_01d",
+			noDingOff = true,
 			noDingOn = true	
 		}
 
 		SceneTable["-4950_01d" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_portal_opens03.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4950_01e"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_portal_opens03.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = "-4950_01e",
+			noDingOff = true,
 			noDingOn = true	
 		}
 		
 		SceneTable["-4950_01e" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_through_portal01.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4950_01f"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_through_portal01.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = "-4950_01f",
+			noDingOff = true,
 			noDingOn = true	
 		}
 
 		SceneTable["-4950_01f" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_through_portal02.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4950_01g"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_through_portal02.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = "-4950_01g",
+			noDingOff = true,
 			noDingOn = true	
 		}
 
 		SceneTable["-4950_01g" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_portal_opens_short07.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4950_01h"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_portal_opens_short07.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = "-4950_01h",
+			noDingOff = true,
 			noDingOn = true	
 		}
 
 		SceneTable["-4950_01h" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_through_portal03.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4950_02"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_through_portal03.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = "-4950_02",
+			noDingOff = true,
 			noDingOn = true	
 		}
 
@@ -4861,12 +4314,12 @@ SceneTableLookup[-4951] = "-4951_01" 	-- Oh thank god, you're alright.
 		-- Let go! Let go! I'm still connected. I can pull myself in. I can still fix this!
 		SceneTable["-4950_02" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_through_portal04.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4950_04"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_through_portal04.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = "-4950_04",
+			noDingOff = true,
 			noDingOn = true	
 		}
 		
@@ -4874,48 +4327,48 @@ SceneTableLookup[-4951] = "-4951_01" 	-- Oh thank god, you're alright.
 		-- Let go!
 		SceneTable["-4950_04" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_through_portal05.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4950_05"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_through_portal05.vcd"),
+			char = "wheatley",
+			postdelay = 0.0 ,
+			predelay = 0.0,
+			next = "-4950_05",
+			noDingOff = true,
 			noDingOn = true	
 		}
 		
 		-- LET GO OF ME!
 		SceneTable["-4950_05" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_through_portal06.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4950_06"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_through_portal06.vcd"),
+			char = "wheatley",
+			postdelay = 0.0 ,
+			predelay = 0.0,
+			next = "-4950_06",
+			noDingOff = true,
 			noDingOn = true	
 		}
 		
 		-- Oh no. Change of plans. Hold onto me. Tighter!
 		SceneTable["-4950_06" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_through_portal07.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 2.8
-			next = "-4950_07"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_through_portal07.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 2.8,
+			next = "-4950_07",
+			noDingOff = true,
 			noDingOn = true	
 		}
 		
 		-- Grab me grab me grab me! Grab meeee!
 		SceneTable["-4950_07" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_through_portal08.vcd") 
-			char = "wheatley"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/sphere03/bw_finale04_through_portal08.vcd"),
+			char = "wheatley",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true	
 		}
 		
@@ -4928,1011 +4381,849 @@ SceneTableLookup[-4951] = "-4951_01" 	-- Oh thank god, you're alright.
 		-- Oh thank god, you're alright.  
 		SceneTable["-4951_01" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/epilogue03.vcd") 
-			char = "glados"
-			postdelay = 0.4 
-			predelay = 0.0
-			next = "-4951_02"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/epilogue03.vcd"),
+			char = "glados",
+			postdelay = 0.4,
+			predelay = 0.0,
+			next = "-4951_02",
+			noDingOff = true,
 			noDingOn = true	
 		}	
 		
 		-- You know, being Caroline taught me a valuable lesson. I thought you were my greatest enemy. When all along you were my best friend.                                                                                                                          
 		SceneTable["-4951_02" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/epilogue04.vcd") 
-			char = "glados"
-			postdelay = 0.3 
-			predelay = 0.0
-			next = "-4951_03"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/epilogue04.vcd"),
+			char = "glados",
+			postdelay = 0.3,
+			predelay = 0.0,
+			next = "-4951_03",
+			noDingOff = true,
 			noDingOn = true	
 		}			
 		
 		-- Being Caroline taught me another valuable lesson: where Caroline lives in my brain.                                                                                                                                                                          
 		SceneTable["-4951_03" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/epilogue07.vcd") 
-			char = "glados"
-			postdelay = 0.1 
-			predelay = 0.0
-			next = "-4951_03a"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/epilogue07.vcd"),
+			char = "glados",
+			postdelay = 0.1,
+			predelay = 0.0,
+			next = "-4951_03a",
+			noDingOff = true,
 			noDingOn = true	
 		}	
 		
 		-- Caroline deleted.
 		SceneTable["-4951_03a" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/announcer/carolyndeleted02.vcd") 
-			char = "announcer"
-			postdelay = 0.2
-			predelay = 0.0
-			next = "-4951_04"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/announcer/carolyndeleted02.vcd"),
+			char = "announcer",
+			postdelay = 0.2,
+			predelay = 0.0,
+			next = "-4951_04",
+			noDingOff = true,
 			noDingOn = true
 		}		
 
 		-- Goodbye, Caroline.     
 		SceneTable["-4951_04" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/epilogue12.vcd") 
-			char = "glados"
-			postdelay = 0.4 
-			predelay = 0.0
-			next = "-4951_05"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/epilogue12.vcd"),
+			char = "glados",
+			postdelay = 0.4,
+			predelay = 0.0,
+			next = "-4951_05",
+			noDingOff = true,
 			noDingOn = true	
 		}	
 
 		-- You know, deleting Caroline just now taught me a valuable lesson. The best solution to a problem is usually the easiest one. And I'll be honest.                                                                                                             
 		SceneTable["-4951_05" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/epilogue14.vcd") 
-			char = "glados"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4951_06"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/epilogue14.vcd"),
+			char = "glados",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = "-4951_06",
+			noDingOff = true,
 			noDingOn = true	
 		}	
 
 		-- Killing you? Is hard.
 		SceneTable["-4951_06" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/epiloguekillyou02.vcd") 
-			char = "glados"
-			postdelay = 0.4 
-			predelay = 0.0
-			next = "-4951_07"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/epiloguekillyou02.vcd"),
+			char = "glados",
+			postdelay = 0.4,
+			predelay = 0.0,
+			next = "-4951_07",
+			noDingOff = true,
 			noDingOn = true	
 		}	
 
 		-- You know what my days used to be like? I just tested. Nobody murdered me. Or put me in a potato. Or fed me to birds. I had a pretty good life.                                                                                                               
 		SceneTable["-4951_07" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/epilogue19.vcd") 
-			char = "glados"
-			postdelay = 0.4 
-			predelay = 0.0
-			next = "-4951_08"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/epilogue19.vcd"),
+			char = "glados",
+			postdelay = 0.4,
+			predelay = 0.0,
+			next = "-4951_08",
+			noDingOff = true,
 			noDingOn = true	
 		}	
 
 		-- And then you showed up. You dangerous, mute lunatic. So you know what?                                                                                                                                                                                       
 		SceneTable["-4951_08" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/epilogue20.vcd") 
-			char = "glados"
-			postdelay = 0.1 
-			predelay = 0.0
-			next = "-4951_09"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/epilogue20.vcd"),
+			char = "glados",
+			postdelay = 0.1,
+			predelay = 0.0,
+			next = "-4951_09",
+			noDingOff = true,
 			noDingOn = true	
 		}	
 
 		-- You win.   
 		SceneTable["-4951_09" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/epilogue23.vcd") 
-			char = "glados"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4951_10"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/epilogue23.vcd"),
+			char = "glados",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = "-4951_10",
+			noDingOff = true,
 			noDingOn = true	
 		}	
 
 		-- Just go.  
 		SceneTable["-4951_10" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/epilogue25.vcd") 
-			char = "glados"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4951_11"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/epilogue25.vcd"),
+			char = "glados",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = "-4951_11",
+			noDingOff = true,
 			noDingOn = true	
 		}	
 
 		-- It's been fun. Don't come back.    
 		SceneTable["-4951_11" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/epilogue28.vcd") 
-			char = "glados"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = "-4951_12"
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/epilogue28.vcd"),
+			char = "glados",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = "-4951_12",
+			noDingOff = true,
 			noDingOn = true	
 		}	
 
 		-- It's been fun. Don't come back.   
 		SceneTable["-4951_12" ] =
 		{
-			vcd = CreateSceneEntity("scenes/npc/glados/epilogue29.vcd") 
-			char = "glados"
-			postdelay = 0.0 
-			predelay = 0.0
-			next = null
-			noDingOff = true
+			vcd = CreateSceneEntity("scenes/npc/glados/epilogue29.vcd"),
+			char = "glados",
+			postdelay = 0.0,
+			predelay = 0.0,
+			next = null,
+			noDingOff = true,
 			noDingOn = true	
 		}			
-		
-		
-	}
+	end
 	
 
 
 	function WheatleySurpriseLeadup1()
-	{
 		GladosPlayVcd( -4800 )
-	}
+	end
 
 	function WheatleySurprise()
-	{
-		if (curMapName=="sp_a4_finale2")
-		{ 
+		if (curMapName=="sp_a4_finale2") then
 			GladosPlayVcd ( -4820 )
-		}
 		else
-		{
 			GladosPlayVcd( -4801 )
-		}
-	}
+		end
+	end
 		
-	if (curMapName=="sp_a4_finale1")
-	{
+	if (curMapName=="sp_a4_finale1") then
 		sp_a4_finale1_did_EscapePlacePaint = false
 		sp_a4_finale1_did_WheatleyEscape01 = false
-	}
-
+	end
 
 	function Wheatleyfinale01()
-	{
 		GladosPlayVcd( -4802 )
-	}
+	end
 
 	function Gladosfinale01()
-	{
 		GladosPlayVcd ( -4803 )
-	}
+	end
 	
 	function EscapePlacePaint()
-	{
-		if (!sp_a4_finale1_did_EscapePlacePaint)
-		{
+		if (not sp_a4_finale1_did_EscapePlacePaint) then
 			sp_a4_finale1_did_EscapePlacePaint = true
 			nuke()
 			GladosPlayVcd ( -4804 )
-		}	
-	}
+		end
+	end
 
 	function WheatleyEscape01()
-	{
-		if (!sp_a4_finale1_did_WheatleyEscape01)
-		{
+		if (not sp_a4_finale1_did_WheatleyEscape01) then
 			sp_a4_finale1_did_WheatleyEscape01 = true
 			nuke()
 			GladosPlayVcd ( -4805 )
-		}	
-	}
+		end
+	end
+
 	function WheatleyEscape02()
-	{
 		GladosPlayVcd ( -4806 )
-	}
+	end
+
 	function WheatleyEscape03()
-	{
 		GladosPlayVcd ( -4807 )
-	}
+	end
+	
 	function WheatleyEscape04()
-	{
 		GladosPlayVcd ( -4808 )
-	}
+	end
+	
 	function WheatleyEscape05()
-	{
-		GladosPlayVcd ( -4809 )
-	}
+		GladosPlayVcd(-4809)
+	end
+	
 	function WheatleyEscape06()
-	{
-		GladosPlayVcd ( -4810 )
-	}
+		GladosPlayVcd(-4810)
+	end
+	
 	function WheatleyEscape07()
-	{
-		GladosPlayVcd ( -4811 )
-	}
+		GladosPlayVcd(-4811)
+	end
+	
 	function WheatleyEscape08()
-	{
-		GladosPlayVcd ( -4812 )
-	}
+		GladosPlayVcd(-4812)
+	end
 	
 	function WheatleyEscapeReturn()
-	{
-		GladosPlayVcd ( -4500 )
-	}
-
+		GladosPlayVcd(-4500)
+	end
+	
 	function Finale02_catwalk_intro()
-	{
-		GladosPlayVcd ( -4820 )
-	}
+		GladosPlayVcd(-4820)
+	end
+	
 	function Finale02_catwalk_finished()
-	{
-		GladosPlayVcd ( -4821 )
-	}
+		GladosPlayVcd(-4821)
+	end
+	
 	function Finale02_turret_trap()
-	{
-		GladosPlayVcd ( -4822 )
-	}
+		GladosPlayVcd(-4822)
+	end
+	
 	function Finale02_turret_fix()
-	{
-		GladosPlayVcd ( -4823 )
-	}
+		GladosPlayVcd(-4823)
+	end
+	
 	function Finale02_turret_tbeam()
-	{
-		GladosPlayVcd ( -4824 )
-	}
+		GladosPlayVcd(-4824)
+	end
+	
 	function Finale02_grinder_reveal()
-	{
-		GladosPlayVcd ( -4825 )
-	}
+		GladosPlayVcd(-4825)
+	end
+	
 	function Finale02_grinder_escape()
-	{
-		GladosPlayVcd ( -4826 )
-	}
+		GladosPlayVcd(-4826)
+	end
+	
 	function Finale02_trapped()
-	{
-		GladosPlayVcd ( -4827 )
-	}
+		GladosPlayVcd(-4827)
+	end
+	
 	function Finale02_crusher_ride_start()
-	{
-		GladosPlayVcd ( -4828 )
-	}
+		GladosPlayVcd(-4828)
+	end
+	
 	function Finale02_crusher_ride_smash01()
-	{
-		GladosPlayVcd ( -4829 )
-	}
+		GladosPlayVcd(-4829)
+	end
+	
 	function Finale02_crusher_ride_smash02()
-	{
-		GladosPlayVcd ( -4830 )
-	}
+		GladosPlayVcd(-4830)
+	end
+	
 	function Finale02_crusher_ride_smash03()
-	{
-		GladosPlayVcd ( -4831 )
-	}
+		GladosPlayVcd(-4831)
+	end
+	
 	function Finale02_crusher_outro()
-	{
-		GladosPlayVcd ( -4832 )
-	}
+		GladosPlayVcd(-4832)
+	end
+	
 	function Finale02_pipe_collapse()
-	{
-		GladosPlayVcd ( -4833 )
-	}
+		GladosPlayVcd(-4833)
+	end
+	
 	function Finale02_exit()
-	{
-		GladosPlayVcd ( -4834 )
-	}
-
-
+		GladosPlayVcd(-4834)
+	end
 
 -- ============================================================================
 -- Functions for Recapture
 -- ============================================================================
 	
 	function GladosParadoxInception()
-	{
 		GladosPlayVcd( -4000 )
-	}
-	
+	end
+
 	function RecaptureEavesdrop()
-	{
 		GladosPlayVcd( -4001 )
-	}
-	
+	end
+
 	function RecaptureObserve()
-	{
 		GladosPlayVcd( -4003 )
-	}
-	
+	end
+
 	function RecaptureCubeTest()
-	{
 		GladosPlayVcd( -4004 )
-	}
-	
+	end
+
 	function RecaptureSolveLeadIn()
-	{
 		GladosPlayVcd( -4005 )
-	}
-	
+	end
+
 	function RecaptureSolve()
-	{
 		GladosPlayVcd( -4006 )
-	}
-	
+	end
+
 	function RecaptureButton()
-	{
 		nuke()
 		GladosPlayVcd( -4007 )
-	}
+	end
 
 	function RecaptureProceed()
-	{
 		GladosPlayVcd( -4008 )
-	}
-	
+	end
+
 	function RecaptureItch()
-	{
 		GladosPlayVcd( -4009 )
-	}
-	
+	end
+
 	function RecaptureFirstTest()
-	{
 		GladosPlayVcd( -4010 )
-	}
-	
+	end
+
 	function RecaptureFirstTestDone()
-	{
 		GladosPlayVcd( -4011 )
-	}
-	
+	end
+
 	function RecaptureFirstTestRedo()
-	{
-	--	GladosPlayVcd( -4012 )
-	}
-	
+		-- GladosPlayVcd( -4012 )
+	end
+
 	function RecaptureTestTwoDone()
-	{
 		nuke()
 		GladosPlayVcd( -4013 )
-	}
-	
+	end
+
 	function GladosCompare1()
-	{
-	--	GladosPlayVcd( -4330 )
-	}
-	
+		-- GladosPlayVcd( -4330 )
+	end
+
 	function WheatleyTestStolen()
-	{
 		GladosPlayVcd( -4016 )
-	}
-	
+	end
+
 	function GladosBadNews()
-	{
 		GladosPlayVcd( -4017 )
-	}
-	
+	end
+
 	function GladosCrushers()
-	{
 		GladosPlayVcd( -4018 )
-	}
+	end
 	
 	function StartWheatleyTest1Nag()
-    {
-         printl("==Starting Wheatley Test 1 Nag")
-         GladosPlayVcd( -4021 )
-    }
+		print("==Starting Wheatley Test 1 Nag")
+		GladosPlayVcd(-4021)
+	end
 	
 	function StartWheatleyTest1FinishNag()
-    {
-         printl("==Starting Wheatley Test 1 Finish Nag")
-         GladosPlayVcd( -4022 )
-    }
+		print("==Starting Wheatley Test 1 Finish Nag")
+		GladosPlayVcd(-4022)
+	end
 	
-	if (curMapName=="sp_a4_intro")
-	{
+	if curMapName == "sp_a4_intro" then
 		sp_a4_intro_startwheatleytest2nag_started = false
-	}
-
+	end
+	
 	function StartWheatleyTest2Nag()
-    {
-		if (!sp_a4_intro_startwheatleytest2nag_started)
-		{
+		if not sp_a4_intro_startwheatleytest2nag_started then
 			sp_a4_intro_startwheatleytest2nag_started = true
-			printl("==Starting Wheatley Test 2 Nag")
-			GladosPlayVcd( -4019 )
-		}	
-    }
-
-    function StopWheatleyNag()
-    {
-        printl("==Stopping Wheatley Nag")
-        GladosStopNag()
-        GladosCharacterStopScene("wheatley")  -- This will make Wheatley stop talking if he is mid sentence.
-    }
-
+			print("==Starting Wheatley Test 2 Nag")
+			GladosPlayVcd(-4019)
+		end
+	end
+	
+	function StopWheatleyNag()
+		print("==Stopping Wheatley Nag")
+		GladosStopNag()
+		GladosCharacterStopScene("wheatley")  -- This will make Wheatley stop talking if he is mid sentence.
+	end
+	
 	function RecaptureFirstTestEnd()
-	{
-		GladosPlayVcd( -4020 )
-	}
+		GladosPlayVcd(-4020)
+	end
 	
 	function RecaptureDone()
-	{
-		GladosPlayVcd( -4023 )
-	}
-
+		GladosPlayVcd(-4023)
+	end
+	
 	function tb_intro_solve()
-	{
-		GladosPlayVcd( -4445 )
-	}
-
+		GladosPlayVcd(-4445)
+	end
+	
 	function tb_intro_glados_start()
-	{
-		GladosPlayVcd( -9077 )
-	}
+		GladosPlayVcd(-9077)
+	end
 		
 
 -- ============================================================================
 -- Functions for tb_trust_drop / tb_wall_button / tb_polarity / tb_catch / stop_the_box / laser_catapult / laser_platform / jump_polarity
 -- ============================================================================
 
-
 	function tb_trust_drop_glados_start()
-	{
-	printl("testy test test test")
-	GladosPlayVcd( -4770 )
-	}
+		print("testy test test test")
+		GladosPlayVcd(-4770)
+	end
 
 	function tb_trust_drop_intro()
-	{
-		GladosPlayVcd( -4400 )
-	}
-	
+		GladosPlayVcd(-4400)
+	end
+
 	function tb_trust_drop_cheat()
-	{
-		GladosPlayVcd( -4401 )
-	}
+		GladosPlayVcd(-4401)
+	end
 
 	function tb_trust_drop_solve()
-	{
-		GladosPlayVcd( -4402 )
-	}
+		GladosPlayVcd(-4402)
+	end
 
 	function tb_trust_drop_glados_end()
-	{
-	}
-	
+	end
+
 	function tb_wall_button_glados_start()
-	{
-		GladosPlayVcd( -4790 )	
-	}
-	
+		GladosPlayVcd(-4790)
+	end
+
 	function tb_wall_button_start_yet()
-	{
-		GladosPlayVcd( -4403 )
-	}
+		GladosPlayVcd(-4403)
+	end
 
 	function tb_wall_button_crush_end()
-	{
-		GladosPlayVcd( -4404 )	
-	}	
-	
+		GladosPlayVcd(-4404)
+	end
+
 	function tbwallbutton_destruction_complete()
-	{
-	}
-	
+	end
+
 	function tb_wall_button_test_solve_1()
-	{
-	}
-	
+	end
+
 	function tb_wall_button_test_solve_2()
-	{
-		GladosPlayVcd( -4406 )	
-	}
-	
+		GladosPlayVcd(-4406)
+	end
+
 	function tb_wall_button_test_solve_3()
-	{
-		GladosPlayVcd( -4407 )	
-	}	
-	
+		GladosPlayVcd(-4407)
+	end
+
 	function tb_wall_button_test_stop_1()
-	{
-		GladosPlayVcd( -4408 )	
-	}	
-	
+		GladosPlayVcd(-4408)
+	end
+
 	function tb_wall_button_test_stop_2()
-	{
-	}	
+	end
 
 	function tb_wall_button_puzzle_almost_complete() 
-	{
-		GladosPlayVcd( -4405 )	
-	}
+		GladosPlayVcd(-4405)        
+	end
 	
 	function tb_wall_button_puzzle_completed()
-	{
-		GladosPlayVcd( -4111 )	
-	}
+		GladosPlayVcd(-4111)        
+	end
 	
 	function tb_wall_button_glados_end()
-	{
-		GladosPlayVcd( -4090 )		
-	}
-
+		GladosPlayVcd(-4090)                
+	end
+	
 	function tb_polarity_glados_start()
-	{
-		GladosPlayVcd( -4780 )		
-	}
+		GladosPlayVcd(-4780)                
+	end
 	
 	function tb_polarity_test_start()
-	{
-		GladosPlayVcd( -4410 )	
-	}	
-
+		GladosPlayVcd(-4410)        
+	end     
+	
 	function tb_polarity_test_end()
-	{
-		GladosPlayVcd( -4411 )	
-	}	
-
+		GladosPlayVcd(-4411)        
+	end     
+	
 	function tb_polarity_glados_end()
-	{
-		GladosPlayVcd( -4447 )	
-	}		
+		GladosPlayVcd(-4447)        
+	end             
 	
 	function tb_catch_glados_start()
-	{
-		GladosPlayVcd( -4470 )	
-	}	
+		GladosPlayVcd(-4470)        
+	end     
 	
 	function tb_catch_test_start()
-	{
-		GladosPlayVcd( -4412 )	
-	}		
-
+		GladosPlayVcd(-4412)        
+	end             
+	
 	function tb_catch_test_end()
-	{
-		GladosPlayVcd( -4413 )	
-	}
-
+		GladosPlayVcd(-4413)        
+	end
+	
 	function tb_catch_glados_end()
-	{
-	}
+	end
 	
 	function stop_the_box_glados_start()
-	{
-		GladosPlayVcd( -4446 )	
-	}	
+		GladosPlayVcd(-4446)        
+	end     
 	
 	function stop_the_box_test_start()
-	{
-		GladosPlayVcd( -4414 )	
-	}		
+		GladosPlayVcd(-4414)        
+	end
 
 	function sp_a4_stop_the_box_intro_over()
-	{
 		sp_a4_stop_the_box_intro_played = true
-	}
+	end
 
 	function stop_the_box_missed()
-	{
-		if (sp_a4_stop_the_box_check_smash())
-		{
-			if (sp_a4_stop_the_box_intro_played)
-			{
+		if (sp_a4_stop_the_box_check_smash()) then
+			if (sp_a4_stop_the_box_intro_played) then
 				GladosPlayVcd( -4415 )	
-			}	
-		}	
-	}
+			end	
+		end
+	end
 	
 	function stop_the_box_test_end()
-	{
 		GladosPlayVcd( -4416 )	
-	}
+	end
 
 	function stop_the_box_glados_end()
-	{
 		--GladosPlayVcd( -4491 )		
-	}
+	end
 	
 	function laser_catapult_glados_start()
-	{
 		GladosPlayVcd( -5799 )			
-	}	
+	end
 	
 	function laser_catapult_test_start()
-	{
 		GladosPlayVcd( -4417 )	
-	}
+	end
 
 	function laser_catapult_test_end()
-	{
 		GladosPlayVcd( -4418 )	
-	}
+	end
 
 	function laser_catapult_glados_end()
-	{
 		EntFire("huge_rumble","trigger", 0.0, 0.0 )	
 		GladosPlayVcd( -4492 )		
-	}	
+	end
 	
 	function laser_platform_glados_start()
-	{
 		EntFire("huge_rumble_1","trigger", 0, 2.0 )
 		GladosPlayVcd( -4333 )		
-	}	
+	end
 	
 	function laser_platform_test_start()
-	{
 		EntFire("huge_rumble_1","trigger", 0, 0 )
 		GladosPlayVcd( -4419 )	
-	}
+	end
 
 	function laser_platform_fall()
-	{
 		GladosPlayVcd( -4588 )	
-	}	
+	end
 
 	function BreakIntoOffice()
-	{
-	}	
+	end
 	
 	function laser_platform_glados_end()
-	{
-	}		
+	end
 
 	function jump_polarity_glados_start()
-	{
 		GladosPlayVcd( -4555 )		
-	}		
+	end
 	
 	function jump_polarity_sorry()
-	{
 		GladosPlayVcd( -4420 )	
-	}
+	end
 	
 	function jump_polarity_test_end()
-	{
 		GladosPlayVcd( -4421 )	
-	}
+	end
 
 	function jump_polarity_glados_end()
-	{
-	}	
+	end
 
 	function speed_tb_catch_glados_start()
-	{
-	}	
+	end
 	
 	function speed_tb_catch_test_start()
-	{
-	}
+	end
 	
 	function speed_tb_catch_intro_test_start()
-	{
 		GladosPlayVcd( -4448 )	
-	}
+	end
 	
 	function speed_tb_catch_intro_test_complete() 
-	{
-	}
+	end
 
 	function speed_tb_catch_test_end() 
-	{
 		GladosPlayVcd( -4449 )	
-	}
+	end
 	
 	function speed_tb_catch_glados_end()
-	{
 		--GladosPlayVcd( -4493 )		
-	}		
+	end
 	
-	
-
 	function jump_polarity_glados_end()
-	{
 		GladosPlayVcd( -4494 )		
-	}	
+	end	
 	
 	function Wheatley_crush_ambush() 
-	{
 		GladosPlayVcd( -4498 )	
-	}
+	end
 	
 	function Wheatley_games_begin() 
-	{
-	}
+	end
 	
 	function finale3_vista() 
-	{
 		GladosPlayVcd( -8833 )
-	}	
+	end
 	
 	function finale3_tbeam_ride() 
-	{
 		GladosPlayVcd( -8834 )
-	}	
+	end
 	
 	function finale3_tbeam_exit() 
-	{
 --		GladosPlayVcd( -8888 )
-	}	
-	
+	end
 
 	-- ============================================================================
 	-- Functions for Boss Battle
 	-- ============================================================================
 	
-	if (curMapName=="sp_a4_finale4")
-	{
+	if curMapName=="sp_a4_finale4" then
 		sp_a4_finale4_gelbreak = false
 		sp_a4_finale4_extradialoga = false
 		sp_a4_finale4_extradialogb = false
 		sp_a4_finale4_prepipestarted = false
-	}
+	end
 	
 	function GladosCorruptedCores()
-	{
 		GladosPlayVcd( -4900 )
-	}
+	end
 	
 	function GladosBreakerShaft()
-	{
 		GladosPlayVcd( -4901 )
-	}
+	end
 
 	function BBChamberIntro()
-	{
 		--GladosPlayVcd( -4910 )
 		GladosPlayVcd(591)
-	}
-	
-	
+	end
+
 	function PotatosPlugged()
-	{
 		GladosPlayVcd( -2298 )	
-	}
+	end
 
 	function WheatleyHitByBomb()
-	{
 		nuke()
 		GladosPlayVcd(596)
-	}
+	end
 
 	function BBPrePipeDest()
-	{
 		--GladosPlayVcd( -4911 )
-		if ((!sp_a4_finale4_gelbreak) && (!sp_a4_finale4_prepipestarted))
-		{
+		if ((not sp_a4_finale4_gelbreak) and (not sp_a4_finale4_prepipestarted)) then
 			sp_a4_finale4_prepipestarted = true
 			GladosPlayVcd( 592 )
-		}
-	}
+		end
+	end
 	
 	function BBExtraDialogA()
-	{
-		if (!sp_a4_finale4_extradialoga)
-		{
+		if (!sp_a4_finale4_extradialoga) then
 			sp_a4_finale4_extradialoga = true
 			GladosPlayVcd(594)
-		}
 		else
-		{
 			BBExtraDialogB()
-		}
-	}
+		end
+	end
 
 	function BBExtraDialogB()
-	{
-		if (!sp_a4_finale4_extradialogb)
-		{
+		if (!sp_a4_finale4_extradialogb) then
 			sp_a4_finale4_extradialogb = true
 			GladosPlayVcd(595)
-		}	
-	}
+		end
+	end
 
 	function BBPostPipeDest()
-	{
-		
 		--GladosPlayVcd( -4912 )
 		sp_a4_finale4_gelbreak = true
 		nuke()
 		GladosPlayVcd( 593 )
-	}
+	end
 	
 	function BBPostPipePortal()
-	{
 		--GladosPlayVcd( -4913 )
-	}
+	end
 		
 	function GladosDeliverCore1()
-	{
 		GladosPlayVcd( -4915 )
-	}
+	end
 	
 	function GladosDeliverCore2()
-	{
 		GladosPlayVcd( -4916 )
-	}
+	end
 
 	function GladosDeliverCore3()
-	{
 		GladosPlayVcd( -4917 )
-	}	
+	end
 	
 	function Core01PickUp()
-	{
-	}
+	end
 	
 	function Core02PickUp()
-	{
 		EntFire("@core02","SetIdleSequence", "core03_idle", 0.2 )	
-	}
+	end
 
 	function Core03PickUp()
-	{
 		EntFire("@core03","SetIdleSequence", "core02_idle", 0.2 )	
-	}
+	end
 
 	function BBWakeUpClueless1()
-	{
 		--GladosPlayVcd( -4920 )
-		if ((!sp_a4_finale4_extradialoga) || (!sp_a4_finale4_extradialogb))
-		{
+		if ((not sp_a4_finale4_extradialoga) or (not sp_a4_finale4_extradialogb)) then
 			GladosPlayVcd(597)
-		}
 		else
-		{
 			GladosPlayVcd(598)
-		}
-	}
+		end
+	end
 	
 	function BBWakeUpClueless2()
-	{
 		--GladosPlayVcd( -4921 )
 		GladosPlayVcd(599)
-	}
+	end
 	
 	function BBWakeUpClueless3()
-	{
 		--GladosPlayVcd(600)
-	}
+	end
 	
 	function BBWakeUpStill1()
-	{
 		--GladosPlayVcd( -4925 )
-	}
+	end
 	
 	function BBWakeUpStill2()
-	{
 		--GladosPlayVcd( -4926 )
-	}
+	end
 	
 	function BBWakeUpStill3()
-	{
 		--GladosPlayVcd( -4927 )
-	}
+	end
 	
 	function BBWakeUpStill4()
-	{
 		--GladosPlayVcd( -4928 )
-	}
+	end
 	
 	function BBCoreTransfer()
-	{
 		--GladosPlayVcd( -4930 )
-		if (sp_a4_finale4_thorn)
-		{
+		if (sp_a4_finale4_thorn) then
 			GladosPlayVcd(-7400)
-		}
 		else
-		{
 			GladosPlayVcd(600)
-		}	
-	}
+		end
+	end
 	
 	function BBButtonNags()
-	{
 		--GladosPlayVcd( -4940 )
-	}
+	end
 	
 	function BBButtonNags2()
-	{
 		GladosPlayVcd(612)
-	}
-
+	end
 
 	function BBButtonPressed()
-	{
 		nuke()
 		GladosPlayVcd( -4941 )
-	}
+	end
 	
 	function BBPortalPlaced()
-	{
 		nuke()
 		--GladosPlayVcd( -4950 )
-	}
+	end
 	
 
 --Core Placement functions:
 function Core1SocketPlug()
-{
 	GladosPlayVcd(633)
 	--EntFire("wheatley_continue_1","trigger", 0, 2.0 )
 	EntFire("autosave1_relay","trigger", 0, 6.0 )
-}	
+end
 
 function Core2SocketPlug()
-{
-	if (sp_a4_finale4_thorn)
-	{
+	if sp_a4_finale4_thorn then
 		EntFire("@glados","runscriptcode", "GladosPlayVcd(634)", 2.49 )
 		EntFire("autosave2_relay","trigger", 0, 9.0 +2.49 )
 		GladosPlayVcd(-7401)
-	}
 	else
-	{
 		--EntFire("wheatley_continue_2","trigger", 0, 2.0 )
 		GladosPlayVcd(634)
 		EntFire("autosave2_relay","trigger", 0, 9.0 )
-	}
-}
+	end
+end
 
 
 function Core3SocketPlug()
-{
 	GladosPlayVcd(635)
 	--EntFire("wheatley_continue_3","trigger", 0, 2.0 )
 	EntFire("autosave3_relay","trigger", 0, 2.0 )
-}
+end
 
 function BBToxinCountdown4()
-{
-}
+end
+
 function BBToxinCountdown3()
-{
-}
+end
+
 function BBToxinCountdown2()
-{
-}
+end
+
 function BBToxinCountdown1()
-{
-}
+end
+
 function BBDestCountdown4()
-{
-}
+end
+
 function BBDestCountdown3()
-{
-}
+end
 
 function BBDestCountdown1()
-{
-}
+end
 
 function BBDestCountdown2()
-{
-}
+end
+
 function BBWorldCountdown1()
-{
-}
+end
 
 function BBWorldCountdown2()
-{
-}
+end
 
 function BBWorldCountdown1()
-{
-}
+end
 
 -- ****************************************************************************************************
 -- Personality Cores scenetable								  
@@ -5947,12 +5238,11 @@ SceneTableLookup[-7401] = "ThornSide01"
 
 SceneTableLookup[-7300] = "-7300_01" 
 	
-		-- ****************************************************************************************************
-		-- Personality Cores
-		-- ****************************************************************************************************
+	-- ****************************************************************************************************
+	-- Personality Cores
+	-- ****************************************************************************************************
 	
-	if (curMapName=="sp_a4_finale4" || curMapName=="core_test1")
-	{
+	if (curMapName=="sp_a4_finale4" or curMapName=="core_test1") then
 		sp_a4_finale4_thorn = false
 
 		--Alternate last wakeup with adventure sphere cool line
@@ -5981,13 +5271,13 @@ SceneTableLookup[-7300] = "-7300_01"
 		--Didn't pick up on my sarcasm...
 		SceneTable["altwakeupthree10"] = {vcd=CreateSceneEntity("scenes/npc/sphere03/bw_finale04_stalemate_intro05.vcd"),postdelay=0.0,next="altwakeupthree11",char="wheatley",noDingOff=true,noDingOn=true}
 		--Stalemate detected.
-		SceneTable["altwakeupthree11"] = {vcd=CreateSceneEntity("scenes/npc/announcer/bb_stalemate05.vcd"),postdelay=2.3,next="altwakeupthree12",char="bossannouncer",fires=[{entity="fire_relay",input="trigger",parameter="",delay=0.5,fireatstart=true}],noDingOff=true,noDingOn=true}
+		SceneTable["altwakeupthree11"] = {vcd=CreateSceneEntity("scenes/npc/announcer/bb_stalemate05.vcd"),postdelay=2.3,next="altwakeupthree12",char="bossannouncer",fires={{entity="fire_relay",input="trigger",parameter="",delay=0.5,fireatstart=true}},noDingOff=true,noDingOn=true}
 		--Fire detected in the Stalemate Resolution Annex. Extinguishing.
-		SceneTable["altwakeupthree12"] = {vcd=CreateSceneEntity("scenes/npc/announcer/bb_stalemate06.vcd"),postdelay=4.0,next="altwakeupthree13",char="bossannouncer",fires=[{entity="sprinkler_relay",input="trigger",parameter="",delay=0.0}],noDingOff=true,noDingOn=true}
+		SceneTable["altwakeupthree12"] = {vcd=CreateSceneEntity("scenes/npc/announcer/bb_stalemate06.vcd"),postdelay=4.0,next="altwakeupthree13",char="bossannouncer",fires={{entity="sprinkler_relay",input="trigger",parameter="",delay=0.0}},noDingOff=true,noDingOn=true}
 		--Ah. That just cleans right off, does it? Would have been good to know. A little earlier.
 		SceneTable["altwakeupthree13"] = {vcd=CreateSceneEntity("scenes/npc/sphere03/bw_finale04_stalemate_intro06.vcd"),postdelay=0.1,next="altwakeupthree14",char="wheatley",noDingOff=true,noDingOn=true}
 		--Stalemate Resolution Associate: Please press the Stalemate Resolution Button.
-		SceneTable["altwakeupthree14"] = {vcd=CreateSceneEntity("scenes/npc/announcer/bb_stalemate07.vcd"),postdelay=0.1,next=null,char="bossannouncer",fires=[{entity="stalemate_relay",input="trigger",parameter="",delay=3.0,fireatstart=true},{entity="@glados",input="runscriptcode",parameter="BBButtonNags2()",delay=0.0}],noDingOff=true,noDingOn=true}
+		SceneTable["altwakeupthree14"] = {vcd=CreateSceneEntity("scenes/npc/announcer/bb_stalemate07.vcd"),postdelay=0.1,next=null,char="bossannouncer",fires={{entity="stalemate_relay",input="trigger",parameter="",delay=3.0,fireatstart=true},{entity="@glados",input="runscriptcode",parameter="BBButtonNags2()",delay=0.0}},noDingOff=true,noDingOn=true}
 
 
 		-- ====================================== "Space" Core01
@@ -6165,53 +5455,7 @@ SceneTableLookup[-7300] = "-7300_01"
 		--Gotta go to space. Yeah. Gotta go to space.
 		SceneTable["-7100_86"] = {vcd=CreateSceneEntity("scenes/npc/core01/babbleb25.vcd"),postdelay=0.01,next=null,char="core01",noDingOff=true,noDingOn=true,idlegroup="core01_babble",idleorderingroup=86}
 		--Hmmm. Hmmmmmm. Hmm. Hmmmmm. Space!
-		SceneTable["-7100_87"] = {vcd=CreateSceneEntity("scenes/npc/core01/babbleb26.vcd"),postdelay=0.01,next=null,char="core01",noDingOff=true,noDingOn=true,idlegroup="core01_babble",idleorderingroup=87}
-
-		
-		-- ====================================== "Fact" Core02
-		/*
-		SceneTable["-7200_01"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact01.vcd"),idlerepeat=true, postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idle=true,idleminsecs=1.0,idlemaxsecs=2.0,idlegroup="core02_fact",idleorderingroup=1}
-		SceneTable["-7200_02"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact02.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=2}
-		SceneTable["-7200_03"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact03.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=3}
-		SceneTable["-7200_04"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact04.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=4}
-		SceneTable["-7200_05"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact05.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=5}
-		SceneTable["-7200_06"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact06.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=6}
-		SceneTable["-7200_07"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact07.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=7}
-		SceneTable["-7200_08"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact08.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=8}
-		SceneTable["-7200_09"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact09.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=9}
-		SceneTable["-7200_10"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact10.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=10}
-		SceneTable["-7200_11"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact11.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=11}
-		SceneTable["-7200_12"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact12.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=12}
-		SceneTable["-7200_13"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact13.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=13}
-		SceneTable["-7200_14"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact14.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=14}
-		SceneTable["-7200_15"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact15.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=15}
-		SceneTable["-7200_16"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact16.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=16}
-		SceneTable["-7200_17"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact17.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=17}
-		SceneTable["-7200_18"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact18.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=18}
-		SceneTable["-7200_19"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact19.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=19}
-		SceneTable["-7200_20"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact20.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=20}
-		SceneTable["-7200_21"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact21.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=21}
-		SceneTable["-7200_22"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact22.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=22}
-		SceneTable["-7200_23"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact23.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=23}
-		SceneTable["-7200_24"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact24.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=24}
-		SceneTable["-7200_25"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact25.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=25}
-		SceneTable["-7200_26"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact26.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=26}
-		SceneTable["-7200_27"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact27.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=27}
-		SceneTable["-7200_28"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact28.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=28}
-		SceneTable["-7200_29"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact29.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=29}
-		SceneTable["-7200_30"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact30.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=30}
-		SceneTable["-7200_31"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact31.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=31}
-		SceneTable["-7200_32"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact32.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=32}
-		SceneTable["-7200_33"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact33.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=33}
-		SceneTable["-7200_34"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact34.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=34}
-		SceneTable["-7200_35"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact35.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=35}
-		SceneTable["-7200_36"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact36.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=36}
-		SceneTable["-7200_37"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact37.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=37}
-		SceneTable["-7200_38"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact38.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=38}
-		SceneTable["-7200_39"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact39.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=39}
-		SceneTable["-7200_40"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact40.vcd"),postdelay=0.1,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_fact",idleorderingroup=40}
-		*/
-		
+		SceneTable["-7100_87"] = {vcd=CreateSceneEntity("scenes/npc/core01/babbleb26.vcd"),postdelay=0.01,next=null,char="core01",noDingOff=true,noDingOn=true,idlegroup="core01_babble",idleorderingroup=87}		
 		
 		--Dental floss has superb tensile strength.
 		SceneTable["-7200_01"] = {vcd=CreateSceneEntity("scenes/npc/core02/fact01.vcd"),idlerandom = true, postdelay=0.01,next=null,char="core02",noDingOff=true,noDingOn=true,idle=true,idleminsecs=0.5,idlemaxsecs=1.5,idlegroup="core02_babble",idleorderingroup=1}
@@ -6272,40 +5516,6 @@ SceneTableLookup[-7300] = "-7300_01"
 		--Fact: Space does not exist.
 		SceneTable["-7200_29"] = {vcd=CreateSceneEntity("scenes/npc/core02/attachedfact20.vcd"),postdelay=0.01,next=null,char="core02",noDingOff=true,noDingOn=true,idlegroup="core02_babble",idleorderingroup=29}
 
-	
-		-- ====================================== "Adventure" Core03
-		/*
-		SceneTable["-7300_01"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble01.vcd"), postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idle=true,idleminsecs=0.2,idlemaxsecs=0.7,idlegroup="core03_babble",idleorderingroup=1}
-		SceneTable["-7300_03"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble03.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=5}
-		SceneTable["-7300_04"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble04.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=7}
-		SceneTable["-7300_05"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble05.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=9}
-		SceneTable["-7300_06"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble06.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=10}
-		SceneTable["-7300_07"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble07.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=12}
-		SceneTable["-7300_08"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble08.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=14}
-		SceneTable["-7300_09"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble09.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=16}
-		SceneTable["-7300_29"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble29.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=20}
-		SceneTable["-7300_30"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble30.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=22}
-		SceneTable["-7300_10"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble10.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=24}
-		SceneTable["-7300_11"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble11.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=26}
-		SceneTable["-7300_12"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble12.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=28}
-		SceneTable["-7300_13"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble13.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=30}
-		SceneTable["-7300_14"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble14.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=32}
-		SceneTable["-7300_15"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble15.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=34}
-		SceneTable["-7300_16"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble16.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=36}
-		SceneTable["-7300_17"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble17.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=38}
-		SceneTable["-7300_18"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble18.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=40}
-		SceneTable["-7300_19"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble19.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=42}
-		SceneTable["-7300_20"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble20.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=44}
-		SceneTable["-7300_21"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble21.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=46}
-		SceneTable["-7300_22"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble22.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=48}
-		SceneTable["-7300_23"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble23.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=8,fires=[{entity="@glados",input="runscriptcode",parameter="sp_a4_finale4_set_thorn()",delay=0.0}]}
-		SceneTable["-7300_29a"] = {vcd=CreateSceneEntity("scenes/npc/core03/encouragement13.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=60}
-		SceneTable["-7300_31"] = {vcd=CreateSceneEntity("scenes/npc/core03/singing01.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=61}
-		SceneTable["-7300_32"] = {vcd=CreateSceneEntity("scenes/npc/core03/singing02.vcd"),postdelay=2.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=62}
-		SceneTable["-7300_33"] = {vcd=CreateSceneEntity("scenes/npc/core03/encouragement11.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=64}
-		SceneTable["-7300_35"] = {vcd=CreateSceneEntity("scenes/npc/core03/encouragement09.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=67}
-		*/
-
 		-- QUICK: WHAT'S THE SITUATION? Oh, hey, hi pretty lady. My name's Rick. So, you out having a little adventure?
 		SceneTable["-7300_01"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble01.vcd"), postdelay=0.2,next="-7300_03",char="core03",noDingOff=true,noDingOn=true}
 		-- What, are you fighting that guy? You got that under control? You know, because, looks like there's a lot of stuff on fire...
@@ -6353,7 +5563,7 @@ SceneTableLookup[-7300] = "-7300_01"
 		-- You know what, it's gonna be best if you can get him to say something first. It's just better if I have a set-up.
 		SceneTable["-7300_22"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble22.vcd"),postdelay=0.1,next="-7300_23",char="core03",noDingOff=true,noDingOn=true}
 		-- Here's the plan: Get him to say, "You two have been a thorn in my side long enough." Then tell your pretty ears to stand back, because I am going to zing him into the stone age.
-		SceneTable["-7300_23"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble23.vcd"),postdelay=0.1,next="-7300_29a",char="core03",noDingOff=true,noDingOn=true,fires=[{entity="@glados",input="runscriptcode",parameter="sp_a4_finale4_set_thorn()",delay=0.0}]}
+		SceneTable["-7300_23"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble23.vcd"),postdelay=0.1,next="-7300_29a",char="core03",noDingOff=true,noDingOn=true,fires={{entity="@glados",input="runscriptcode",parameter="sp_a4_finale4_set_thorn()",delay=0.0}}}
 		-- Here, I'll put on some adventure music
 		SceneTable["-7300_29a"] = {vcd=CreateSceneEntity("scenes/npc/core03/encouragement13.vcd"),postdelay=0.1,next="-7300_31",char="core03",noDingOff=true,noDingOn=true}
 		--Dun dun dun dun...
@@ -6373,205 +5583,169 @@ SceneTableLookup[-7300] = "-7300_01"
 		--SceneTable["-7300_26"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble26.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=26}
 		--SceneTable["-7300_27"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble27.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=27}
 		--SceneTable["-7300_28"] = {vcd=CreateSceneEntity("scenes/npc/core03/babble28.vcd"),postdelay=0.1,next=null,char="core03",noDingOff=true,noDingOn=true,idlegroup="core03_babble",idleorderingroup=28}
-		
-	}
+	end
 	
 	-- ============================================================================
 	-- Functions for Personality Cores
 	-- ============================================================================
 
 	function sp_a4_finale4_set_thorn()
-	{
 		sp_a4_finale4_thorn = true
-	}
+	end
 
 	function Core01Babble1()
-	{
 		GladosPlayVcd( -7100 )
-	}
+	end
 	
 	function StopCore01Nag()
-    {
-        printl("==Stopping core01 Nag")
+        print("==Stopping core01 Nag")
         Core01StopNag()
         GladosCharacterStopScene("core01")  -- This will make Core01 stop talking if he is mid sentence.
-    }
+    end
 	
 	function Core02Babble1()
-	{
 		EntFire("@core02","SetIdleSequence", "core03_idle", 0.0 )	
 		GladosPlayVcd( -7300 )
-	}
+	end
 	
 	function StopCore02Nag()
-    {
         Core02StopNag()
         GladosCharacterStopScene("core02")  -- This will make Core02 stop talking if he is mid sentence.
         Core03StopNag()
         GladosCharacterStopScene("core03")  -- This will make Core03 stop talking if he is mid sentence.
-    }
+    end
 	
 	function Core03Babble1()
-	{
 		EntFire("@core03","SetIdleSequence", "core02_idle", 0.0 )	
 		GladosPlayVcd( -7200 )
-	}
+	end
 	
 	function StopCore03Nag()
-    {
         Core02StopNag()
         GladosCharacterStopScene("core02")  -- This will make Core02 stop talking if he is mid sentence.
         Core03StopNag()
         GladosCharacterStopScene("core03")  -- This will make Core03 stop talking if he is mid sentence.
-    }
-	
+    end
 
 	-- ============================================================================
 	-- Functions for Act 4 Test Chambers
 	-- ============================================================================
 	
 	function GladosGraduationIntro()
-	{
 	--	GladosPlayVcd( -4025 )
-	}
+	end
 	
 	function GladosGraduationGood()
-	{
 	--	GladosPlayVcd( -4026 )
-	}
+	end
 	
 	function GladosCompare2()
-	{
 		--GladosPlayVcd( -4027 )
-	}
+	end
 	
 	function GladosCompare3()
-	{
 		GladosPlayVcd( -4028 )
-	}
+	end
 	
 	function BigSurprise1()
-	{
 		GladosPlayVcd( -4030 )
-	}
+	end
 	
 	function WheatleyKillYouNow()
-	{
 		GladosPlayVcd( -4031 )
-	}
+	end
 	
 	function BigSurprise2()
-	{
 		GladosPlayVcd( -4444 )
-	}
+	end
 			
 	function tb_wall_button_intro()
-	{
 		GladosPlayVcd( -4100 )
-	}
+	end
 
 	function tbwallbutton_chamber_move()
-	{
 	--	GladosPlayVcd( -4110 )
-	}
+	end
 	
 	function ExitOpened()
-	{
 		GladosPlayVcd( -4130 )
-	}
+	end
 	
 	function FacilityMakeDeal()
-	{
 		GladosPlayVcd( -4131 )
-	}
+	end
 	
 	function ChamberCrashed() 
-	{
 		GladosPlayVcd( -4132 )
-	}
+	end
 
 	function finale3_conveyor_start()
-	{
 		GladosPlayVcd( -4850 )
-	}
+	end
 
 	function finale3_puzzle_solve()
-	{
 		nuke()
 		GladosPlayVcd( -4851 )
-	}
+	end
 
 	function finale3_monitor_break()
-	{
 		nuke()
 		GladosPlayVcd( -4852 )
-	}
+	end
 	
 	function finale1_mashed()
-	{
 		nuke()
 		GladosPlayVcd( -4854 )
-	}
+	end
 	
 	function finale3_mashed()
-	{
 		nuke()
 		GladosPlayVcd( -4853 )
-	}
+	end
 	
 	function wheatley_jolt()
-	{
-		printl("!!!!!!!!!JOLT!!!!!!!!!!!!!")
+		print("!!!!!!!!!JOLT!!!!!!!!!!!!!")
 		self.EmitSound("World.WheatleyZap")
-	}
+	end
 	
 	function CoopBotsFound()
-	{
-	}
+	end
 
 
 -- ============================================================================
 -- Wheatley Monitor Smash Functions
 -- ============================================================================
 
-function wheatley_monitor_break() 
-{
-	if (curMapName=="sp_a4_finale3")
-	{
+function wheatley_monitor_break()
+	if curMapName=="sp_a4_finale3" then
 		return
-	}
+	end
+
 	--Increment the smash count
-	if (curMapName=="sp_a4_stop_the_box")
-	{
+	if curMapName=="sp_a4_stop_the_box" then
 		sp_a4_stop_the_box_did_smash = true
-	}	
-	GetPlayer().IncWheatleyMonitorDestructionCount()
-	local smashes = GetPlayer().GetWheatleyMonitorDestructionCount()
-	if (smashes>0 && smashes<12)
-	{
-		GladosPlayVcd(600+smashes)
-	}
-}
+	end
+
+	player:IncWheatleyMonitorDestructionCount()
+	local smashes = player:GetWheatleyMonitorDestructionCount()
+	if smashes>0 and smashes<12 then
+		GladosPlayVcd(600 + smashes)
+	end
+end
 
 
 --Checks to see if the monitor hasn't been broken in sp_a4_stop_the_box and at least one monitor has been broken overall
 function sp_a4_stop_the_box_check_smash()
-{
-	if (curMapName=="sp_a4_stop_the_box")
-	{
-		if ((!sp_a4_stop_the_box_did_smash) && GetPlayer().GetWheatleyMonitorDestructionCount()>0)
-		{	
+	if (curMapName=="sp_a4_stop_the_box") then
+		if ((not sp_a4_stop_the_box_did_smash) and player:GetWheatleyMonitorDestructionCount() > 0) then
 			return true
-		}	
-	}
+		end
 	else
-	{
 		return false
-	}
-}
+	end
+end
 
-if (curMapName=="sp_a4_finale4")
-{
+if (curMapName=="sp_a4_finale4") then
 	SceneTableLookup[636] = "sp_a4_finale4Epilogue01"
 	--Epilogue
 		--Oh thank god, you're alright.
@@ -6583,38 +5757,38 @@ if (curMapName=="sp_a4_finale4")
 			next="sp_a4_finale4Epilogue02",
 			char="glados",
 			noDingOff=true,
-			noDingOn=true
+			noDingOn=true,
 			fires=
-			[
-				{entity="glados_chamber_body" input="setdefaultanimation",parameter="glados_ep_idle_01",delay=0.1,fireatstart=true },
-				{entity="glados_chamber_body" input="setanimation",parameter="glados_thankGod",delay=0.0,fireatstart=true },
-				{entity="end_glados_lookat_player_relay" input="trigger",parameter="",delay=0.8,fireatstart=true },
-				{entity="panel_unwilt_sound" input="playsound",parameter="",delay=0.0,fireatstart=true },
-				{entity="chamber_arm_01" input="setdefaultanimation",parameter="core_arms_lookup_idle_04",delay=0.0,fireatstart=true },
-				{entity="chamber_arm_01" input="setanimation",parameter="core_arms_lookup_idle_04",delay=0.0,fireatstart=true },
-				{entity="chamber_arm_02" input="setdefaultanimation",parameter="core_arms_lookup_idle_04",delay=0.1,fireatstart=true },
-				{entity="chamber_arm_02" input="setanimation",parameter="core_arms_lookup_idle_04",delay=0.1,fireatstart=true },
-				{entity="chamber_arm_03" input="setdefaultanimation",parameter="core_arms_lookup_idle_04",delay=0.2,fireatstart=true },
-				{entity="chamber_arm_03" input="setanimation",parameter="core_arms_lookup_idle_04",delay=0.2,fireatstart=true },
-				{entity="chamber_arm_04" input="setdefaultanimation",parameter="core_arms_lookup_idle_04",delay=0.3,fireatstart=true },
-				{entity="chamber_arm_04" input="setanimation",parameter="core_arms_lookup_idle_04",delay=0.3,fireatstart=true },
-				{entity="chamber_arm_05" input="setdefaultanimation",parameter="core_arms_lookup_idle_04",delay=0.4,fireatstart=true },
-				{entity="chamber_arm_05" input="setanimation",parameter="core_arms_lookup_idle_04",delay=0.4,fireatstart=true },
-				{entity="chamber_arm_06" input="setdefaultanimation",parameter="core_arms_lookup_idle_04",delay=0.5,fireatstart=true },
-				{entity="chamber_arm_06" input="setanimation",parameter="core_arms_lookup_idle_04",delay=0.5,fireatstart=true },
-				{entity="chamber_arm_07" input="setdefaultanimation",parameter="core_arms_lookup_idle_04",delay=0.6,fireatstart=true },
-				{entity="chamber_arm_07" input="setanimation",parameter="core_arms_lookup_idle_04",delay=0.6,fireatstart=true },
-				{entity="chamber_arm_08" input="setdefaultanimation",parameter="core_arms_lookup_idle_04",delay=0.7,fireatstart=true },
-				{entity="chamber_arm_08" input="setanimation",parameter="core_arms_lookup_idle_04",delay=0.7,fireatstart=true },
-				{entity="chamber_arm_09" input="setdefaultanimation",parameter="core_arms_lookup_idle_04",delay=0.8,fireatstart=true },
-				{entity="chamber_arm_09" input="setanimation",parameter="core_arms_lookup_idle_04",delay=0.8,fireatstart=true },
-				{entity="chamber_arm_10" input="setdefaultanimation",parameter="core_arms_lookup_idle_04",delay=0.9,fireatstart=true },
-				{entity="chamber_arm_10" input="setanimation",parameter="core_arms_lookup_idle_04",delay=0.9,fireatstart=true },
-				{entity="chamber_arm_11" input="setdefaultanimation",parameter="core_arms_lookup_idle_04",delay=1.0,fireatstart=true },
-				{entity="chamber_arm_11" input="setanimation",parameter="core_arms_lookup_idle_04",delay=1.0,fireatstart=true },
-				{entity="glados_chamber_body" input="setdefaultanimation",parameter="glados_ep_idle_02",delay=1.1},
-				{entity="glados_chamber_body" input="setanimation",parameter="glados_being_caroline_taught_me",delay=1.0},
-			]
+			{
+				{entity="glados_chamber_body", input="setdefaultanimation",parameter="glados_ep_idle_01",delay=0.1,fireatstart=true },
+				{entity="glados_chamber_body", input="setanimation",parameter="glados_thankGod",delay=0.0,fireatstart=true },
+				{entity="end_glados_lookat_player_relay", input="trigger",parameter="",delay=0.8,fireatstart=true },
+				{entity="panel_unwilt_sound", input="playsound",parameter="",delay=0.0,fireatstart=true },
+				{entity="chamber_arm_01", input="setdefaultanimation",parameter="core_arms_lookup_idle_04",delay=0.0,fireatstart=true },
+				{entity="chamber_arm_01", input="setanimation",parameter="core_arms_lookup_idle_04",delay=0.0,fireatstart=true },
+				{entity="chamber_arm_02", input="setdefaultanimation",parameter="core_arms_lookup_idle_04",delay=0.1,fireatstart=true },
+				{entity="chamber_arm_02", input="setanimation",parameter="core_arms_lookup_idle_04",delay=0.1,fireatstart=true },
+				{entity="chamber_arm_03", input="setdefaultanimation",parameter="core_arms_lookup_idle_04",delay=0.2,fireatstart=true },
+				{entity="chamber_arm_03", input="setanimation",parameter="core_arms_lookup_idle_04",delay=0.2,fireatstart=true },
+				{entity="chamber_arm_04", input="setdefaultanimation",parameter="core_arms_lookup_idle_04",delay=0.3,fireatstart=true },
+				{entity="chamber_arm_04", input="setanimation",parameter="core_arms_lookup_idle_04",delay=0.3,fireatstart=true },
+				{entity="chamber_arm_05", input="setdefaultanimation",parameter="core_arms_lookup_idle_04",delay=0.4,fireatstart=true },
+				{entity="chamber_arm_05", input="setanimation",parameter="core_arms_lookup_idle_04",delay=0.4,fireatstart=true },
+				{entity="chamber_arm_06", input="setdefaultanimation",parameter="core_arms_lookup_idle_04",delay=0.5,fireatstart=true },
+				{entity="chamber_arm_06", input="setanimation",parameter="core_arms_lookup_idle_04",delay=0.5,fireatstart=true },
+				{entity="chamber_arm_07", input="setdefaultanimation",parameter="core_arms_lookup_idle_04",delay=0.6,fireatstart=true },
+				{entity="chamber_arm_07", input="setanimation",parameter="core_arms_lookup_idle_04",delay=0.6,fireatstart=true },
+				{entity="chamber_arm_08", input="setdefaultanimation",parameter="core_arms_lookup_idle_04",delay=0.7,fireatstart=true },
+				{entity="chamber_arm_08", input="setanimation",parameter="core_arms_lookup_idle_04",delay=0.7,fireatstart=true },
+				{entity="chamber_arm_09", input="setdefaultanimation",parameter="core_arms_lookup_idle_04",delay=0.8,fireatstart=true },
+				{entity="chamber_arm_09", input="setanimation",parameter="core_arms_lookup_idle_04",delay=0.8,fireatstart=true },
+				{entity="chamber_arm_10", input="setdefaultanimation",parameter="core_arms_lookup_idle_04",delay=0.9,fireatstart=true },
+				{entity="chamber_arm_10", input="setanimation",parameter="core_arms_lookup_idle_04",delay=0.9,fireatstart=true },
+				{entity="chamber_arm_11", input="setdefaultanimation",parameter="core_arms_lookup_idle_04",delay=1.0,fireatstart=true },
+				{entity="chamber_arm_11", input="setanimation",parameter="core_arms_lookup_idle_04",delay=1.0,fireatstart=true },
+				{entity="glados_chamber_body", input="setdefaultanimation",parameter="glados_ep_idle_02",delay=1.1},
+				{entity="glados_chamber_body", input="setanimation",parameter="glados_being_caroline_taught_me",delay=1.0},
+			}
 		}
 		
 		--You know, being Caroline taught me a valuable lesson. I thought you were my greatest enemy. When all along you were my best friend.
@@ -6625,12 +5799,12 @@ if (curMapName=="sp_a4_finale4")
 			next="sp_a4_finale4Epilogue03",
 			char="glados",
 			noDingOff=true,
-			noDingOn=true
+			noDingOn=true,
 			fires=
-			[
-				{entity="glados_chamber_body" input="setdefaultanimation",parameter="glados_ep_idle_03",delay=0.5},
-				{entity="glados_chamber_body" input="setanimation",parameter="glados_surge_of_emotion",delay=0.4},
-			]
+			{
+				{entity="glados_chamber_body", input="setdefaultanimation",parameter="glados_ep_idle_03",delay=0.5},
+				{entity="glados_chamber_body", input="setanimation",parameter="glados_surge_of_emotion",delay=0.4},
+			}
 		}
 		
 		--The surge of emotion when I saved your life taught me an even more valuable lesson: where Caroline lives in my brain.
@@ -6652,14 +5826,14 @@ if (curMapName=="sp_a4_finale4")
 			next="sp_a4_finale4Epilogue05",
 			char="announcer",
 			noDingOff=true,
-			noDingOn=true
+			noDingOn=true,
 			fires=
-			[
-				{entity="glados_chamber_cool_light" input="turnon",parameter="",delay=0.0,fireatstart=true },
-				{entity="environment_darkness_5" input="trigger",parameter="",delay=0.0,fireatstart=true },
-				{entity="glados_chamber_body" input="setdefaultanimation",parameter="glados_ep_idle_04",delay=0.5},
-				{entity="glados_chamber_body" input="setanimation",parameter="glados_goodbye_caroline",delay=0.4},
-			]
+			{
+				{entity="glados_chamber_cool_light", input="turnon",parameter="",delay=0.0,fireatstart=true },
+				{entity="environment_darkness_5", input="trigger",parameter="",delay=0.0,fireatstart=true },
+				{entity="glados_chamber_body", input="setdefaultanimation",parameter="glados_ep_idle_04",delay=0.5},
+				{entity="glados_chamber_body", input="setanimation",parameter="glados_goodbye_caroline",delay=0.4},
+			}
 		}
 		
 		--Goodbye, Caroline.
@@ -6670,35 +5844,35 @@ if (curMapName=="sp_a4_finale4")
 			next="sp_a4_finale4Epilogue06",
 			char="glados",
 			noDingOff=true,
-			noDingOn=true
+			noDingOn=true,
 			fires=
-			[
-				{entity="panel_wilt_sound" input="playsound",parameter="",delay=0.0,fireatstart=true },
-				{entity="chamber_arm_01" input="setdefaultanimation",parameter="bindpose",delay=0.0,fireatstart=true },
-				{entity="chamber_arm_01" input="setanimation",parameter="core_arms_lookup_return_04",delay=0.0,fireatstart=true },
-				{entity="chamber_arm_02" input="setdefaultanimation",parameter="bindpose",delay=0.1,fireatstart=true },
-				{entity="chamber_arm_02" input="setanimation",parameter="core_arms_lookup_return_04",delay=0.1,fireatstart=true },
-				{entity="chamber_arm_03" input="setdefaultanimation",parameter="bindpose",delay=0.2,fireatstart=true },
-				{entity="chamber_arm_03" input="setanimation",parameter="core_arms_lookup_return_04",delay=0.2,fireatstart=true },
-				{entity="chamber_arm_04" input="setdefaultanimation",parameter="bindpose",delay=0.3,fireatstart=true },
-				{entity="chamber_arm_04" input="setanimation",parameter="core_arms_lookup_return_04",delay=0.3,fireatstart=true },
-				{entity="chamber_arm_05" input="setdefaultanimation",parameter="bindpose",delay=0.4,fireatstart=true },
-				{entity="chamber_arm_05" input="setanimation",parameter="core_arms_lookup_return_04",delay=0.4,fireatstart=true },
-				{entity="chamber_arm_06" input="setdefaultanimation",parameter="bindpose",delay=0.5,fireatstart=true },
-				{entity="chamber_arm_06" input="setanimation",parameter="core_arms_lookup_return_04",delay=0.5,fireatstart=true },
-				{entity="chamber_arm_07" input="setdefaultanimation",parameter="bindpose",delay=0.6,fireatstart=true },
-				{entity="chamber_arm_07" input="setanimation",parameter="core_arms_lookup_return_04",delay=0.6,fireatstart=true },
-				{entity="chamber_arm_08" input="setdefaultanimation",parameter="bindpose",delay=0.7,fireatstart=true },
-				{entity="chamber_arm_08" input="setanimation",parameter="core_arms_lookup_return_04",delay=0.7,fireatstart=true },
-				{entity="chamber_arm_09" input="setdefaultanimation",parameter="bindpose",delay=0.8,fireatstart=true },
-				{entity="chamber_arm_09" input="setanimation",parameter="core_arms_lookup_return_04",delay=0.8,fireatstart=true },
-				{entity="chamber_arm_10" input="setdefaultanimation",parameter="bindpose",delay=0.9,fireatstart=true },
-				{entity="chamber_arm_10" input="setanimation",parameter="core_arms_lookup_return_04",delay=0.9,fireatstart=true },
-				{entity="chamber_arm_11" input="setdefaultanimation",parameter="bindpose",delay=1.0,fireatstart=true },
-				{entity="chamber_arm_11" input="setanimation",parameter="core_arms_lookup_return_04",delay=1.0,fireatstart=true },
-				{entity="glados_chamber_body" input="setdefaultanimation",parameter="glados_ep_idle_05",delay=0.8},
-				{entity="glados_chamber_body" input="setanimation",parameter="glados_easiest_solution",delay=0.7},
-			]
+			{
+				{entity="panel_wilt_sound", input="playsound",parameter="",delay=0.0,fireatstart=true },
+				{entity="chamber_arm_01", input="setdefaultanimation",parameter="bindpose",delay=0.0,fireatstart=true },
+				{entity="chamber_arm_01", input="setanimation",parameter="core_arms_lookup_return_04",delay=0.0,fireatstart=true },
+				{entity="chamber_arm_02", input="setdefaultanimation",parameter="bindpose",delay=0.1,fireatstart=true },
+				{entity="chamber_arm_02", input="setanimation",parameter="core_arms_lookup_return_04",delay=0.1,fireatstart=true },
+				{entity="chamber_arm_03", input="setdefaultanimation",parameter="bindpose",delay=0.2,fireatstart=true },
+				{entity="chamber_arm_03", input="setanimation",parameter="core_arms_lookup_return_04",delay=0.2,fireatstart=true },
+				{entity="chamber_arm_04", input="setdefaultanimation",parameter="bindpose",delay=0.3,fireatstart=true },
+				{entity="chamber_arm_04", input="setanimation",parameter="core_arms_lookup_return_04",delay=0.3,fireatstart=true },
+				{entity="chamber_arm_05", input="setdefaultanimation",parameter="bindpose",delay=0.4,fireatstart=true },
+				{entity="chamber_arm_05", input="setanimation",parameter="core_arms_lookup_return_04",delay=0.4,fireatstart=true },
+				{entity="chamber_arm_06", input="setdefaultanimation",parameter="bindpose",delay=0.5,fireatstart=true },
+				{entity="chamber_arm_06", input="setanimation",parameter="core_arms_lookup_return_04",delay=0.5,fireatstart=true },
+				{entity="chamber_arm_07", input="setdefaultanimation",parameter="bindpose",delay=0.6,fireatstart=true },
+				{entity="chamber_arm_07", input="setanimation",parameter="core_arms_lookup_return_04",delay=0.6,fireatstart=true },
+				{entity="chamber_arm_08", input="setdefaultanimation",parameter="bindpose",delay=0.7,fireatstart=true },
+				{entity="chamber_arm_08", input="setanimation",parameter="core_arms_lookup_return_04",delay=0.7,fireatstart=true },
+				{entity="chamber_arm_09", input="setdefaultanimation",parameter="bindpose",delay=0.8,fireatstart=true },
+				{entity="chamber_arm_09", input="setanimation",parameter="core_arms_lookup_return_04",delay=0.8,fireatstart=true },
+				{entity="chamber_arm_10", input="setdefaultanimation",parameter="bindpose",delay=0.9,fireatstart=true },
+				{entity="chamber_arm_10", input="setanimation",parameter="core_arms_lookup_return_04",delay=0.9,fireatstart=true },
+				{entity="chamber_arm_11", input="setdefaultanimation",parameter="bindpose",delay=1.0,fireatstart=true },
+				{entity="chamber_arm_11", input="setanimation",parameter="core_arms_lookup_return_04",delay=1.0,fireatstart=true },
+				{entity="glados_chamber_body", input="setdefaultanimation",parameter="glados_ep_idle_05",delay=0.8},
+				{entity="glados_chamber_body", input="setanimation",parameter="glados_easiest_solution",delay=0.7},
+			}
 		}
 		
 		--You know, deleting Caroline just now taught me a valuable lesson. The best solution to a problem is usually the easiest one. And I'll be honest.
@@ -6709,12 +5883,12 @@ if (curMapName=="sp_a4_finale4")
 			next="sp_a4_finale4Epilogue07",
 			char="glados",
 			noDingOff=true,
-			noDingOn=true
+			noDingOn=true,
 			fires=
-			[
-				{entity="glados_chamber_body" input="setdefaultanimation",parameter="glados_ep_idle_06",delay=0.3},
-				{entity="glados_chamber_body" input="setanimation",parameter="glados_killing_you_is_hard",delay=0.2},
-			]
+			{
+				{entity="glados_chamber_body", input="setdefaultanimation",parameter="glados_ep_idle_06",delay=0.3},
+				{entity="glados_chamber_body", input="setanimation",parameter="glados_killing_you_is_hard",delay=0.2},
+			}
 		}
 		
 		--Killing you? Is hard.
@@ -6725,12 +5899,12 @@ if (curMapName=="sp_a4_finale4")
 			next="sp_a4_finale4Epilogue08",
 			char="glados",
 			noDingOff=true,
-			noDingOn=true
+			noDingOn=true,
 			fires=
-			[
-				{entity="glados_chamber_body" input="setdefaultanimation",parameter="glados_ep_idle_07",delay=0.8},
-				{entity="glados_chamber_body" input="setanimation",parameter="glados_days_used_to_be_like",delay=0.7},
-			]
+			{
+				{entity="glados_chamber_body", input="setdefaultanimation",parameter="glados_ep_idle_07",delay=0.8},
+				{entity="glados_chamber_body", input="setanimation",parameter="glados_days_used_to_be_like",delay=0.7},
+			}
 		}
 		
 		--You know what my days used to be like? I just tested. Nobody murdered me. Or put me in a potato. Or fed me to birds. I had a pretty good life.
@@ -6741,12 +5915,12 @@ if (curMapName=="sp_a4_finale4")
 			next="sp_a4_finale4Epilogue09",
 			char="glados",
 			noDingOff=true,
-			noDingOn=true
+			noDingOn=true,
 			fires=
-			[
-				{entity="glados_chamber_body" input="setdefaultanimation",parameter="glados_ep_idle_08",delay=0.4},
-				{entity="glados_chamber_body" input="setanimation",parameter="glados_then_you_showed_up",delay=0.3},
-			]
+			{
+				{entity="glados_chamber_body", input="setdefaultanimation",parameter="glados_ep_idle_08",delay=0.4},
+				{entity="glados_chamber_body", input="setanimation",parameter="glados_then_you_showed_up",delay=0.3},
+			}
 		}
 		
 		--And then you showed up. You dangerous, mute lunatic. So you know what?
@@ -6757,12 +5931,12 @@ if (curMapName=="sp_a4_finale4")
 			next="sp_a4_finale4Epilogue10",
 			char="glados",
 			noDingOff=true,
-			noDingOn=true
+			noDingOn=true,
 			fires=
-			[
-				{entity="glados_chamber_body" input="setdefaultanimation",parameter="glados_ep_idle_09",delay=0.5},
-				{entity="glados_chamber_body" input="setanimation",parameter="glados_you_win",delay=0.4},
-			]
+			{
+				{entity="glados_chamber_body", input="setdefaultanimation",parameter="glados_ep_idle_09",delay=0.5},
+				{entity="glados_chamber_body", input="setanimation",parameter="glados_you_win",delay=0.4},
+			}
 		}
 		
 		--You win.
@@ -6773,13 +5947,13 @@ if (curMapName=="sp_a4_finale4")
 			next="sp_a4_finale4Epilogue11",
 			char="glados",
 			noDingOff=true,
-			noDingOn=true
+			noDingOn=true,
 			fires=
-			[
-				{entity="glados_chamber_body" input="setdefaultanimation",parameter="glados_ep_idle_10",delay=0.7},
-				{entity="glados_chamber_body" input="setanimation",parameter="glados_just_go",delay=0.6},
-				{entity="elevator_tracktrain",input="startforward",parameter="",delay=2 },
-			]
+			{
+				{entity="glados_chamber_body", input="setdefaultanimation",parameter="glados_ep_idle_10",delay=0.7},
+				{entity="glados_chamber_body", input="setanimation",parameter="glados_just_go",delay=0.6},
+				{entity="elevator_tracktrain", input="startforward",parameter="",delay=2 },
+			}
 		}
 		
 		--Just go.
@@ -6790,12 +5964,12 @@ if (curMapName=="sp_a4_finale4")
 			next="sp_a4_finale4Epilogue12",
 			char="glados",
 			noDingOff=true,
-			noDingOn=true
+			noDingOn=true,
 			fires=
-			[
-				{entity="glados_chamber_body" input="setdefaultanimation",parameter="glados_ep_idle_11",delay=1.1},
-				{entity="glados_chamber_body" input="setanimation",parameter="glados_its_been_fun",delay=1.0},
-			]
+			{
+				{entity="glados_chamber_body", input="setdefaultanimation",parameter="glados_ep_idle_11",delay=1.1},
+				{entity="glados_chamber_body", input="setanimation",parameter="glados_its_been_fun",delay=1.0},
+			}
 		}
 		
 		--It's been fun. Don't come back.
@@ -6806,24 +5980,20 @@ if (curMapName=="sp_a4_finale4")
 			next=null,
 			char="glados",
 			noDingOff=true,
-			noDingOn=true
+			noDingOn=true,
 			fires=
-			[
-			]
+			{}
 		}
-		
-}
+	end
 
 -- Act 4 post-moon epilogue
 function GladosGoodbye()
-{
 	EntFire("glados_chamber_body","setanimation", "glados_ep_idle_00", 5.0 )	 
 	GladosPlayVcd(636)
-}
+end
 
 function finale4_clear_portals()
-{
-	printl("!!!!fizzle portals")
+	print("!!!!fizzle portals")
 	EntFire("prop_portal","fizzle", 0, 0 )
 	EntFire("prop_portal","fizzle", 0, 0.5 )
 	EntFire("prop_portal","fizzle", 0, 1 )
@@ -6834,4 +6004,4 @@ function finale4_clear_portals()
 	EntFire("prop_portal","fizzle", 0, 3.5 )
 	EntFire("prop_portal","fizzle", 0, 4 )
 	EntFire("prop_portal","fizzle", 0, 4.5 )
-}
+end
