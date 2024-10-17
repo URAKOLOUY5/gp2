@@ -48,7 +48,7 @@ function ENT:ShootFutbol()
     direction.z = direction.z + 1 -- Add an upward bias
 
     -- Adjust the velocity based on the distance to the target
-    local launchSpeed = (self.LaunchSpeed or 500) * 0.1  -- Default speed if not set
+    local launchSpeed = (self.LaunchSpeed or 500) * 0.1
     local velocity = direction:GetNormalized() * (launchSpeed + (distance * 0.5))
 
     local phys = futbol:GetPhysicsObject()
