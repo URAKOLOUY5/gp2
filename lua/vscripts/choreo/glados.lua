@@ -17,6 +17,7 @@ pitchOverride = nil
 include "glados_scenetable_include"
 include "glados_scenetable_include_manual"
 include "glados_scenetable_include_manual_act3"
+include "glados_scenetable_include_manual_act4"
 include "glados_scenetable_include_manual_cave"
 
 scenequeue = {}
