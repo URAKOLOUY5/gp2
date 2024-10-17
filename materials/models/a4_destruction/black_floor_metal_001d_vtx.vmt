@@ -1,0 +1,21 @@
+VertexlitGeneric
+{
+$basetexture "metal/black_floor_metal_001d"
+$bumpmap "metal/black_floor_metal_001d_height-ssbump"
+$ssbump 1
+
+$envmap "metal/black_wall_envmap_002a"
+hdr
+{
+$envmap "metal/black_wall_envmap_002a_hdr"
+}
+$envmaplightscale 1
+
+$normalmapalphaenvmapmask 1
+$envmapcontrast 0.99.0
+$envmapsaturation 0.2
+$envmaptint 0.4 0.4 0.4
+"%noportal" 1
+
+"%keywords" "portal2 noportal chamber"
+}
