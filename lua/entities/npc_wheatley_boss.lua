@@ -14,8 +14,6 @@ ENT.m_iClass = CLASS_PLAYER_ALLY
 function ENT:Initialize()
     if CLIENT then return end
     
-    self.IdleOverrideSequence = self:LookupSequence("idle")
-    
     self:SetSolid(SOLID_NONE)
     self:SetBloodColor(DONT_BLEED)
     self:SetHealth(8000)
