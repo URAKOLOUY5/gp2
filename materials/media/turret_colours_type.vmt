@@ -1,0 +1,13 @@
+"UnlitGeneric"
+{
+    "$baseTexture" "media/turret_colours_type"
+	"Proxies"
+	{
+	    "AnimatedTexture"
+		{
+			"animatedtexturevar" "$baseTexture"
+			"animatedtextureframenumvar" "$frame"
+			"animatedtextureframerate" "24"
+		}
+	}
+}
