@@ -5705,7 +5705,7 @@ SceneTableLookup[-7300] = "-7300_01"
 	
 	function wheatley_jolt()
 		print("!!!!!!!!!JOLT!!!!!!!!!!!!!")
-		self.EmitSound("World.WheatleyZap")
+		self:EmitSound("World.WheatleyZap")
 	end
 	
 	function CoopBotsFound()
