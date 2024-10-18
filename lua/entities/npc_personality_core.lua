@@ -29,6 +29,7 @@ function ENT:SetupDataTables()
 
     if SERVER then
         self:SetDropEnabled(true)
+        self:SetPickupEnabled(true)
     end
 end
 
