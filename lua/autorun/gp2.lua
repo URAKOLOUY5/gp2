@@ -115,7 +115,7 @@ if SERVER then
 
             if IsValid(ply:GetViewEntity()) and ply:GetViewEntity():GetClass() == "point_viewcontrol" then
                 ply:SetMoveType(MOVETYPE_NONE)
-                --ply:AddEffects(EF_NODRAW)
+                ply:AddEffects(EF_NODRAW)
                 ply.FrozenByCamera = true
             elseif ply.FrozenByCamera then
                 ply:SetMoveType(MOVETYPE_WALK)
