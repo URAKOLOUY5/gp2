@@ -46,8 +46,7 @@ list.Set( "ContentCategoryIcons", "Portal 2", "games/16/portal2.png" )
 list.Set( "SpawnableEntities", "prop_weighted_cube_clean", {
 	PrintName = "Cube",
 	ClassName = "prop_weighted_cube",
-	Category = "Portal 2",
-    IconOverride = "entities/prop_weighted_cube_clean.png"
+	Category = "Portal 2"
 } )
 
 list.Set( "SpawnableEntities", "prop_weighted_cube_companion", {
