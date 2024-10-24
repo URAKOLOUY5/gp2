@@ -29,12 +29,15 @@ GP2 = {
 include("gp2/netmessages.lua")
 include("gp2/soundmanager.lua")
 include("gp2/particles.lua")
+include("gp2/entityextensions.lua")
 AddCSLuaFile("gp2/netmessages.lua")
 AddCSLuaFile("gp2/soundmanager.lua")
 AddCSLuaFile("gp2/particles.lua")
-
+AddCSLuaFile("gp2/entityextensions.lua")
 
 GP2_VERSION = include("gp2/version.lua")
+
+gp2_remove_suit_on_spawn = CreateConVar("gp2_remove_suit_on_spawn", "1", FCVAR_ARCHIVE + FCVAR_REPLICATED, "Remove suit from player")
 
 if SERVER then
     -- AcceptInput hooks
@@ -43,7 +46,6 @@ if SERVER then
     include("gp2/keyvalues.lua")
     -- Vscripts (serverside only)
     include("gp2/vscriptmanager.lua")
-    include("gp2/entityextensions.lua")
     include("gp2/paint.lua")
     include("gp2/vgui.lua")
     include("gp2/mouthmanager.lua")
@@ -57,6 +59,17 @@ if SERVER then
         -- Try to call OnPostPlayerSpawn on all Vscripted entities
         -- and siltently fail if there's no OnPostPlayerSpawn function in script
         -- pass player to scripts to handle logic per player
+
+        if gp2_remove_suit_on_spawn:GetBool() then
+            ply:StripWeapons()
+            ply:RemoveSuit()
+            ply:SprintDisable()
+
+            timer.Simple(0, function()
+                ply:SetWalkSpeed(190)
+                ply:AllowFlashlight(false)
+            end)
+        end
 
         GP2.VScriptMgr.CallHookFunction("OnPostPlayerSpawn", true, ply)
     end)
