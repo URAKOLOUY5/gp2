@@ -88,7 +88,6 @@ if SERVER then
 
         PaintManager.Initialize()
 
-        
         timer.Simple(0, function()
             local tonemapCtrls = ents.FindByClass("env_tonemap_controller")
 
@@ -113,6 +112,17 @@ if SERVER then
 
         for _, ply in ipairs(player.GetHumans()) do
             if not ply:Alive() then continue end
+
+            if IsValid(ply:GetViewEntity()) and ply:GetViewEntity():GetClass() == "point_viewcontrol" then
+                ply:Freeze(true)
+                ply:AddEffects(EF_NODRAW)
+                ply.FrozenByCamera = true
+            elseif ply.FrozenByCamera then
+                ply:Freeze(false)
+                ply:RemoveEffects(EF_NODRAW)
+                ply.FrozenByCamera = nil
+            end
+
             local wep = ply:GetActiveWeapon()
             if not IsValid(wep) then continue end
             if wep:GetClass() ~= "weapon_portalgun" then continue end
