@@ -49,6 +49,10 @@ function ENT:StartTouch(ent)
             ent:SetActivated(true)
         end
 
+        if ent:GetClass() == "prop_monster_box" then
+            ent:BecomeBox()
+        end
+
         self.IsPressed = true
     end
 end
@@ -58,5 +62,9 @@ function ENT:EndTouch(ent)
 
     if ent:GetClass() == "prop_weighted_cube" then
         ent:SetActivated(false)
+    end
+
+    if ent:GetClass() == "prop_monster_box" then
+        ent:BecomeMonster()
     end
 end

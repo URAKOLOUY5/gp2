@@ -49,3 +49,61 @@ function MetaEntity:TriggerConnectedOutput(name)
         GP2.VScriptMgr.CallScriptFunction(output[1], output[2], true, self)
     end
 end
+
+-- custom gp2_entity base
+local Integer = {}
+Integer.__index = Integer
+
+function isinteger(obj)
+    return getmetatable(obj) == Integer
+end
+
+function int(number)
+    if type(number) ~= "number" then
+        error("Value must be an number")
+    end
+
+    number = math.floor(number)
+
+    return setmetatable(number, Integer)
+end
+
+function DEFINE_FIELD(name, defaultValue)
+    if not ENT then return end
+
+    ENT.DTFields = ENT.DTFields or {}
+    local typeFunc = type
+    local type = ""
+
+    print('DEFINE_FIELD(' .. name .. ', ' .. tostring(defaultValue) .. ')')
+    
+    if isstring(defaultValue) then
+        type = "String"
+    elseif isbool(defaultValue) then
+        type = "Bool"
+    elseif isinteger(defaultValue) then
+        type = "Int"
+    elseif isnumber(defaultValue) then
+        type = "Float"
+    elseif isvector(defaultValue) then
+        type = "Vector"
+    elseif isangle(defaultValue) then
+        type = "Angle"
+    elseif isentity(defaultValue) then
+        type = "Entity"
+    else
+        error("Invalid type '" .. typeFunc(defaultValue) .. "' for FIELD value")
+    end
+
+    table.insert(ENT.DTFields, { type, name, defaultValue })
+end
+
+function DEFINE_KEYFIELD(name, defaultValue)
+    DEFINE_FIELD(name, defaultValue)
+end
+
+function DEFINE_INPUT()
+end
+
+function DEFINE_OUTPUT()
+end
