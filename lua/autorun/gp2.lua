@@ -41,6 +41,44 @@ gp2_remove_suit_on_spawn = CreateConVar("gp2_remove_suit_on_spawn", "1", FCVAR_A
 
 list.Set( "ContentCategoryIcons", "Portal 2", "games/16/portal2.png" )
 
+-- Cubes
+
+list.Set( "SpawnableEntities", "prop_weighted_cube_clean", {
+	PrintName = "Cube",
+	ClassName = "prop_weighted_cube",
+	Category = "Portal 2",
+    IconOverride = "entities/prop_weighted_cube_clean.png"
+} )
+
+list.Set( "SpawnableEntities", "prop_weighted_cube_companion", {
+	PrintName = "Cube (Companion)",
+	ClassName = "prop_weighted_cube",
+	Category = "Portal 2",
+    KeyValues = { NewSkins = 1, CubeType = 1 }
+} )
+
+list.Set( "SpawnableEntities", "prop_weighted_cube_reflective", {
+	PrintName = "Cube (Reflective)",
+	ClassName = "prop_weighted_cube",
+	Category = "Portal 2",
+    KeyValues = { NewSkins = 1, CubeType = 2 }
+} )
+
+list.Set( "SpawnableEntities", "prop_weighted_cube_sphere", {
+	PrintName = "Cube (Sphere)",
+	ClassName = "prop_weighted_cube",
+	Category = "Portal 2",
+    KeyValues = { NewSkins = 1, CubeType = 3 }
+} )
+
+list.Set( "SpawnableEntities", "prop_weighted_cube_antique", {
+	PrintName = "Cube (Antique)",
+	ClassName = "prop_weighted_cube",
+	Category = "Portal 2",
+    KeyValues = { NewSkins = 1, CubeType = 4 }
+} )
+
+
 if SERVER then
     -- AcceptInput hooks
     include("gp2/inputsmanager.lua")
