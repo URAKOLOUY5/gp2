@@ -1,9 +1,0 @@
-// Created by Crowbar 0.74
-version 1
-nodes
-  0 "container_lorez" -1
-end
-skeleton
-  time 0
-    0 2588.804443 -1216.726318 664.650146 0.000000 0.000000 -0.139692
-end
