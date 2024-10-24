@@ -39,6 +39,8 @@ GP2_VERSION = include("gp2/version.lua")
 
 gp2_remove_suit_on_spawn = CreateConVar("gp2_remove_suit_on_spawn", "1", FCVAR_ARCHIVE + FCVAR_REPLICATED, "Remove suit from player")
 
+list.Set( "ContentCategoryIcons", "Portal 2", "games/16/portal2.png" )
+
 if SERVER then
     -- AcceptInput hooks
     include("gp2/inputsmanager.lua")
