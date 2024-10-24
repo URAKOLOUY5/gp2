@@ -116,17 +116,7 @@ if SERVER then
     hook.Add("PlayerInitialSpawn", "GP2::PlayerInitialSpawn", function(ply, transition)
     end)
 
-    hook.Add("PostCleanupMap", "GP2::PostCleanupMap", function()
-        GP2.VScriptMgr.InitializeScriptForEntity(game.GetWorld(), "mapspawn")
-        GP2.VScriptMgr.CallHookFunction("OnPostSpawn", true)
-    end)
-
-    hook.Add("InitPostEntity", "GP2::InitPostEntity", function()
-        GP2.VScriptMgr.InitializeScriptForEntity(game.GetWorld(), "mapspawn")
-        GP2.VScriptMgr.CallHookFunction("OnPostSpawn", true)
-
-        PaintManager.Initialize()
-
+    local function fixTonemaps()
         timer.Simple(0, function()
             local tonemapCtrls = ents.FindByClass("env_tonemap_controller")
 
@@ -142,6 +132,24 @@ if SERVER then
                 ent:Input("setbloomscale", NULL, NULL, 1)
             end
         end)
+    end
+
+    hook.Add("PostCleanupMap", "GP2::PostCleanupMap", function()
+        GP2.VScriptMgr.InitializeScriptForEntity(game.GetWorld(), "mapspawn")
+        GP2.VScriptMgr.CallHookFunction("OnPostSpawn", true)
+
+        PaintManager.Initialize()
+
+        fixTonemaps()
+    end)
+
+    hook.Add("InitPostEntity", "GP2::InitPostEntity", function()
+        GP2.VScriptMgr.InitializeScriptForEntity(game.GetWorld(), "mapspawn")
+        GP2.VScriptMgr.CallHookFunction("OnPostSpawn", true)
+
+        PaintManager.Initialize()
+
+        fixTonemaps()
     end)
 
     hook.Add("Think", "GP2::Think", function()
